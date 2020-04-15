@@ -59,11 +59,11 @@ class Install extends CI_Controller {
 			$file_database = str_replace('[DB_NAME]', $this->session->userdata('DB_NAME'), $file_database);
 			file_put_contents('application/config/database.php', $file_database);
 
-			// /**
-			//  * Replace root index file
-			//  */
-			// $file_index = file_get_contents('install/index_application.txt');
-			// file_put_contents('index.php', $file_index);
+			/**
+			 * Replace root index file
+			 */
+			$file_index = file_get_contents('install/index_application.txt');
+			file_put_contents('index.php', $file_index);
 
 			// redirect(base_url('install_website'));
 
