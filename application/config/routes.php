@@ -154,5 +154,5 @@ $route['sitemap-blog-pages-(:any)\.xml'] = 'site/Sitemap/sitemap_blog_pages/$1';
 $route['app'] = 'app/Dashboard';
 
 
-$route['404_override'] = 'MY_Error';
+$route['404_override'] = 'My_error';
 $route['translate_uri_dashes'] = FALSE;
