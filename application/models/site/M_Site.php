@@ -11,13 +11,6 @@ class M_Site extends CI_Model
 		$meta = $this->read_site_meta();
 		$site['meta'] = $meta;
 
-		/**
-		 * Set Cache if active.
-		 */
-		if ($site['cache'] == 'Yes') {
-			$this->output->cache(1);
-		}
-
 		return $site;
 	}
 

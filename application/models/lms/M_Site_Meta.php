@@ -27,6 +27,15 @@ class M_Site_Meta extends CI_Model
 
 		$build = $this->build($site,$page_type);
 
+		/**
+		 * Set Cache if active.
+		 */
+		if ($site['cache'] == 'Yes') {
+			if ($site['page_type'] != 'lesson') {
+				$this->output->cache(1);
+			}
+		}
+
 		return array_merge($site,$build);
 	}
 

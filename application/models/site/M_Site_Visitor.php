@@ -27,16 +27,18 @@ class M_Site_Visitor extends CI_Model
 
             if ($check->num_rows() < 1) {
 
-                $this->_Process_MYSQL->insert_data($this->table_site_visitor, $post);
+                if ($site['page_type'] != 'lesson') {
+                    $this->_Process_MYSQL->insert_data($this->table_site_visitor, $post);
+                }
 
                 if ($site['modules'] == 'blog' AND $site['page_type'] == 'post') {
                     $this->db->set('views','views+1',FALSE)
-                    ->where('permalink',$this->uri->segment(3))
+                    ->where('permalink',$this->uri->segment(2))
                     ->update($this->table_blog_post);
                 }
                 elseif ($site['modules'] == 'lms' AND $site['page_type'] == 'detail') {
                     $this->db->set('views','views+1',FALSE)
-                    ->where('permalink',$this->uri->segment(3))
+                    ->where('permalink',$this->uri->segment(2))
                     ->update($this->table_lms_courses);
                 }
 
@@ -71,7 +73,7 @@ class M_Site_Visitor extends CI_Model
             'hits' => 1,
             'url' => $url,
             'referrer' => $referrer,
-        );
+            );
 
         return $post_data;
     }
@@ -117,9 +119,9 @@ class M_Site_Visitor extends CI_Model
         $country_code = $this->session->userdata('country_code');
 
         $data = [
-            'ip' => $ip,
-            'name' => $country_name,
-            'code' => $country_code,
+        'ip' => $ip,
+        'name' => $country_name,
+        'code' => $country_code,
         ];
 
         return $data;        

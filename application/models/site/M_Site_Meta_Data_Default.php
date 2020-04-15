@@ -27,6 +27,10 @@ class M_Site_Meta_Data_Default extends CI_Model
 		type='image/x-icon' />
 		<link rel='shortcut icon' href='".base_url('storage/uploads/site/'.$site['icon'])."'
 		type='image/x-icon' />
+
+		<!-- feed -->
+		<link rel='alternate' type='application/rss+xml' title='RSS Feed Courses' href='".base_url('feeds/courses')."' />
+		<link rel='alternate' type='application/rss+xml' title='RSS Feed Blog' href='".base_url('feeds/blog_post')."' />		
 		";
 	}
 

@@ -10,13 +10,19 @@
 
 			<div class="col-lg-12 col-md-12">
 
-				<div class="u-mb-small u-pv-small o-line u-border-bottom">
-					<h3 class="u-h3">
-						<?php echo $site['breadcrumbs'] ?>
-					</h3>
+				<div class="u-mb-small u-pv-small u-border-bottom">		
+					<div class="row">
 
-					<?php $this->load->view('lms/default-app/_layouts/select-filter'); ?>
+						<div class="col-12 col-xl-10 col-lg-9">
+							<h3 class="u-h3">
+								<?php echo $site['breadcrumbs'] ?>
+							</h3>
+						</div>
+						<div class="col-12 col-xl-2 col-lg-3">
+							<?php $this->load->view('lms/default-app/_layouts/select-filter'); ?>
+						</div>
 
+					</div>
 				</div>
 
 				<div class="row">					
@@ -80,23 +86,23 @@
 
 			</div>
 
-			<?php else: ?><div class="col-sm-12 col-lg-12">
-				<div class="c-card u-p-medium u-pv-xlarge" data-mh="landing-cards">
+		<?php else: ?><div class="col-sm-12 col-lg-12">
+			<div class="c-card u-p-medium u-pv-xlarge" data-mh="landing-cards">
 
-					<div class="u-text-center u-justify-between">
-						<div class="c-avatar c-avatar--large u-mb-small u-inline-flex">
-							<img class="c-avatar__img" src="<?php echo base_url('storage/assets/app/img/logo.png') ?>" alt="<?php echo $this->lang->line('courses_not_found') ?>">
-						</div>
-
-						<p class="u-h5"><?php echo $this->lang->line('courses_not_found') ?></p>
-
+				<div class="u-text-center u-justify-between">
+					<div class="c-avatar c-avatar--large u-mb-small u-inline-flex">
+						<img class="c-avatar__img" src="<?php echo base_url('storage/assets/app/img/logo.png') ?>" alt="<?php echo $this->lang->line('courses_not_found') ?>">
 					</div>
 
-				</div>
-			</div>
-		<?php endif ?>
+					<p class="u-h5"><?php echo $this->lang->line('courses_not_found') ?></p>
 
-	</div><!-- // .row -->
+				</div>
+
+			</div>
+		</div>
+	<?php endif ?>
+
+</div><!-- // .row -->
 
 </div><!-- // .container -->
 
