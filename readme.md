@@ -52,6 +52,16 @@ Setelah itu Install Library yang dibutuhkan menggunakan composer dengan mengetik
 composer install
 ```
 
+Informasi App
+
+```
+Halaman App : http://localhost/kurteyki/app
+
+Default login
+username : kurteyki
+password: kurteyki
+```
+
 ## Dibuat dengan
 
 * [CodeIgniter 3.11](https://codeigniter.com/)
