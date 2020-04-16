@@ -82,7 +82,6 @@ password: kurteyki
 
 * when delete
 * when multiple user
-* youtube courses lesson responsive
 
 ## License
 
