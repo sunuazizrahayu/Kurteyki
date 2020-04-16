@@ -14,7 +14,7 @@ Class My_Site extends MY_Controller {
 		* Load Site data
 		*/
 		$this->load->model('site/M_Site');
-		$this->site = $this->M_Site->init();     
+		$this->site = $this->M_Site->init();
 	}
 
 	public function _output($output)

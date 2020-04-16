@@ -4,7 +4,7 @@
 
     <?php foreach($pages as $url) { ?>
     <url>
-        <loc><?= base_url().$url['permalink'] ?></loc>
+        <loc><?= base_url('p/'.$url['permalink']) ?></loc>
         <priority>0.5</priority>
     </url>
     <?php } ?>

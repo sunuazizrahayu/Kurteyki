@@ -31,7 +31,7 @@ class M_Site_Meta extends CI_Model
 		 * Set Cache if active.
 		 */
 		if ($site['cache'] == 'Yes') {
-			if ($site['page_type'] != 'lesson') {
+			if (empty($this->session->userdata('user'))) {
 				$this->output->cache(1);
 			}
 		}

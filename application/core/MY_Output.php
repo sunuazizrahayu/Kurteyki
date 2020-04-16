@@ -47,6 +47,8 @@ class MY_Output extends CI_Output {
         $CI->config->item('index_page').
         $uri;
 
+        echo $uri;
+
         $cache_path .= md5($uri);
         
         return @unlink($cache_path);
