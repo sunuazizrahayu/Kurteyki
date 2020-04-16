@@ -75,6 +75,8 @@ password: kurteyki
 * Coupon Code (Not Perfect)
 * Multiple user 
 * Review User
+* meta breadcrumbs
+* meta product
 
 ## Bug
 
