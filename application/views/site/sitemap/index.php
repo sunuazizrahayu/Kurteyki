@@ -1,35 +1,37 @@
-<?php '<?xml version="1.0" encoding="UTF-8" ?>' ?>
+<?php echo '<?xml version="1.0" encoding="UTF-8" ?><?xml-stylesheet type="text/xsl" href="'.base_url('storage/assets/site/sitemap.xsl').'"?>' ?>
 
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-	<url>
+<sitemapindex xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+
+	<sitemap>
 		<loc><?= base_url('root.xml');?></loc> 
-		<priority>1.0</priority>
-	</url>
+		<lastmod><?php echo date('c', strtotime($site['updated'])); ?></lastmod>
+	</sitemap>
 
-	<?php if ($sitemap_courses): ?>	
-		<?php foreach($sitemap_courses as $sitemap) { ?>
-			<url>
-				<loc><?= base_url("{$sitemap}");?></loc> 
-				<priority>0.5</priority>
-			</url>    
+	<?php if ($courses): ?>	
+		<?php foreach($courses as $read) { ?>
+		<sitemap>
+			<loc><?= base_url($read['url']);?></loc> 
+			<lastmod><?php echo $read['lastmod'] ?></lastmod>
+		</sitemap>    
 		<?php } ?>    
 	<?php endif ?>	
 
-	<?php if ($sitemap_blog_post): ?>	
-		<?php foreach($sitemap_blog_post as $sitemap) { ?>
-			<url>
-				<loc><?= base_url("{$sitemap}");?></loc> 
-				<priority>0.5</priority>
-			</url>    
-		<?php } ?>    
-	<?php endif ?>
-
-	<?php if ($sitemap_blog_pages): ?>	
-		<?php foreach($sitemap_blog_pages as $sitemap) { ?>
-			<url>
-				<loc><?= base_url("{$sitemap}");?></loc> 
-				<priority>0.5</priority>
-			</url>    
+	<?php if ($blog_post): ?>	
+		<?php foreach($blog_post as $read) { ?>
+		<sitemap>
+			<loc><?= base_url($read['url']);?></loc> 
+			<lastmod><?php echo $read['lastmod'] ?></lastmod>
+		</sitemap>    
 		<?php } ?>    
 	<?php endif ?>	
-</urlset>
+
+	<?php if ($pages): ?>	
+		<?php foreach($pages as $read) { ?>
+		<sitemap>
+			<loc><?= base_url($read['url']);?></loc> 
+			<lastmod><?php echo $read['lastmod'] ?></lastmod>
+		</sitemap>    
+		<?php } ?>    
+	<?php endif ?>			
+
+</sitemapindex>

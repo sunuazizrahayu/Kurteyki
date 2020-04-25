@@ -33,11 +33,11 @@ class M_Auth extends CI_Model
             $data = array(
                 'email' => $post_data['email'],
                 'password' => sha1($post_data['password']),
-                'grade' => 'User'        
+                'grade' => 'User',
+                'status' => 'Active'
             );
 
             $read = $this->_Process_MYSQL->get_data($this->table_user,$data);
-
 
             if ($read->num_rows() > 0) {
 

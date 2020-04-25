@@ -2,17 +2,17 @@
 
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
-    <?php foreach($post as $post) { ?>
-    <url>
-        <loc><?= base_url('blog-post/'.$post['permalink']) ?></loc>
-        <priority>0.5</priority>
+	<?php foreach($pages as $post) { ?>
+	<url>
+		<loc><?= base_url('p/'.$post['permalink']) ?></loc>
+		<priority>0.5</priority>
        <?php if (empty($post['updated'])): ?>
        	 <lastmod><?php echo date('c', strtotime($post['time'])); ?></lastmod>
        <?php endif ?>
        <?php if (!empty($post['updated'])): ?>
        	 <lastmod><?php echo date('c', strtotime($post['updated'])); ?></lastmod>
        <?php endif ?>   
-    </url>
-    <?php } ?>
+	</url>
+	<?php } ?>
 
 </urlset>

@@ -7,37 +7,107 @@ class M_Sitemap extends CI_Model
 	public $table_blog_post = 'tb_blog_post';
 	public $table_site_pages = 'tb_site_pages';	
 
-	public function loop_courses($splid){
-		$total_post = $this->db
+	public function index_courses($splid){
+
+		$query = $this->db
 		->select("id")
 		->from($this->table_lms_courses)
 		->where("time <= NOW()")
 		->where("status = 'Published'")        
-		->get()->num_rows();
+		->get();
 
-		return ceil($total_post / $splid);
+		$total_post = $query->num_rows();
+
+		if ($total_post < 1) return false;
+
+		for ($i=1; $i <= ceil($total_post / $splid) ; $i++) {
+
+			$data = $this->sitemap_courses($i,$splid);
+
+			$dates = false;
+			foreach ($data as $read) {
+				if (empty($read['updated'])) {
+					$dates[] = $read['time'];
+				}else {
+					$dates[] = $read['updated'];
+				}
+			}
+
+			$extract[] = [
+			'url' => 'sitemap-courses-'.$i.'.xml',
+			'lastmod' => date("c",max(array_map('strtotime',$dates)))
+			];
+		}
+
+		return $extract;
 	}
 
-	public function loop_blog_post($splid){
-		$total_post = $this->db
+	public function index_blog_post($splid){
+		$query = $this->db
 		->select("id")
 		->from($this->table_blog_post)
 		->where("time <= NOW()")
 		->where("status = 'Published'")        
-		->get()->num_rows();
+		->get();
 
-		return ceil($total_post / $splid);
+		$total_post = $query->num_rows();
+
+		if ($total_post < 1) return false;
+
+		for ($i=1; $i <= ceil($total_post / $splid) ; $i++) {
+
+			$data = $this->sitemap_blog_post($i,$splid);
+
+			$dates = false;
+			foreach ($data as $read) {
+				if (empty($read['updated'])) {
+					$dates[] = $read['time'];
+				}else {
+					$dates[] = $read['updated'];
+				}
+			}
+
+			$extract[] = [
+			'url' => 'sitemap-blog-post-'.$i.'.xml',
+			'lastmod' => date("c",max(array_map('strtotime',$dates)))
+			];
+		}
+
+		return $extract;
 	}
 
-	public function loop_blog_pages($splid){
-		$total_post = $this->db
+	public function index_pages($splid){
+		$query = $this->db
 		->select("id")
 		->from($this->table_site_pages)
 		->where("time <= NOW()")
 		->where("status = 'Published'")        
-		->get()->num_rows();
+		->get();
 
-		return ceil($total_post / $splid);
+		$total_post = $query->num_rows();
+
+		if ($total_post < 1) return false;
+
+		for ($i=1; $i <= ceil($total_post / $splid) ; $i++) {
+
+			$data = $this->sitemap_pages($i,$splid);
+
+			$dates = false;
+			foreach ($data as $read) {
+				if (empty($read['updated'])) {
+					$dates[] = $read['time'];
+				}else {
+					$dates[] = $read['updated'];
+				}
+			}
+
+			$extract[] = [
+			'url' => 'sitemap-pages-'.$i.'.xml',
+			'lastmod' => date("c",max(array_map('strtotime',$dates)))
+			];
+		}
+
+		return $extract;
 	}	
 
 	public function sitemap_courses($page,$splid){
@@ -51,7 +121,7 @@ class M_Sitemap extends CI_Model
 		}
 
 		$data = $this->db
-		->select("permalink")
+		->select("permalink,time,updated")
 		->from($this->table_lms_courses)
 		->where("time <= NOW()")
 		->where("status = 'Published'")
@@ -75,7 +145,7 @@ class M_Sitemap extends CI_Model
 		}
 
 		$data = $this->db
-		->select("permalink")
+		->select("permalink,time,updated")
 		->from($this->table_blog_post)
 		->where("time <= NOW()")
 		->where("status = 'Published'")
@@ -88,7 +158,7 @@ class M_Sitemap extends CI_Model
 		return $data->result_array();
 	}
 
-	public function sitemap_blog_pages($page,$splid){
+	public function sitemap_pages($page,$splid){
 
 		$limit = $splid;
 
@@ -99,7 +169,7 @@ class M_Sitemap extends CI_Model
 		}
 
 		$data = $this->db
-		->select("permalink")
+		->select("permalink,time,updated")
 		->from($this->table_site_pages)
 		->where("time <= NOW()")
 		->where("status = 'Published'")
@@ -108,7 +178,7 @@ class M_Sitemap extends CI_Model
 		->get();
 
 		if ($data->num_rows() < 1) return false;
-		
+
 		return $data->result_array();
 	}	
 

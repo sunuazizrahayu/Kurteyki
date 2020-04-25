@@ -4,30 +4,30 @@
 
 <div class="container">
 
-<?php if ($blog_post['data']): ?>
+	<?php if ($blog_post['data']): ?>
 
-	<?php $this->load->view('blog/templates/mediumish/_layouts/main');?>
+		<?php $this->load->view('blog/templates/mediumish/_layouts/main');?>
 
-	<?php $this->load->view('blog/templates/mediumish/homepage/part/featured');?>			
+		<?php $this->load->view('blog/templates/mediumish/homepage/part/featured');?>			
 
 <!-- Begin List Posts
-================================================== -->
-<section class="recent-posts">
-	<div class="section-title">
-		<h2>
-			<span>
-				<?php echo $site['breadcrumbs'] ?>
-			</span>
-		</h2>
-	</div>
-	<div class="card-columns listrecent">
+	================================================== -->
+	<section class="recent-posts">
+		<div class="section-title">
+			<h2>
+				<span>
+					<?php echo $site['breadcrumbs'] ?>
+				</span>
+			</h2>
+		</div>
+		<div class="card-columns listrecent">
 
-		<?php foreach ($blog_post['data'] as $post): ?>
-			<!-- begin post -->
-			<div class="card">
-				<a title="<?php echo $post['title'] ?>" href="<?php echo $post['url'] ?>">
-					<?php if ($post['image']['thumbnail']): ?>								
-						<img style="width:100%" class="img-fluid" src="<?php echo $post['image']['thumbnail'] ?>" alt="<?php echo $post['title'] ?>"/>
+			<?php foreach ($blog_post['data'] as $post): ?>
+				<!-- begin post -->
+				<div class="card">
+					<a title="<?php echo $post['title'] ?>" href="<?php echo $post['url'] ?>">
+						<?php if ($post['image']['thumbnail']): ?>								
+							<img style="width:100%" class="img-fluid" src="<?php echo $post['image']['thumbnail'] ?>" alt="<?php echo $post['title'] ?>"/>
 						<?php else: ?>
 							<img style="width:100%" class="img-fluid" src="<?php echo $post['image']['no_image'] ?>" alt="<?php echo $post['title'] ?>"/>
 						<?php endif ?>
@@ -44,11 +44,11 @@
 						<div class="metafooter">
 							<div class="wrapfooter">
 								<span class="meta-footer-thumb">
-									<img class="author-thumb" src="<?php echo base_url('storage/assets/blog/mediumish/img/person.png') ?>" alt="<?php echo $site['title'] ?>">
+									<img class="author-thumb" src="<?php echo $post['author']['photo'] ?>" alt="<?php echo $post['author']['name'] ?>">
 								</span>
 								<span class="author-meta">
 									<span class="post-name">
-										<?php echo $site['title'] ?>
+										<?php echo $post['author']['name'] ?>
 									</span>
 									<br/>
 									<span class="post-date">
@@ -77,7 +77,7 @@
 
 	</section>
 <!-- End List Posts
-================================================== -->
+	================================================== -->
 <?php else: ?>
 
 	<div class="jumbotron mb-2">
@@ -93,22 +93,22 @@
 					<a href="<?php echo base_url('blog') ?>">
 						<?php echo $this->lang->line('go_homepage') ?>
 					</a>
-					<?php else: ?>					
-						<h1>
-							<?php echo $this->lang->line('blog_post_not_found') ?>
-						</h1>
-						<p>
-							<?php echo $this->lang->line('blog_post_not_found_message') ?>
-						</p>
-					<?php endif ?>
-				</div>
+				<?php else: ?>					
+					<h1>
+						<?php echo $this->lang->line('blog_post_not_found') ?>
+					</h1>
+					<p>
+						<?php echo $this->lang->line('blog_post_not_found_message') ?>
+					</p>
+				<?php endif ?>
 			</div>
 		</div>
+	</div>
 
-	<?php endif ?>
+<?php endif ?>
 
 
-	<?php $this->load->view('blog/templates/mediumish/_layouts/footer-copyright');?>
+<?php $this->load->view('blog/templates/mediumish/_layouts/footer-copyright');?>
 
 </div>
 <!-- /.container -->

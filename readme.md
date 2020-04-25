@@ -72,16 +72,20 @@ password: kurteyki
 
 ## Work List
 
+* payment method, manual payment choice.
 * Coupon Code (Not Perfect)
-* Multiple user 
-* Review User
-* meta breadcrumbs
-* meta product
+* Multiple user > instructor for lms
+* Review lms
+* user register vertivication...
+* dashboard lms data..
+* cookie setting
 
 ## Bug
 
 * when delete
-* when multiple user
+* when multiple user process on app.
+* currency format 
+* language english
 
 ## License
 

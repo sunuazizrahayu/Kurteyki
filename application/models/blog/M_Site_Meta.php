@@ -91,7 +91,7 @@ class M_Site_Meta extends CI_Model
 				'schema' => $site['meta']['schema'],
 				'open_graph' => $site['meta']['open_graph'],
 				'twitter_card' => $site['meta']['twitter_card']				
-			]);			
+				]);			
 
 		}		
 		elseif ($page_type == 'category') {
@@ -114,7 +114,7 @@ class M_Site_Meta extends CI_Model
 				'schema' => $site['meta']['schema'],
 				'open_graph' => $site['meta']['open_graph'],
 				'twitter_card' => $site['meta']['twitter_card']				
-			]);	
+				]);	
 
 		}
 		elseif ($page_type == 'tags') {
@@ -137,7 +137,7 @@ class M_Site_Meta extends CI_Model
 				'schema' => $site['meta']['schema'],
 				'open_graph' => $site['meta']['open_graph'],
 				'twitter_card' => $site['meta']['twitter_card']				
-			]);	
+				]);	
 
 		}
 		elseif ($page_type == 'search') {
@@ -161,12 +161,13 @@ class M_Site_Meta extends CI_Model
 				'schema' => $site['meta']['schema'],
 				'open_graph' => $site['meta']['open_graph'],
 				'twitter_card' => $site['meta']['twitter_card']				
-			]);										
+				]);										
 		}
 		elseif ($page_type == 'post') {
 
 			$read = $this->M_Site_Meta_Post->read(urldecode($this->uri->segment(2)));	
 			$post = $this->_Post->read_short_single($site,$read);
+			$category = $this->_Post->read_category($read['id_category']);			
 			$tags = $this->_Post->read_tags($read['id_tags']);
 
 			$title = $post['title'].' - '.$site['title'];
@@ -174,7 +175,6 @@ class M_Site_Meta extends CI_Model
 			$image = $post['image']['original'];
 			$published = $read['time'];
 			$updated = $read['updated'];
-			$tags = $tags;	
 
 			$meta = $this->meta_detail([
 				'title' => $title,
@@ -185,12 +185,18 @@ class M_Site_Meta extends CI_Model
 				'published' => $published,
 				'updated' => $updated,
 				'tags' => $tags,
+
+				'breadcrumb' => [
+					'title' => $post['title'],
+					'category' => $category
+				],
+
 				'site_name' => $site['title'],
 
 				'schema' => $site['meta']['schema'],
 				'open_graph' => $site['meta']['open_graph'],
 				'twitter_card' => $site['meta']['twitter_card']				
-			]);		
+				]);		
 
 		}
 		elseif ($page_type == 'pages') {
@@ -212,17 +218,20 @@ class M_Site_Meta extends CI_Model
 				'published' => $published,
 				'updated' => $updated,
 				'tags' => false,
+
+				'breadcrumb' => false,
+
 				'site_name' => $site['title'],
 
 				'schema' => $site['meta']['schema'],
 				'open_graph' => $site['meta']['open_graph'],
 				'twitter_card' => $site['meta']['twitter_card']				
-			]);							
+				]);							
 		}		
 		
 		return [
-			'breadcrumbs' => $breadcrumbs,
-			'meta' => $meta,
+		'breadcrumbs' => $breadcrumbs,
+		'meta' => $meta,
 		];
 	}	
 
@@ -239,7 +248,7 @@ class M_Site_Meta extends CI_Model
 	public function meta_detail($data){
 
 		$meta_general = $this->M_Site_Meta_Data_Default->generate($data);
-		$schema = $this->M_Site_Meta_Data_Schema->generate($data['schema']);
+		$schema = $this->M_Site_Meta_Data_Schema->generate($data['schema'],$data['breadcrumb']);
 		$open_graph = $this->M_Site_Meta_Data_OG->detail($data);
 		$twitter_card = $this->M_Site_Meta_Data_Twitter_Card->detail($data);
 

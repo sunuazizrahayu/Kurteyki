@@ -1,5 +1,3 @@
-<!-- <h4 class="c-sidebar__title">Halaman</h4> -->
-
 <li class="c-sidebar__item">
 	<a class="c-sidebar__link <?php if($this->uri->segment(1)=="app" and empty($this->uri->segment(2)) or $this->uri->segment(2) == 'dashboard'){echo "is-active";}?>" href="<?php echo base_url('app/dashboard') ?>">
 		<i class="fa fa-fire u-mr-xsmall"></i>Dashboard
@@ -96,6 +94,19 @@
 	</a>
 </li>
 
+<h4 class="c-sidebar__title">User</h4>
+
+<li class="c-sidebar__item">
+	<a class="c-sidebar__link <?php if($this->uri->segment(2)=='user' or $this->uri->segment(2)=='user' and $this->uri->segment(3) == 'create' ){echo "is-active";}?>" href="<?php echo base_url('app/user') ?>">
+		<i class="fa fa-user-circle u-mr-xsmall"></i>User
+	</a>
+</li>
+
+<li class="c-sidebar__item">
+	<a class="c-sidebar__link <?php if($this->uri->segment(2)=='user_payment' or $this->uri->segment(2)=='user_payment' and $this->uri->segment(3) == 'create' ){echo "is-active";}?>" href="<?php echo base_url('app/user_payment') ?>">
+		<i class="fa fa-shopping-cart u-mr-xsmall"></i>Payment
+	</a>
+</li>
 
 <h4 class="c-sidebar__title">Settings</h4>
 
@@ -109,3 +120,10 @@
 		<i class="fa fa-bug u-mr-xsmall"></i>Meta
 	</a>
 </li>
+<?php if ($this->site['payment_method'] == 'Manual'): ?>
+<li class="c-sidebar__item">
+	<a class="c-sidebar__link <?php if($this->uri->segment(2)=='setting_payment' or $this->uri->segment(2)=='setting_payment' and $this->uri->segment(3) == 'create' ){echo "is-active";}?>" href="<?php echo base_url('app/setting_payment') ?>">
+		<i class="fa fa-dollar u-mr-xsmall"></i>Payment
+	</a>
+</li>
+<?php endif ?>

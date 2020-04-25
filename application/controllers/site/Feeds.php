@@ -6,7 +6,7 @@ class Feeds extends My_Site {
     {
         parent::__construct();
 
-        header("Content-Type: application/rss+xml");
+        header("Content-Type: text/xml;charset=iso-8859-1");
 
         $this->load->helper('xml');
         $this->load->helper('text');

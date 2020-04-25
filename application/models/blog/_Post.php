@@ -3,9 +3,12 @@
 class _Post extends CI_Model
 {
 
+	public $table_user = 'tb_user';  
+
 	public $table_blog_post_category = 'tb_blog_post_category';
 	public $table_blog_post_tags = 'tb_blog_post_tags';
 	public $table_blog_post_comment = 'tb_blog_post_comment';		
+
 
 	public function __construct()
 	{
@@ -56,7 +59,7 @@ class _Post extends CI_Model
 				'time' => $post['time'],
 				'content' => $post['content'],
 				'views' => $post['views'],
-			);         
+				);         
 
 		}
 
@@ -109,7 +112,7 @@ class _Post extends CI_Model
 			'updated' => $post['updated'],
 			'content' => $post['content'],
 			'description' => $post['description'],						
-		);         
+			);         
 
 		return $extract;		
 	}
@@ -157,6 +160,11 @@ class _Post extends CI_Model
 			 */
 			$post['category'] = $this->read_category($post['id_category']);
 			$post['tags'] = $this->read_tags($post['id_tags']);
+
+			/**
+			 * User
+			 */
+			$post['author'] = $this->read_user($post['id_user']);
 			
 			$extract[] = array(
 				'id' =>$post['id'],
@@ -169,11 +177,12 @@ class _Post extends CI_Model
 				'updated_original' =>$post['updated_original'],	
 				'category' =>$post['category'],					
 				'tags' =>$post['tags'],		
+				'author' =>$post['author'],						
 				'content' =>$post['content'],
 				'description' =>$post['description'],
 				'views' =>$post['views'],
-				'status' =>$post['status']					
-			);         
+				'status' =>$post['status']
+				);         
 
 		}
 
@@ -231,6 +240,11 @@ class _Post extends CI_Model
 		 */
 		$post['category'] = $this->read_category($post['id_category']);
 		$post['tags'] = $this->read_tags($post['id_tags']);
+
+		/**
+		 * User
+		 */
+		$post['author'] = $this->read_user($post['id_user']);		
 		
 		$extract = array(
 			'id' =>$post['id'],
@@ -244,24 +258,46 @@ class _Post extends CI_Model
 			'id_category' =>$post['id_category'],						
 			'category' =>$post['category'],			
 			'tags' =>$post['tags'],			
+			'author' =>$post['author'],
 			'content' =>$post['content'],
 			'description' =>$post['description'],
 			'views' =>$post['views'],
 			'status' =>$post['status']					
-		);
+			);
 
 		return $extract;
 	}	
+
+	public function read_user($id)
+	{
+		$this->db
+		->select("
+			photo, 
+			username, 			
+			")
+		->from($this->table_user)
+		->where("id",$id);
+		$query = $this->db->get();
+
+		$read = $query->row_array();
+
+		$data = [
+		'name' => $read['username'],
+		'photo' => (!empty($read['photo']) ?  base_url('storage/uploads/user/'.$read['photo']) : base_url('storage/uploads/user/person.png')),
+		];
+
+		return $data;
+	}		
 
 	public function read_category($id)
 	{
 		$this->db
 		->select("
-			tb_blog_post_category.name, 
-			tb_blog_post_category.slug, 			
+			name, 
+			slug, 			
 			")
 		->from($this->table_blog_post_category)
-		->where("tb_blog_post_category.id",$id);
+		->where("id",$id);
 		$query = $this->db->get();
 
 		$count = $query->num_rows();
@@ -271,8 +307,8 @@ class _Post extends CI_Model
 		$read = $query->row_array();
 
 		$category = [
-			'name' => $read['name'],
-			'url' => base_url('blog-category/'.$read['slug']),
+		'name' => $read['name'],
+		'url' => base_url('blog-category/'.$read['slug']),
 		];
 
 		return $category;
@@ -282,11 +318,11 @@ class _Post extends CI_Model
 	{
 		$this->db
 		->select("
-			tb_blog_post_tags.name, 
-			tb_blog_post_tags.slug, 			
+			name, 
+			slug, 			
 			")
 		->from($this->table_blog_post_tags)
-		->where_in("tb_blog_post_tags.id",explode(',', $id));
+		->where_in("id",explode(',', $id));
 		$query = $this->db->get();
 
 		$count = $query->num_rows();
@@ -297,8 +333,8 @@ class _Post extends CI_Model
 
 		foreach ($read as $data_tag) {
 			$tags [] = [
-				'name' => $data_tag['name'],
-				'url' => base_url('blog-tags/'.$data_tag['slug']),
+			'name' => $data_tag['name'],
+			'url' => base_url('blog-tags/'.$data_tag['slug']),
 			];
 		}
 

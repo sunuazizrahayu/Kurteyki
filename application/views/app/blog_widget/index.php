@@ -84,7 +84,7 @@
 							?>
 
 							<a class="c-btn--custom c-btn--small c-btn c-btn--info" href="<?php echo base_url('app/blog_widget/update/'.$data['id']) ?>"><i class="fa fa-edit"></i></a>
-							<button data-title="are you sure ?" data-text="want to delete <?php echo $data['name'] ?> widget" class="c-btn--custom c-btn--small c-btn c-btn--danger single-action" data-id="$1" data-href="<?php echo base_url('app/blog_widget/delete/'.$data['id']) ?>" type="button"><i class="fa fa-trash"></i></button>
+							<button data-title="are you sure ?" data-text="want to delete <?php echo $data['name'] ?> widget" class="c-btn--custom c-btn--small c-btn c-btn--danger single-action" data-href="<?php echo base_url('app/blog_widget/delete/'.$data['id']) ?>" type="button"><i class="fa fa-trash"></i></button>
 
 						</div>
 

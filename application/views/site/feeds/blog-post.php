@@ -17,9 +17,8 @@ xmlns:feedburner="http://rssnamespace.org/feedburner/ext/1.0">
 		<link><?php echo base_url(); ?></link>
 	</image>
 	<generator><?php echo strtolower($site['title']) ?></generator>
-	<!-- <lastBuildDate></lastBuildDate> 
-		<pubDate></pubDate>
-	-->
+	<lastBuildDate><?php echo date(DATE_RSS, strtotime($site['updated'])); ?></lastBuildDate> 
+	<pubDate><?php echo date(DATE_RSS, strtotime($site['updated'])); ?></pubDate>
 	<copyright><![CDATA[Copyright (c) <?php echo date('Y').' '.$site['title'] ?>. All Rights Reserved.]]></copyright>
 	<language><![CDATA[<?php echo ($site['language'] == 'indonesia') ? 'id-ID' : 'en-US' ?>]]></language>
 	<ttl>10</ttl>

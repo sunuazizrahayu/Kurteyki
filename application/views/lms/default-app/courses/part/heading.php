@@ -135,10 +135,16 @@
                         <?php if (!empty($courses['first_lesson'])): ?>  
 
                             <?php if (empty($courses['price'])): ?>
-                                <!--  <a class="c-btn c-btn--info c-btn--custom" href="<?php echo base_url('auth?redirect='.urlencode($courses['url'])) ?>"> <i class="fa fa-send-o u-mr-xsmall"></i><?php echo $this->lang->line('learn_now') ?> f</a> --> 
-                                <a class="c-btn c-btn--info c-btn--custom" href="<?php echo $courses['first_lesson'] ?>">
-                                    <i class="fa fa-send-o u-mr-xsmall"></i><?php echo $this->lang->line('learn_now') ?>
-                                </a>
+                                <?php if ($site['lms_free_courses_readable'] == 'Yes'): ?>
+                                    <a class="c-btn c-btn--info c-btn--custom" href="<?php echo $courses['first_lesson'] ?>">
+                                        <i class="fa fa-send-o u-mr-xsmall"></i><?php echo $this->lang->line('learn_now') ?>
+                                    </a>
+                                <?php endif ?>
+                                <?php if ($site['lms_free_courses_readable'] == 'No'): ?>
+                                    <a class="c-btn c-btn--info c-btn--custom" href="<?php echo base_url('auth?redirect='.urlencode($courses['url'])) ?>"> 
+                                        <i class="fa fa-send-o u-mr-xsmall"></i><?php echo $this->lang->line('learn_now') ?>
+                                    </a>
+                                <?php endif ?>
                             <?php endif ?>
                             <?php if (!empty($courses['price'])): ?>
                                 <a class="c-btn c-btn--success c-btn--custom" href="<?php echo base_url('auth?redirect='.urlencode(base_url('payment/order/'.$courses['id']))) ?>">

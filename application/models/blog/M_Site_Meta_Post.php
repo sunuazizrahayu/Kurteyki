@@ -16,6 +16,7 @@ class M_Site_Meta_Post extends CI_Model
 			content,
 			description,
 			id_tags,		
+			id_category,					
 			');
 		$this->db->from($this->table_blog_post);		
 		$this->db->where('permalink',urldecode($slug));

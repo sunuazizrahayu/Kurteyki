@@ -13,7 +13,7 @@ class M_Setting_General extends CI_Model
 		}
 
 		$site['blog_comment'] = json_decode($site['blog_comment'],true);
-		$site['midtrans'] = json_decode($site['midtrans'],true);
+		$site['payment_midtrans'] = json_decode($site['payment_midtrans'],true);
 
 		return $site;
 	}
@@ -38,8 +38,8 @@ class M_Setting_General extends CI_Model
 			if ($key == 'server_key') continue;			
 
 			$data [] = [
-				'type' => $key,
-				'data' => $value,
+			'type' => $key,
+			'data' => $value,
 			];
 		}
 		
@@ -48,16 +48,16 @@ class M_Setting_General extends CI_Model
 		 */
 		
 		$comment_data = [
-			'type' => $post['blog_comment_type'],
-			'disqus_shortname' => $post['blog_disqus_shortname'],
-			'disqus_developer' => $post['blog_disqus_developer'],
-			'moderate' => $post['blog_moderate'],
-			'message' => $post['blog_message']
+		'type' => $post['blog_comment_type'],
+		'disqus_shortname' => $post['blog_disqus_shortname'],
+		'disqus_developer' => $post['blog_disqus_developer'],
+		'moderate' => $post['blog_moderate'],
+		'message' => $post['blog_message']
 		];
 
 		$data[] = [
-			'type' => 'blog_comment',
-			'data' => json_encode($comment_data,true),
+		'type' => 'blog_comment',
+		'data' => json_encode($comment_data,true),
 		];
 
 		// echo json_encode($data);		
@@ -77,11 +77,11 @@ class M_Setting_General extends CI_Model
 				$image_old, // delete file
 				'logo', // file name
 				'thumbnail' //is image
-			);
+				);
 
 			$data[] = [
-				'type' => 'image',
-				'data' => $upload_image['image'],
+			'type' => 'image',
+			'data' => $upload_image['image'],
 			];
 		}
 		
@@ -99,11 +99,11 @@ class M_Setting_General extends CI_Model
 				$icon_old, // delete file
 				'icon', // file name
 				'thumbnail' //is image
-			);
+				);
 
 			$data[] = [
-				'type' => 'icon',
-				'data' => $upload_icon['icon'],
+			'type' => 'icon',
+			'data' => $upload_icon['icon'],
 			];
 		}		
 
@@ -121,11 +121,11 @@ class M_Setting_General extends CI_Model
 				$no_image_old, // delete file
 				'no_image', // file name
 				'thumbnail' //is image
-			);
+				);
 
 			$data[] = [
-				'type' => 'no_image',
-				'data' => $upload_no_image['no_image'],
+			'type' => 'no_image',
+			'data' => $upload_no_image['no_image'],
 			];
 		}
 
@@ -134,19 +134,26 @@ class M_Setting_General extends CI_Model
 		 */
 		
 		$midtrans_data = [
-			"status_production" =>  $post['status_production'],			
-			"client_key" =>  $post['client_key'],
-			"server_key" =>   $post['server_key']
+		"status_production" =>  $post['status_production'],			
+		"client_key" =>  $post['client_key'],
+		"server_key" =>   $post['server_key']
 		];
 
 		$data[] = [
-			'type' => 'midtrans',
-			'data' => json_encode($midtrans_data,true),
+		'type' => 'payment_midtrans',
+		'data' => json_encode($midtrans_data,true),
 		];
 
 		// echo json_encode($data);		
 		// exit;
 
+		/**
+		 * updated site
+		 */
+		$data[] = [
+		'type' => 'updated',
+		'data' => date('Y-m-d H:i:s')
+		];
 
 		/**
 		 * Delete Cache if not active

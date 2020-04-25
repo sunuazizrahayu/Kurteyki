@@ -23,7 +23,7 @@ class M_Site extends CI_Model
 
 		$site['image'] = base_url('storage/images/'.$site['image']);
 		$site['blog_comment'] = json_decode($site['blog_comment'],true);
-		$site['midtrans'] = json_decode($site['midtrans'],true);		
+		$site['payment_midtrans'] = json_decode($site['payment_midtrans'],true);		
 		
 		return $site;
 	}

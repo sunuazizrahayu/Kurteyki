@@ -3,6 +3,7 @@
 class Txt extends MY_Controller{
 
 	public $data;
+
 	public function __construct()
 	{
 		parent::__construct();
@@ -16,7 +17,10 @@ class Txt extends MY_Controller{
 
 	public function robots_txt()
 	{
-		echo $this->data['robots_txt'];
+		$data = $this->data['robots_txt'];
+		$data = str_replace('[sitemap_url]', base_url('sitemap.xml'), $data);
+
+		echo $data;
 	}
 
 	public function ads_txt()

@@ -141,7 +141,7 @@ $route['sitemap\.xml'] = 'site/Sitemap/sitemap_index';
 $route['root\.xml'] = 'site/Sitemap/sitemap_root';
 $route['sitemap-courses-(:any)\.xml'] = 'site/Sitemap/sitemap_courses/$1';
 $route['sitemap-blog-post-(:any)\.xml'] = 'site/Sitemap/sitemap_blog_post/$1';
-$route['sitemap-blog-pages-(:any)\.xml'] = 'site/Sitemap/sitemap_blog_pages/$1';
+$route['sitemap-pages-(:any)\.xml'] = 'site/Sitemap/sitemap_pages/$1';
 
 /*
 |--------------------------------------------------------------------------

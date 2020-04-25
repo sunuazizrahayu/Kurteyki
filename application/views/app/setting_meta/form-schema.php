@@ -40,6 +40,7 @@
 			<label class="c-field__label">New organization_logo_url (optional) : </label>
 			<input type="hidden" name="organization_logo_url_old" value="<?php echo $meta['schema']['content']['organization_logo_url'] ?>">
 			<input class="c-input" name="organization_logo_url" type="file">
+			<div class="u-text-mute u-text-small">The image must be 112x112px, at minimum.</div>
 		</div>
 	</div>
 </div>

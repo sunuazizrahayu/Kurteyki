@@ -99,9 +99,7 @@ $autoload['helper'] = array(
 	'url',
 	'string_slug',
 	'string_ctsubstr',
-	'app/datatables_formatstatus',
-	'app/datatables_statuscomment',
-	'app/datatables_countcomment'
+	'app/datatables',
 );
 
 /*

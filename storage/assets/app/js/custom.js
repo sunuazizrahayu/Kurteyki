@@ -18,8 +18,8 @@
     $(".input-section-id").val(id);    
 });
 
-function FormatCurrency(objNum)
-{
+ function FormatCurrency(objNum)
+ {
    var num = objNum.value
    var ent, dec;
    if (num != '' && num != objNum.oldvalue)
@@ -28,20 +28,20 @@ function FormatCurrency(objNum)
      if (isNaN(num))
      {
        objNum.value = (objNum.oldvalue)?objNum.oldvalue:'';
-     } else {
+   } else {
        var ev = (navigator.appName.indexOf('Netscape') != -1)?Event:event;
        if (ev.keyCode == 190 || !isNaN(num.split('.')[1]))
        {
          alert(num.split('.')[1]);
          objNum.value = TambahTitik(num.split('.')[0])+'.'+num.split('.')[1];
-       }
-       else
-       {
-         objNum.value = TambahTitik(num.split('.')[0]);
-       }
-       objNum.oldvalue = objNum.value;
      }
-   }
+     else
+     {
+         objNum.value = TambahTitik(num.split('.')[0]);
+     }
+     objNum.oldvalue = objNum.value;
+ }
+}
 }
 function HapusTitik(num)
 {
@@ -54,11 +54,11 @@ function TambahTitik(num)
    for (i=3;i<numArr.length;i+=3)
    {
      numArr[i]+='.';
-   }
-   return numArr.reverse().join('');
+ }
+ return numArr.reverse().join('');
 } 
 
- $.urlParam = function(name = 'courses'){
+$.urlParam = function(name = 'courses'){
     var results = new RegExp('[\?&]' + name + '=([^&#]*)').exec(window.location.href);
     return results || 0;
 }
@@ -96,7 +96,7 @@ $('#tab-material').click(function() {
 });
 
 /**
- * Module Setting General, SEO
+ * Module Setting General, Meta
  */
  $('.select-schema').on('change', function() {
     var optional = $(this).find('option:selected').text();
@@ -122,6 +122,48 @@ $('#tab-material').click(function() {
         $('.type-system').hide();
         $('.type-disqus').show();
     }
+});
+
+ $('.select-payment').on('change', function() {
+    var optional = $(this).find('option:selected').text();
+    if (optional == 'Manual') {
+        $('.type-manual').show();
+        $('.type-midtrans').hide();
+    } else {
+        $('.type-manual').hide();
+        $('.type-midtrans').show();
+    }
+});
+
+/**
+ * Module Setting Payment
+ */
+
+ $(".button-payment-transaction-create").click(function() {
+    $(".input-transaction-type,.input-transaction-account_number,.input-transaction-receiver,.input-transaction-identity").val('');
+    $('#form-transaction').on('shown.bs.modal', function() {
+        $(".input-transaction-type").focus();
+    })
+});
+
+ $(".button-payment-transaction").on("click", function() {
+    $(".input-transaction-type").val($(this).data("type"));
+    $(".input-transaction-account_number").val($(this).data("account_number"));
+    $(".input-transaction-receiver").val($(this).data("receiver"));    
+    $(".input-transaction-identity").val($(this).data("identity"));    
+});
+
+ $(".button-payment-confirmation-create").click(function() {
+    $(".input-confirmation-type,.input-confirmation-data,.input-confirmation-identity").val('');
+    $('#form-confirmation').on('shown.bs.modal', function() {
+        $(".input-confirmation-type").focus();
+    })
+});
+
+ $(".button-payment-confirmation").on("click", function() {
+    $(".input-confirmation-type").val($(this).data("type"));
+    $(".input-confirmation-data").val($(this).data("data"));
+    $(".input-confirmation-identity").val($(this).data("identity"));    
 });
 
 /**

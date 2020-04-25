@@ -148,7 +148,7 @@ class M_Site_Meta extends CI_Model
 			$image = $courses['image']['original'];
 			$published = $read['time'];
 			$updated = $read['updated'];
-			$tags = [$courses['category']];
+			$tags = [$courses['category']];		
 
 			$meta = $this->meta_detail([
 				'title' => $title,
@@ -159,6 +159,17 @@ class M_Site_Meta extends CI_Model
 				'published' => $published,
 				'updated' => $updated,
 				'tags' => $tags,
+
+				'courses' => [
+				'title' => $courses['title'],
+				'description' => $description
+				],
+
+				'breadcrumb' => [
+				'title' => $courses['title'],
+				'category' => $courses['sub_category']
+				],			
+
 				'site_name' => $site['title'],
 
 				'schema' => $site['meta']['schema'],
@@ -177,10 +188,11 @@ class M_Site_Meta extends CI_Model
 			$image = $courses['image']['original'];
 			$published = $read['time'];
 			$updated = $read['updated'];
-			$tags = [$courses['category']];	
+			$tags = [$courses['category']];				
 
 			$meta = $this->meta_detail([
 				'title' => $title,
+				'title_original' => $courses['title'],					
 				'description' => $description,
 				'image' => $image,
 				'icon' => $site['icon'],
@@ -188,6 +200,10 @@ class M_Site_Meta extends CI_Model
 				'published' => $published,
 				'updated' => $updated,
 				'tags' => $tags,
+
+				'courses' => false,
+				'breadcrumb' => false,
+
 				'site_name' => $site['title'],
 
 				'schema' => $site['meta']['schema'],
@@ -215,7 +231,7 @@ class M_Site_Meta extends CI_Model
 	public function meta_detail($data){
 
 		$meta_general = $this->M_Site_Meta_Data_Default->generate($data);
-		$schema = $this->M_Site_Meta_Data_Schema->generate($data['schema']);
+		$schema = $this->M_Site_Meta_Data_Schema->generate($data['schema'],$data['breadcrumb'],$data['courses']);
 		$open_graph = $this->M_Site_Meta_Data_OG->detail($data);
 		$twitter_card = $this->M_Site_Meta_Data_Twitter_Card->detail($data);
 

@@ -3,6 +3,9 @@
 class M_Dashboard extends CI_Model
 {
 
+    public $table_lms_courses = 'tb_lms_courses';
+    public $table_user = 'tb_user';
+
     public $table_blog_post = 'tb_blog_post';
     public $table_blog_post_category = 'tb_blog_post_category';
     public $table_blog_post_tags = 'tb_blog_post_tags';
@@ -15,7 +18,12 @@ class M_Dashboard extends CI_Model
     public function get_statistic(){
 
         /**
-         * count all blog post
+         * count courses
+         */
+        $count_courses = $this->db->from($this->table_lms_courses)->count_all_results();
+
+        /**
+         * count blog post
          */
         $count_post = $this->db
         ->select("id")
@@ -33,6 +41,11 @@ class M_Dashboard extends CI_Model
         ->where("time <= NOW()")
         ->where("status = 'Published'")
         ->count_all_results();        
+
+        /**
+         * count user
+         */
+        $count_user = $this->db->from($this->table_user)->where("grade = 'User'")->count_all_results();
 
         /**
          * count total visitor
@@ -140,9 +153,9 @@ class M_Dashboard extends CI_Model
 
             foreach ($page_view_by_browser->result_array() as $data) {
                 $page_view_by_browser_data[] = [
-                    'browser' => $data['browser'],
-                    'jumlah' => $data['jumlah'],                    
-                    'percentage' => number_format(($data['jumlah'] * 100) / $page_view_by_browser_count,2)."%",
+                'browser' => $data['browser'],
+                'jumlah' => $data['jumlah'],                    
+                'percentage' => number_format(($data['jumlah'] * 100) / $page_view_by_browser_count,2)."%",
                 ];
             }
         }  
@@ -168,9 +181,9 @@ class M_Dashboard extends CI_Model
 
             foreach ($page_view_by_os->result_array() as $data) {
                 $page_view_by_os_data[] = [
-                    'os' => $data['os'],
-                    'jumlah' => $data['jumlah'],                    
-                    'percentage' => number_format(($data['jumlah'] * 100) / $page_view_by_os_count,2)."%",
+                'os' => $data['os'],
+                'jumlah' => $data['jumlah'],                    
+                'percentage' => number_format(($data['jumlah'] * 100) / $page_view_by_os_count,2)."%",
                 ];
             }
         }  
@@ -209,8 +222,10 @@ class M_Dashboard extends CI_Model
         ->result_array();
 
         return array(
+            'count_courses' => $count_courses,
             'count_post' => $count_post,
             'count_pages' => $count_pages,
+            'count_user' => $count_user,
             'total_visitor' => $total_visitor,
             'hits_today' => $hits_today,            
             'statistic_chart_js' => true,
@@ -227,7 +242,7 @@ class M_Dashboard extends CI_Model
             'page_view_by_os_data' => $page_view_by_os_data,
             'page_view_country' => !empty($all_country) ? json_encode($all_country) : '[]',
             'page_view_country_table' => $page_view_country_table,
-        );
+            );
 
     }
 

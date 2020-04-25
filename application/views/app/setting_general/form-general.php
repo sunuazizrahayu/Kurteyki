@@ -133,6 +133,9 @@
 			<div class="c-field u-mb-medium">
 				<label class="c-field__label">Robots.txt</label> 
 				<textarea rows="5" class="c-input" name="robots_txt" placeholder="robots_txt"><?php echo (!empty($site) ? $site['robots_txt'] : '') ?></textarea>
+				<small class="u-text-mute u-color-info">
+					Notes : [sitemap_url] = your sitemap url.
+				</small>
 			</div>
 
 		</div>

@@ -4,14 +4,22 @@
 <div class="c-toolbar u-justify-center u-mb-small">
 	<div class="col-12 col-lg-10 col-xl-8">
 		<div class="row">
-			<div class="col-6 col-md-6 c-toolbar__state">
+			<div class="col-6 col-md-3 c-toolbar__state">
+				<h4 class="c-toolbar__state-number"><?php echo $count_courses; ?></h4>
+				<span class="c-toolbar__state-title">Courses</span>
+			</div>		
+			<div class="col-6 col-md-3 c-toolbar__state">
 				<h4 class="c-toolbar__state-number"><?php echo $count_post; ?></h4>
 				<span class="c-toolbar__state-title">Blog Post</span>
 			</div>
-			<div class="col-6 col-md-6 c-toolbar__state">
+			<div class="col-6 col-md-3 c-toolbar__state">
 				<h4 class="c-toolbar__state-number"><?php echo $count_pages; ?></h4>
-				<span class="c-toolbar__state-title">Blog Pages</span>
+				<span class="c-toolbar__state-title">Pages</span>
 			</div>
+			<div class="col-6 col-md-3 c-toolbar__state">
+				<h4 class="c-toolbar__state-number"><?php echo $count_user; ?></h4>
+				<span class="c-toolbar__state-title">User</span>
+			</div>				
 		</div><!-- // .row -->
 	</div><!-- // -->
 </div>

@@ -12,7 +12,7 @@
                 <i class="fa fa-check"></i>
             </button>                
 
-            <button data-title="are you sure ?" data-text="to block selected comment"title="Block Multiple" value="blocked" class="c-btn--custom c-btn--small c-btn c-btn--warning u-mr-xsmall  action-multiple btn-opsi">
+            <button data-title="are you sure ?" data-text="to block selected comment" title="Block Multiple" value="blocked" class="c-btn--custom c-btn--small c-btn c-btn--warning u-mr-xsmall  action-multiple btn-opsi">
                 <i class="fa fa fa-ban"></i>
             </button>            
 

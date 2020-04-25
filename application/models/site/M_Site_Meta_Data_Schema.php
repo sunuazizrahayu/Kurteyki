@@ -3,14 +3,14 @@
 class M_Site_Meta_Data_Schema extends CI_Model
 {
 
-	public function generate($data){
+	public function generate($data,$breadcrumb = false,$courses = false){
 
 		$person_same_as = json_encode(explode(',', $data['content']['person_sameAs']),JSON_UNESCAPED_SLASHES);
 		$person_worksfor_same_as = json_encode(explode(',', $data['content']['person_worksFor_sameAs']),JSON_UNESCAPED_SLASHES);
 		$organization_sameAs = json_encode(explode(',', $data['content']['organization_sameAs']),JSON_UNESCAPED_SLASHES);
 
 		if ($data['type'] == 'Person') {
-			$json_data = '
+			$json_data[] = '
 			<script type="application/ld+json">{
 				"@context": "https://schema.org",
 				"@id": "'.base_url().'#person",
@@ -31,23 +31,23 @@ class M_Site_Meta_Data_Schema extends CI_Model
 					"addressLocality": "'.$data['content']['person_addressLocality'].'",
 					"addressRegion": "'.$data['content']['person_addressRegion'].'",
 					"postalCode": "'.$data['content']['person_postalCode'].'"
-					},
-					"email": "'.$data['content']['person_email'].'",
-					"telephone": "'.$data['content']['person_telephone'].'",
-					"url": "'.$data['content']['person_url'].'",
-					"jobTitle": "'.$data['content']['person_jobTitle'].'",
-					"worksFor": [
-					{
-						"@type": "Organization",
-						"name": "'.$data['content']['person_worksFor_name'].'",
-						"sameAs": '.$person_worksfor_same_as.'
-					}
-					],
-					"sameAs": '.$person_same_as.'
+				},
+				"email": "'.$data['content']['person_email'].'",
+				"telephone": "'.$data['content']['person_telephone'].'",
+				"url": "'.$data['content']['person_url'].'",
+				"jobTitle": "'.$data['content']['person_jobTitle'].'",
+				"worksFor": [
+				{
+					"@type": "Organization",
+					"name": "'.$data['content']['person_worksFor_name'].'",
+					"sameAs": '.$person_worksfor_same_as.'
 				}
+				],
+				"sameAs": '.$person_same_as.'
+			}
 			</script>';//
 		}else {
-			$json_data = '<script type="application/ld+json">{
+			$json_data[] = '<script type="application/ld+json">{
 				"@context":"http://schema.org",
 				"@id": "'.base_url().'#organization",
 				"@type":"Organization",
@@ -63,9 +63,45 @@ class M_Site_Meta_Data_Schema extends CI_Model
 				"logo":"'.base_url('storage/uploads/site/'.$data['content']['organization_logo_url']).'",
 				"sameAs": '.$organization_sameAs.'
 			}</script>';
-		}	
+		}
 
-		return $json_data;
-	}		
+		if ($breadcrumb) {
+
+			$json_data[] = '   
+			<script type="application/ld+json">
+				{
+					"@context": "https://schema.org",
+					"@type": "BreadcrumbList",
+					"itemListElement": [{
+						"@type": "ListItem",
+						"position": 1,
+						"name": "'.$breadcrumb['category']['name'].'",
+						"item": "'.$breadcrumb['category']['url'].'"
+					},{
+						"@type": "ListItem",
+						"position": 2,
+						"name": "'.$breadcrumb['title'].'",
+						"item": "'.base_url(uri_string()).'"
+					}]
+				}
+			</script>';
+		}
+
+
+		if ($courses) {
+			$json_data[] = '
+			<script type="application/ld+json">
+				{
+					"@context": "https://schema.org",
+					"@type": "Course",
+					"name": "'.$courses['title'].'",
+					"description": "'.$courses['description'].'"
+				}
+			</script>';
+		}
+
+
+		return implode('', $json_data);
+	}
 
 }
