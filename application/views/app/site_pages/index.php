@@ -27,7 +27,7 @@
             <form id='form-multiple' action="<?php echo base_url('app/site_pages/process_multiple') ?>" method="post">
 
                 <div class="c-table-responsive">
-                    <table data-mysearch="Search..." data-myorder='1' data-myurl="<?php echo base_url('app/site_pages/datatables') ?>" class="c-table c-table--highlight" id="table" width="100%">
+                    <table data-mysearch="Search..." data-myorder='1' data-myurl="<?php echo base_url('app/site_pages/datatables') ?>" class="c-table c-table--highlight u-hidden" id="table">
                         <caption class="c-table__title cst-table">
                         </caption>
 

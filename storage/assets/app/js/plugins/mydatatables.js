@@ -169,6 +169,7 @@ function datatables_serverside(resource_columns) {
         },
         "initComplete": function(settings, json) {
 
+            $(this).removeClass('u-hidden');
             $("div.dataTables_length, div.dataTables_filter").show();
             $('div.dataTables_filter').appendTo($('.cst-table'));
             $('div.dataTables_length').css({ 'width': '50%', 'float': 'left' });

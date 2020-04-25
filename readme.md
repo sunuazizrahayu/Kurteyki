@@ -60,12 +60,10 @@ password: kurteyki
 * Multiple user > instructor for lms
 * Review lms
 * user register vertivication...
-* dashboard lms data..
 * cookie setting
 
 ## Bug
 
-* when delete
 * when multiple user process on app.
 * currency format 
 * language english
