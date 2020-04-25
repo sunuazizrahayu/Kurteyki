@@ -18,7 +18,6 @@ Intruksi dibawah ini akan mengarahkan anda untuk menjalankan project pada komput
 
 ```
 Pastikan anda sudah menjalankan module xampp yaitu apache server dan mysql.
-Pastikan os anda sudah terinstall composer https://getcomposer.org/
 Download Project ini dan extract di folder htdocs yang ada pada xampp.
 ```
 
@@ -28,28 +27,12 @@ Buat Database dengan nama kurteyki di phpmyadmin, silahkan akses url dibawah ini
 http://localhost/phpmyadmin
 ```
 
+Kemudian import kurteyki.sql yang ada ddidalam folder ini
+
 Langkah kedua akses url dibawah ini, disamakan dengan nama folder pada saat extract project ini pada htdocs xampp :
 
 ```
 http://localhost/kurteyki
-```
-
-Kemudian Masukan data yang dibutuhkan untuk menginstall table
-
-```
-host : localhost
-username : root
-password : kosong (default xampp)
-database : kurteyki
-database port : 3306 (default xampp)
-```
-
-![alt Install table](https://i.ibb.co/fvwfX67/screencapture-localhost-kurteyki-2020-04-15-19-53-19.png)
-
-Setelah itu Install Library yang dibutuhkan menggunakan composer dengan mengetikan perintah command:
-
-```
-composer install
 ```
 
 Informasi App
