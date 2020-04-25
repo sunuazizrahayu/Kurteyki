@@ -3,8 +3,9 @@
 class _Courses extends CI_Model
 {
 
-	public $table_lms_category = 'tb_lms_category';   
+	public $table_user = 'tb_user';  
 
+	public $table_lms_category = 'tb_lms_category';   
 	public $table_lms_user_courses = 'tb_lms_user_courses';
 	public $table_lms_user_wishlist = 'tb_lms_user_wishlist';
 
@@ -131,6 +132,11 @@ class _Courses extends CI_Model
 			 */
 			$courses['price_total_original'] = $courses['price_original']-$courses['discount_original'];
 			$courses['price_total'] = $this->_Currency->set_currency($courses['price_total_original']);
+
+			/**
+			 * User
+			 */
+			$courses['author'] = $this->read_user($courses['id_user']);			
 			
 			$extract[] = array(
 				'id' =>$courses['id'],
@@ -152,7 +158,8 @@ class _Courses extends CI_Model
 				'discount' =>  $courses['discount'],
 				'discount_original' =>  $courses['discount_original'],							
 				'price_total' =>  $courses['price_total'],
-				'price_total_original' =>  $courses['price_total_original'],					
+				'price_total_original' =>  $courses['price_total_original'],	
+				'author' =>$courses['author'],
 				'status' =>$courses['status']					
 			);         
 
@@ -256,6 +263,29 @@ class _Courses extends CI_Model
 
 		return $extract;
 	}	
+
+	public function read_user($id)
+	{
+		$this->db
+		->select("
+			photo, 
+			username, 	
+			headline, 			
+			")
+		->from($this->table_user)
+		->where("id",$id);
+		$query = $this->db->get();
+
+		$read = $query->row_array();
+
+		$data = [
+			'name' => $read['username'],
+			'photo' => (!empty($read['photo']) ?  base_url('storage/uploads/user/'.$read['photo']) : base_url('storage/uploads/user/person.png')),
+			'headline' => $read['headline']
+		];
+
+		return $data;
+	}		
 
 	public function read_category($id)
 	{

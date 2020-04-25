@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 25, 2020 at 05:36 AM
+-- Generation Time: Apr 25, 2020 at 11:48 AM
 -- Server version: 10.1.38-MariaDB
 -- PHP Version: 7.3.3
 
@@ -269,9 +269,9 @@ CREATE TABLE `tb_lms_courses` (
 --
 
 INSERT INTO `tb_lms_courses` (`id`, `id_user`, `title`, `permalink`, `image`, `description`, `faq`, `id_category`, `id_sub_category`, `time`, `updated`, `price`, `discount`, `views`, `status`) VALUES
-(1, 0, 'Pengetahuan untuk menjadi manusia berbakat', 'ilmu-dari-adam-khoo', 'images/banner.png', '&lt;p&gt;materi ini saya ambil dari buku karya adam khoo yang berjudul i am gifted so are you, buku ini mengajarkan banyak hal bagaimana cara menjadi pribadi yang berbakat. didalam buku ini banyak sekali ilmu yang bisa diterapkan untuk pelajar, membangun keyakinan diri, cita-cita, mengatur waktu dan lain sebagainya.&lt;/p&gt;\r\n\r\n&lt;p&gt;didalam kursus ini hanya berisi ringkasan singkat dari buku yang ada.&amp;nbsp;materi yang saya sampaikan menggunakan gaya bahasa dari apa yang saya pahami, untuk mendapatkan informasi lebih lengkap tentang buku ini anda bisa membeli bukunya di toko buku.&lt;/p&gt;\r\n', '', '1', '3', '2020-04-11 16:53:44', NULL, 0, 0, 13, 'Published'),
-(2, 0, 'Ilmu Finansial dari Building The Dream', 'ilmu-dari-building-the-dream', 'images/banner.png', '&lt;p&gt;Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.&lt;/p&gt;\r\n', '', '1', '2', '2020-04-11 22:19:25', '2020-04-24 16:06:42', 100000, 0, 4, 'Published'),
-(4, 0, 'asdsadsa', 'asdsadsa', 'asdasdsa', '&lt;p&gt;asdsad&lt;/p&gt;\r\n', '', '1', '2', '2020-04-24 13:10:24', NULL, 0, 0, 0, 'Draft');
+(1, 1, 'Pengetahuan untuk menjadi manusia berbakat', 'ilmu-dari-adam-khoo', 'images/banner.png', '&lt;p&gt;materi ini saya ambil dari buku karya adam khoo yang berjudul i am gifted so are you, buku ini mengajarkan banyak hal bagaimana cara menjadi pribadi yang berbakat. didalam buku ini banyak sekali ilmu yang bisa diterapkan untuk pelajar, membangun keyakinan diri, cita-cita, mengatur waktu dan lain sebagainya.&lt;/p&gt;\r\n\r\n&lt;p&gt;didalam kursus ini hanya berisi ringkasan singkat dari buku yang ada.&amp;nbsp;materi yang saya sampaikan menggunakan gaya bahasa dari apa yang saya pahami, untuk mendapatkan informasi lebih lengkap tentang buku ini anda bisa membeli bukunya di toko buku.&lt;/p&gt;\r\n', '', '1', '3', '2020-04-11 16:53:44', NULL, 0, 0, 13, 'Published'),
+(2, 1, 'Ilmu Finansial dari Building The Dream', 'ilmu-dari-building-the-dream', 'images/banner.png', '&lt;p&gt;Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.&lt;/p&gt;\r\n', '', '1', '2', '2020-04-11 22:19:25', '2020-04-24 16:06:42', 100000, 0, 4, 'Published'),
+(4, 1, 'asdsadsa', 'asdsadsa', 'asdasdsa', '&lt;p&gt;asdsad&lt;/p&gt;\r\n', '', '1', '2', '2020-04-24 13:10:24', NULL, 0, 0, 0, 'Draft');
 
 -- --------------------------------------------------------
 
@@ -470,7 +470,7 @@ INSERT INTO `tb_site` (`type`, `data`) VALUES
 ('slogan', 'Belajar pengembangan diri.'),
 ('time_zone', 'Asia/Jakarta'),
 ('title', 'Kurteyki'),
-('updated', '2020-04-25 06:12:27'),
+('updated', '2020-04-25 11:26:54'),
 ('user_limit_data', '5');
 
 -- --------------------------------------------------------
@@ -597,9 +597,9 @@ INSERT INTO `tb_site_visitor` (`id`, `ip`, `date`, `browser`, `os`, `country_nam
 (51, '::1', '2020-04-24 14:44:26', 'Chrome', 'Windows 7', 'Other', 'Other', 3, 'http://localhost/kurteyki/courses-category/pengembangan-diri', ''),
 (52, '::1', '2020-04-24 14:49:01', 'Chrome', 'Windows 7', 'Other', 'Other', 11, 'http://localhost/kurteyki/blog', ''),
 (53, '::1', '2020-04-24 14:55:11', 'Chrome', 'Windows 7', 'Other', 'Other', 7, 'http://localhost/kurteyki/blog-category/news', ''),
-(54, '::1', '2020-04-25 00:03:52', 'Chrome', 'Windows 7', 'Other', 'Other', 54, 'http://localhost/kurteyki/', ''),
-(55, '::1', '2020-04-25 00:03:54', 'Chrome', 'Windows 7', 'Other', 'Other', 22, 'http://localhost/kurteyki/courses-detail/ilmu-dari-adam-khoo', ''),
-(56, '::1', '2020-04-25 00:03:57', 'Chrome', 'Windows 7', 'Other', 'Other', 19, 'http://localhost/kurteyki/courses-detail/ilmu-dari-building-the-dream', ''),
+(54, '::1', '2020-04-25 00:03:52', 'Chrome', 'Windows 7', 'Other', 'Other', 106, 'http://localhost/kurteyki/', ''),
+(55, '::1', '2020-04-25 00:03:54', 'Chrome', 'Windows 7', 'Other', 'Other', 26, 'http://localhost/kurteyki/courses-detail/ilmu-dari-adam-khoo', ''),
+(56, '::1', '2020-04-25 00:03:57', 'Chrome', 'Windows 7', 'Other', 'Other', 39, 'http://localhost/kurteyki/courses-detail/ilmu-dari-building-the-dream', ''),
 (57, '::1', '2020-04-25 00:23:24', 'Chrome', 'Windows 7', 'Other', 'Other', 17, 'http://localhost/kurteyki/blog', ''),
 (58, '::1', '2020-04-25 00:23:27', 'Chrome', 'Windows 7', 'Other', 'Other', 12, 'http://localhost/kurteyki/blog-post/konten-baru-dan-rencana-kedepannya-situs-ini', ''),
 (59, '::1', '2020-04-25 00:33:10', 'Chrome', 'Windows 7', 'Other', 'Other', 3, 'http://localhost/kurteyki/blog-category/news', ''),
@@ -619,6 +619,7 @@ CREATE TABLE `tb_user` (
   `id` int(255) NOT NULL,
   `username` varchar(255) NOT NULL,
   `password` varchar(255) NOT NULL,
+  `headline` varchar(255) NOT NULL,
   `email` varchar(255) NOT NULL,
   `no_handphone` varchar(30) NOT NULL,
   `photo` varchar(255) NOT NULL,
@@ -633,8 +634,9 @@ CREATE TABLE `tb_user` (
 -- Dumping data for table `tb_user`
 --
 
-INSERT INTO `tb_user` (`id`, `username`, `password`, `email`, `no_handphone`, `photo`, `grade`, `payment`, `created`, `last_login`, `status`) VALUES
-(1, 'kurteyki', '1a5651f74beaa02c5e5fc380875d23a66e4549bd', 'kurteyki@gmail.com', '081389215100', 'user_photo_20200425060647.png', 'App', '{\"transaction\":null,\"confirmation\":null}', '0000-00-00 00:00:00', '2020-04-25 04:21:20', 'Active');
+INSERT INTO `tb_user` (`id`, `username`, `password`, `headline`, `email`, `no_handphone`, `photo`, `grade`, `payment`, `created`, `last_login`, `status`) VALUES
+(1, 'kurteyki', '1a5651f74beaa02c5e5fc380875d23a66e4549bd', 'Trainer', 'kurteyki@gmail.com', '081389215100', 'user_photo_20200425060647.png', 'App', '{\"transaction\":[{\"identity\":\"bri20200425130634\",\"type\":\"bri\",\"account_number\":\"1923892138192\",\"receiver\":\"irfan\"}],\"confirmation\":[{\"identity\":\"whatsapp20200425130641\",\"type\":\"whatsapp\",\"data\":\"85280815735\"}]}', '0000-00-00 00:00:00', '2020-04-25 11:24:58', 'Active'),
+(23, 'demo123', '8cb2237d0679ca88db6464eac60da96345513964', '', 'demo@demo.cc', '9128391238129', '', 'User', '', '0000-00-00 00:00:00', '2020-04-25 13:43:38', 'Active');
 
 --
 -- Indexes for dumped tables
@@ -931,7 +933,7 @@ ALTER TABLE `tb_lms_user_review`
 -- AUTO_INCREMENT for table `tb_lms_user_wishlist`
 --
 ALTER TABLE `tb_lms_user_wishlist`
-  MODIFY `id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `tb_site_meta`
@@ -955,7 +957,7 @@ ALTER TABLE `tb_site_visitor`
 -- AUTO_INCREMENT for table `tb_user`
 --
 ALTER TABLE `tb_user`
-  MODIFY `id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
+  MODIFY `id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
