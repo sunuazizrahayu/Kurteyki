@@ -82,8 +82,12 @@ $lang['total_price'] = 'Total Harga';
 
 $lang['payment'] = 'Pembelian';
 $lang['payment_detail'] = 'Detail Pembelian';
-$lang['payment_method'] = 'Metode Pembayaran';
+$lang['payment_confirmation'] = 'Konfirmasi Pembayaran';
 $lang['payment_lesson'] = 'Spesifikasi Materi';
+
+$lang['payment_method'] = 'Metode Pembayaran';
+$lang['bank_transfer'] = 'Transfer Bank';
+
 $lang['payment_coupon'] = 'Kode Voucher';
 $lang['payment_coupon_insert'] = 'Masukan kode voucher';
 $lang['payment_coupon_check'] = 'Cek Kode';

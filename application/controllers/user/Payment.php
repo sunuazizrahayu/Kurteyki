@@ -4,6 +4,7 @@ class Payment extends My_User
 {
 
     public $order = 'user/payment/order';
+    public $confirmation = 'user/payment/confirmation'; 
     public $waiting = 'user/payment/waiting'; 
     public $success = 'user/payment/success';    
 
@@ -14,71 +15,57 @@ class Payment extends My_User
         $this->load->model('lms/_Lesson');
 
         $this->load->model('user/M_Payment');
+        $this->load->model('user/M_Payment_Coupon');                
+        $this->load->model('user/M_Payment_Free');
+        $this->load->model('user/M_Payment_Midtrans');                        
         $this->load->model('user/M_Profile');              
     }   
-    
+
+    /**
+     * Page Index
+     */
     public function order($id)
     {
 
         $site = $this->site;
         $widget= $this->widget; 
         $courses = $this->M_Payment->read($site,$id);
-        $midtrans = $this->M_Payment->create_token($courses);
 
-        $data = array(
-            'site' => $site,
-            'widget' => $widget,    
-            'courses' =>  $courses,
-            'midtrans' =>  $midtrans
-            );
+        $data = [
+        'site' => $site,
+        'widget' => $widget,    
+        'courses' =>  $courses,
+        ];
 
         $this->load->view($this->order, $data);
     }   
 
-    public function process(){
-
-        /** check if ajax request */
-        if ($this->input->is_ajax_request()) {
-
-            $process = $this->M_Payment->process();
-
-            if ($process) {
-
-                echo json_encode([
-                    'status' => true,
-                    'message' => $this->lang->line('success_transaction'),
-                    'redirect' => $process
-                    ]);
-            }else{
-
-                echo json_encode([
-                    'status' => false,
-                    'message' => $this->lang->line('failed_transaction')
-                    ]);
-            }
-
-        }else{
-            redirect(base_url());
-        }
-
-    } 
-
+    /**
+     * Check Coupon
+     */
     public function use_coupon(){
-        
-        /** check if ajax request */
+
         if ($this->input->is_ajax_request()) {
 
-            $process = $this->M_Payment->check_coupon();
+            $process = $this->M_Payment_Coupon->check_coupon();
 
-            if ($process['status'] == 'valid_not_free') {
+            if ($process['status'] == 'valid_not_free_manual') {
                 echo json_encode([
-                    'status' => 'valid_not_free',
+                    'status' => 'valid_not_free_manual',
+                    'discount_coupon' => $process['discount_coupon'],
+                    'price_total' => $process['price_total'],
+                    'message' => 'Kode Voucher valid',
+                    ]);
+            }elseif ($process['status'] == 'valid_not_free_midtrans') {
+                echo json_encode([
+                    'status' => 'valid_not_free_midtrans',
                     'discount_coupon' => $process['discount_coupon'],
                     'price_total' => $process['price_total'],
                     'midtrans_token' => $process['midtrans_token'],                    
                     'message' => 'Kode Voucher valid',
                     ]);
-            }elseif ($process['status'] == 'valid_to_free') {
+            }
+            elseif ($process['status'] == 'valid_to_free') {
                 echo json_encode([
                     'status' => 'valid_to_free',
                     'discount_coupon' => $process['discount_coupon'],
@@ -109,11 +96,14 @@ class Payment extends My_User
         }        
     }
 
+    /**
+     * Free Courses by coupon
+     */
     public function process_free(){
 
         if ($this->input->post()) {
 
-            $process = $this->M_Payment->process_free();
+            $process = $this->M_Payment_Free->process_free();
 
             if ($process) {
                 redirect(base_url('payment/success'));
@@ -138,6 +128,7 @@ class Payment extends My_User
         $this->load->view($this->waiting, $data);
     }
 
+
     public function success(){
 
         $site = $this->site;
@@ -150,9 +141,49 @@ class Payment extends My_User
         $this->load->view($this->success, $data);
     }    
 
+    /**
+     * Manual
+     */
+    public function confirmation(){
+        echo "kaowkakwa";
+    }
+
+    /**
+     * Midtrans
+     */
+    public function process(){
+
+        if ($this->input->is_ajax_request()) {
+
+            $process = $this->M_Payment_Midtrans->process();
+
+            if ($process) {
+
+                echo json_encode([
+                    'status' => true,
+                    'message' => $this->lang->line('success_transaction'),
+                    'redirect' => $process
+                    ]);
+            }else{
+
+                echo json_encode([
+                    'status' => false,
+                    'message' => $this->lang->line('failed_transaction')
+                    ]);
+            }
+
+        }else{
+            redirect(base_url());
+        }
+
+    } 
+
+    /**
+     * Midtrans
+     */
     public function notification(){
 
-        $notification = $this->M_Payment->handle();
+        $notification = $this->M_Payment_Midtrans->handle();
 
         echo json_encode($notification);
     }

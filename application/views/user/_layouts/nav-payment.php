@@ -9,7 +9,7 @@
                 </a>
 
                 <h1 class="u-h4 navbar__title u-mr-auto u-text-bold u-ml-auto">
-                    <?php echo $this->lang->line('payment_method'); ?> 
+                    <?php echo $this->lang->line('payment'); ?> 
                 </h1>
 
             </div>

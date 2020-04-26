@@ -204,12 +204,13 @@ $('.btn-process-wishlist').on('click', function(e) {
  	})
  });
 
+
 /**
-* Module Payment
+* Payment Midtrans
 */
-let paybuton = document.getElementById("pay-button");
+let paybuton = document.getElementById("pay-midtrans");
 if(paybuton){
-	document.getElementById('pay-button').onclick = function(){
+	document.getElementById('pay-midtrans').onclick = function(){
 
 		let token = this.value,
 		lang = this.getAttribute("data-lang"),
@@ -269,7 +270,7 @@ var insert_order = function(result,action){
 }
 
 /**
-* Module Payment Check
+* Midtrans Check
 */
 $('.btn-check-payment').on('click', function(e) {
 	e.preventDefault();
@@ -322,36 +323,55 @@ var check_order = function(result){
 }
 
 /**
- * module coupon
+ * Module Coupon
  */
- $("#form-coupon").submit(function(e) {
+ $('#check-coupon').on('click', function(e) {
+
  	e.preventDefault();
- 	$("button[type='submit']").prop("disabled", true);
+
+ 	if ($("input[name='code']").val() == '') {
+ 		$("input[name='code']").focus();
+ 		return false;
+ 	}
+
+ 	let button = $(this);
+ 	button.prop("disabled", true);
+
  	$.ajax({
- 		url: $(this).data('action'),
+ 		url: button.data('action'),
  		method: "POST",
- 		data: $(this).serialize(),
+ 		data: $("#form-payment").serialize(),
  		dataType: 'JSON',
  		success: function(data) {
 
- 			if (data.status == 'valid_not_free') {
+ 			if (data.status == 'valid_not_free_manual') {
  				$("input[name='code']").prop("disabled", true);
 
- 				$("#order-discount-coupon, #remove-coupon").removeClass('u-hidden');
+ 				$("#order-discount-coupon, #remove-coupon-midtrans").removeClass('u-hidden');
  				$("#check-coupon").addClass('u-hidden');
  				$("#order-discount-coupon > h4").html(data.discount_coupon);
  				$("#order-price-total").html(data.price_total);
- 				$("#pay-button").val(data.midtrans_token);
+ 				$("#pay-midtrans").val(data.midtrans_token);
  				$("#coupon-respon").html('<small class="c-field__message u-color-success"><i class="fa fa-check"></i> ' + data.message + '</small>'); 				
  			} 
+ 			else if (data.status == 'valid_not_free_midtrans') {
+ 				$("input[name='code']").prop("disabled", true);
+
+ 				$("#order-discount-coupon, #remove-coupon-midtrans").removeClass('u-hidden');
+ 				$("#check-coupon").addClass('u-hidden');
+ 				$("#order-discount-coupon > h4").html(data.discount_coupon);
+ 				$("#order-price-total").html(data.price_total);
+ 				$("#pay-midtrans").val(data.midtrans_token);
+ 				$("#coupon-respon").html('<small class="c-field__message u-color-success"><i class="fa fa-check"></i> ' + data.message + '</small>'); 				
+ 			}  			
  			else if (data.status == 'valid_to_free') {
  				$("input[name='code']").prop("disabled", true);
 
- 				$("#order-discount-coupon, #remove-coupon").removeClass('u-hidden');
+ 				$("#order-discount-coupon, #remove-coupon-midtrans").removeClass('u-hidden');
  				$("#check-coupon, #pay-button").addClass('u-hidden');
  				$("#order-discount-coupon > h4").html(data.discount_coupon);
  				$("#order-price-total").html(data.price_total);
- 				$("#pay-button-free").val(data.free_code).removeClass('u-hidden');
+ 				// $("#pay-button-free").val(data.free_code).removeClass('u-hidden');
  				$("#coupon-respon").html('<small class="c-field__message u-color-success"><i class="fa fa-check"></i> ' + data.message + '</small>'); 				
  			}
  			else if (data.status == 'invalid') {
@@ -367,7 +387,7 @@ var check_order = function(result){
  				})
  			}
 
- 			$("button[type='submit']").prop("disabled", false);
+ 			button.prop("disabled", false);
  		},
  		error: function(xhr, ajaxOptions, thrownError) {
  			Swal.fire({
@@ -379,15 +399,15 @@ var check_order = function(result){
  	});
  })
 
- $('#remove-coupon').on('click', function(e) {
+ $('#remove-coupon-midtrans').on('click', function(e) {
  	e.preventDefault();
 
  	$("input[name='code']").val('').prop("disabled", false);;
  	$("#order-discount-coupon").addClass('u-hidden');
  	$("#order-price-total").html($('#order-price-total').data('price-total')); 				
- 	$("#pay-button").val($('#pay-button').data('value')); 				 				
+ 	$("#pay-midtrans").val($('#pay-midtrans').data('value')); 				 				
  	$("#coupon-respon").html('');
 
- 	$("#check-coupon,#pay-button").removeClass('u-hidden');
- 	$("#remove-coupon,#pay-button-free").addClass('u-hidden');
+ 	$("#check-coupon").removeClass('u-hidden');
+ 	$("#remove-coupon-midtrans").addClass('u-hidden');
  });
