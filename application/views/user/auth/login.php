@@ -29,7 +29,7 @@
                 </div>
 
                 <?php if (!empty($this->input->get('redirect'))): ?>
-                <input type="hidden" name="redirect" value="<?php echo $this->input->get('redirect') ?>">
+                <input type="hidden" name="redirect" value="<?php echo strip_tags($this->input->get('redirect')) ?>">
                 <?php endif ?>
 
                 <input type="hidden" name="csrf_code" value="<?php echo $this->session->userdata('csrf_code') ?>">

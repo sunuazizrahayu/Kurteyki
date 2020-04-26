@@ -37,8 +37,13 @@ class M_Site_Meta extends CI_Model
 		}
 
 		elseif ($this->uri->segment(1) == 'payment') {
-			$type = 'payment';
+			if ($this->uri->segment(2) == 'confirmation') {
+				$type = 'confirmation';
+			}else {				
+				$type = 'payment';
+			}
 		}
+
 
 		return $type;        
 	}	
@@ -104,6 +109,18 @@ class M_Site_Meta extends CI_Model
 				'icon' => $site['icon'],
 			]);	
 		}
+
+		if ($page_type == 'confirmation') {
+			
+			$title = $this->lang->line('payment_confirmation');
+
+			$meta = $this->meta_general([
+				'title' => $title,
+				'description' => $site['description'],
+				'image' => $site['image'],
+				'icon' => $site['icon'],
+			]);	
+		}		
 		
 		return ['meta' => $meta];
 	}	

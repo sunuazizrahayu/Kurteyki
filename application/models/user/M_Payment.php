@@ -10,7 +10,7 @@ class M_Payment extends CI_Model
     public $table_lms_user_courses = 'tb_lms_user_courses';
     public $table_lms_user_payment = 'tb_lms_user_payment'; 
 
-    public function read($site,$id){
+    public function read($site,$slug){
 
         /**
          * read courses data
@@ -19,7 +19,7 @@ class M_Payment extends CI_Model
             tb_lms_courses.*
             ');
         $this->db->from($this->table_lms_courses);		
-        $this->db->where('tb_lms_courses.id',$id);
+        $this->db->where('tb_lms_courses.permalink',$slug);
         $this->db->where('tb_lms_courses.price != 0');
         $this->db->where("time <= NOW()");
         $this->db->where("status = 'Published'"); 				

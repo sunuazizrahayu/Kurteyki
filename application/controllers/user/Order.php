@@ -23,7 +23,7 @@ class Order extends My_User
             'site' => $site,
             'widget' => $widget,    
             'order' =>  $order,
-            'midtrans' => true,
+            'midtrans' => ($site['payment_method'] == 'Midtrans' ? true : false),
         );
         
         $this->load->view($this->index, $data);

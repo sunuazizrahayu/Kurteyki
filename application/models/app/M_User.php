@@ -14,19 +14,19 @@ class M_User extends CI_Model
     public function datatables(){
 
         return [
-        'datatable' => true,
-        'datatables_data' => "
-        [{'data': 'checkbox',className:'c-table__cell u-pl-small'},
-        {'data': 'id',className:'c-table__cell'},
-        {'data': 'username',className:'c-table__cell',width:'100%'},         
-        {'data': 'no_handphone',className:'c-table__cell'},            
-        {'data': 'status',className:'c-table__cell'},
-        {'data': 'created',className:'c-table__cell'},            
-        {'data': 'last_login',className:'c-table__cell'},
-        {'data': 'view',className:'c-table__cell'},            
-        {'data': 'alat',className:'c-table__cell'}
-        ]
-        ",
+            'datatable' => true,
+            'datatables_data' => "
+            [{'data': 'checkbox',className:'c-table__cell u-pl-small'},
+            {'data': 'id',className:'c-table__cell'},
+            {'data': 'username',className:'c-table__cell',width:'100%'},         
+            {'data': 'no_handphone',className:'c-table__cell'},            
+            {'data': 'status',className:'c-table__cell'},
+            {'data': 'created',className:'c-table__cell'},            
+            {'data': 'last_login',className:'c-table__cell'},
+            {'data': 'view',className:'c-table__cell'},            
+            {'data': 'alat',className:'c-table__cell'}
+            ]
+            ",
         ];        
     }    
 
@@ -48,27 +48,27 @@ class M_User extends CI_Model
         $this->datatables->from($this->table_user);
         $this->datatables->add_column('checkbox', '
             <td>
-                <div class="c-choice c-choice--checkbox">
-                    <input type="checkbox" id="checkbox-$1" class="c-choice__input" name="id[]" value="$1">
-                    <label for="checkbox-$1" class="c-choice__label">&nbsp;</label>
-                </div>
+            <div class="c-choice c-choice--checkbox">
+            <input type="checkbox" id="checkbox-$1" class="c-choice__input" name="id[]" value="$1">
+            <label for="checkbox-$1" class="c-choice__label">&nbsp;</label>
+            </div>
             </td>
             ', 'id');
 
         $this->datatables->edit_column('username', '
             <div class="o-media">
-                <div class="o-media__img u-mr-xsmall">
-                    <div class="c-avatar c-avatar--xsmall">
-                        $1
-                    </div>
-                </div>
-                <div class="o-media__body">
-                    $2
-                    $4
-                    <small class="u-block u-text-mute">
-                        $3
-                    </small>
-                </div>
+            <div class="o-media__img u-mr-xsmall">
+            <div class="c-avatar c-avatar--xsmall">
+            $1
+            </div>
+            </div>
+            <div class="o-media__body">
+            $2
+            $4
+            <small class="u-block u-text-mute">
+            $3
+            </small>
+            </div>
             </div>
             ', 'photo_user(photo),username,email,grade_user(grade)');
 
@@ -91,13 +91,14 @@ class M_User extends CI_Model
             'email' => strip_tags($this->input->post('email')),
             'no_handphone' => strip_tags($this->input->post('no_handphone')),
             'status' => strip_tags($this->input->post('status')),     
-            );
+        );
 
         if (!empty($this->input->post('new_password'))) {
             $post_data['password'] = sha1($this->input->post('new_password'));
         }
 
         if (empty($this->input->post('id'))) {
+            $post_data['created'] = date('Y-m-d H:i:s');
             $post_data['grade'] = 'User';
         }
 
@@ -123,7 +124,7 @@ class M_User extends CI_Model
                 $image_old, // delete file
                 'user_photo', // file name
                 'resize' //is image for resizing image or create thumb
-                );
+            );
 
             if ($upload_photo['photo']) {
                 $post_data['photo'] =  $upload_photo['photo'];
@@ -173,8 +174,8 @@ class M_User extends CI_Model
         foreach ($read as $data) {
             if ($data['grade'] != 'App') {
                 $data_filter[] = [
-                'id' => $data['id'],
-                'status' => $action,
+                    'id' => $data['id'],
+                    'status' => $action,
                 ]; 
             }
         }
@@ -216,60 +217,60 @@ class M_User extends CI_Model
     public function set_validation(){
         $this->form_validation->set_rules([
             [
-            'field' => 'username',
-            'label' => 'lang:username',
-            'rules' => 'trim|required|min_length[5]|max_length[100]',
-            'errors' => [
-            'required' => '{field} '.$this->lang->line('must_filled'),
-            ]
+                'field' => 'username',
+                'label' => 'lang:username',
+                'rules' => 'trim|required|min_length[5]|max_length[100]',
+                'errors' => [
+                    'required' => '{field} '.$this->lang->line('must_filled'),
+                ]
             ],
             [
-            'field' => 'email',
-            'label' => 'lang:email',
-            'rules' => [
-            'trim',
-            'required',
-            'valid_email',
-            [
-            'email_checker',
-            function($email){
+                'field' => 'email',
+                'label' => 'lang:email',
+                'rules' => [
+                    'trim',
+                    'required',
+                    'valid_email',
+                    [
+                        'email_checker',
+                        function($email){
 
-                $read = $this->_Process_MYSQL->get_data($this->table_user,['email' => $email, 'id !=' => $this->input->post('id')]);
+                            $read = $this->_Process_MYSQL->get_data($this->table_user,['email' => $email, 'id !=' => $this->input->post('id')]);
 
-                if ($read->num_rows() > 0) {
+                            if ($read->num_rows() > 0) {
 
-                    $this->form_validation->set_message('email_checker', $this->lang->line('email_exist'));
+                                $this->form_validation->set_message('email_checker', $this->lang->line('email_exist'));
 
-                    return false;
+                                return false;
 
-                }else {
+                            }else {
 
-                    return true;
-                }
-            }
-            ]
-            ],
-            'errors' => [
-            'required' => '{field} '.$this->lang->line('must_filled')
-            ]
-            ],
-            [
-            'field' => 'no_handphone',
-            'label' => 'lang:no_handphone',
-            'rules' => 'trim|required|numeric|min_length[10]|max_length[20]',
-            'errors' => [
-            'required' => '{field} '.$this->lang->line('must_filled')
-            ]
+                                return true;
+                            }
+                        }
+                    ]
+                ],
+                'errors' => [
+                    'required' => '{field} '.$this->lang->line('must_filled')
+                ]
             ],
             [
-            'field' => 'new_password',
-            'label' => 'lang:password',
-            'rules' => 'trim|min_length[5]'.(empty($this->input->post('id')) ? '|required' : ''),
-            'errors' => [
-            'required' => '{field} '.$this->lang->line('must_filled')
+                'field' => 'no_handphone',
+                'label' => 'lang:no_handphone',
+                'rules' => 'trim|required|numeric|min_length[10]|max_length[20]',
+                'errors' => [
+                    'required' => '{field} '.$this->lang->line('must_filled')
+                ]
+            ],
+            [
+                'field' => 'new_password',
+                'label' => 'lang:password',
+                'rules' => 'trim|min_length[5]'.(empty($this->input->post('id')) ? '|required' : ''),
+                'errors' => [
+                    'required' => '{field} '.$this->lang->line('must_filled')
+                ]
             ]
-            ]
-            ]);
+        ]);
 
         $this->form_validation->set_message('min_length', '{field} '.$this->lang->line('min_length_start').' {param} '.$this->lang->line('min_length_end'));
         $this->form_validation->set_message('max_length', '{field} '.$this->lang->line('max_length_start').' {param} '.$this->lang->line('max_length_end'));

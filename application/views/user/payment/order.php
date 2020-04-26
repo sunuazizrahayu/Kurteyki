@@ -2,8 +2,8 @@
 
 <?php $this->load->view('user/_layouts/nav-payment'); ?>
 
-<form id='form-payment' action="<?php echo base_url('payment/process') ?>" method="POST">
-	<div class="container u-mt-medium h-100vh">                   
+<form id='form-payment' method="POST" style='position: relative; min-height: 100%;'>
+	<div class="container u-mt-medium">                   
 		<div class="row">
 			<div class="col-12 col-xl-8 offset-xl-2">    
 
@@ -78,16 +78,9 @@
 								<?php echo $this->lang->line('payment_coupon_check'); ?> 
 							</button>
 
-							<?php if ($site['payment_method'] == 'Manual'): ?>   
-								<button id='remove-coupon-manual' class="c-btn c-btn--danger u-p-xsmall u-hidden" type="button">
-									<i class="fa fa-trash"></i>
-								</button>
-							<?php endif ?>
-							<?php if ($site['payment_method'] == 'Midtrans'): ?>        
-								<button id='remove-coupon-midtrans' class="c-btn c-btn--danger u-p-xsmall u-hidden" type="button">
-									<i class="fa fa-trash"></i>
-								</button>
-							<?php endif ?>
+							<button id='remove-coupon' class="c-btn c-btn--danger u-p-xsmall u-hidden" type="button">
+								<i class="fa fa-trash"></i>
+							</button>
 						</span>
 					</div>
 					<span id="coupon-respon"></span>
@@ -107,7 +100,7 @@
 						<?php foreach ($courses['payment']['transaction'] as $transaction): ?>
 							<div class="c-card u-p-zero u-mb-small">  
 								<div class="c-choice c-choice--radio u-p-zero u-m-zero">
-									<input class="c-choice__input checkbox-image" id="<?php echo $transaction['type'] ?>" name="transaction" type="radio">
+									<input class="c-choice__input checkbox-image" id="<?php echo $transaction['type'] ?>" name="transaction" type="radio" value='<?php echo $transaction['type'] ?>'>
 									<label class="c-choice__label u-flex u-p-small" for="<?php echo $transaction['type'] ?>">
 										<img style="width:100px" src="<?php echo base_url('storage/assets/user/img/'.$transaction['type'].'.png') ?>" alt="<?php echo $transaction['type'] ?>">
 									</label>        
@@ -123,7 +116,7 @@
 	</div>
 
 	<!-- Pay Button -->
-	<footer class="u-border-top u-bg-white" style="">
+	<footer class="u-border-top u-bg-white" style=" position:relative;bottom:0;width:100%; ">
 		<div class="container">
 			<div class="row">
 				<div class="col-12 col-xl-8 offset-xl-2 u-pv-xsmall"> 
@@ -172,19 +165,26 @@
 								</div>
 							</div>
 
-							<input name="courses_id" type="hidden">                                                       
-							<input name="payment_transaction" type="hidden">
-
+							<input name="free_action" type="hidden" value="<?php echo base_url('payment/process_free') ?>">
+							<input name="free_code" type="hidden">  
+							<input name="payment_method" type="hidden" value="<?php echo $site['payment_method'] ?>">  
 
 							<?php if ($site['payment_method'] == 'Manual'): ?>        
-								<button class="c-btn c-btn--custom u-mb-small" type="button" id="pay-manual" disabled=""> 
+								<input name="action" type="hidden" value="<?php echo base_url('payment/process_manual') ?>">
+								<input name="payment_transaction" type="hidden">
+
+								<button class="c-btn c-btn--custom u-mb-small" type="submit" id="pay-manual" disabled=""> 
 									<?php echo $this->lang->line('order_now'); ?> 
 								</button>
 							<?php endif ?>
 
 
 							<?php if ($site['payment_method'] == 'Midtrans'): ?>        
-								<button data-lang='<?php echo ($site['language'] == 'indonesia') ? 'id' : 'en' ?>' data-action='<?php echo base_url('payment/process') ?>' data-value="<?php echo $courses['payment']['token'] ?>" value="<?php echo $courses['payment']['token'] ?>" id="pay-midtrans" class="c-btn c-btn--custom u-mb-small" type='button'> 
+								<input name="action" type="hidden" value="<?php echo base_url('payment/process_midtrans') ?>">
+								<input name="lang" type="hidden" value="<?php echo ($site['language'] == 'indonesia') ? 'id' : 'en' ?>">
+								<input name="token" type="hidden" value="<?php echo $courses['payment']['token'] ?>" data-value="<?php echo $courses['payment']['token'] ?>">
+
+								<button id="pay-midtrans" class="c-btn c-btn--custom u-mb-small" type='submit'> 
 									<?php echo $this->lang->line('order_now'); ?> 
 								</button>
 							<?php endif ?>

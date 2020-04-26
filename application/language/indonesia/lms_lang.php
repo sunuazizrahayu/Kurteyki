@@ -105,6 +105,8 @@ $lang['success_payment_message'] = 'Pembelian Berhasil Dilakukan.';
 $lang['wait_payment_message'] = 'Silahkan lakukan pembayaran untuk menyelesaikan pembelian. pastikan jumlah yang dibayar sesuai.';
 $lang['view_transaction'] = 'Lihat Transaksi';
 
+$lang['payment_proof_upload'] = 'Upload Bukti Pembayaran';
+
 /*
 |--------------------------------------------------------------------------
 | Profile
@@ -155,6 +157,7 @@ $lang['date_order'] = 'Tanggal Pembelian';
 $lang['total_cost'] = 'Harga yang dibayar';
 
 $lang['wait_payment'] = 'Menunggu Pembayaran';
+$lang['wait_confirmation'] = 'Menunggu Konfirmasi';
 $lang['failed_payment'] = 'Dibatalkan';
 $lang['purchased'] = 'Lunas';
 ?>

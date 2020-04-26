@@ -67,6 +67,7 @@ password: kurteyki
 * when multiple user process on app.
 * currency format 
 * language english
+* when order using coupon and transaction using midtrans, coupon code will reuse again...
 
 ## License
 

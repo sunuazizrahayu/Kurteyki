@@ -68,12 +68,17 @@ $route['auth/register/process'] = 'user/auth/process_register';
 
 # payment
 $route['payment/order/(:any)'] = 'user/payment/order/$1';
-$route['payment/process'] = 'user/payment/process';
-$route['payment/notification'] = 'user/payment/notification';
 $route['payment/success'] = 'user/payment/success';
 $route['payment/waiting'] = 'user/payment/waiting';
+
 $route['payment/use_coupon'] = 'user/payment/use_coupon';
 $route['payment/process_free'] = 'user/payment/process_free';
+
+$route['payment/process_manual'] = 'user/payment/process_manual';
+$route['payment/confirmation/(:any)'] = 'user/payment/confirmation/$1';
+
+$route['payment/process_midtrans'] = 'user/payment/process_midtrans';
+$route['payment/notification_midtrans'] = 'user/payment/notification_midtrans';
 
 /*
 |--------------------------------------------------------------------------

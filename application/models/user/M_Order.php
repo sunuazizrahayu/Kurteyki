@@ -54,7 +54,7 @@ class M_Order extends CI_Model
 
 			$all_data = false;
 			foreach ($query->result_array() as $data) {
-				$data['amount'] = $this->_Currency->set_currency($data['amount']);
+				$data['amount'] = (!empty($data['amount']) ? $this->_Currency->set_currency($data['amount']) : '-');
 				$all_data[] = $data;
 			}
 
@@ -63,28 +63,6 @@ class M_Order extends CI_Model
 			return $query->num_rows();
 		}
 
-	}	
-
-	public function query_post($site,$id){
-
-		$this->db->select('*');
-		$this->db->from($this->table_lms_courses);		
-		$this->db->where_in('id',$id);
-		$this->db->order_by('time','DESC');		
-		$read = $this->db->get()->result_array();
-
-		/**
-	    * Build Course
-	    */
-		$all_courses = $this->_Courses->read_long($site,$read);
-
-		foreach ($all_courses as $courses) {
-			$lesson = $this->_Lesson->build_lesson($courses);
-
-			$all_data[] = array_merge($courses,$lesson);
-		}
-
-		return $all_data;
 	}		
 
 }

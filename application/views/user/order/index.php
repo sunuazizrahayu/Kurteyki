@@ -25,18 +25,30 @@
 									<p>
 										<?php echo $this->lang->line('date_order') ?> : <?php echo $post['time'] ?>
 									</p>
-									<!-- <p>
-										<?php //echo $this->lang->line('total_cost') ?> : <?php //echo $post['amount'] ?>
-									</p> -->
+									<p>
+										<?php echo $this->lang->line('total_cost') ?> : <?php echo $post['amount'] ?>
+									</p> 
 								</div>
 
 							</div>
 							<div class="col-12 col-lg-3 u-flex u-align-items-center">
 
-								<?php if ($post['status'] == 'Pending'): ?>
+								<?php if ($post['status'] == 'Pending' AND $post['type'] == 'Manual'): ?>
+									<a href='<?php echo base_url('payment/confirmation/'.$post['id']) ?>' class="c-btn c-btn--warning c-btn--custom c-btn--small">
+										<?php echo $this->lang->line('payment_confirmation') ?>
+									</a>
+								<?php endif ?>
+
+								<?php if ($post['status'] == 'Pending' AND $post['type'] != 'Manual'): ?>
 									<button data-lang='<?php echo ($site['language'] == 'indonesia') ? 'id' : 'en' ?>' data-token="<?php echo $post['token'] ?>" class="c-btn c-btn--warning c-btn--custom c-btn--small btn-check-payment">
 										<?php echo $this->lang->line('wait_payment') ?>
 									</button>
+								<?php endif ?>
+
+								<?php if ($post['status'] == 'Checking'): ?>
+									<span class="c-btn c-btn--fancy c-btn--custom c-btn--small">
+										<?php echo $this->lang->line('wait_confirmation') ?>
+									</span>
 								<?php endif ?>
 
 								<?php if ($post['status'] == 'Purchased'): ?>

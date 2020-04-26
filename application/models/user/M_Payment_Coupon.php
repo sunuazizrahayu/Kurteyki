@@ -10,7 +10,7 @@ class M_Payment_Coupon extends CI_Model
     public function read_courses($identity){
         $this->db->select('
             tb_lms_courses.id,				
-            tb_lms_courses.title,								
+            tb_lms_courses.title,            								
             tb_lms_courses.price,
             tb_lms_courses.discount
             ');

@@ -195,6 +195,7 @@ class _Courses extends CI_Model
 		 * Edit Permalink
 		 */
 		$courses['url_lesson'] = base_url('courses-lesson/' . $courses['permalink']);
+		$courses['slug'] = $courses['permalink'];
 		$courses['permalink'] = base_url('courses-detail/' . $courses['permalink']);
 
 		/**
@@ -239,6 +240,7 @@ class _Courses extends CI_Model
 		$extract = array(
 			'id' =>$courses['id'],
 			'title' =>$courses['title'],
+			'slug' =>$courses['slug'],			
 			'url' =>$courses['permalink'],
 			'url_lesson' =>$courses['url_lesson'],
 			'image' =>$courses['image'],
