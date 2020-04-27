@@ -102,10 +102,35 @@ $lang['error_midtrans_config'] = 'Error Midtrans Configuration';
 $lang['success_payment'] = 'Selamat !';
 $lang['success_payment_message'] = 'Pembelian Berhasil Dilakukan.';
 
+$lang['my_order'] = 'Pembelian';
+$lang['user_order_not_found'] = 'Tidak ada transaksi yang dilakukan.';
+
+$lang['code_order'] = 'Kode Pembelian';
+$lang['date_order'] = 'Tanggal Pembelian';
+$lang['total_cost'] = 'Harga yang dibayar';
+$lang['purchased'] = 'Lunas';
+$lang['failed_payment'] = 'Dibatalkan';
+
+/**
+ * waiting
+ */
+$lang['wait_payment'] = 'Menunggu Pembayaran';
 $lang['wait_payment_message'] = 'Silahkan lakukan pembayaran untuk menyelesaikan pembelian. pastikan jumlah yang dibayar sesuai.';
+$lang['wait_confirmation'] = 'Menunggu Konfirmasi';
+$lang['wait_confirmation_message'] = 'Bukti pembayaran akan diperiksa, silahkan tunggu konfirmasi dari kami. pastikan jumlah yang dibayar sesuai.';
 $lang['view_transaction'] = 'Lihat Transaksi';
 
+/**
+ * confirmation
+ */
 $lang['payment_proof_upload'] = 'Upload Bukti Pembayaran';
+$lang['payment_proof_message'] = 'Silahkan melakukan pemayaran ke rekening dibawah ini.';
+$lang['payment_proof_price'] = 'Jumlah yang harus dibayar';
+
+$lang['bank'] = 'Bank';
+$lang['account_number'] = 'Nomor Rekening';
+$lang['receiver'] = 'Penerima';
+
 
 /*
 |--------------------------------------------------------------------------
@@ -141,23 +166,4 @@ $lang['wishlist'] = 'Wishlist';
 $lang['my_wishlist'] = 'Wishlist';
 $lang['view_courses'] = 'Lihat Kursus';
 $lang['user_wishlist_not_found'] = 'Tidak ada Wishlist yang disimpan.';
-
-/*
-|--------------------------------------------------------------------------
-| Order User
-|--------------------------------------------------------------------------
-|
-*/
-
-$lang['my_order'] = 'Pembelian';
-$lang['user_order_not_found'] = 'Tidak ada transaksi yang dilakukan.';
-
-$lang['code_order'] = 'Kode Pembelian';
-$lang['date_order'] = 'Tanggal Pembelian';
-$lang['total_cost'] = 'Harga yang dibayar';
-
-$lang['wait_payment'] = 'Menunggu Pembayaran';
-$lang['wait_confirmation'] = 'Menunggu Konfirmasi';
-$lang['failed_payment'] = 'Dibatalkan';
-$lang['purchased'] = 'Lunas';
 ?>

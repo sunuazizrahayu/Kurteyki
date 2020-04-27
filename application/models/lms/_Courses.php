@@ -239,6 +239,7 @@ class _Courses extends CI_Model
 		
 		$extract = array(
 			'id' =>$courses['id'],
+			'id_user' =>$courses['id_user'],			
 			'title' =>$courses['title'],
 			'slug' =>$courses['slug'],			
 			'url' =>$courses['permalink'],

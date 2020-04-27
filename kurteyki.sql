@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 26, 2020 at 06:39 PM
+-- Generation Time: Apr 27, 2020 at 07:00 AM
 -- Server version: 10.1.38-MariaDB
 -- PHP Version: 7.3.3
 
@@ -49,7 +49,7 @@ CREATE TABLE `tb_blog_post` (
 --
 
 INSERT INTO `tb_blog_post` (`id`, `id_user`, `title`, `permalink`, `image`, `time`, `updated`, `id_category`, `id_tags`, `content`, `description`, `views`, `status`) VALUES
-(1, 1, 'Konten Baru dan Rencana Kedepannya Situs ini', 'konten-baru-dan-rencana-kedepannya-situs-ini', 'images/banner.png', '2020-03-21 18:44:00', '2020-04-15 18:13:46', '3', '0', '&lt;p&gt;Sudah 6 bulan berlalu dan kini saya akan mengaktifkan situs ini menjadi sebuah blog. situs ini nantinya akan dipenuhi dengan tulisan tentang pengembangan diri.&lt;/p&gt;\r\n\r\n&lt;p&gt;alasan saya menuliskan tentang pengembangan diri di situs ini adalah untuk mencatat apa saja yang telah saya pelajari tentang pengembangan diri dan mungkin bisa berguna untuk para pembaca sekalian.&lt;/p&gt;\r\n\r\n&lt;p&gt;sedikit gambaran tentang pengembangan diri, jadi pengembangan diri menurut saya itu seperti mengasah kemampuan diri untuk menjalani hidup ini. dengan adanya pemahaman tentang skill hidup maka untuk menjalani kehidupan ini juga kita akan selalu merasa mudah.&lt;/p&gt;\r\n', '', 5, 'Published');
+(1, 1, 'Konten Baru dan Rencana Kedepannya Situs ini', 'konten-baru-dan-rencana-kedepannya-situs-ini', 'images/banner.png', '2020-03-21 18:44:00', '2020-04-15 18:13:46', '3', '0', '&lt;p&gt;Sudah 6 bulan berlalu dan kini saya akan mengaktifkan situs ini menjadi sebuah blog. situs ini nantinya akan dipenuhi dengan tulisan tentang pengembangan diri.&lt;/p&gt;\r\n\r\n&lt;p&gt;alasan saya menuliskan tentang pengembangan diri di situs ini adalah untuk mencatat apa saja yang telah saya pelajari tentang pengembangan diri dan mungkin bisa berguna untuk para pembaca sekalian.&lt;/p&gt;\r\n\r\n&lt;p&gt;sedikit gambaran tentang pengembangan diri, jadi pengembangan diri menurut saya itu seperti mengasah kemampuan diri untuk menjalani hidup ini. dengan adanya pemahaman tentang skill hidup maka untuk menjalani kehidupan ini juga kita akan selalu merasa mudah.&lt;/p&gt;\r\n', '', 6, 'Published');
 
 -- --------------------------------------------------------
 
@@ -269,8 +269,8 @@ CREATE TABLE `tb_lms_courses` (
 --
 
 INSERT INTO `tb_lms_courses` (`id`, `id_user`, `title`, `permalink`, `image`, `description`, `faq`, `id_category`, `id_sub_category`, `time`, `updated`, `price`, `discount`, `views`, `status`) VALUES
-(1, 1, 'Pengetahuan untuk menjadi manusia berbakat', 'ilmu-dari-adam-khoo', 'images/banner.png', '&lt;p&gt;materi ini saya ambil dari buku karya adam khoo yang berjudul i am gifted so are you, buku ini mengajarkan banyak hal bagaimana cara menjadi pribadi yang berbakat. didalam buku ini banyak sekali ilmu yang bisa diterapkan untuk pelajar, membangun keyakinan diri, cita-cita, mengatur waktu dan lain sebagainya.&lt;/p&gt;\r\n\r\n&lt;p&gt;didalam kursus ini hanya berisi ringkasan singkat dari buku yang ada.&amp;nbsp;materi yang saya sampaikan menggunakan gaya bahasa dari apa yang saya pahami, untuk mendapatkan informasi lebih lengkap tentang buku ini anda bisa membeli bukunya di toko buku.&lt;/p&gt;\r\n', '', '1', '3', '2020-04-11 16:53:44', NULL, 0, 0, 14, 'Published'),
-(2, 1, 'Ilmu Finansial dari Building The Dream', 'ilmu-dari-building-the-dream', 'images/banner.png', '&lt;p&gt;Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.&lt;/p&gt;\r\n', '', '1', '2', '2020-04-11 22:19:25', '2020-04-24 16:06:42', 100000, 0, 5, 'Published'),
+(1, 1, 'Pengetahuan untuk menjadi manusia berbakat', 'ilmu-dari-adam-khoo', 'images/banner.png', '&lt;p&gt;materi ini saya ambil dari buku karya adam khoo yang berjudul i am gifted so are you, buku ini mengajarkan banyak hal bagaimana cara menjadi pribadi yang berbakat. didalam buku ini banyak sekali ilmu yang bisa diterapkan untuk pelajar, membangun keyakinan diri, cita-cita, mengatur waktu dan lain sebagainya.&lt;/p&gt;\r\n\r\n&lt;p&gt;didalam kursus ini hanya berisi ringkasan singkat dari buku yang ada.&amp;nbsp;materi yang saya sampaikan menggunakan gaya bahasa dari apa yang saya pahami, untuk mendapatkan informasi lebih lengkap tentang buku ini anda bisa membeli bukunya di toko buku.&lt;/p&gt;\r\n', '', '1', '3', '2020-04-11 16:53:44', NULL, 0, 0, 15, 'Published'),
+(2, 1, 'Ilmu Finansial dari Building The Dream', 'ilmu-dari-building-the-dream', 'images/banner.png', '&lt;p&gt;Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.&lt;/p&gt;\r\n', '', '1', '2', '2020-04-11 22:19:25', '2020-04-24 16:06:42', 100000, 0, 6, 'Published'),
 (4, 1, 'asdsadsa', 'asdsadsa', 'asdasdsa', '                                &lt;p&gt;asdsad&lt;/p&gt;\r\n                            ', '                                                            ', '1', '2', '2020-04-24 13:10:24', '2020-04-26 17:41:12', 0, 0, 0, 'Draft');
 
 -- --------------------------------------------------------
@@ -378,6 +378,13 @@ CREATE TABLE `tb_lms_user_courses` (
   `time` datetime NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+--
+-- Dumping data for table `tb_lms_user_courses`
+--
+
+INSERT INTO `tb_lms_user_courses` (`id`, `id_user`, `id_courses`, `time`) VALUES
+(1, 24, 1, '2020-04-27 09:05:18');
+
 -- --------------------------------------------------------
 
 --
@@ -401,6 +408,7 @@ CREATE TABLE `tb_lms_user_payment` (
   `id` varchar(255) NOT NULL,
   `id_user` int(255) NOT NULL,
   `id_courses` int(255) NOT NULL,
+  `id_courses_user` int(255) NOT NULL,
   `type` varchar(255) NOT NULL,
   `amount` varchar(255) NOT NULL,
   `token` varchar(255) NOT NULL,
@@ -414,14 +422,9 @@ CREATE TABLE `tb_lms_user_payment` (
 -- Dumping data for table `tb_lms_user_payment`
 --
 
-INSERT INTO `tb_lms_user_payment` (`id`, `id_user`, `id_courses`, `type`, `amount`, `token`, `proof`, `time`, `updated`, `status`) VALUES
-('23C2T200426175245', 23, 2, 'Manual', '100000', 'bri', '', '2020-04-26 17:52:45', '0000-00-00 00:00:00', 'Pending'),
-('23C2T200426175301', 23, 2, 'Manual', '100000', 'bca', '', '2020-04-26 17:53:01', '0000-00-00 00:00:00', 'Pending'),
-('23C2T200426175336', 23, 2, 'Manual', '50000', 'bca', '', '2020-04-26 17:53:36', '0000-00-00 00:00:00', 'Pending'),
-('23C2T200426175456', 23, 2, 'Manual', '100000', 'bca', '', '2020-04-26 17:54:56', '0000-00-00 00:00:00', 'Pending'),
-('23C2T200426180328', 23, 2, 'Manual', '100000', 'bri', '', '2020-04-26 18:03:28', '0000-00-00 00:00:00', 'Pending'),
-('23C2T200426191612', 23, 2, 'Manual', '100000', 'bri', '', '2020-04-26 19:16:12', '0000-00-00 00:00:00', 'Pending'),
-('23C2T200426214223', 23, 2, 'Manual', '100000', 'bca', '', '2020-04-26 21:42:23', '0000-00-00 00:00:00', 'Pending');
+INSERT INTO `tb_lms_user_payment` (`id`, `id_user`, `id_courses`, `id_courses_user`, `type`, `amount`, `token`, `proof`, `time`, `updated`, `status`) VALUES
+('24C2T200427115111', 24, 2, 1, 'Manual', '100000', 'bri', '{\"proof\":\"24C2T200427115111_confirmation_20200427115123.png\",\"sender\":\"3424234\"}', '2020-04-27 11:51:11', '0000-00-00 00:00:00', 'Checking'),
+('24C2T200427115915', 24, 2, 1, 'Manual', '100000', 'bri', '{\"proof\":\"24C2T200427115915_confirmation_20200427115937.png\",\"sender\":\"azzz\"}', '2020-04-27 11:59:15', '0000-00-00 00:00:00', 'Checking');
 
 -- --------------------------------------------------------
 
@@ -628,7 +631,13 @@ INSERT INTO `tb_site_visitor` (`id`, `ip`, `date`, `browser`, `os`, `country_nam
 (68, '::1', '2020-04-26 13:03:50', 'Chrome', 'Windows 10', 'Other', 'Other', 3, 'http://localhost/kurteyki/courses-category/skill-hidup', ''),
 (69, '::1', '2020-04-26 13:03:52', 'Chrome', 'Windows 10', 'Other', 'Other', 2, 'http://localhost/kurteyki/courses-category/karakter', ''),
 (70, '::1', '2020-04-26 13:04:00', 'Chrome', 'Windows 10', 'Other', 'Other', 2, 'http://localhost/kurteyki/blog', ''),
-(71, '::1', '2020-04-26 16:28:42', 'Chrome', 'Windows 10', 'Other', 'Other', 1, 'http://localhost/kurteyki/blog-post/konten-baru-dan-rencana-kedepannya-situs-ini', '');
+(71, '::1', '2020-04-26 16:28:42', 'Chrome', 'Windows 10', 'Other', 'Other', 1, 'http://localhost/kurteyki/blog-post/konten-baru-dan-rencana-kedepannya-situs-ini', ''),
+(72, '::1', '2020-04-27 08:40:09', 'Chrome', 'Windows 7', 'Other', 'Other', 74, 'http://localhost/kurteyki/', ''),
+(73, '::1', '2020-04-27 08:42:11', 'Chrome', 'Windows 7', 'Other', 'Other', 60, 'http://localhost/kurteyki/courses-detail/ilmu-dari-building-the-dream', ''),
+(74, '::1', '2020-04-27 09:05:17', 'Chrome', 'Windows 7', 'Other', 'Other', 17, 'http://localhost/kurteyki/courses-detail/ilmu-dari-adam-khoo', ''),
+(75, '::1', '2020-04-27 10:27:23', 'Chrome', 'Windows 7', 'Other', 'Other', 1, 'http://localhost/kurteyki/blog-post/konten-baru-dan-rencana-kedepannya-situs-ini', ''),
+(76, '::1', '2020-04-27 11:33:24', 'Chrome', 'Windows 7', 'Other', 'Other', 2, 'http://localhost/kurteyki/courses-category/karakter', ''),
+(77, '::1', '2020-04-27 11:33:26', 'Chrome', 'Windows 7', 'Other', 'Other', 1, 'http://localhost/kurteyki/courses-category/skill-hidup', '');
 
 -- --------------------------------------------------------
 
@@ -656,8 +665,9 @@ CREATE TABLE `tb_user` (
 --
 
 INSERT INTO `tb_user` (`id`, `username`, `password`, `headline`, `email`, `no_handphone`, `photo`, `grade`, `payment`, `created`, `last_login`, `status`) VALUES
-(1, 'kurteyki', '1a5651f74beaa02c5e5fc380875d23a66e4549bd', 'Trainer', 'kurteyki@gmail.com', '081389215100', 'user_photo_20200425060647.png', 'App', '{\"transaction\":[{\"identity\":\"bri20200425130634\",\"type\":\"bri\",\"account_number\":\"1923892138192\",\"receiver\":\"irfan\"},{\"identity\":\"bca20200426162016\",\"type\":\"bca\",\"account_number\":\"12321321\",\"receiver\":\"troffle\"}],\"confirmation\":[{\"identity\":\"whatsapp20200425130641\",\"type\":\"whatsapp\",\"data\":\"85280815735\"}]}', '0000-00-00 00:00:00', '2020-04-26 13:07:21', 'Active'),
-(23, 'demo123', '8cb2237d0679ca88db6464eac60da96345513964', '', 'demo@demo.cc', '9128391238129', '', 'User', '', '0000-00-00 00:00:00', '2020-04-26 19:11:43', 'Active');
+(1, 'kurteyki', '1a5651f74beaa02c5e5fc380875d23a66e4549bd', 'Trainer', 'kurteyki@gmail.com', '081389215100', 'user_photo_20200425060647.png', 'App', '{\"transaction\":[{\"identity\":\"bri20200425130634\",\"type\":\"bri\",\"account_number\":\"1923892138192\",\"receiver\":\"irfan\"},{\"identity\":\"bca20200426162016\",\"type\":\"bca\",\"account_number\":\"12321321\",\"receiver\":\"troffle\"}],\"confirmation\":[{\"identity\":\"whatsapp20200425130641\",\"type\":\"whatsapp\",\"data\":\"85280815735\"}]}', '0000-00-00 00:00:00', '2020-04-27 09:04:05', 'Active'),
+(23, 'demo123', '8cb2237d0679ca88db6464eac60da96345513964', '', 'demo@demo.cc', '9128391238129', '', 'User', '', '0000-00-00 00:00:00', '2020-04-26 19:11:43', 'Active'),
+(24, 'mantap', 'd369be4c6034009e3aa86673b0c9e99c55631e99', '', 'mantap@gg.cc', '12321382193821391', '', 'User', '', '2020-04-27 09:04:26', '2020-04-27 09:04:58', 'Active');
 
 --
 -- Indexes for dumped tables
@@ -936,7 +946,7 @@ ALTER TABLE `tb_lms_template_widget`
 -- AUTO_INCREMENT for table `tb_lms_user_courses`
 --
 ALTER TABLE `tb_lms_user_courses`
-  MODIFY `id` int(255) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `tb_lms_user_lesson`
@@ -954,7 +964,7 @@ ALTER TABLE `tb_lms_user_review`
 -- AUTO_INCREMENT for table `tb_lms_user_wishlist`
 --
 ALTER TABLE `tb_lms_user_wishlist`
-  MODIFY `id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT for table `tb_site_meta`
@@ -972,13 +982,13 @@ ALTER TABLE `tb_site_pages`
 -- AUTO_INCREMENT for table `tb_site_visitor`
 --
 ALTER TABLE `tb_site_visitor`
-  MODIFY `id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=72;
+  MODIFY `id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=78;
 
 --
 -- AUTO_INCREMENT for table `tb_user`
 --
 ALTER TABLE `tb_user`
-  MODIFY `id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
+  MODIFY `id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

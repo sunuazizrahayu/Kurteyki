@@ -70,6 +70,7 @@ $route['auth/register/process'] = 'user/auth/process_register';
 $route['payment/order/(:any)'] = 'user/payment/order/$1';
 $route['payment/success'] = 'user/payment/success';
 $route['payment/waiting'] = 'user/payment/waiting';
+$route['payment/waiting-confirmation'] = 'user/payment/waiting_confirmation';
 
 $route['payment/use_coupon'] = 'user/payment/use_coupon';
 $route['payment/process_free'] = 'user/payment/process_free';

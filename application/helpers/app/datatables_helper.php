@@ -51,3 +51,7 @@ function grade_user($grade){
         return "<span class='u-ml-xsmall c-badge c-badge--xsmall c-badge--success'>Instructor</span>";
     }
 }
+
+function set_currency($data) {
+ return number_format($data, 0, ',', '.');
+}

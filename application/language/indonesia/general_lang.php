@@ -7,6 +7,7 @@
 |
 */
 
+$lang['select'] = 'Pilih';
 $lang['send'] = 'Kirim';
 
 
@@ -84,6 +85,10 @@ $lang['change_photo'] = 'Change Photo';
 $lang['save'] = 'Simpan';
 $lang['note_email'] = 'Email tidak dapat dirubah';
 $lang['note_password'] = 'Kosongkan jika tidak ingin mengganti password.';
+
+/* confirmation */
+$lang['proof_transaction'] = 'Bukti Pembayaran';
+$lang['proof_sender'] = 'Nama Pengirim';
 
 
 /*

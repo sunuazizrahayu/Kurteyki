@@ -2,7 +2,7 @@
 
 class _Process_Upload extends CI_Model {
 
-    function Upload_File($config,$path_dir,$file_data,$file_delete,$file_name = null, $is_image = false, $resize = false)
+    function Upload_File($config,$path_dir,$file_data,$file_delete = false,$file_name = null, $is_image = false)
     {
 
         #load library upload
@@ -13,7 +13,7 @@ class _Process_Upload extends CI_Model {
             $config_upload = array(
                 'upload_path' => $path_dir,
                 'allowed_types' =>'jpg|png|ico',
-            );
+                );
         }    
 
         if (!empty($file_name)) {
@@ -43,7 +43,7 @@ class _Process_Upload extends CI_Model {
                             exit;
                         }
                     }
-                }else{         
+                }else{      
                     $create_thumb = $this->Image_Thumbnail($data[$file_data]['file_name'],$path_dir);
                     if ($create_thumb != 'success') {
                         echo $create_thumb;
@@ -54,14 +54,16 @@ class _Process_Upload extends CI_Model {
 
 
             #delete old file
-            @unlink($path_dir.$file_delete);
-            if ($is_image) {
-                @unlink($path_dir.'thumbnail/'.$file_delete);
-            }    
+            if ($file_delete) {
+                @unlink($path_dir.$file_delete);
+                if ($is_image) {
+                    @unlink($path_dir.'thumbnail/'.$file_delete);
+                }    
+            }
 
             return array(
                 $file_data => $data[$file_data]['file_name'],
-            );
+                );
 
         }else{
             return false;
@@ -80,7 +82,7 @@ class _Process_Upload extends CI_Model {
           'new_image' => $target_path,
           'maintain_ratio' => TRUE,
           'width' => 250,
-      );
+          );
 
         $this->image_lib->clear();
         $this->image_lib->initialize($config);
@@ -107,7 +109,7 @@ class _Process_Upload extends CI_Model {
           'new_image' => $target_path,
           'maintain_ratio' => TRUE,
           'width' => 110,
-      );
+          );
 
         $this->image_lib->clear();
         $this->image_lib->initialize($config);
@@ -131,7 +133,7 @@ class _Process_Upload extends CI_Model {
           'source_image' => $source_path,
           'new_image' => $target_path,
           'maintain_ratio' => FALSE,
-      );
+          );
 
         $this->load->library('FastImage');
         @$fastimage = new FastImage($source_path);

@@ -279,7 +279,10 @@ var process_manual = function(url,data){
 		success: function(data) {
 
 			if (data.status == true) {
+
+				$("#form-payment").trigger("reset");
 				top.location.href = data.redirect;
+				
 			}else {
 				Swal.fire({
 					title: data.error,
@@ -525,24 +528,20 @@ var check_order = function(result){
 /**
 * Module confirmation
 */
-var fileInput  = document.querySelector( ".custom-input-file" ),  
-button     = document.querySelector( ".custom-input-file-trigger" ),
-the_return = document.querySelector(".file-return");
-
-button.addEventListener( "keydown", function( event ) {  
+$(".custom-input-file-trigger").on( "keydown", function( event ) {  
 	if ( event.keyCode == 13 || event.keyCode == 32 ) {  
-		fileInput.focus();  
+		$(".custom-input-file").click();  
 	}  
 });
-button.addEventListener( "click", function( event ) {
-	fileInput.focus();
+$(".custom-input-file-trigger").on( "click", function( event ) {
+	$(".custom-input-file").click();
 	return false;
 });  
-fileInput.addEventListener( "change", function( event ) {  
+$(".custom-input-file").on( "change", function( event ) {  
 
 	var reader = new FileReader();
 	reader.onload = function(){
-		the_return.src = reader.result;
+		$(".file-return").attr('src',reader.result);
 	};
 
 	reader.readAsDataURL(event.target.files[0]);

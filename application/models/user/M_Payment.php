@@ -66,7 +66,7 @@ class M_Payment extends CI_Model
             $midtrans['payment'] = $this->M_Payment_Midtrans->create_token($all_courses);
             $all_data = array_merge($all_courses,$lesson,$midtrans);
         }
-
+        
         return $all_data;
     }
 

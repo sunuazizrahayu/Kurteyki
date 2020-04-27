@@ -70,7 +70,8 @@
 					<?php echo $this->lang->line('payment_coupon'); ?> 
 				</div> 
 				<div class="c-card u-p-small u-mb-small">  
-					<input value="<?php echo $courses['id'] ?>" name="id_courses" class="c-input" type="hidden">		
+					<input value="<?php echo $courses['id'] ?>" name="id_courses" class="c-input" type="hidden">	
+					<input value="<?php echo $courses['id_user'] ?>" name="id_courses_user" type="hidden">
 					<div class="c-field has-addon-right">
 						<input placeholder="<?php echo $this->lang->line('payment_coupon_insert'); ?> " name="code" class="c-input" type="text">
 						<span class="u-ml-auto c-field__addon">

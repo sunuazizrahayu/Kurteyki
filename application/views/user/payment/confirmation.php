@@ -15,7 +15,7 @@
 
 					<div class="c-card u-p-small u-mh-large u-mb-medium">  
 						<p>
-							Jumlah yang harus dibayar
+							<?php echo $this->lang->line('payment_proof_price'); ?> 
 						</p>
 
 						<h2 class="u-text-bold">
@@ -24,7 +24,7 @@
 					</div>
 
 					<p class="u-h4 u-mb-small">
-						Silahkan melakukan pemayaran ke rekening dibawah ini.
+						<?php echo $this->lang->line('payment_proof_message'); ?> 
 					</p>
 
 					<table class="c-table">
@@ -36,7 +36,7 @@
 							</tr>
 							<tr class="c-table__row">
 								<td class="u-border-right u-pv-xsmall u-ph-small u-text-left">
-									Bank
+									<?php echo $this->lang->line('bank'); ?> 
 								</td>
 								<td class="u-border-right u-pv-xsmall u-ph-small u-text-left">
 									<?php echo $confirmation['transaction_type'] ?>
@@ -44,7 +44,7 @@
 							</tr>
 							<tr class="c-table__row">
 								<td class="u-border-right u-pv-xsmall u-ph-small u-text-left">
-									Nomor Rekening
+									<?php echo $this->lang->line('account_number'); ?> 
 								</td>
 								<td class="u-border-right u-pv-xsmall u-ph-small u-text-left">
 									<?php echo $confirmation['transaction_account_number'] ?>
@@ -52,7 +52,7 @@
 							</tr>
 							<tr class="c-table__row">
 								<td class="u-border-right u-pv-xsmall u-ph-small u-text-left">
-									Penerima
+									<?php echo $this->lang->line('receiver'); ?> 
 								</td>
 								<td class="u-border-right u-pv-xsmall u-ph-small u-text-left">
 									<?php echo $confirmation['transaction_receiver'] ?>
@@ -75,17 +75,24 @@
 							<img style="width:250px" class="file-return" src="<?php echo base_url('storage/assets/user/img/proof-default.jpg') ?>" alt="proof">
 						</div>
 
-						<input class="custom-input-file" id="my-file" type="file">
-						<label tabindex="0" for="my-file" class="custom-input-file-trigger c-btn c-btn--secondary c-btn--custom">Pilih bukti pembayaran</label>
+						<input name="proof" class="custom-input-file" id="my-file" type="file">
+						<label tabindex="0" for="my-file" class="custom-input-file-trigger c-btn c-btn--secondary c-btn--custom">
+							<?php echo $this->lang->line('select').' '.$this->lang->line('proof_transaction') ?>
+						</label>
+						<?php echo form_error('proof', '<small class="c-field__message u-color-danger u-block"><i class="fa fa-times-circle"></i>', '</small>'); ?> 
 
 					</div>	
 
 					<div class="c-field u-mb-small">
-						<label class="c-field__label">Nama Pengirim</label>
-						<input required="" name="name" class="c-input" type="text" value="">
+						<label class="c-field__label">
+							<?php echo $this->lang->line('proof_sender') ?>
+						</label>
+						<input name="sender" class="c-input" type="text" value="">
+						<?php echo form_error('sender', '<small class="c-field__message u-color-danger"><i class="fa fa-times-circle"></i>', '</small>'); ?> 
 					</div>				
 
 					<div class="c-field u-mb-small">
+						<input name="id" class="c-input" type="hidden" value="<?php echo $confirmation['id'] ?>">
 						<button class="c-btn c-btn--info c-btn--fullwidth">
 							<?php echo $this->lang->line('send'); ?> 
 						</button>
@@ -100,11 +107,3 @@
 </form>
 
 <?php $this->load->view('lms/default-app/_layouts/footer'); ?>
-<script type="text/javascript">
-	$(document).ready(function() {
-		function disableBack() { window.history.forward() }
-
-		window.onload = disableBack();
-		window.onpageshow = function(evt) { if (evt.persisted) disableBack() }
-	});
-</script>

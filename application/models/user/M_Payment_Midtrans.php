@@ -94,6 +94,7 @@ class M_Payment_Midtrans extends CI_Model
         'id' => $post['order_id'],
         'id_user' => $this->session->userdata('id_user'),
         'id_courses' => $id_courses,			
+        // 'id_courses_user' => $post['id_courses_user'],         
         'type' => $post['payment_type'],
         'amount' => (int)$post['gross_amount'],
         'token' => $post['token'],
