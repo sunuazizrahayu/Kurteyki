@@ -89,8 +89,6 @@ function datatables_serverside(resource_columns) {
                         icon: 'warning',
                         confirmButtonColor: '#3085d6',
                     })
-                }else {
-                    //swal("Hem!", "Terjadi kesalahan pada program, silahkan coba lagi", "error");
                 }
 
                 $("button[name='submit']").prop("disabled", false);
@@ -104,6 +102,61 @@ function datatables_serverside(resource_columns) {
             }
         });
     })
+
+    /* module invoice */
+    $(".invoice-button").on('click', function(e) {
+
+        var thisvalue = $(this).val();
+        e.preventDefault();
+
+        Swal.fire({
+            title: $(this).data('title'),
+            text: $(this).data('text'),
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Yes',
+            focusConfirm: true
+        }).then((result) => {
+            if (result.value) {
+
+                var form_data = [],
+                form_url = $("#form-invoice").data("action");
+                form_data.push({ name: "id", value: $("input[name=id]").val() });
+                form_data.push({ name: "action", value: thisvalue });
+
+                /* alert($.param(form_data)); */
+                $.ajax({
+                    url: form_url,
+                    method: "POST",
+                    data: form_data,
+                    dataType: 'JSON',
+                    success: function(data) {
+
+                        Swal.fire({
+                            title: data.message,
+                            icon: 'success',
+                            confirmButtonColor: '#3085d6',
+                            timer: 1000
+                        })
+                        .then((result) => {
+
+                            /* close modal */
+                            $('.modal').each(function() {
+                                $(this).modal('hide');
+                            });
+
+                            /* load datatables */
+                            table.ajax.reload();
+
+                        }) 
+
+                    }
+                });
+            }
+        })      
+    })    
 
     /**
     * Proses datatables
@@ -176,6 +229,7 @@ function datatables_serverside(resource_columns) {
             $('div.dataTables_length').appendTo($('.cst-table'));
             $('div.dataTables_filter').css({ 'width': '50%', 'float': 'right', 'text-align': 'right' });
 
+            /* module coupon */
             tablebest.on("click", '.action-edit-coupon', function() {
                 $(".cst-modal-title").html($(this).data('title'));
                 $("input[name=id]").val($(this).data("id"));
@@ -184,6 +238,50 @@ function datatables_serverside(resource_columns) {
                 $("input[name=data]").val($(this).data("data"));
                 $("#coupon-type").val($(this).data("type")).trigger('change');
                 $("#coupon-for").val($(this).data("for")).trigger('change');
+            });
+
+            /* module invoce */
+            tablebest.on("click", '.action-confirmation', function() {
+
+                let order_id = $(this).data("id"),
+                action = $(this).data("action");
+
+                let form_data = [];
+                form_data.push({ name: "id", value: order_id });
+
+                /* set null value */
+                $("input[name=id]").val('');
+                $("#inv-id").html('...');
+                $("#inv-username").html('...');
+                $("#inv-product").html('...');
+                $("#inv-payment").html('...');
+                $("#inv-amount").html('...');
+                $("#inv-sender").html('...');
+                $("#inv-proof-data-link").attr('href',$("#inv-proof-data-link").data('href'));
+                $("#inv-proof-data-file").attr('src',$("#inv-proof-data-file").data('src'));  
+
+                $.ajax({
+                    url: action,
+                    method: "POST",
+                    data: form_data,
+                    dataType: 'JSON',
+                    success: function(data) {
+                        $("input[name=id]").val(data.id);
+                        $("#inv-id").html(data.id);
+                        $("#inv-username").html(data.username);
+                        $("#inv-product").html(data.product_name);
+                        $("#inv-payment").html(data.token);
+                        $("#inv-amount").html(data.amount);
+                        $("#inv-sender").html(data.proof.sender);
+                        $("#inv-proof-data-link").attr('href',data.proof.file);
+                        $("#inv-proof-data-file").attr('src',data.proof.file);   
+
+                        $('#modal').on('hidden.bs.modal', function() {
+                            $("input[name=id]").val('');
+                        })                     
+                    }
+                });
+
             });
 
             tablebest.on('click', action_delete, function(e) {

@@ -65,7 +65,7 @@ class M_Payment_Confirmation extends CI_Model
         if (!$proof) return false;
 
         $proof_data = json_encode([
-            'proof' => $proof,
+            'file' => $proof,
             'sender' => $this->input->post('sender')
             ]);
 

@@ -7,7 +7,7 @@
 
 <div class="c-dropdown dropdown">
 	<a  class="c-avatar c-avatar--xsmall has-dropdown dropdown-toggle" href="#" id="dropdwonMenuAvatar" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-		<img class="c-avatar__img" src="<?php echo base_url(APP_LOGO) ?>" alt="User's Profile Picture">
+		<img class="c-avatar__img" src="<?php echo (!empty($this->session->userdata('app_photo')) ?  base_url('storage/uploads/user/'.$this->session->userdata('app_photo')) : base_url('storage/uploads/user/person.png')) ?>" alt="<?php echo $this->session->userdata('app_pusername') ?>">
 	</a>
 
 	<div class="c-dropdown__menu dropdown-menu dropdown-menu-right" aria-labelledby="dropdwonMenuAvatar">

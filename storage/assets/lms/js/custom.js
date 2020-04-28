@@ -328,6 +328,10 @@ var process_midtrans = function(){
 }	
 var insert_order = function(result,action){
 
+
+	result.id_courses_user = $("input[name='id_courses_user']").val();
+	result.coupon = $("input[name='code']").val();
+
 	$.ajax({
 		url: action,
 		method: "POST",

@@ -12,9 +12,9 @@ class M_Auth extends CI_Model
         $csrf_code = $this->input->post('csrf_code');
 
         return [
-            'username' => $username,
-            'password' => $password,
-            'csrf_code' => $csrf_code,
+        'username' => $username,
+        'password' => $password,
+        'csrf_code' => $csrf_code,
         ];
     }
 
@@ -29,7 +29,7 @@ class M_Auth extends CI_Model
                 'username' => $post_data['username'],
                 'password' => sha1($post_data['password']),  
                 'grade' => 'App'    
-            );
+                );
 
             $read = $this->_Process_MYSQL->get_data($this->table_user,$data);
 
@@ -40,16 +40,18 @@ class M_Auth extends CI_Model
 
                 $data_update = array(
                     'last_login' => date('Y:m:d H:i:s'),
-                );
+                    );
 
                 if ($this->_Process_MYSQL->update_data($this->table_user, $data_update, array('id' => $id)) == TRUE) {
 
                     $this->session->set_userdata(array(
-                        'id' => $read_data['id'],                        
-                        'username' => $read_data['username'],                  
+                        'id' => $read_data['id'],
+                        'app_username' => $read_data['username'],                  
+                        'app_photo' => $read_data['photo'],
+                        'app_grade' => $read_data['grade'], 
                         'status' => "login",
                         'key' => sha1($read_data['id'].$read_data['username'].date('YmdHis'))
-                    ));
+                        ));
 
                     $this->session->unset_userdata('csrf_code');
 
@@ -69,7 +71,7 @@ class M_Auth extends CI_Model
 
     function logout(){
 
-        $this->session->sess_destroy();
+        $this->session->unset_userdata(['id','app_username','app_photo','app_grade','status','key']);
         return 'success';
     }
 

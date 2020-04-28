@@ -1,6 +1,6 @@
 <!-- Modal -->
-<form id="form-master" data-action="<?php echo base_url('app/user_invoice/process') ?>" method="POST">
-    <div class="c-modal c-modal--medium modal fade" id="modal" tabindex="-1">
+<form id="form-invoice" data-action="<?php echo base_url('app/user_invoice/process') ?>" method="POST">
+    <div class="c-modal c-modal--huge modal fade" id="modal" tabindex="-1">
         <div class="c-modal__dialog modal-dialog" role="document">
             <div class="c-modal__content">
                 <div class="c-modal__header">
@@ -13,48 +13,90 @@
                 </div>
                 <div class="c-modal__body row">
 
-                    <div class="c-field u-mb-small col-6">
-                        <label class="c-field__label">code : </label>
-                        <input autocomplete="off" required class="c-input" name="code" type="text" placeholder="code">
+                    <div class="col-12 col-xl-6">
+                        <table class="c-table" style="display: table">
+                            <tbody class="c-table__head">
+                                <tr class="c-table__row">
+                                    <td class="u-border-right u-pv-xsmall u-ph-small u-text-left">
+                                        Order ID
+                                    </td>
+                                    <td id="inv-id" class="u-border-right u-pv-xsmall u-ph-small u-text-left">
+                                        ...
+                                    </td>
+                                </tr>                        
+                                <tr class="c-table__row">
+                                    <td class="u-border-right u-pv-xsmall u-ph-small u-text-left">
+                                        User
+                                    </td>
+                                    <td id="inv-username" class="u-border-right u-pv-xsmall u-ph-small u-text-left">
+                                        ...
+                                    </td>
+                                </tr>
+                                <tr class="c-table__row">
+                                    <td class="u-border-right u-pv-xsmall u-ph-small u-text-left">
+                                        Buy
+                                    </td>
+                                    <td id="inv-product" class="u-border-right u-pv-xsmall u-ph-small u-text-left">
+                                        ...
+                                    </td>
+                                </tr>
+                                <tr class="c-table__row">
+                                    <td class="u-border-right u-pv-xsmall u-ph-small u-text-left">
+                                        Payment
+                                    </td>
+                                    <td id="inv-payment" class="u-border-right u-pv-xsmall u-ph-small u-text-left">
+                                        ...
+                                    </td>
+                                </tr>
+                                <tr class="c-table__row">
+                                    <td class="u-border-right u-pv-xsmall u-ph-small u-text-left">
+                                        Amount
+                                    </td>
+                                    <td id="inv-amount" class="u-border-right u-pv-xsmall u-ph-small u-text-left">
+                                        ...
+                                    </td>
+                                </tr>
+                                <tr class="c-table__row u-bg-success">
+                                    <td class="u-border-right u-pv-xsmall u-ph-small u-text-left">
+                                        Sender
+                                    </td>
+                                    <td id="inv-sender" class="u-border-right u-pv-xsmall u-ph-small u-text-left">
+                                        ...
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
                     </div>
 
-                    <div class="c-field u-mb-small col-6">
-                        <label class="c-field__label">expired : </label>
-                        <input id="datetimepicker" autocomplete="off" required class="c-input" name="expired" type="text" placeholder="expired">
-                    </div>
+                    <div class="col-12 col-xl-6">
 
-                    <div class="c-field u-mb-small col-6">
-                        <label class="c-field__label">type : </label>
-                        <select id="coupon-type" required name="type" class="select2" data-placeholder='select type'>
-                            <option></option>
-                            <option value="Price">Price</option>                            
-                            <option value="Percent">Percent</option>
-                        </select>
-                    </div>
-
-                    <div class="c-field u-mb-small col-6">
-                        <label class="c-field__label">for : </label>
-                        <select id="coupon-for" required name="for" class="select2" data-placeholder='select for'>
-                            <option></option>
-                            <option value="all-product">all-product</option>
-                        </select>
-                    </div>
-
-
-                    <div class="c-field u-mb-small col-12">
-                        <label class="c-field__label">data : </label>
-                        <input autocomplete="off" required class="c-input" name="data" type="text" placeholder="data" onkeyup="FormatCurrency(this)">
+                        <table class="c-table">
+                            <tbody class="c-table__head">
+                                <tr class="c-table__row">
+                                    <td class="u-border-right u-pv-xsmall u-ph-small u-text-center">
+                                        Proof
+                                    </td>
+                                </tr>
+                                <tr class="c-table__row">
+                                    <td class="u-border-right u-pv-xsmall u-ph-small u-text-left" colspan="2">
+                                        <a id='inv-proof-data-link' target="_blank" data-href="<?php echo base_url('storage/assets/user/img/proof-default.jpg') ?>">
+                                            <img id='inv-proof-data-file' width="100%" data-src="<?php echo base_url('storage/assets/user/img/proof-default.jpg') ?>" alt="proof"/>
+                                        </a>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
                     </div>
 
                 </div>
 
                 <div class="c-modal__footer">
                     <input type="hidden" name="id">
-                    <button class="c-btn c-btn--info c-btn--custom" name="submit" type="submit" value="approve">
-                        <i class="fa fa-send-o"></i>
+                    <button data-title="are you sure ?" data-text="approve this invoice" title="Active User Multiple" class="c-btn c-btn--info c-btn--custom invoice-button" name="action" type="button" value="approve">
+                        <i class="fa fa-check"></i>
                     </button>
-                     <button class="c-btn c-btn--danger c-btn--custom" name="submit" type="submit" value="approve">
-                        <i class="fa fa-trash"></i>
+                    <button data-title="are you sure ?" data-text="disapproved this invoice" title="Active User Multiple" class="c-btn c-btn--danger c-btn--custom invoice-button" name="action" type="button" value="disapproved">
+                        <i class="fa fa-ban"></i>
                     </button>
                 </div>
 

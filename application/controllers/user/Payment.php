@@ -32,7 +32,7 @@ class Payment extends My_User
     /**
      * Page Index
      */
-    public function order($slug)
+    public function order($slug = false)
     {
 
         $site = $this->site;
@@ -45,13 +45,12 @@ class Payment extends My_User
         'courses' =>  $courses,
         ];
 
-        if ($this->session->userdata('order-status-'.$courses['id']) == 'close') {
+        if ($this->session->userdata('order-status-'.$courses['id'])) {
 
             $this->session->unset_userdata('order-status-'.$courses['id']);
             redirect(base_url('user/order'));
 
         }
-        $this->session->set_userdata('order-status-'.$courses['id'],'open');
 
         $this->load->view($this->order, $data);
     }   

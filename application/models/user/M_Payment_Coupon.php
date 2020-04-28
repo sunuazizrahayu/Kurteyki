@@ -29,7 +29,8 @@ class M_Payment_Coupon extends CI_Model
             ]);
 
         $check_user_payment = $this->_Process_MYSQL->get_data($this->table_lms_user_payment,[
-            'token' => $this->input->post('code')
+            'id_user' =>  $this->session->userdata('id_user'), 
+            'coupon' => $this->input->post('code')
             ]);
 
         if ($check_user_payment->num_rows() > 0) {

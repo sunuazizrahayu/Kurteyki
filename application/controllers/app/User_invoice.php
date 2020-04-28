@@ -34,45 +34,19 @@ class User_invoice extends My_App
         echo $data;
     }  
 
-    public function delete($id)
-    {
-        if ($this->M_User_Invoice->process_delete($id) == TRUE) {
-            echo true;
-        }else {
-            echo false;
-        }
+    public function read(){
+        echo json_encode($this->M_User_Invoice->read());
     }
 
     public function process(){       
 
-        if (!empty($this->input->post('id'))) {
+        $process = $this->M_User_Invoice->process();
 
-            if ($this->M_User_Invoice->process_update() == TRUE) {
-
-                $this->session->set_flashdata([
-                    'message' => true,
-                    'message_type' => 'info',
-                    'message_text' => $this->lang->line('success_update'),
-                    ]);
-            }   
-
-        }else {
-
-            if ($this->M_User_Invoice->process_create() == TRUE) {
-
-                $this->session->set_flashdata([
-                    'message' => true,
-                    'message_type' => 'info',
-                    'message_text' => $this->lang->line('success_create'),
-                    ]);
-            }   
-
-        }
-
-        if (!empty($this->input->post('save'))) {
-            redirect($this->input->post('save'),'refresh');
-        }else {                
-            redirect(base_url($this->redirect));
+        if ($process) {
+            echo json_encode([
+                'status' => true,
+                'message' => 'Success '.$process.' this invoice'
+                ]);
         }
     }
 

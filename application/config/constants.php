@@ -8,11 +8,18 @@
 
 define('APP_NAME', 'Kurteyki App');
 define('APP_LOGO', 'storage/assets/app/img/logo.png');
+
+/* 
+BRO LU RUBAH INI DAN SEOLAH INI BUATAN LU ? GABAKALAN TENANG HIDUP LU BRO... 
+APALAGI SAMPE DIJUAL BISA SENGSARA HIDUP LU BRO... 
+SAMPE DIAPUS TULISAN YANG GUA TULIS INI ? GUA SIH OW AJA...
+*/
 define('APP_DESC', 'CMS Teyki');
 define('APP_VERSION', 'v1.5');
 define('APP_CREATOR', 'Faanteyki');
 define('APP_CREATOR_URL', 'https://instagram.com/faanteyki');
 define('APP_CREATOR_WEBSITE', 'https://www.kurteyki.com');
+
 
 /*
 |--------------------------------------------------------------------------

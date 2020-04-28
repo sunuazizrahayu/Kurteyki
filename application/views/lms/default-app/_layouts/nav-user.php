@@ -21,7 +21,7 @@
                 <i class="fa fa-shopping-cart u-color-success u-mr-xsmall"></i>
                 <?php echo $this->lang->line('my_order') ?>
             </a>
-            <a class="c-dropdown__item dropdown-item" href="<?php echo base_url('user/auth/process_logout') ?>">
+            <a class="c-dropdown__item dropdown-item" href="<?php echo base_url('auth/process_logout') ?>">
                 <i class="fa fa-sign-out u-mr-xsmall"></i>
                 <?php echo $this->lang->line('sign_out') ?>
             </a>

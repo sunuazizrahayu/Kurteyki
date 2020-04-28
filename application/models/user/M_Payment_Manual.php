@@ -52,6 +52,7 @@ class M_Payment_Manual extends CI_Model
                 'type' => $post['payment_method'],
                 'amount' => $courses_price_total,
                 'token' => $post['transaction'],
+                'coupon' => $post['code'],
                 'time' => date('Y-m-d H:i:s'),
                 'status' => 'Pending',
             ])) {

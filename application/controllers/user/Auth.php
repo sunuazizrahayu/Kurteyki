@@ -29,7 +29,7 @@ class Auth extends My_Site{
 			'title' => $this->lang->line('login').' '.$site['title'],
 			'classbody' => 'o-page--center',
 			'site' => $site
-		);
+			);
 
 		$this->load->view('user/auth/login',$data);
 	}
@@ -39,9 +39,28 @@ class Auth extends My_Site{
 		$login = $this->M_Auth->login();
 
 		if (!empty($this->input->post('redirect'))) {
-			$redirect = '?'.http_build_query(['redirect' => $this->input->post('redirect')]);
-			$this->redirect_login = $this->redirect_login.$redirect;
-			$this->redirect_dashboard = urldecode($this->input->post('redirect'));
+
+			$redirect_url = $this->input->post('redirect');
+			$redirect_status = false;
+
+			if(filter_var($redirect_url, FILTER_VALIDATE_URL)) {
+
+				$redirect_url = parse_url($redirect_url);
+				$myurl = parse_url(base_url());
+
+				if ($redirect_url['host'] == $myurl['host']) {
+					$redirect_url = $this->input->post('redirect');
+					$redirect_status = true;
+				}
+			}
+
+			if ($redirect_status) {
+				$redirect = '?'.http_build_query(['redirect' => $redirect_url]);
+				$this->redirect_login = $this->redirect_login.$redirect;
+				$this->redirect_dashboard = urldecode($redirect_url);
+			}else {
+				$this->redirect_dashboard = base_url($this->redirect_dashboard);
+			}
 		}else{
 			$this->redirect_dashboard = base_url($this->redirect_dashboard);
 		}
@@ -52,7 +71,7 @@ class Auth extends My_Site{
 				'message' => true,
 				'message_type' => 'warning',
 				'message_text' => $this->lang->line('invalid_csrf'),
-			]);
+				]);
 
 			redirect(base_url($this->redirect_login));
 
@@ -66,7 +85,7 @@ class Auth extends My_Site{
 				'message' => true,
 				'message_type' => 'danger',
 				'message_text' => $this->lang->line('failed_login'),
-			]);
+				]);
 
 			redirect(base_url($this->redirect_login));
 		}
@@ -89,7 +108,7 @@ class Auth extends My_Site{
 					'message' => true,
 					'message_type' => 'warning',
 					'message_text' => $this->lang->line('invalid_csrf'),
-				]);
+					]);
 
 				redirect(base_url($this->redirect_register));
 			}elseif ($register == 'success') {
@@ -98,17 +117,17 @@ class Auth extends My_Site{
 					'message' => true,
 					'message_type' => 'success',
 					'message_text' => $this->lang->line('success_register'),
-				]);
+					]);
 
 				redirect(base_url($this->redirect_login));
 
 			}else{
-				
+
 				$this->session->set_flashdata([
 					'message' => true,
 					'message_type' => 'warning',
 					'message_text' => $this->lang->line('failed_create'),
-				]);
+					]);
 
 				redirect(base_url($this->redirect_register));
 			}
@@ -123,7 +142,7 @@ class Auth extends My_Site{
 				'title' => $this->lang->line('register').' '.$site['title'],
 				'classbody' => 'o-page--center',
 				'site' => $site
-			);
+				);
 
 			$this->load->view('user/auth/register',$data);
 		}		
@@ -134,7 +153,7 @@ class Auth extends My_Site{
 		$logout = $this->M_Auth->logout();
 
 		if ($logout == 'success') {
-			redirect(base_url());
+			redirect(base_url('auth'));
 		}
 	}
 

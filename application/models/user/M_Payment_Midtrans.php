@@ -3,6 +3,8 @@
 class M_Payment_Midtrans extends CI_Model
 {
 
+    public $table_lms_coupon = 'tb_lms_coupon';
+    
     public $table_lms_user_payment = 'tb_lms_user_payment';	
     public $table_lms_user_courses = 'tb_lms_user_courses';
 
@@ -90,14 +92,19 @@ class M_Payment_Midtrans extends CI_Model
         $id_courses = explode('C', $id_order)[1];
         $id_courses = explode('T', $id_courses)[0];
 
+        $check_coupon = $this->_Process_MYSQL->get_data($this->table_lms_coupon,[
+            'code' => $post['coupon']
+            ])->num_rows();
+
         $post_data = [
         'id' => $post['order_id'],
         'id_user' => $this->session->userdata('id_user'),
         'id_courses' => $id_courses,			
-        // 'id_courses_user' => $post['id_courses_user'],         
+        'id_courses_user' => $post['id_courses_user'],
         'type' => $post['payment_type'],
         'amount' => (int)$post['gross_amount'],
         'token' => $post['token'],
+        'coupon' => ($check_coupon > 0 ? $post['coupon'] : ''),        
         'time' => $post['transaction_time'],
         'status' => $post['transaction_status'],
         ];

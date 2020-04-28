@@ -12,8 +12,7 @@ class My_error extends CI_Controller {
 	public function index(){
 		
 		$this->output->set_status_header('404'); 
-		echo "exit";
-		// base_url(redirect());		
+		$this->load->view('errors/error404');
 	}
 
 }

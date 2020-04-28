@@ -20,11 +20,15 @@ class Courses extends My_Lms{
 		$courses = $this->M_Courses->data_course($site,$slug);
 
 		$data = [		
-			'site' => $site,
-			'template' => $template,
-			'widget' => $widget,			
-			'courses' => $courses
+		'site' => $site,
+		'template' => $template,
+		'widget' => $widget,			
+		'courses' => $courses
 		];
+
+		if ($this->session->userdata('order-status-'.$courses['id'])) {
+			$this->session->unset_userdata('order-status-'.$courses['id']);
+		}
 
 		$this->load->view('lms/'.$template['name'].'/courses/index', $data);
 	}

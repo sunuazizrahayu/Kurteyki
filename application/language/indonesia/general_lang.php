@@ -103,7 +103,7 @@ $lang['last'] = '>>';
 $lang['next'] = '>';
 $lang['prev'] = '<';
 
-$lang['show_all'] = 'Tampilan Semua';
+$lang['show_all'] = 'Tampilkan Semua';
 
 /*
 |--------------------------------------------------------------------------

@@ -6,16 +6,10 @@
 <div class="col-12 u-mv-small">
 
     <div class="c-card c-card--responsive h-100vh u-p-zero">
-        <div class="c-card__header c-card__header--transparent"> 
-            <button data-title="are you sure ?" data-text="actived selected user" title="Active User Multiple" value="active" class="c-btn--custom c-btn--small c-btn c-btn--info u-mr-xsmall action-multiple btn-opsi">
-                <i class="fa fa-check"></i>
-            </button>                    
-            <button data-title="are you sure ?" data-text="block selected user" title="Block User Multiple" value="block" class="c-btn--custom c-btn--small c-btn c-btn--warning u-mr-xsmall action-multiple btn-opsi">
-                <i class="fa fa-ban"></i>
-            </button>            
-            <button data-title="are you sure ?" data-text="to delete selected item" title="Delete Multiple" value="delete" class="c-btn--custom c-btn--small c-btn c-btn--danger action-multiple btn-opsi">
-                <i class="fa fa-trash"></i>
-            </button>
+    <div class="c-card__header c-card__header--transparent o-line"> 
+            <button class="c-btn--custom c-btn--small c-btn c-btn--success action-refresh">
+                <i class="fa fa-refresh"></i>
+            </button>        
         </div>
         <div class="c-card__body">
 
@@ -24,7 +18,7 @@
             <form id='form-multiple' action="<?php echo base_url('app/user_invoice/process_multiple') ?>" method="post">
 
                 <div class="c-table-responsive">
-                    <table data-mysearch="Search..." data-myorder='3' data-myurl="<?php echo base_url('app/user_invoice/datatables') ?>" class="c-table c-table--highlight u-hidden" id="table">
+                    <table data-mysearch="Search..." data-myorder='5' data-myurl="<?php echo base_url('app/user_invoice/datatables') ?>" class="c-table c-table--highlight u-hidden" id="table">
                         <caption class="c-table__title cst-table">
                         </caption>
 
@@ -36,8 +30,9 @@
                                         <label class="c-choice__label" for="checkbox-all"></label>
                                     </div>
                                 </th>
-                                <th class="c-table__cell c-table__cell--head none">id</th>
+                                <th class="c-table__cell c-table__cell--head all">id</th>
                                 <th class="c-table__cell c-table__cell--head no-sort all">invoice</th> 
+                                <th class="c-table__cell c-table__cell--head all">transaction</th>
                                 <th class="c-table__cell c-table__cell--head all">amount</th>
                                 <th class="c-table__cell c-table__cell--head all">created</th>
                                 <th class="c-table__cell c-table__cell--head no-sort all u-text-center">tools</th>

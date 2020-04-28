@@ -55,17 +55,14 @@ password: kurteyki
 
 ## Work List
 
-* payment method, manual payment choice.
-* Coupon Code (Not Perfect)
 * Multiple user > instructor for lms
-* Review lms
+* Review lms by user
 * user register vertivication...
 * cookie setting
 
 ## Bug
 
-* when multiple user process on app.
-* currency format 
+* currency format on settings page
 * language english
 * when order using coupon and transaction using midtrans, coupon code will reuse again...
 

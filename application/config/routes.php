@@ -65,6 +65,7 @@ $route['auth'] = 'user/auth/index';
 $route['auth/process'] = 'user/auth/process_login';
 $route['auth/register'] = 'user/auth/register';
 $route['auth/register/process'] = 'user/auth/process_register';
+$route['auth/process_logout'] = 'user/auth/process_logout';
 
 # payment
 $route['payment/order/(:any)'] = 'user/payment/order/$1';
@@ -80,6 +81,11 @@ $route['payment/confirmation/(:any)'] = 'user/payment/confirmation/$1';
 
 $route['payment/process_midtrans'] = 'user/payment/process_midtrans';
 $route['payment/notification_midtrans'] = 'user/payment/notification_midtrans';
+
+
+# handling default controller user
+$route['user/auth(.*)'] = 'My_error'; 
+$route['user/payment(.*)'] = 'My_error';
 
 /*
 |--------------------------------------------------------------------------
@@ -99,6 +105,13 @@ $route['courses-lesson/(:any)/(:any)/(:any)'] = 'lms/Lesson/index/$1/$2/$3';
 
 # lesson search
 $route['courses-search'] = 'lms/Search/index/';
+
+# handling default controller lms
+$route['lms/category(.*)'] = 'My_error'; 
+$route['lms/courses(.*)'] = 'My_error'; 
+$route['lms/homepage(.*)'] = 'My_error'; 
+$route['lms/lesson(.*)'] = 'My_error'; 
+$route['lms/search(.*)'] = 'My_error'; 
 
 /*
 |--------------------------------------------------------------------------
@@ -122,6 +135,12 @@ $route['blog-search'] = 'blog/Search/index/';
 # blog post
 $route['blog-post/(:any)'] = 'blog/Post/index/$1';
 
+# handling default controller blog
+$route['blog/category(.*)'] = 'My_error'; 
+$route['blog/homepage(.*)'] = 'My_error'; 
+$route['blog/post(.*)'] = 'My_error'; 
+$route['blog/search(.*)'] = 'My_error'; 
+$route['blog/tags(.*)'] = 'My_error'; 
 
 /*
 |--------------------------------------------------------------------------
@@ -148,6 +167,12 @@ $route['root\.xml'] = 'site/Sitemap/sitemap_root';
 $route['sitemap-courses-(:any)\.xml'] = 'site/Sitemap/sitemap_courses/$1';
 $route['sitemap-blog-post-(:any)\.xml'] = 'site/Sitemap/sitemap_blog_post/$1';
 $route['sitemap-pages-(:any)\.xml'] = 'site/Sitemap/sitemap_pages/$1';
+
+# handling default controller site
+$route['site/feeds(.*)'] = 'My_error'; 
+$route['site/pages(.*)'] = 'My_error'; 
+$route['site/sitemap(.*)'] = 'My_error'; 
+$route['site/txt(.*)'] = 'My_error'; 
 
 /*
 |--------------------------------------------------------------------------
