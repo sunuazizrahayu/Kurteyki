@@ -32,7 +32,7 @@ class M_Payment extends CI_Model
         $check_user_courses = $this->_Process_MYSQL->get_data($this->table_lms_user_courses,[
             'id_courses' => $read_courses['id'],
             'id_user' => $this->session->userdata('id_user'),
-            ])->num_rows();
+        ])->num_rows();
 
         if ($check_user_courses > 0) redirect(base_url());
 
@@ -59,7 +59,7 @@ class M_Payment extends CI_Model
         if ($site['payment_method'] == 'Manual') {
             $user_payment['payment'] = json_decode($this->_Process_MYSQL->get_data($this->table_user,[
                 'id' => $read_courses['id_user']
-                ])->row()->payment,true);
+            ])->row()->payment,true);
 
             $all_data = array_merge($all_courses,$lesson,$user_payment);
         }elseif ($site['payment_method'] == 'Midtrans') {
@@ -75,10 +75,17 @@ class M_Payment extends CI_Model
         $read_payment = $this->_Process_MYSQL->get_data($this->table_lms_user_payment,['id' => $id_order])->row_array();
 
         $post_data = [
-        'id_user' => $read_payment['id_user'],
-        'id_courses' => $read_payment['id_courses'],
+            'id_user' => $read_payment['id_user'],
+            'id_courses' => $read_payment['id_courses'],
         ];
         $post_data['time'] = date('Y:m:d H:i:s');
+
+        /** update other order courses set to failed */
+        $this->_Process_MYSQL->update_data($this->table_lms_user_payment,['status' => 'Failed'],[
+            'id !=' => $id_order,
+            'id_user' => $read_payment['id_user'],
+            'id_courses' => $read_payment['id_courses']
+        ]);
 
         return $this->_Process_MYSQL->insert_data($this->table_lms_user_courses, $post_data);
     }
@@ -88,8 +95,8 @@ class M_Payment extends CI_Model
         $read_payment = $this->_Process_MYSQL->get_data($this->table_lms_user_payment,['id' => $id_order])->row_array();
 
         $post_data = [
-        'id_user' => $read_payment['id_user'],
-        'id_courses' => $read_payment['id_courses'],
+            'id_user' => $read_payment['id_user'],
+            'id_courses' => $read_payment['id_courses'],
         ];
 
         return $this->_Process_MYSQL->delete_data($this->table_lms_user_courses, $post_data);

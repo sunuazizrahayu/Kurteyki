@@ -68,12 +68,6 @@ class M_Payment_Free extends CI_Model
 
             if ($this->_Process_MYSQL->insert_data($this->table_lms_user_payment, $post_data)) {
 
-                $this->_Process_MYSQL->update_data($this->table_lms_user_payment,['status' => 'Failed'],[
-                    'id !=' => $order_id,
-                    'id_user' => $id_user,
-                    'id_courses' => $courses_id
-                    ]);
-
                 if ($this->M_Payment->insert_purchased_courses($order_id)) {
                     return true;
                 }
