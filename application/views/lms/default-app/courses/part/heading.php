@@ -45,15 +45,15 @@
                                                     <?php echo $courses['price_total'] ?>
                                                 <?php endif ?>
                                                 <?php if (empty($courses['discount'])): ?>
-                                                   <?php echo $courses['price_total'] ?>
-                                               <?php endif ?>
-                                           </div>
-                                       <?php endif ?>
-                                   <?php endif ?>
-                               </div>
-                           </div>
+                                                 <?php echo $courses['price_total'] ?>
+                                             <?php endif ?>
+                                         </div>
+                                     <?php endif ?>
+                                 <?php endif ?>
+                             </div>
+                         </div>
 
-                           <div class="col-12 col-lg-4">
+                         <div class="col-12 col-lg-4">
                             <div class="c-state-card u-m-zero u-p-small" data-mh="state-cards" style="height: 62px;">
                                 <div class="c-state-card__icon c-state-card__icon--info" style="width: 30px;height: 30px;">
                                     <i class="fa fa-eye"></i>

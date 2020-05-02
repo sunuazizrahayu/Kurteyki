@@ -6,8 +6,8 @@ class M_Setting_Payment extends CI_Model
 	public $table_user = 'tb_user';
 
 	public function read_data(){
-		$read = $this->_Process_MYSQL->read_data($this->table_user, 'id', $this->session->userdata('id'))->row_array();      
 
+		$read = $this->_Process_MYSQL->get_data($this->table_user,['id' => $this->session->userdata('id')])->row_array();
 		$read = json_decode($read['payment'],true);	
 
 		return $read;

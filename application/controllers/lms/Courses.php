@@ -30,6 +30,13 @@ class Courses extends My_Lms{
 			$this->session->unset_userdata('order-status-'.$courses['id']);
 		}
 
+		/* if have param review-page and access with out ajax > redirect */
+		if ($this->input->get('review-page')) {
+			if (!$this->input->is_ajax_request()) {
+				redirect(base_url());
+			}
+		}
+
 		$this->load->view('lms/'.$template['name'].'/courses/index', $data);
 	}
 

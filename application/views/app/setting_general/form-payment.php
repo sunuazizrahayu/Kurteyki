@@ -3,6 +3,15 @@
 	<div class="col-lg-12">
 
 		<div class="c-field u-mb-medium u-ph-medium">
+			<label class="c-field__label">Currency Format</label>
+			<select required="" name="currency_format" class="c-select select2">
+				<option></option>
+				<option value="IDR" <?php echo ($site['currency_format'] == 'IDR') ? 'selected' : ''; ?>>IDR</option>
+				<option value="USD" <?php echo ($site['currency_format'] == 'USD') ? 'selected' : ''; ?>>USD</option>
+			</select>
+		</div>	
+
+		<div class="c-field u-mb-medium u-ph-medium">
 			<label class="c-field__label">Payment Method</label>
 			<select required="" name="payment_method" class="c-select select2 select-payment">
 				<option></option>

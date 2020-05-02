@@ -21,10 +21,13 @@ class M_Site extends CI_Model
 			$site[$data_site['type']] = $data_site['data'];
 		}
 
+
 		$site['image'] = base_url('storage/images/'.$site['image']);
 		$site['blog_comment'] = json_decode($site['blog_comment'],true);
-		$site['payment_midtrans'] = json_decode($site['payment_midtrans'],true);		
-		
+		$site['payment_midtrans'] = json_decode($site['payment_midtrans'],true);
+		$site['cookie_notification'] = json_decode($site['cookie_notification'],true);
+		$site['google_recaptcha'] = json_decode($site['google_recaptcha'],true);
+				
 		return $site;
 	}
 

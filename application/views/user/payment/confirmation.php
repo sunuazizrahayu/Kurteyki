@@ -5,7 +5,22 @@
 <form method="POST" enctype="multipart/form-data">
 	<div class="container u-mt-medium">                   
 		<div class="row">
-			<div class="col-12 col-xl-6 offset-xl-3">    
+			<div class="col-12 col-xl-6 offset-xl-3">  
+
+				<?php  
+				if ($this->session->flashdata('message')) {
+					if ($this->session->flashdata('message') == TRUE) {
+						?>
+
+						<!-- alert-automatic -->
+						<div class="c-alert c-alert--<?php echo $this->session->flashdata('message_type') ?>">
+							<?php echo $this->session->flashdata('message_text') ?>     
+						</div>
+
+						<?php
+					}
+				}
+				?>  
 
 				<div class="c-card u-p-medium u-mb-small u-text-center">  
 
@@ -31,7 +46,7 @@
 						<tbody class="c-table__head">
 							<tr class="c-table__row">
 								<td class="c-table__cell c-table__cell--head u-text-center" colspan="2">
-									<img src="<?php echo base_url('storage/assets/user/img/'.$confirmation['transaction_type'].'.png') ?>" alt="demo123">
+									<img src="<?php echo base_url('storage/assets/user/img/'.$confirmation['transaction_type'].'.png') ?>" alt="transaction">
 								</td>
 							</tr>
 							<tr class="c-table__row">
@@ -73,6 +88,9 @@
 
 						<div class="u-mb-small">
 							<img style="width:250px" class="file-return" src="<?php echo base_url('storage/assets/user/img/proof-default.jpg') ?>" alt="proof">
+							<div>
+								format gambar yang dibolehkan (jpg, jpeg, png)
+							</div>
 						</div>
 
 						<input name="proof" class="custom-input-file" id="my-file" type="file">

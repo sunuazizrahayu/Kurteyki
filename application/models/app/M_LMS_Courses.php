@@ -42,7 +42,10 @@ class M_LMS_Courses extends CI_Model
             ');
         $this->datatables->from($this->table_lms_courses);
         // $this->datatables->join($this->table_lms_category, 'tb_lms_courses.id_category = tb_lms_category.id', 'LEFT');
-        $this->datatables->join($this->table_lms_category, 'tb_lms_courses.id_sub_category = tb_lms_category.id', 'LEFT');        
+        $this->datatables->join($this->table_lms_category, 'tb_lms_courses.id_sub_category = tb_lms_category.id', 'LEFT');  
+        if ($this->session->userdata('app_grade') == 'Instructor') {
+            $this->datatables->where('tb_lms_courses.id_user', $this->session->userdata('id'));
+        }      
         $this->datatables->group_by('tb_lms_courses.id');
         $this->datatables->add_column('checkbox', '
             <td>
@@ -141,6 +144,7 @@ class M_LMS_Courses extends CI_Model
         if (empty($this->input->post('id'))) {
 
             $post_merge = array(
+                'id_user' => $this->session->userdata('id'),
                 'time' => date('Y-m-d H:i:s'),
                 );
 
@@ -195,7 +199,13 @@ class M_LMS_Courses extends CI_Model
     }     
 
     public function data_update($id){
-        return $this->_Process_MYSQL->get_data($this->table_lms_courses,['id' => $id])->row_array();
+        $read = $this->_Process_MYSQL->get_data($this->table_lms_courses,['id' => $id])->row_array();
+
+        if ($read['id_user'] == $this->session->userdata('id')) {
+            return $read;
+        }else{
+            redirect(base_url('app/lms_courses'));
+        }
     }
 
     public function process_create(){
@@ -207,13 +217,18 @@ class M_LMS_Courses extends CI_Model
     }       
 
     public function process_delete($id){
-        if ($this->_Process_MYSQL->delete_data($this->table_lms_courses, array('id' => $id)) == true) {
-            $this->_Process_MYSQL->delete_data($this->table_lms_courses_section, array('id_courses' => $id));
-            $this->_Process_MYSQL->delete_data($this->table_lms_courses_lesson, array('id_courses' => $id));
-            return true;
-        } else {
-            return false;
+
+        /* check owned courses */
+        if ($this->data_update($id)) {
+            if ($this->_Process_MYSQL->delete_data($this->table_lms_courses, array('id' => $id)) == true) {
+                $this->_Process_MYSQL->delete_data($this->table_lms_courses_section, array('id_courses' => $id));
+                $this->_Process_MYSQL->delete_data($this->table_lms_courses_lesson, array('id_courses' => $id));
+                return true;
+            } else {
+                return false;
+            }
         }
+
     }
 
     public function process_multiple_update($data){
@@ -254,9 +269,12 @@ class M_LMS_Courses extends CI_Model
     }   
 
     public function process_section_delete($id) {
+        $read = $this->_Process_MYSQL->get_data($this->table_lms_courses_section,['id' => $id])->row_array();
 
-        if ($this->_Process_MYSQL->delete_data($this->table_lms_courses_section, array('id' => $id))) {
-            return $this->_Process_MYSQL->delete_data($this->table_lms_courses_lesson, array('id_section' => $id));
+        if ($this->data_update($read['id_courses'])) { /* check if user have this courses */
+            if ($this->_Process_MYSQL->delete_data($this->table_lms_courses_section, array('id' => $id))) {
+                return $this->_Process_MYSQL->delete_data($this->table_lms_courses_lesson, array('id_section' => $id));
+            }
         }
 
     }
@@ -289,9 +307,12 @@ class M_LMS_Courses extends CI_Model
             tb_lms_courses.title as course_title            
             ")
         ->from($this->table_lms_courses_section)
-        ->join($this->table_lms_courses,'tb_lms_courses_section.id_courses = tb_lms_courses.id','LEFT OUTER')        
+        ->join($this->table_lms_courses,'tb_lms_courses_section.id_courses = tb_lms_courses.id','LEFT OUTER')
         ->where('tb_lms_courses_section.id',$id_section)
+        ->where('tb_lms_courses.id_user',$this->session->userdata('id'))        
         ->get()->row_array();
+
+        if (empty($data)) redirect(base_url('app/lms_courses'));
 
         return $data;            
     }
@@ -314,8 +335,13 @@ class M_LMS_Courses extends CI_Model
         return $this->_Process_MYSQL->insert_data($this->table_lms_courses_lesson,$this->data_lesson_post(),true);
     }
 
-    public function data_lesson_update($id){
-        return $this->_Process_MYSQL->get_data($this->table_lms_courses_lesson, ['id' => $id])->row_array();
+    public function data_lesson_update($id_section,$id){
+        $read = $this->_Process_MYSQL->get_data($this->table_lms_courses_lesson, ['id' => $id])->row_array();
+
+        if (empty($read)) redirect(base_url('app/lms_courses'));
+        if ($read['id_section'] != $id_section) redirect(base_url('app/lms_courses'));
+
+        return $read;            
     }
 
     public function process_lesson_update(){
@@ -323,7 +349,12 @@ class M_LMS_Courses extends CI_Model
     }   
 
     public function process_lesson_delete($id) {
-        return $this->_Process_MYSQL->delete_data($this->table_lms_courses_lesson, array('id' => $id));
+
+        $read = $this->_Process_MYSQL->get_data($this->table_lms_courses_lesson,['id' => $id])->row_array();
+
+        if ($this->data_update($read['id_courses'])) { /* check if user have this courses */
+            return $this->_Process_MYSQL->delete_data($this->table_lms_courses_lesson, array('id' => $id));
+        }
     }    
 
     public function process_lesson_sort(){

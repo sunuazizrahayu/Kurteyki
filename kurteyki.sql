@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 28, 2020 at 06:30 AM
+-- Generation Time: May 02, 2020 at 07:38 AM
 -- Server version: 10.1.38-MariaDB
 -- PHP Version: 7.3.3
 
@@ -49,7 +49,7 @@ CREATE TABLE `tb_blog_post` (
 --
 
 INSERT INTO `tb_blog_post` (`id`, `id_user`, `title`, `permalink`, `image`, `time`, `updated`, `id_category`, `id_tags`, `content`, `description`, `views`, `status`) VALUES
-(1, 1, 'Konten Baru dan Rencana Kedepannya Situs ini', 'konten-baru-dan-rencana-kedepannya-situs-ini', 'images/banner.png', '2020-03-21 18:44:00', '2020-04-15 18:13:46', '3', '0', '&lt;p&gt;Sudah 6 bulan berlalu dan kini saya akan mengaktifkan situs ini menjadi sebuah blog. situs ini nantinya akan dipenuhi dengan tulisan tentang pengembangan diri.&lt;/p&gt;\r\n\r\n&lt;p&gt;alasan saya menuliskan tentang pengembangan diri di situs ini adalah untuk mencatat apa saja yang telah saya pelajari tentang pengembangan diri dan mungkin bisa berguna untuk para pembaca sekalian.&lt;/p&gt;\r\n\r\n&lt;p&gt;sedikit gambaran tentang pengembangan diri, jadi pengembangan diri menurut saya itu seperti mengasah kemampuan diri untuk menjalani hidup ini. dengan adanya pemahaman tentang skill hidup maka untuk menjalani kehidupan ini juga kita akan selalu merasa mudah.&lt;/p&gt;\r\n', '', 6, 'Published');
+(1, 1, 'Konten Baru dan Rencana Kedepannya Situs ini', 'konten-baru-dan-rencana-kedepannya-situs-ini', 'images/banner.png', '2020-03-21 18:44:00', '2020-04-15 18:13:46', '3', '0', '&lt;p&gt;Sudah 6 bulan berlalu dan kini saya akan mengaktifkan situs ini menjadi sebuah blog. situs ini nantinya akan dipenuhi dengan tulisan tentang pengembangan diri.&lt;/p&gt;\r\n\r\n&lt;p&gt;alasan saya menuliskan tentang pengembangan diri di situs ini adalah untuk mencatat apa saja yang telah saya pelajari tentang pengembangan diri dan mungkin bisa berguna untuk para pembaca sekalian.&lt;/p&gt;\r\n\r\n&lt;p&gt;sedikit gambaran tentang pengembangan diri, jadi pengembangan diri menurut saya itu seperti mengasah kemampuan diri untuk menjalani hidup ini. dengan adanya pemahaman tentang skill hidup maka untuk menjalani kehidupan ini juga kita akan selalu merasa mudah.&lt;/p&gt;\r\n', '', 8, 'Published');
 
 -- --------------------------------------------------------
 
@@ -237,9 +237,10 @@ CREATE TABLE `tb_lms_coupon` (
 --
 
 INSERT INTO `tb_lms_coupon` (`id`, `code`, `expired`, `type`, `data`, `for`) VALUES
-(1, '123', '2020-04-27 07:52:00', 'Percent', '100', 'all-product'),
+(1, 'KELASONYE', '2020-05-02 07:52:00', 'Percent', '50', 'all-product'),
 (2, '1234', '2020-04-29 00:00:00', 'Price', '50000', 'all-product'),
-(3, 'KELASBABI', '2020-04-29 09:14:00', 'Percent', '100', 'all-product');
+(3, 'KELASBABI', '2020-05-02 09:14:00', 'Percent', '100', 'all-product'),
+(4, 'kelasotan', '2020-05-02 07:56:00', 'Percent', '100', 'all-product');
 
 -- --------------------------------------------------------
 
@@ -270,9 +271,14 @@ CREATE TABLE `tb_lms_courses` (
 --
 
 INSERT INTO `tb_lms_courses` (`id`, `id_user`, `title`, `permalink`, `image`, `description`, `faq`, `id_category`, `id_sub_category`, `time`, `updated`, `price`, `discount`, `views`, `status`) VALUES
-(1, 1, 'Pengetahuan untuk menjadi manusia berbakat', 'ilmu-dari-adam-khoo', 'images/banner.png', '&lt;p&gt;materi ini saya ambil dari buku karya adam khoo yang berjudul i am gifted so are you, buku ini mengajarkan banyak hal bagaimana cara menjadi pribadi yang berbakat. didalam buku ini banyak sekali ilmu yang bisa diterapkan untuk pelajar, membangun keyakinan diri, cita-cita, mengatur waktu dan lain sebagainya.&lt;/p&gt;\r\n\r\n&lt;p&gt;didalam kursus ini hanya berisi ringkasan singkat dari buku yang ada.&amp;nbsp;materi yang saya sampaikan menggunakan gaya bahasa dari apa yang saya pahami, untuk mendapatkan informasi lebih lengkap tentang buku ini anda bisa membeli bukunya di toko buku.&lt;/p&gt;\r\n', '', '1', '3', '2020-04-11 16:53:44', '2020-04-28 06:48:39', 1000000, 250000, 16, 'Published'),
-(2, 1, 'Ilmu Finansial dari Building The Dream', 'ilmu-dari-building-the-dream', 'images/banner.png', '&lt;p&gt;Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.&lt;/p&gt;\r\n', '', '1', '2', '2020-04-11 22:19:25', '2020-04-24 16:06:42', 100000, 0, 7, 'Published'),
-(4, 1, 'asdsadsa', 'asdsadsa', 'asdasdsa', '                                &lt;p&gt;asdsad&lt;/p&gt;\r\n                            ', '                                                            ', '1', '2', '2020-04-24 13:10:24', '2020-04-26 17:41:12', 0, 0, 0, 'Draft');
+(1, 1, 'Pengetahuan untuk menjadi manusia berbakat', 'ilmu-dari-adam-khoo', 'images/banner.png', '&lt;p&gt;materi ini saya ambil dari buku karya adam khoo yang berjudul i am gifted so are you, buku ini mengajarkan banyak hal bagaimana cara menjadi pribadi yang berbakat. didalam buku ini banyak sekali ilmu yang bisa diterapkan untuk pelajar, membangun keyakinan diri, cita-cita, mengatur waktu dan lain sebagainya.&lt;/p&gt;\r\n\r\n&lt;p&gt;didalam kursus ini hanya berisi ringkasan singkat dari buku yang ada.&amp;nbsp;materi yang saya sampaikan menggunakan gaya bahasa dari apa yang saya pahami, untuk mendapatkan informasi lebih lengkap tentang buku ini anda bisa membeli bukunya di toko buku.&lt;/p&gt;\r\n', '', '1', '3', '2020-04-11 16:53:44', '2020-04-28 06:48:39', 1000000, 250000, 19, 'Published'),
+(2, 1, 'Ilmu Finansial dari Building The Dream', 'ilmu-dari-building-the-dream', 'images/1911368.jpg', '&lt;p&gt;Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.&lt;/p&gt;\r\n', '', '1', '2', '2020-04-11 22:19:25', '2020-05-01 08:01:06', 100000, 0, 11, 'Published'),
+(4, 1, 'asdsadsa', 'asdsadsa', 'asdasdsa', '                                &lt;p&gt;asdsad&lt;/p&gt;\r\n                            ', '                                                            ', '1', '2', '2020-04-24 13:10:24', '2020-04-26 17:41:12', 0, 0, 0, 'Draft'),
+(5, 1, 'Terbang melayang keatas', 'terbang-melayang-keatas', 'images/tooopen_sy_21330733728965.jpg', '&lt;p&gt;Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.&lt;/p&gt;\r\n', '&lt;p&gt;Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.&lt;/p&gt;\r\n', '1', '2', '2020-05-01 14:10:08', '2020-05-01 14:36:00', 0, 0, 2, 'Draft'),
+(9, 2, 'Hello Wow', '12312312', 'images/banner.png', '&lt;p&gt;Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.&lt;/p&gt;\r\n', '&lt;p&gt;Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.&lt;/p&gt;\r\n', '1', '2', '2020-05-01 19:18:06', '2020-05-01 19:23:04', 1000000, 0, 2, 'Published'),
+(10, 4, 'Pemain BaseBall', 'pemain-baseball', 'images/banner.png', '&lt;p&gt;Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.&lt;/p&gt;\r\n', '&lt;p&gt;Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.&lt;/p&gt;\r\n', '1', '2', '2020-05-01 20:21:49', NULL, 0, 0, 2, 'Published'),
+(11, 2, 'Brigadidd', 'brigadidd', 'images/banner.png', '&lt;p&gt;Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.&lt;/p&gt;\r\n', '&lt;p&gt;Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.&lt;/p&gt;\r\n', '1', '2', '2020-05-01 23:45:28', NULL, 950000, 100000, 2, 'Published'),
+(12, 2, '多巴胺分泌音樂[2小時] 心情與記憶改善 鋼琴BGM', '2-bgm', 'images/banner.png', '&lt;p&gt;Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.&lt;/p&gt;\r\n', '&lt;p&gt;Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.&lt;/p&gt;\r\n', '1', '3', '2020-05-01 23:47:17', NULL, 250000, 150000, 2, 'Published');
 
 -- --------------------------------------------------------
 
@@ -303,7 +309,11 @@ INSERT INTO `tb_lms_courses_lesson` (`id`, `id_courses`, `id_section`, `title`, 
 (6, 1, 6, 'Penundaan adalah rintangan utama kesuksesan', 'Text', '', 0),
 (7, 1, 3, 'Waktu yang diberikan sama apa yang membedakannya ?', 'Text', '', 0),
 (8, 1, 4, 'Tujuan Hidupmu ? ', 'Text', '', 0),
-(9, 2, 7, 'Kaya yang sebenarnya', 'Text', '', 0);
+(9, 2, 7, 'Kaya yang sebenarnya', 'Text', '', 0),
+(10, 5, 8, 'azziap', 'Image', '<p><img alt=\"\" height=\"426\" src=\"http://localhost/kurteyki/storage/uploads/images/1911368.jpg?1588317027817\" width=\"640\" /></p>\r\n', 0),
+(14, 9, 12, 'Learning by doing', 'Text', '<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>\r\n', 0),
+(15, 11, 13, 'Lesson', 'Image', '<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>\r\n', 0),
+(16, 12, 14, '多巴胺分泌音樂[2小時] 心情與記憶改善 鋼琴BGM', 'Video', '<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>\r\n\r\n<p><iframe allowfullscreen=\"\" frameborder=\"0\" height=\"360\" src=\"https://www.youtube.com/embed/GR8K_ch-DN8\" width=\"640\"></iframe></p>\r\n', 0);
 
 -- --------------------------------------------------------
 
@@ -329,7 +339,11 @@ INSERT INTO `tb_lms_courses_section` (`id`, `id_courses`, `title`, `order`) VALU
 (4, 1, 'Merancang Tujuan Hidup', 3),
 (5, 1, 'Emosi adalah sumber Motivasi', 6),
 (6, 1, 'Meninggalkan Penundaan', 5),
-(7, 2, 'Kecerdasan Finansial', 0);
+(7, 2, 'Kecerdasan Finansial', 0),
+(8, 5, 'wow', 0),
+(12, 9, 'Chapter 1', 0),
+(13, 11, 'Section', 0),
+(14, 12, 'Section 1', 0);
 
 -- --------------------------------------------------------
 
@@ -384,8 +398,7 @@ CREATE TABLE `tb_lms_user_courses` (
 --
 
 INSERT INTO `tb_lms_user_courses` (`id`, `id_user`, `id_courses`, `time`) VALUES
-(1, 24, 1, '2020-04-28 09:39:13'),
-(2, 24, 2, '2020-04-28 09:41:28');
+(1, 6, 12, '2020-05-02 08:38:47');
 
 -- --------------------------------------------------------
 
@@ -426,11 +439,13 @@ CREATE TABLE `tb_lms_user_payment` (
 --
 
 INSERT INTO `tb_lms_user_payment` (`id`, `id_user`, `id_courses`, `id_courses_user`, `type`, `amount`, `token`, `proof`, `coupon`, `time`, `updated`, `status`) VALUES
-('23C1T200428101551', 23, 1, 1, 'cstore', '750000', 'cd208e21-ba2c-40aa-b563-c1da28c5e359', '', '', '2020-04-28 10:16:05', '0000-00-00 00:00:00', 'Pending'),
-('23C1T200428101838', 23, 1, 1, 'cstore', '700000', '0a88748e-f8e7-4f4d-8e7b-804755fc8936', '', '1234', '2020-04-28 10:18:46', '0000-00-00 00:00:00', 'Pending'),
-('23C1T200428102312', 23, 1, 1, 'Manual', '750000', 'bri', '{\"file\":\"23C1T200428102312_confirmation_20200428102331.png\",\"sender\":\"ahahahay mntap\"}', '', '2020-04-28 10:23:12', '0000-00-00 00:00:00', 'Checking'),
-('23C2T200428101142', 23, 2, 1, 'cstore', '50000', '939777ea-d9be-44cb-a609-1d18a27577d6', '', '12341', '2020-04-28 10:11:51', '0000-00-00 00:00:00', 'Pending'),
-('23C2T200428101458', 23, 2, 1, 'cstore', '100000', '0a3fcde1-2c2a-4efb-b5bc-d6a07f74cea1', '', '', '2020-04-28 10:15:42', '0000-00-00 00:00:00', 'Pending');
+('3C11T200502002856', 3, 11, 2, 'Manual', '850000', 'bca', '{\"file\":\"3C11T200502002856_confirmation_20200502002902.png\",\"sender\":\"asdsadsa\"}', '', '2020-05-02 00:28:56', '2020-05-02 06:44:30', 'Failed'),
+('3C12T200502002838', 3, 12, 2, 'Manual', '100000', 'bca', '{\"file\":\"3C12T200502002838_confirmation_20200502002845.png\",\"sender\":\"asdsada\"}', '', '2020-05-02 00:28:38', '2020-05-02 06:44:26', 'Failed'),
+('3C12T200502063324', 3, 12, 2, 'Manual', '100000', 'bca', '{\"file\":\"3C12T200502063324_confirmation_20200502063335.png\",\"sender\":\"sss\"}', '', '2020-05-02 06:33:24', '2020-05-02 06:44:44', 'Failed'),
+('3C2T200502002950', 3, 2, 1, 'Manual', '100000', 'bri', '{\"file\":\"3C2T200502002950_confirmation_20200502002955.png\",\"sender\":\"ss\"}', '', '2020-05-02 00:29:50', '2020-05-02 06:44:39', 'Failed'),
+('3C9T200502002931', 3, 9, 2, 'Manual', '1000000', 'bca', '{\"file\":\"3C9T200502002931_confirmation_20200502002936.png\",\"sender\":\"asdsa\"}', '', '2020-05-02 00:29:31', '2020-05-02 06:44:35', 'Failed'),
+('6C12T200502083106', 6, 12, 2, 'Manual', '100000', 'bca', '{\"file\":\"6C12T200502083106_confirmation_20200502083112.png\",\"sender\":\"asdasd\"}', '', '2020-05-02 08:31:06', '0000-00-00 00:00:00', 'Failed'),
+('6C12T200502083847', 6, 12, 2, 'Manual', '', 'free', '', 'kelasbabi', '2020-05-02 08:38:47', '2020-05-02 08:38:47', 'Purchased');
 
 -- --------------------------------------------------------
 
@@ -442,9 +457,17 @@ CREATE TABLE `tb_lms_user_review` (
   `id` int(255) NOT NULL,
   `id_courses` int(255) NOT NULL,
   `id_user` int(255) NOT NULL,
+  `rating` varchar(10) NOT NULL,
   `review` text NOT NULL,
   `time` datetime NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `tb_lms_user_review`
+--
+
+INSERT INTO `tb_lms_user_review` (`id`, `id_courses`, `id_user`, `rating`, `review`, `time`) VALUES
+(1, 12, 6, '5', 'aaaa', '2020-05-02 08:38:59');
 
 -- --------------------------------------------------------
 
@@ -458,6 +481,17 @@ CREATE TABLE `tb_lms_user_wishlist` (
   `id_courses` int(255) NOT NULL,
   `time` datetime NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `tb_lms_user_wishlist`
+--
+
+INSERT INTO `tb_lms_user_wishlist` (`id`, `id_user`, `id_courses`, `time`) VALUES
+(1, 3, 12, '2020-05-02 06:35:11'),
+(2, 3, 11, '2020-05-02 06:35:13'),
+(3, 3, 9, '2020-05-02 06:35:20'),
+(4, 3, 2, '2020-05-02 06:35:24'),
+(5, 3, 1, '2020-05-02 06:35:27');
 
 -- --------------------------------------------------------
 
@@ -479,8 +513,10 @@ INSERT INTO `tb_site` (`type`, `data`) VALUES
 ('blog_comment', '{\"type\":\"disqus\",\"disqus_shortname\":\"kurteyki\",\"disqus_developer\":\"1\",\"moderate\":\"false\",\"message\":\"Komentar diblokir\"}'),
 ('blog_limit_post', '9'),
 ('cache', 'No'),
+('cookie_notification', '{\"status\":\"Yes\",\"message\":\"Situs web ini menggunakan cookie untuk mempersonalisasi konten dan menganalisis lalu lintas untuk menawarkan pengalaman yang lebih baik kepada Anda.\"}'),
 ('currency_format', 'IDR'),
 ('description', 'Ilmu Pengembangan Diri untuk Hidup yang lebih baik.'),
+('google_recaptcha', '{\r\n  \"status\":\"Yes\",\r\n  \"site_key\":\"6LcNNfEUAAAAAJCUGL5neYNAMHp-I0XGFpFuQO0i\",\r\n  \"secret_key\":\"6LcNNfEUAAAAAM-Sfc1OrWVMekM5c2vjsxsf1_Fi\"\r\n}'),
 ('icon', 'icon_20200408075727.png'),
 ('image', 'logo_20200415181034.png'),
 ('language', 'indonesia'),
@@ -493,7 +529,7 @@ INSERT INTO `tb_site` (`type`, `data`) VALUES
 ('slogan', 'Belajar pengembangan diri.'),
 ('time_zone', 'Asia/Jakarta'),
 ('title', 'Kurteyki'),
-('updated', '2020-04-28 10:26:58'),
+('updated', '2020-05-02 06:11:10'),
 ('user_limit_data', '5');
 
 -- --------------------------------------------------------
@@ -567,94 +603,38 @@ CREATE TABLE `tb_site_visitor` (
 --
 
 INSERT INTO `tb_site_visitor` (`id`, `ip`, `date`, `browser`, `os`, `country_name`, `country_code`, `hits`, `url`, `referrer`) VALUES
-(1, '::1', '2020-04-14 14:09:12', 'Chrome', 'Windows 7', 'Other', 'Other', 68, 'http://localhost/kurteyki/courses-detail/ilmu-dari-adam-khoo', ''),
-(2, '::1', '2020-04-14 14:09:33', 'Chrome', 'Windows 7', 'Other', 'Other', 10, 'http://localhost/kurteyki/courses-lesson/ilmu-dari-adam-khoo/1/1', ''),
-(3, '::1', '2020-04-14 14:09:35', 'Chrome', 'Windows 7', 'Other', 'Other', 78, 'http://localhost/kurteyki/', ''),
-(4, '::1', '2020-04-14 14:22:16', 'Chrome', 'Windows 7', 'Other', 'Other', 11, 'http://localhost/kurteyki/courses-category/karakter', ''),
-(5, '::1', '2020-04-14 14:22:18', 'Chrome', 'Windows 7', 'Other', 'Other', 10, 'http://localhost/kurteyki/courses-category/skill-hidup', ''),
-(6, '::1', '2020-04-14 14:24:26', 'Chrome', 'Windows 7', 'Other', 'Other', 39, 'http://localhost/kurteyki/courses-detail/ilmu-dari-building-the-dream', ''),
-(7, '::1', '2020-04-14 14:25:07', 'Chrome', 'Windows 7', 'Other', 'Other', 5, 'http://localhost/kurteyki/blog', ''),
-(8, '::1', '2020-04-14 21:37:31', 'Chrome', 'Windows 7', 'Other', 'Other', 5, 'http://localhost/kurteyki/blog-post/konten-baru-dan-rencana-kedepannya-situs-ini', ''),
-(9, '::1', '2020-04-14 21:38:24', 'Chrome', 'Windows 7', 'Other', 'Other', 2, 'http://localhost/kurteyki/p/help', ''),
-(10, '::1', '2020-04-14 21:43:38', 'Chrome', 'Windows 7', 'Other', 'Other', 4, 'http://localhost/kurteyki/courses-lesson/ilmu-dari-adam-khoo/1/4', ''),
-(11, '::1', '2020-04-14 21:43:39', 'Chrome', 'Windows 7', 'Other', 'Other', 2, 'http://localhost/kurteyki/courses-lesson/ilmu-dari-adam-khoo/2/3', ''),
-(12, '::1', '2020-04-14 21:43:40', 'Chrome', 'Windows 7', 'Other', 'Other', 2, 'http://localhost/kurteyki/courses-lesson/ilmu-dari-adam-khoo/2/2', ''),
-(13, '::1', '2020-04-14 21:43:41', 'Chrome', 'Windows 7', 'Other', 'Other', 2, 'http://localhost/kurteyki/courses-lesson/ilmu-dari-adam-khoo/4/8', ''),
-(14, '::1', '2020-04-14 21:43:43', 'Chrome', 'Windows 7', 'Other', 'Other', 2, 'http://localhost/kurteyki/courses-lesson/ilmu-dari-adam-khoo/3/7', ''),
-(15, '::1', '2020-04-14 21:43:46', 'Chrome', 'Windows 7', 'Other', 'Other', 3, 'http://localhost/kurteyki/courses-lesson/ilmu-dari-adam-khoo/5/5', ''),
-(16, '::1', '2020-04-14 21:43:47', 'Chrome', 'Windows 7', 'Other', 'Other', 3, 'http://localhost/kurteyki/courses-lesson/ilmu-dari-adam-khoo/6/6', ''),
-(17, '::1', '2020-04-14 22:10:54', 'Chrome', 'Windows 7', 'Other', 'Other', 1, 'http://localhost/kurteyki/p/contact', ''),
-(18, '::1', '2020-04-14 22:19:00', 'Chrome', 'Windows 7', 'Other', 'Other', 1, 'http://localhost/kurteyki/p/about', ''),
-(19, '::1', '2020-04-15 06:09:26', 'Chrome', 'Windows 7', 'Other', 'Other', 168, 'http://localhost/kurteyki/', ''),
-(20, '::1', '2020-04-15 06:09:33', 'Chrome', 'Windows 7', 'Other', 'Other', 70, 'http://localhost/kurteyki/courses-detail/ilmu-dari-building-the-dream', ''),
-(21, '::1', '2020-04-15 06:09:44', 'Chrome', 'Windows 7', 'Other', 'Other', 10, 'http://localhost/kurteyki/courses-category/skill-hidup', ''),
-(22, '::1', '2020-04-15 06:09:59', 'Chrome', 'Windows 7', 'Other', 'Other', 9, 'http://localhost/kurteyki/courses-category/karakter', ''),
-(23, '::1', '2020-04-15 06:10:00', 'Chrome', 'Windows 7', 'Other', 'Other', 77, 'http://localhost/kurteyki/courses-detail/ilmu-dari-adam-khoo', ''),
-(24, '::1', '2020-04-15 06:10:01', 'Chrome', 'Windows 7', 'Other', 'Other', 37, 'http://localhost/kurteyki/courses-lesson/ilmu-dari-adam-khoo/1/1', ''),
-(25, '::1', '2020-04-15 06:10:02', 'Chrome', 'Windows 7', 'Other', 'Other', 14, 'http://localhost/kurteyki/courses-lesson/ilmu-dari-adam-khoo/1/4', ''),
-(26, '::1', '2020-04-15 06:48:45', 'Chrome', 'Windows 7', 'Other', 'Other', 12, 'http://localhost/kurteyki/courses-lesson/ilmu-dari-building-the-dream/7/9', ''),
-(27, '::1', '2020-04-15 07:53:13', 'Chrome', 'Windows 7', 'Other', 'Other', 3, 'http://localhost/kurteyki/blog', ''),
-(28, '::1', '2020-04-15 07:53:15', 'Chrome', 'Windows 7', 'Other', 'Other', 12, 'http://localhost/kurteyki/blog-post/konten-baru-dan-rencana-kedepannya-situs-ini', ''),
-(29, '::1', '2020-04-15 08:23:13', 'Chrome', 'Windows 7', 'Other', 'Other', 1, 'http://localhost/kurteyki/p/privacy-policy', ''),
-(30, '::1', '2020-04-15 18:11:41', 'Chrome', 'Windows 7', 'Other', 'Other', 6, 'http://localhost/kurteyki/courses-lesson/ilmu-dari-adam-khoo/2/2', ''),
-(31, '::1', '2020-04-15 18:11:41', 'Chrome', 'Windows 7', 'Other', 'Other', 6, 'http://localhost/kurteyki/courses-lesson/ilmu-dari-adam-khoo/2/3', ''),
-(32, '::1', '2020-04-15 18:11:42', 'Chrome', 'Windows 7', 'Other', 'Other', 6, 'http://localhost/kurteyki/courses-lesson/ilmu-dari-adam-khoo/4/8', ''),
-(33, '::1', '2020-04-15 18:11:43', 'Chrome', 'Windows 7', 'Other', 'Other', 6, 'http://localhost/kurteyki/courses-lesson/ilmu-dari-adam-khoo/3/7', ''),
-(34, '::1', '2020-04-15 18:11:44', 'Chrome', 'Windows 7', 'Other', 'Other', 6, 'http://localhost/kurteyki/courses-lesson/ilmu-dari-adam-khoo/6/6', ''),
-(35, '::1', '2020-04-15 18:11:45', 'Chrome', 'Windows 7', 'Other', 'Other', 12, 'http://localhost/kurteyki/courses-lesson/ilmu-dari-adam-khoo/5/5', ''),
-(36, '::1', '2020-04-15 18:13:16', 'Chrome', 'Windows 7', 'Other', 'Other', 1, 'http://localhost/kurteyki/blog-tags/news-info', ''),
-(37, '::1', '2020-04-15 18:13:19', 'Chrome', 'Windows 7', 'Other', 'Other', 4, 'http://localhost/kurteyki/blog-category/news', ''),
-(38, '::1', '2020-04-15 18:14:46', 'Chrome', 'Windows 7', 'Other', 'Other', 1, 'http://localhost/kurteyki/p/term-and-condition', ''),
-(39, '::1', '2020-04-22 21:33:06', 'Chrome', 'Windows 7', 'Other', 'Other', 1, 'http://localhost/kurteyki/', ''),
-(40, '::1', '2020-04-24 12:44:47', 'Chrome', 'Windows 7', 'Other', 'Other', 176, 'http://localhost/kurteyki/', ''),
-(41, '::1', '2020-04-24 12:51:04', 'Chrome', 'Windows 7', 'Other', 'Other', 5, 'http://localhost/kurteyki/p/term-and-condition', ''),
-(42, '::1', '2020-04-24 12:51:07', 'Chrome', 'Windows 7', 'Other', 'Other', 10, 'http://localhost/kurteyki/p/about', ''),
-(43, '::1', '2020-04-24 12:51:09', 'Chrome', 'Windows 7', 'Other', 'Other', 4, 'http://localhost/kurteyki/p/contact', ''),
-(44, '::1', '2020-04-24 12:51:12', 'Chrome', 'Windows 7', 'Other', 'Other', 16, 'http://localhost/kurteyki/p/help', ''),
-(45, '::1', '2020-04-24 12:51:14', 'Chrome', 'Windows 7', 'Other', 'Other', 10, 'http://localhost/kurteyki/p/privacy-policy', ''),
-(46, '::1', '2020-04-24 13:43:49', 'Chrome', 'Windows 7', 'Other', 'Other', 38, 'http://localhost/kurteyki/blog-post/konten-baru-dan-rencana-kedepannya-situs-ini', ''),
-(47, '::1', '2020-04-24 13:49:29', 'Chrome', 'Windows 7', 'Other', 'Other', 38, 'http://localhost/kurteyki/courses-detail/ilmu-dari-adam-khoo', ''),
-(48, '::1', '2020-04-24 13:49:31', 'Chrome', 'Windows 7', 'Other', 'Other', 96, 'http://localhost/kurteyki/courses-detail/ilmu-dari-building-the-dream', ''),
-(49, '::1', '2020-04-24 14:43:00', 'Chrome', 'Windows 7', 'Other', 'Other', 6, 'http://localhost/kurteyki/courses-category/skill-hidup', ''),
-(50, '::1', '2020-04-24 14:43:04', 'Chrome', 'Windows 7', 'Other', 'Other', 4, 'http://localhost/kurteyki/courses-category/karakter', ''),
-(51, '::1', '2020-04-24 14:44:26', 'Chrome', 'Windows 7', 'Other', 'Other', 3, 'http://localhost/kurteyki/courses-category/pengembangan-diri', ''),
-(52, '::1', '2020-04-24 14:49:01', 'Chrome', 'Windows 7', 'Other', 'Other', 11, 'http://localhost/kurteyki/blog', ''),
-(53, '::1', '2020-04-24 14:55:11', 'Chrome', 'Windows 7', 'Other', 'Other', 7, 'http://localhost/kurteyki/blog-category/news', ''),
-(54, '::1', '2020-04-25 00:03:52', 'Chrome', 'Windows 7', 'Other', 'Other', 106, 'http://localhost/kurteyki/', ''),
-(55, '::1', '2020-04-25 00:03:54', 'Chrome', 'Windows 7', 'Other', 'Other', 26, 'http://localhost/kurteyki/courses-detail/ilmu-dari-adam-khoo', ''),
-(56, '::1', '2020-04-25 00:03:57', 'Chrome', 'Windows 7', 'Other', 'Other', 39, 'http://localhost/kurteyki/courses-detail/ilmu-dari-building-the-dream', ''),
-(57, '::1', '2020-04-25 00:23:24', 'Chrome', 'Windows 7', 'Other', 'Other', 17, 'http://localhost/kurteyki/blog', ''),
-(58, '::1', '2020-04-25 00:23:27', 'Chrome', 'Windows 7', 'Other', 'Other', 12, 'http://localhost/kurteyki/blog-post/konten-baru-dan-rencana-kedepannya-situs-ini', ''),
-(59, '::1', '2020-04-25 00:33:10', 'Chrome', 'Windows 7', 'Other', 'Other', 3, 'http://localhost/kurteyki/blog-category/news', ''),
-(60, '::1', '2020-04-25 01:10:40', 'Chrome', 'Windows 7', 'Other', 'Other', 1, 'http://localhost/kurteyki/courses-category/skill-hidup', ''),
-(61, '::1', '2020-04-25 01:10:41', 'Chrome', 'Windows 7', 'Other', 'Other', 1, 'http://localhost/kurteyki/courses-category/karakter', ''),
-(62, '::1', '2020-04-25 05:01:18', 'Chrome', 'Windows 7', 'Other', 'Other', 2, 'http://localhost/kurteyki/p/about', ''),
-(63, '::1', '2020-04-25 06:22:53', 'Chrome', 'Windows 7', 'Other', 'Other', 1, 'http://localhost/kurteyki/p/term-and-condition', ''),
-(64, '::1', '2020-04-25 06:22:57', 'Chrome', 'Windows 7', 'Other', 'Other', 1, 'http://localhost/kurteyki/p/help', ''),
-(65, '::1', '2020-04-26 09:26:52', 'Chrome', 'Windows 10', 'Other', 'Other', 165, 'http://localhost/kurteyki/', ''),
-(66, '::1', '2020-04-26 09:27:05', 'Chrome', 'Windows 10', 'Other', 'Other', 145, 'http://localhost/kurteyki/courses-detail/ilmu-dari-building-the-dream', ''),
-(67, '::1', '2020-04-26 11:46:15', 'Chrome', 'Windows 10', 'Other', 'Other', 25, 'http://localhost/kurteyki/courses-detail/ilmu-dari-adam-khoo', ''),
-(68, '::1', '2020-04-26 13:03:50', 'Chrome', 'Windows 10', 'Other', 'Other', 3, 'http://localhost/kurteyki/courses-category/skill-hidup', ''),
-(69, '::1', '2020-04-26 13:03:52', 'Chrome', 'Windows 10', 'Other', 'Other', 2, 'http://localhost/kurteyki/courses-category/karakter', ''),
-(70, '::1', '2020-04-26 13:04:00', 'Chrome', 'Windows 10', 'Other', 'Other', 2, 'http://localhost/kurteyki/blog', ''),
-(71, '::1', '2020-04-26 16:28:42', 'Chrome', 'Windows 10', 'Other', 'Other', 1, 'http://localhost/kurteyki/blog-post/konten-baru-dan-rencana-kedepannya-situs-ini', ''),
-(72, '::1', '2020-04-27 08:40:09', 'Chrome', 'Windows 7', 'Other', 'Other', 86, 'http://localhost/kurteyki/', ''),
-(73, '::1', '2020-04-27 08:42:11', 'Chrome', 'Windows 7', 'Other', 'Other', 67, 'http://localhost/kurteyki/courses-detail/ilmu-dari-building-the-dream', ''),
-(74, '::1', '2020-04-27 09:05:17', 'Chrome', 'Windows 7', 'Other', 'Other', 23, 'http://localhost/kurteyki/courses-detail/ilmu-dari-adam-khoo', ''),
-(75, '::1', '2020-04-27 10:27:23', 'Chrome', 'Windows 7', 'Other', 'Other', 1, 'http://localhost/kurteyki/blog-post/konten-baru-dan-rencana-kedepannya-situs-ini', ''),
-(76, '::1', '2020-04-27 11:33:24', 'Chrome', 'Windows 7', 'Other', 'Other', 2, 'http://localhost/kurteyki/courses-category/karakter', ''),
-(77, '::1', '2020-04-27 11:33:26', 'Chrome', 'Windows 7', 'Other', 'Other', 1, 'http://localhost/kurteyki/courses-category/skill-hidup', ''),
-(78, '::1', '2020-04-28 04:20:34', 'Chrome', 'Windows 7', 'Other', 'Other', 166, 'http://localhost/kurteyki/', ''),
-(79, '::1', '2020-04-28 04:20:45', 'Chrome', 'Windows 7', 'Other', 'Other', 62, 'http://localhost/kurteyki/courses-detail/ilmu-dari-adam-khoo', ''),
-(80, '::1', '2020-04-28 04:20:58', 'Chrome', 'Windows 7', 'Other', 'Other', 2, 'http://localhost/kurteyki/courses-category/karakter', ''),
-(81, '::1', '2020-04-28 04:21:01', 'Chrome', 'Windows 7', 'Other', 'Other', 1, 'http://localhost/kurteyki/courses-category/skill-hidup', ''),
-(82, '::1', '2020-04-28 04:21:05', 'Chrome', 'Windows 7', 'Other', 'Other', 95, 'http://localhost/kurteyki/courses-detail/ilmu-dari-building-the-dream', ''),
-(83, '::1', '2020-04-28 08:33:11', 'Chrome', 'Windows 7', 'Other', 'Other', 1, 'http://localhost/kurteyki/lms/courses/index/ilmu-dari-building-the-dream', ''),
-(84, '::1', '2020-04-28 08:34:29', 'Chrome', 'Windows 7', 'Other', 'Other', 10, 'http://localhost/kurteyki/courses-search', ''),
-(85, '::1', '2020-04-28 08:34:54', 'Chrome', 'Windows 7', 'Other', 'Other', 1, 'http://localhost/kurteyki/lms/search/index', ''),
-(86, '::1', '2020-04-28 08:35:52', 'Chrome', 'Windows 7', 'Other', 'Other', 1, 'http://localhost/kurteyki/blog', ''),
-(87, '::1', '2020-04-28 08:35:56', 'Chrome', 'Windows 7', 'Other', 'Other', 2, 'http://localhost/kurteyki/p/help', ''),
-(88, '::1', '2020-04-28 08:36:05', 'Chrome', 'Windows 7', 'Other', 'Other', 1, 'http://localhost/kurteyki/site/pages/index/help', '');
+(1, '::1', '2020-05-01 14:57:57', 'Chrome', 'Windows 7', 'Other', 'Other', 153, 'http://localhost/kurteyki/', ''),
+(2, '::1', '2020-05-01 14:57:58', 'Chrome', 'Windows 7', 'Other', 'Other', 1, 'http://localhost/kurteyki/courses-detail/terbang-melayang-keatas', ''),
+(3, '::1', '2020-05-01 14:58:02', 'Chrome', 'Windows 7', 'Other', 'Other', 38, 'http://localhost/kurteyki/courses-detail/ilmu-dari-building-the-dream', ''),
+(4, '::1', '2020-05-01 14:58:06', 'Chrome', 'Windows 7', 'Other', 'Other', 22, 'http://localhost/kurteyki/courses-detail/ilmu-dari-adam-khoo', ''),
+(5, '::1', '2020-05-01 15:15:40', 'Chrome', 'Windows 7', 'Other', 'Other', 6, 'http://localhost/kurteyki/instructor', ''),
+(6, '::1', '2020-05-01 15:21:38', 'Chrome', 'Windows 7', 'Other', 'Other', 4, 'http://localhost/kurteyki/courses-category/skill-hidup', ''),
+(7, '::1', '2020-05-01 15:21:40', 'Chrome', 'Windows 7', 'Other', 'Other', 2, 'http://localhost/kurteyki/courses-category/karakter', ''),
+(8, '::1', '2020-05-01 15:21:47', 'Chrome', 'Windows 7', 'Other', 'Other', 4, 'http://localhost/kurteyki/blog', ''),
+(9, '::1', '2020-05-01 15:21:50', 'Chrome', 'Windows 7', 'Other', 'Other', 5, 'http://localhost/kurteyki/blog-post/konten-baru-dan-rencana-kedepannya-situs-ini', ''),
+(10, '::1', '2020-05-01 15:21:56', 'Chrome', 'Windows 7', 'Other', 'Other', 1, 'http://localhost/kurteyki/p/help', ''),
+(11, '::1', '2020-05-01 15:22:09', 'Chrome', 'Windows 7', 'Other', 'Other', 2, 'http://localhost/kurteyki/p/about', ''),
+(12, '::1', '2020-05-01 15:22:12', 'Chrome', 'Windows 7', 'Other', 'Other', 1, 'http://localhost/kurteyki/p/term-and-condition', ''),
+(13, '::1', '2020-05-01 15:22:14', 'Chrome', 'Windows 7', 'Other', 'Other', 2, 'http://localhost/kurteyki/p/privacy-policy', ''),
+(14, '::1', '2020-05-01 18:41:26', 'Chrome', 'Windows 7', 'Other', 'Other', 2, 'http://localhost/kurteyki/courses-detail/123c213', ''),
+(15, '::1', '2020-05-01 19:23:28', 'Chrome', 'Windows 7', 'Other', 'Other', 74, 'http://localhost/kurteyki/courses-detail/12312312', ''),
+(16, '::1', '2020-05-01 20:22:26', 'Chrome', 'Windows 7', 'Other', 'Other', 16, 'http://localhost/kurteyki/courses-detail/pemain-baseball', ''),
+(17, '::1', '2020-05-01 20:50:17', 'Chrome', 'Windows 7', 'Other', 'Other', 1, 'http://localhost/kurteyki/courses-search', ''),
+(18, '::1', '2020-05-01 20:53:15', 'Chrome', 'Windows 7', 'Other', 'Other', 4, 'http://localhost/kurteyki/blog-category/news', ''),
+(19, '::1', '2020-05-01 20:53:38', 'Chrome', 'Windows 7', 'Other', 'Other', 2, 'http://localhost/kurteyki/blog-search', ''),
+(20, '::1', '2020-05-01 23:45:45', 'Chrome', 'Windows 7', 'Other', 'Other', 3, 'http://localhost/kurteyki/courses-detail/brigadidd', ''),
+(21, '::1', '2020-05-01 23:47:49', 'Chrome', 'Windows 7', 'Other', 'Other', 8, 'http://localhost/kurteyki/courses-detail/2-bgm', ''),
+(22, '::1', '2020-05-02 00:00:09', 'Chrome', 'Windows 7', 'Other', 'Other', 241, 'http://localhost/kurteyki/', ''),
+(23, '::1', '2020-05-02 00:00:35', 'Chrome', 'Windows 7', 'Other', 'Other', 4, 'http://localhost/kurteyki/courses-detail/ilmu-dari-building-the-dream', ''),
+(24, '::1', '2020-05-02 00:05:57', 'Chrome', 'Windows 7', 'Other', 'Other', 17, 'http://localhost/kurteyki/courses-detail/12312312', ''),
+(25, '::1', '2020-05-02 00:21:38', 'Chrome', 'Windows 7', 'Other', 'Other', 12, 'http://localhost/kurteyki/courses-detail/ilmu-dari-adam-khoo', ''),
+(26, '::1', '2020-05-02 00:27:38', 'Chrome', 'Windows 7', 'Other', 'Other', 55, 'http://localhost/kurteyki/courses-detail/2-bgm', ''),
+(27, '::1', '2020-05-02 00:28:52', 'Chrome', 'Windows 7', 'Other', 'Other', 15, 'http://localhost/kurteyki/courses-detail/brigadidd', ''),
+(28, '::1', '2020-05-02 00:29:21', 'Chrome', 'Windows 7', 'Other', 'Other', 7, 'http://localhost/kurteyki/courses-detail/pemain-baseball', ''),
+(29, '::1', '2020-05-02 04:21:46', 'Chrome', 'Windows 7', 'Other', 'Other', 4, 'http://localhost/kurteyki/courses-category/skill-hidup', ''),
+(30, '::1', '2020-05-02 04:21:49', 'Chrome', 'Windows 7', 'Other', 'Other', 4, 'http://localhost/kurteyki/courses-category/karakter', ''),
+(31, '::1', '2020-05-02 05:28:58', 'Chrome', 'Windows 7', 'Other', 'Other', 1, 'http://localhost/kurteyki/p/privacy-policy', ''),
+(32, '::1', '2020-05-02 05:58:06', 'Chrome', 'Windows 7', 'Other', 'Other', 1, 'http://localhost/kurteyki/blog', '');
 
 -- --------------------------------------------------------
 
@@ -682,9 +662,12 @@ CREATE TABLE `tb_user` (
 --
 
 INSERT INTO `tb_user` (`id`, `username`, `password`, `headline`, `email`, `no_handphone`, `photo`, `grade`, `payment`, `created`, `last_login`, `status`) VALUES
-(1, 'kurteyki', '1a5651f74beaa02c5e5fc380875d23a66e4549bd', 'Trainer', 'kurteyki@gmail.com', '081389215100', 'user_photo_20200428081150.png', 'App', '{\"transaction\":[{\"identity\":\"bri20200425130634\",\"type\":\"bri\",\"account_number\":\"1923892138192\",\"receiver\":\"irfan\"},{\"identity\":\"bca20200426162016\",\"type\":\"bca\",\"account_number\":\"12321321\",\"receiver\":\"troffle\"}],\"confirmation\":[{\"identity\":\"whatsapp20200425130641\",\"type\":\"whatsapp\",\"data\":\"85280815735\"}]}', '0000-00-00 00:00:00', '2020-04-28 08:37:30', 'Active'),
-(23, 'demo123', '8cb2237d0679ca88db6464eac60da96345513964', '', 'demo@demo.cc', '9128391238129', '', 'User', '', '0000-00-00 00:00:00', '2020-04-28 09:42:40', 'Active'),
-(24, 'mantap', 'd369be4c6034009e3aa86673b0c9e99c55631e99', '', 'mantap@gg.cc', '12321382193821391', '', 'User', '', '2020-04-27 09:04:26', '2020-04-28 09:13:02', 'Active');
+(1, 'kurteyki', '1a5651f74beaa02c5e5fc380875d23a66e4549bd', 'King', 'kurteyki@gmail.com', '081389215100', 'user_photo_20200428081150.png', 'App', '{\"transaction\":[{\"identity\":\"bri20200425130634\",\"type\":\"bri\",\"account_number\":\"1923892138192\",\"receiver\":\"irfan\"},{\"identity\":\"bca20200426162016\",\"type\":\"bca\",\"account_number\":\"12321321\",\"receiver\":\"troffle\"}],\"confirmation\":[{\"identity\":\"whatsapp20200425130641\",\"type\":\"whatsapp\",\"data\":\"6285280815735\"},{\"identity\":\"facebook20200501131607\",\"type\":\"facebook\",\"data\":\"https:\\/\\/www.facebook.com\\/riedayme\"}]}', '0000-00-00 00:00:00', '2020-05-02 08:41:42', 'Active'),
+(2, 'Wwow Amazing', '445cbb597e207a98f8457c791b2431e9d4c3375b', 'Grolious Broo', 'instructor@gg.cc', '01283218321831', 'user_photo_20200501200204.jpg', 'Instructor', '{\"transaction\":[{\"identity\":\"bca20200501192440\",\"type\":\"bca\",\"account_number\":\"923892138921\",\"receiver\":\"instructor jancuk\"}],\"confirmation\":[{\"identity\":\"whatsapp20200501192507\",\"type\":\"whatsapp\",\"data\":\"+6285280815735\"}]}', '2020-05-01 15:04:06', '2020-05-02 08:40:46', 'Active'),
+(3, 'Brigadir Senjata', '8fb5cfe922674e0f9faa46a92716f66bd67ad344', '', 'user@gg.cc', '12839213812', 'user_photo_20200502063458.png', 'User', '', '2020-05-01 19:24:08', '2020-05-02 06:45:18', 'Active'),
+(4, 'PemainBaseball', '32987965e3bd65c627a96d8976cc6e626c5df549', 'Workhome', 'pemainbaseball@gg.cc', '9128392183989', 'user_photo_20200501202125.jpg', 'Instructor', '', '2020-05-01 20:17:54', '2020-05-02 08:42:11', 'Active'),
+(6, 'qweowqkewoq', '7c4a8d09ca3762af61e59520943dc26494f8941b', '', '12392183921@qqk.cc', '193892138219', '', 'User', '', '2020-05-02 08:09:41', '2020-05-02 08:30:13', 'Active'),
+(11, 'Muhamad Irfan', '', '', 'he.irfaan@gmail.com', '', '107735531697330302639-20200502112732.jpg', 'User', '', '2020-05-02 11:27:33', '2020-05-02 11:27:33', 'Active');
 
 --
 -- Indexes for dumped tables
@@ -825,7 +808,9 @@ ALTER TABLE `tb_lms_user_payment`
 -- Indexes for table `tb_lms_user_review`
 --
 ALTER TABLE `tb_lms_user_review`
-  ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `id_courses` (`id_courses`),
+  ADD KEY `id_user` (`id_user`);
 
 --
 -- Indexes for table `tb_lms_user_wishlist`
@@ -927,25 +912,25 @@ ALTER TABLE `tb_lms_category`
 -- AUTO_INCREMENT for table `tb_lms_coupon`
 --
 ALTER TABLE `tb_lms_coupon`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `tb_lms_courses`
 --
 ALTER TABLE `tb_lms_courses`
-  MODIFY `id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
 -- AUTO_INCREMENT for table `tb_lms_courses_lesson`
 --
 ALTER TABLE `tb_lms_courses_lesson`
-  MODIFY `id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 
 --
 -- AUTO_INCREMENT for table `tb_lms_courses_section`
 --
 ALTER TABLE `tb_lms_courses_section`
-  MODIFY `id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 
 --
 -- AUTO_INCREMENT for table `tb_lms_template`
@@ -963,7 +948,7 @@ ALTER TABLE `tb_lms_template_widget`
 -- AUTO_INCREMENT for table `tb_lms_user_courses`
 --
 ALTER TABLE `tb_lms_user_courses`
-  MODIFY `id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `tb_lms_user_lesson`
@@ -975,13 +960,13 @@ ALTER TABLE `tb_lms_user_lesson`
 -- AUTO_INCREMENT for table `tb_lms_user_review`
 --
 ALTER TABLE `tb_lms_user_review`
-  MODIFY `id` int(255) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `tb_lms_user_wishlist`
 --
 ALTER TABLE `tb_lms_user_wishlist`
-  MODIFY `id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `tb_site_meta`
@@ -999,13 +984,13 @@ ALTER TABLE `tb_site_pages`
 -- AUTO_INCREMENT for table `tb_site_visitor`
 --
 ALTER TABLE `tb_site_visitor`
-  MODIFY `id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=89;
+  MODIFY `id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=33;
 
 --
 -- AUTO_INCREMENT for table `tb_user`
 --
 ALTER TABLE `tb_user`
-  MODIFY `id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
+  MODIFY `id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

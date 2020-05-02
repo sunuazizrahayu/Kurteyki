@@ -69,22 +69,23 @@
 									</div>
 									<div class="u-ml-auto">
 										<div class='rating-stars u-flex u-justify-between u-pt-xsmall'>
-											<ul id='stars'>
-												<li class='star selected' title='Poor' data-value='1'>
-													<i class='fa fa-star fa-fw'></i>
-												</li>
-												<li class='star selected' title='Fair' data-value='2'>
-													<i class='fa fa-star fa-fw'></i>
-												</li>
-												<li class='star selected' title='Good' data-value='3'>
-													<i class='fa fa-star fa-fw'></i>
-												</li>
-												<li class='star selected' title='Excellent' data-value='4'>
-													<i class='fa fa-star fa-fw'></i>
-												</li>
-												<li class='star selected' title='WOW!!!' data-value='5'>
-													<i class='fa fa-star fa-fw'></i>
-												</li>
+											<ul>
+												<?php  
+												for ($i=0; $i < 5 ; $i++) { 
+
+													if ($i < $post['rating']) {
+														echo "
+														<li class='star selected'>
+															<i class='fa fa-star fa-fw'></i>
+														</li>";
+													}else{
+														echo "
+														<li class='star'>
+															<i class='fa fa-star fa-fw'></i>
+														</li>";
+													}
+												}
+												?>
 											</ul>
 										</div>
 									</div>
@@ -125,23 +126,23 @@
 
 			</div>
 
-			<?php else: ?><div class="col-sm-12 col-lg-12">
-				<div class="c-card u-p-medium u-pv-xlarge" data-mh="landing-cards">
+		<?php else: ?><div class="col-sm-12 col-lg-12">
+			<div class="c-card u-p-medium u-pv-xlarge" data-mh="landing-cards">
 
-					<div class="u-text-center u-justify-between">
-						<div class="c-avatar c-avatar--large u-mb-small u-inline-flex">
-							<img class="c-avatar__img" src="<?php echo base_url('storage/assets/app/img/logo.png') ?>" alt="<?php echo $this->lang->line('courses_not_found') ?>">
-						</div>
-
-						<p class="u-h5"><?php echo $this->lang->line('courses_not_found') ?></p>
-
+				<div class="u-text-center u-justify-between">
+					<div class="c-avatar c-avatar--large u-mb-small u-inline-flex">
+						<img class="c-avatar__img" src="<?php echo base_url('storage/assets/app/img/logo.png') ?>" alt="<?php echo $this->lang->line('courses_not_found') ?>">
 					</div>
 
-				</div>
-			</div>
-		<?php endif ?>
+					<p class="u-h5"><?php echo $this->lang->line('courses_not_found') ?></p>
 
-	</div><!-- // .row -->
+				</div>
+
+			</div>
+		</div>
+	<?php endif ?>
+
+</div><!-- // .row -->
 
 </div><!-- // .container -->
 

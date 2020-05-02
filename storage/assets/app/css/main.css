@@ -5683,15 +5683,15 @@ textarea.c-input {
   /**
      * On Hover
      */
-  .c-sidebar.is-minimized:hover {
+  .c-sidebar.is-minimized.show,.c-sidebar.is-minimized:hover {
     width: 250px; }
-  .c-sidebar.is-minimized:hover .c-sidebar__brand-text {
+  .c-sidebar.is-minimized.show,.c-sidebar.is-minimized:hover .c-sidebar__brand-text {
     display: block; }
-  .c-sidebar.is-minimized:hover .c-sidebar__brand-img {
+  .c-sidebar.is-minimized.show,.c-sidebar.is-minimized:hover .c-sidebar__brand-img {
     margin-right: 15px; }
-  .c-sidebar.is-minimized:hover .c-sidebar__title {
+  .c-sidebar.is-minimized.show,.c-sidebar.is-minimized:hover .c-sidebar__title {
     display: block; }
-  .c-sidebar.is-minimized:hover .c-sidebar__item.has-submenu > .c-sidebar__link::after {
+  .c-sidebar.is-minimized.show,.c-sidebar.is-minimized:hover .c-sidebar__item.has-submenu > .c-sidebar__link::after {
     display: block; } }
 
 /* ==========================================================================

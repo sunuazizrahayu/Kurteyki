@@ -13,7 +13,8 @@ class M_Setting_General extends CI_Model
 		}
 
 		$site['blog_comment'] = json_decode($site['blog_comment'],true);
-		$site['payment_midtrans'] = json_decode($site['payment_midtrans'],true);
+		$site['payment_midtrans'] = json_decode($site['payment_midtrans'],true);		
+		$site['cookie_notification'] = json_decode($site['cookie_notification'],true);	
 
 		return $site;
 	}
@@ -33,9 +34,12 @@ class M_Setting_General extends CI_Model
 			if ($key == 'moderate') continue;
 			if ($key == 'message') continue;	
 
-			if ($key == 'status_production') continue;	
+			if ($key == 'status_production') continue;
 			if ($key == 'client_key') continue;	
-			if ($key == 'server_key') continue;			
+			if ($key == 'server_key') continue;
+
+			if ($key == 'cookie_status') continue;
+			if ($key == 'cookie_message') continue;						
 
 			$data [] = [
 			'type' => $key,
@@ -144,8 +148,20 @@ class M_Setting_General extends CI_Model
 		'data' => json_encode($midtrans_data,true),
 		];
 
-		// echo json_encode($data);		
-		// exit;
+
+		/**
+		 * build midtrans data
+		 */
+		
+		$cookie_data = [
+		"status" =>  $post['cookie_status'],			
+		"message" =>  $post['cookie_message'],
+		];
+
+		$data[] = [
+		'type' => 'cookie_notification',
+		'data' => json_encode($cookie_data,true),
+		];
 
 		/**
 		 * updated site

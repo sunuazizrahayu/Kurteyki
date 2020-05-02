@@ -8,7 +8,7 @@
 				<div class="row u-pv-large">
 
 					<div class="col-lg-4 u-flex u-hidden-down@desktop">
-						<img style="width: 200px" src="<?php echo base_url('storage/uploads/lms/intro.svg') ?>" alt="intro"> 
+						<img style="width: 200px" src="<?php echo base_url('storage/assets/lms/default-app/img/intro.svg') ?>" alt="intro"> 
 					</div>
 
 					<div class="col-lg-8">

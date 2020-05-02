@@ -15,7 +15,8 @@ class M_User_Invoice extends CI_Model
         return [
         'datatable' => true,
         'datatables_data' => "
-        [{'data': 'checkbox',className:'c-table__cell u-pl-small'},
+        [
+        {'data': 'checkbox',className:'c-table__cell u-pl-small'},
         {'data': 'id',className:'c-table__cell'},
         {'data': 'username',className:'c-table__cell',width:'100%'},         
         {'data': 'transaction',className:'c-table__cell'},                    
@@ -46,8 +47,9 @@ class M_User_Invoice extends CI_Model
         $this->datatables->from($this->table_lms_user_payment);
         $this->datatables->join($this->table_user, 'tb_lms_user_payment.id_user = tb_user.id', 'LEFT');
         $this->datatables->join($this->table_lms_courses, 'tb_lms_user_payment.id_courses = tb_lms_courses.id', 'LEFT');  
-
-        $this->datatables->where('tb_lms_user_payment.id_courses_user', $this->session->userdata('id'));
+        if ($this->session->userdata('app_grade') == 'Instructor') {
+            $this->datatables->where('tb_lms_user_payment.id_courses_user', $this->session->userdata('id'));
+        }    
         $this->datatables->where('tb_lms_user_payment.status', 'Checking');
 
         $this->datatables->add_column('checkbox', '
@@ -124,7 +126,7 @@ class M_User_Invoice extends CI_Model
 
             }
         }else {
-    
+            
             /**
              * Delete Confirmation File
              */

@@ -9,7 +9,7 @@ class M_Order extends CI_Model
 	public function read($site){
 
 		$limit = $site['user_limit_data'];
-		$count_data = $this->query(true);
+		$count_data = $this->query(true,$site);
 
 		if (empty($count_data)) return false;
 
@@ -21,17 +21,17 @@ class M_Order extends CI_Model
 
 		$pagination = $this->_Pagination->pagination($count_data,$limit,base_url('user/order'),FALSE,TRUE,'page');	
 
-		$read_data = $this->query(false,$limit,$index);
+		$read_data = $this->query(false,$site,$limit,$index);
 		if (empty($read_data)) redirect(base_url('user/order'));
 
 		return [
-			'data' => $read_data,
-			'pagination' => $pagination,
-			'count_data' => $count_data			
+		'data' => $read_data,
+		'pagination' => $pagination,
+		'count_data' => $count_data			
 		];
 	}
 
-	public function query($count = false,$limit = false,$index = false){
+	public function query($count = false,$site = false,$limit = false,$index = false){
 
 		$this->db->select('
 			tb_lms_courses.title as title,
@@ -43,7 +43,12 @@ class M_Order extends CI_Model
 		}		
 		$this->db->join($this->table_lms_courses, 'tb_lms_courses.id = tb_lms_user_payment.id_courses', 'LEFT JOIN');
 		$this->db->where("tb_lms_user_payment.id_user",$this->session->userdata('id_user')); 
-		$this->db->order_by('tb_lms_user_payment.id','DESC');
+		if ($site['payment_method'] == 'Manual') {
+			$this->db->where("tb_lms_user_payment.type",'Manual');
+		}elseif ($site['payment_method'] == 'Midtrans') {
+			$this->db->where("tb_lms_user_payment.type !=",'Manual'); 			
+		}
+		$this->db->order_by('tb_lms_user_payment.time','DESC');
 		$query =$this->db->get();
 
 		if ($query->num_rows() < 1) return false;

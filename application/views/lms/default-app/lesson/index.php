@@ -138,4 +138,6 @@
 
 </div><!-- // .container -->
 
+<?php $this->load->view('lms/default-app/lesson/part/review'); ?>
+
 <?php $this->load->view('lms/default-app/_layouts/footer'); ?>

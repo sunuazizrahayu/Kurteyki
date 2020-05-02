@@ -98,16 +98,22 @@
 							<?php echo $this->lang->line('bank_transfer'); ?> 
 						</h4>
 
-						<?php foreach ($courses['payment']['transaction'] as $transaction): ?>
-							<div class="c-card u-p-zero u-mb-small">  
-								<div class="c-choice c-choice--radio u-p-zero u-m-zero">
-									<input class="c-choice__input checkbox-image" id="<?php echo $transaction['type'] ?>" name="transaction" type="radio" value='<?php echo $transaction['type'] ?>'>
-									<label class="c-choice__label u-flex u-p-small" for="<?php echo $transaction['type'] ?>">
-										<img style="width:100px" src="<?php echo base_url('storage/assets/user/img/'.$transaction['type'].'.png') ?>" alt="<?php echo $transaction['type'] ?>">
-									</label>        
+						<?php if (empty($courses['payment']['transaction'])): ?>		
+							<div class="c-alert c-alert--info">Metode pembayaran belum tersedia.</div>
+						<?php endif ?>
+
+						<?php if ($courses['payment']['transaction']): ?>		
+							<?php foreach ($courses['payment']['transaction'] as $transaction): ?>
+								<div class="c-card u-p-zero u-mb-small">  
+									<div class="c-choice c-choice--radio u-p-zero u-m-zero">
+										<input class="c-choice__input checkbox-image" id="<?php echo $transaction['type'] ?>" name="transaction" type="radio" value='<?php echo $transaction['type'] ?>'>
+										<label class="c-choice__label u-flex u-p-small" for="<?php echo $transaction['type'] ?>">
+											<img style="width:100px" src="<?php echo base_url('storage/assets/user/img/'.$transaction['type'].'.png') ?>" alt="<?php echo $transaction['type'] ?>">
+										</label>        
+									</div>
 								</div>
-							</div>
-						<?php endforeach ?>
+							<?php endforeach ?>
+						<?php endif ?>
 					</div>
 				<?php endif ?>            
 

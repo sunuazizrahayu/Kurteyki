@@ -20,7 +20,7 @@ $lang['page'] = 'Halaman';
 
 $lang['select_category'] = 'Pilih Kategori';
 $lang['select_filter'] = 'Filter Materi';
-$lang['courses_not_found_category'] = 'Tidak ditemukan materi dengan kategori ini.';
+$lang['courses_not_found_category'] = 'Tidak ditemukan kelas dengan kategori ini.';
 
 
 /*
@@ -41,8 +41,8 @@ $lang['courses_not_found_search'] = 'Materi yang dicari tidak ditemukan.';
 
 /* button courses */
 $lang['add_to_my_courses'] = 'Tambahkan';
-$lang['success_add_courses'] = 'Berhasil Menambahkan Kursus.';
-$lang['failed_add_courses'] = 'Gagal Menambahkan Kursus.';
+$lang['success_add_courses'] = 'Berhasil Menambahkan Kelas.';
+$lang['failed_add_courses'] = 'Gagal Menambahkan Kelas.';
 
 $lang['no_lesson'] = 'Tidak ada Materi';
 $lang['no_material'] = 'Tidak ada Daftar Materi';
@@ -51,7 +51,13 @@ $lang['description'] = 'Deskripsi';
 $lang['no_description'] = 'Tidak ada Deskripsi';
 $lang['faq'] = 'Pertanyaan Umum';
 $lang['no_faq'] = 'Tidak ada Pertanyaan Umum';
-$lang['related_courses'] = 'Materi Lainnya';
+
+$lang['gived_review'] = 'Ulasan diberikan';
+$lang['detail_review'] = 'Ulasan Lengkap';
+$lang['no_review'] = 'Belum ada ulasan';
+
+$lang['related_courses'] = 'Kelas Lainnya';
+
 
 /*
 |--------------------------------------------------------------------------
@@ -61,6 +67,15 @@ $lang['related_courses'] = 'Materi Lainnya';
 */
 
 $lang['toc'] = 'Daftar Materi';
+$lang['rating'] = 'Beri Rating';
+$lang['rating_message_1'] = 'Tidak Bagus';
+$lang['rating_message_2'] = 'Kurang Bagus';
+$lang['rating_message_3'] = 'Cukup Bagus';
+$lang['rating_message_4'] = 'Bagus';
+$lang['rating_message_5'] = 'Sangat Bagus';
+$lang['review'] = 'Ulasan';
+$lang['give_review'] = 'Beri Ulasan';
+$lang['write_review'] = 'Tulis Ulasan';
 
 /*
 |--------------------------------------------------------------------------
@@ -69,7 +84,7 @@ $lang['toc'] = 'Daftar Materi';
 |
 */
 
-$lang['courses'] = 'Kursus';
+$lang['courses'] = 'Kelas';
 $lang['back'] = 'Kembali';
 $lang['free'] = 'Gratis';
 $lang['hasben_owned'] = 'Sudah Dimiliki';
@@ -123,6 +138,7 @@ $lang['view_transaction'] = 'Lihat Transaksi';
 /**
  * confirmation
  */
+$lang['payment_proof_error'] = 'Terjadi Kesalahan saat mengirim bukti pembayaran, silahkan coba lagi.';
 $lang['payment_proof_upload'] = 'Upload Bukti Pembayaran';
 $lang['payment_proof_message'] = 'Silahkan melakukan pemayaran ke rekening dibawah ini.';
 $lang['payment_proof_price'] = 'Jumlah yang harus dibayar';
@@ -130,6 +146,8 @@ $lang['payment_proof_price'] = 'Jumlah yang harus dibayar';
 $lang['bank'] = 'Bank';
 $lang['account_number'] = 'Nomor Rekening';
 $lang['receiver'] = 'Penerima';
+
+$lang['confirmation_message'] = 'Silahkan hubungi kontak dibawah ini untuk mempercepat proeses konfirmasi.';
 
 
 /*
@@ -149,7 +167,7 @@ $lang['my_profile'] = 'Profile';
 */
 
 $lang['my_courses'] = 'Kelas';
-$lang['user_courses_not_found'] = 'Tidak ada kursus yang dimiliki.';
+$lang['user_courses_not_found'] = 'Tidak ada kelas yang dimiliki.';
 
 $lang['courses_closed'] = 'Ditutup';
 $lang['courses_progress'] = 'Proses Belajar';	
@@ -164,6 +182,6 @@ $lang['courses_progress'] = 'Proses Belajar';
 /** user wish list */
 $lang['wishlist'] = 'Wishlist';
 $lang['my_wishlist'] = 'Wishlist';
-$lang['view_courses'] = 'Lihat Kursus';
+$lang['view_courses'] = 'Lihat Kelas';
 $lang['user_wishlist_not_found'] = 'Tidak ada Wishlist yang disimpan.';
 ?>

@@ -14,9 +14,13 @@
                 <div class="c-modal__body row">
 
                     <div class="c-field u-mb-small col-6">
-                    <label class="c-field__label">type : </label>
-                        <input autocomplete="off" required class="c-input input-confirmation-type" name="type" type="text" placeholder="type">
-                    </div>
+                        <label class="c-field__label">type : </label>
+                        <select required="" name="type" class="c-select select2 input-confirmation-type" data-placeholder='select'>
+                            <option value=""></option>
+                            <option value="whatsapp">whatsapp</option>
+                            <option value="facebook">facebook</option>
+                        </select>
+                    </div>                    
 
                     <div class="c-field u-mb-small col-12">
                         <label class="c-field__label">data : </label>

@@ -28,22 +28,19 @@ class M_Courses extends CI_Model
 		$read_post = $this->query_post($site,$read_data);
 
 		return [
-			'data' => $read_post,
-			'pagination' => $pagination,
-			'count_data' => $count_data			
+		'data' => $read_post,
+		'pagination' => $pagination,
+		'count_data' => $count_data			
 		];
 	}
 
 	public function query($count = false,$limit = false,$index = false){
 
-		$this->db->select('
-			tb_lms_courses.id
-			');
+		$this->db->select('tb_lms_user_courses.id');
 		$this->db->from($this->table_lms_user_courses);
 		if (!$count) {
 			$this->db->limit($limit,$index);
 		}		
-		$this->db->join($this->table_lms_courses, 'tb_lms_courses.id = tb_lms_user_courses.id_courses', 'LEFT JOIN');
 		$this->db->where("tb_lms_user_courses.id_user",$this->session->userdata('id_user')); 
 		$this->db->order_by('tb_lms_user_courses.id','DESC');
 		$query =$this->db->get();
@@ -63,10 +60,12 @@ class M_Courses extends CI_Model
 
 	public function query_post($site,$id){
 
-		$this->db->select('*');
-		$this->db->from($this->table_lms_courses);		
-		$this->db->where_in('id',$id);
-		$this->db->order_by('time','DESC');		
+
+		$this->db->select('tb_lms_courses.*');
+		$this->db->from($this->table_lms_user_courses);		
+		$this->db->join($this->table_lms_courses, 'tb_lms_courses.id = tb_lms_user_courses.id_courses', 'LEFT JOIN');
+		$this->db->where_in('tb_lms_user_courses.id',$id);
+		$this->db->order_by('tb_lms_user_courses.id','DESC');		
 		$read = $this->db->get()->result_array();
 
 		/**
@@ -88,8 +87,8 @@ class M_Courses extends CI_Model
 		$id = base64_decode($this->input->post('id'));
 
 		$post_data = [
-			'id_user' => $this->session->userdata('id_user'),
-			'id_courses' => $id,
+		'id_user' => $this->session->userdata('id_user'),
+		'id_courses' => $id,
 		];
 
 		/** check if courses exist */
@@ -126,8 +125,8 @@ class M_Courses extends CI_Model
 		$id_lesson = $this->input->post('id_lesson');
 
 		$post_data = [
-			'id_user' => $this->session->userdata('id_user'),
-			'id_courses' => $id_courses,
+		'id_user' => $this->session->userdata('id_user'),
+		'id_courses' => $id_courses,
 		];
 
 		/** check if user have lesson data */
@@ -140,8 +139,8 @@ class M_Courses extends CI_Model
 		if ($user_lesson->num_rows() < 1) {
 
 			$data[] = [
-				'id_lesson' => $id_lesson,
-				'status' => true,
+			'id_lesson' => $id_lesson,
+			'status' => true,
 			];
 
 			$post_data['data'] = json_encode($data);
@@ -167,8 +166,8 @@ class M_Courses extends CI_Model
 					}
 				}else {					
 					$previous_data[] = [
-						'id_lesson' => $lesson_data['id_lesson'],
-						'status' => $lesson_data['status'],
+					'id_lesson' => $lesson_data['id_lesson'],
+					'status' => $lesson_data['status'],
 					];
 				}
 			}
@@ -179,8 +178,8 @@ class M_Courses extends CI_Model
 			}
 
 			$data[] = [
-				'id_lesson' => $id_lesson,
-				'status' => $status,
+			'id_lesson' => $id_lesson,
+			'status' => $status,
 			];
 
 			if (empty($previous_data)) {
@@ -193,7 +192,7 @@ class M_Courses extends CI_Model
 			if ($this->_Process_MYSQL->update_data($this->table_lms_user_lesson,$post_data,[
 				'id_user' => $this->session->userdata('id_user'),
 				'id_courses' => $id_courses,
-			])) {
+				])) {
 				if ($status) {
 					echo 'set_true';
 				}else{

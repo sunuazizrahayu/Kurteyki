@@ -11,20 +11,25 @@ class M_Payment_Confirmation extends CI_Model
     public function read($identity){
         $this->db->select('
             tb_lms_courses.title,
-            tb_lms_courses.id_user as id_user_courses,
             tb_lms_user_payment.*
             ');
         $this->db->from($this->table_lms_user_payment);		
         $this->db->where('tb_lms_user_payment.id',$identity);
         $this->db->join($this->table_lms_courses, 'tb_lms_courses.id = tb_lms_user_payment.id_courses', 'LEFT JOIN');			
-        $data = $this->db->get()->row_array();
+        $data = $this->db->get();
+
+        $count_data = $data->num_rows();
+
+        if ($count_data < 1) redirect(base_url('user/order'));
+
+        $data = $data->row_array();
 
         if ($data['status'] == 'Checking') redirect(base_url('user/order'));
 
         $data['amount'] = $this->_Currency->set_currency($data['amount']);
 
         $payment = json_decode($this->_Process_MYSQL->get_data($this->table_user,[
-            'id' => $data['id_user_courses']
+            'id' => $data['id_courses_user']
             ])->row()->payment,true);
 
         foreach ($payment['transaction'] as $transaction) {
@@ -33,9 +38,46 @@ class M_Payment_Confirmation extends CI_Model
                 $data['transaction_account_number'] = $transaction['account_number'];
                 $data['transaction_receiver'] = $transaction['receiver'];                
             }
-        }
+        }     
 
         return $data;
+    }
+
+    public function read_confirmation($id_order) {
+        $this->db->select('*');
+        $this->db->from($this->table_lms_user_payment);
+        $this->db->where('id',$id_order);
+        $data = $this->db->get();
+
+        $count_data = $data->num_rows();
+
+        if ($count_data < 1) redirect(base_url('user/order'));
+
+        $data = $data->row_array();
+
+        if ($data['status'] != 'Checking') redirect(base_url('user/order'));
+
+        $payment = json_decode($this->_Process_MYSQL->get_data($this->table_user,[
+            'id' => $data['id_courses_user']
+            ])->row()->payment,true);
+
+        if (empty($payment['confirmation'])) return false;
+
+        foreach ($payment['confirmation'] as $confirmation) {
+            if ($confirmation['type'] == 'facebook') {
+                $confirmation['data'] = "<a target='_blank' href='".$confirmation['data']."'>".$confirmation['data']."</a>";
+            }elseif ($confirmation['type'] == 'whatsapp') {
+                $confirmation['data'] = "<a target='_blank' href='https://api.whatsapp.com/send?phone=".$confirmation['data']."&text=Hallo'>".$confirmation['data']."</a>";
+            }
+
+            $extract_data[] = [
+            'image' => (file_exists('storage/assets/user/img/'.$confirmation['type'].'.png') ? base_url('storage/assets/user/img/'.$confirmation['type'].'.png') : base_url('storage/assets/user/img/contact-default.png') ),
+            'type' => $confirmation['type'],
+            'data' => $confirmation['data'],
+            ];
+        }
+
+        return $extract_data;
     }
 
     public function process(){

@@ -9,6 +9,8 @@
 
 $lang['select'] = 'Pilih';
 $lang['send'] = 'Kirim';
+$lang['accept'] = 'Setuju';
+$lang['learn_more'] = 'Pelajari selengkapnya';
 
 
 /*
@@ -39,8 +41,10 @@ $lang['notif_delete'] = 'akan menghapus';
 
 $lang['or'] = 'Atau';
 $lang['sign_in'] = 'Masuk';
+$lang['sign_in_by_sosmed'] = 'Masuk dengan Sosial Media';
 $lang['sign_out'] = 'Keluar';
 $lang['register'] = 'Daftar';
+$lang['register_by_sosmed'] = 'Daftar dengan Sosial Media';
 
 /* input password */
 $lang['password'] = 'Password';
@@ -66,6 +70,7 @@ $lang['user_exist'] = 'User sudah terdaftar.';
 $lang['email_exist'] = 'Email Sudah Pernah Digunakan';
 $lang['success_register'] = 'Berhasil Mendaftar, silahkan login.';
 $lang['invalid_csrf'] = 'kode Csrf tidak valid, silahkan refresh halaman dan coba lagi.';
+$lang['error_captcha'] = 'Captcha Error Silahkan Coba Lagi.';
 
 $lang['min_length_start'] = 'Harus memiliki';
 $lang['min_length_end'] = 'karakter atau lebih';
@@ -104,6 +109,7 @@ $lang['next'] = '>';
 $lang['prev'] = '<';
 
 $lang['show_all'] = 'Tampilkan Semua';
+$lang['load_more'] = 'Muat Lainnya';
 
 /*
 |--------------------------------------------------------------------------

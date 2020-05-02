@@ -36,9 +36,9 @@ function statuscomment($status){
 
 function photo_user($data){
     if (empty($data)) {
-        return '<img class="c-avatar__img" src="'.base_url('storage/uploads/user/person.png').'" alt="'.$data.'">';
+        return '<img class="c-avatar__img" src="'.base_url('storage/uploads/user/photo/default.png').'" alt="'.$data.'">';
     }else {
-        return '<img class="c-avatar__img" src="'.base_url('storage/uploads/user/'.$data).'" alt="'.$data.'">';
+        return '<img class="c-avatar__img" src="'.base_url('storage/uploads/user/photo/'.$data).'" alt="'.$data.'">';
     }
 }
 
@@ -53,5 +53,9 @@ function grade_user($grade){
 }
 
 function set_currency($data) {
- return number_format($data, 0, ',', '.');
+    if ($data) {
+       return number_format($data, 0, ',', '.');
+   }else{
+    return 0;
+   }
 }

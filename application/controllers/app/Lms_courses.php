@@ -242,7 +242,7 @@ class Lms_courses extends My_App
             'title' => 'Update Lesson',
             'ckeditor' => true,
             'data' => $this->M_LMS_Courses->required_lesson($id_section),
-            'lesson' => $this->M_LMS_Courses->data_lesson_update($id_lesson),           
+            'lesson' => $this->M_LMS_Courses->data_lesson_update($id_section,$id_lesson),           
         );
 
         $this->load->view($this->form_lesson, $data);

@@ -48,7 +48,7 @@
 
 		<?php $this->load->view('app/setting_general/part/timezone'); ?>	
 
-		<div class="c-field u-mb-medium col-md-12">
+		<div class="c-field u-mb-medium col-md-6">
 			<label class="c-field__label">Using Cache ?</label>
 			<select required="" name="cache" class="c-select select2">
 				<option></option>
@@ -56,6 +56,21 @@
 				<option value="No" <?php echo ($site['cache'] == 'No') ? 'selected' : ''; ?>>No</option>
 			</select>
 		</div>	
+
+
+		<div class="c-field u-mb-medium col-md-6">
+			<label class="c-field__label">Cookie Notification</label>
+			<select required="" name="cookie_status" class="c-select select2 select-cookie">
+				<option></option>
+				<option value="Yes" <?php echo ($site['cookie_notification']['status'] == 'Yes') ? 'selected' : ''; ?>>Yes</option>
+				<option value="No" <?php echo ($site['cookie_notification']['status'] == 'No') ? 'selected' : ''; ?>>No</option>
+			</select>
+		</div>
+
+		<div style='<?php echo ($site['cookie_notification']['status'] == 'Yes') ? '' : 'display:none'; ?>' class="c-field u-mb-medium col-md-12 cookie-message">
+			<label class="c-field__label">Cookie Message : </label>
+			<textarea required="" class="c-input" name="cookie_message"" placeholder="comment message"><?php echo (!empty($site) ? $site['cookie_notification']['message'] : '') ?></textarea>
+		</div>
 
 	</div>
 

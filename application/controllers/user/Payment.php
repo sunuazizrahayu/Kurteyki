@@ -123,12 +123,14 @@ class Payment extends My_User
         $this->load->view($this->waiting, $data);
     }
 
-    public function waiting_confirmation(){
+    public function waiting_confirmation($id_order){
 
         $site = $this->site;
+        $confirmation = $this->M_Payment_Confirmation->read_confirmation($id_order);
 
         $data = array(
             'site' => $site,
+            'confirmation' => $confirmation,
             'classbody' => 'o-page--center',
             );
 
@@ -215,7 +217,16 @@ class Payment extends My_User
 
             if ($process) {
 
-                redirect(base_url('payment/waiting-confirmation'));
+                redirect(base_url('payment/waiting-confirmation/'.$id_order));
+            }else{
+
+                $this->session->set_flashdata([
+                    'message' => true,
+                    'message_type' => 'danger',
+                    'message_text' => $this->lang->line('payment_proof_error'),
+                    ]);
+
+                redirect(current_url());
             }
 
         }else{

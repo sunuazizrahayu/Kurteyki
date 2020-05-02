@@ -7,6 +7,8 @@
 
         <div class="col-12 col-xl-6 offset-xl-3 u-mv-small">
 
+            <?php $this->load->view('app/_layouts/alert'); ?>
+
             <div class="c-card c-card--responsive u-p-zero">
                 <div class="c-card__header o-line">   
                     <h5 class="c-card__title">  
@@ -24,7 +26,7 @@
 
                     <div class="u-text-center u-mb-medium">
                         <div class="c-avatar c-avatar--xlarge u-inline-block">
-                            <img class="c-avatar__img" src="<?php echo (!empty($user['photo']) ?  base_url('storage/uploads/user/'.$user['photo']) : base_url('storage/uploads/user/person.png')) ?>" alt="<?php echo $this->session->userdata('username') ?>">
+                            <img class="c-avatar__img" src="<?php echo (!empty($user['photo']) ?  base_url('storage/uploads/user/photo/'.$user['photo']) : base_url('storage/uploads/user/photo/default.png')) ?>" alt="<?php echo $this->session->userdata('username') ?>">
                         </div>
 
                         <div class="row">
@@ -46,7 +48,12 @@
 
                     <div class="c-field u-mb-small">
                         <label class="c-field__label">email</label>
-                        <input required="" name="email" class="c-input" type="email" value="<?php echo (!empty($user['email'])) ? (!empty(set_value('email')) ? set_value('email') : $user['email'] ) : set_value('email') ?>"/>
+                        <input <?php echo ($this->session->userdata('app_grade') == 'Instructor') ? 'readonly' : '' ?> required="" name="email" class="c-input" type="email" value="<?php echo (!empty($user['email'])) ? (!empty(set_value('email')) ? set_value('email') : $user['email'] ) : set_value('email') ?>"/>
+                        <?php if (!empty($user)): ?>
+                            <small class="u-text-mute">
+                            <?php echo $this->lang->line('note_email') ?>
+                            </small>
+                        <?php endif ?>
                         <?php echo form_error('email', '<small class="c-field__message u-color-danger"><i class="fa fa-times-circle"></i>', '</small>'); ?>
                     </div>
 
@@ -72,20 +79,39 @@
                         <?php echo form_error('new_password', '<small class="c-field__message u-color-danger"><i class="fa fa-times-circle"></i>', '</small>'); ?> 
                     </div>
 
-                    <?php if (empty($user) OR !empty($user) AND $user['grade'] != 'App'): ?>
-                        <div class="c-toggle u-mb-small">
-                            <div class="c-toggle__btn <?php echo (!empty($user['status'])) ? ($user['status'] == 'Active') ? 'is-active' : '' : 'is-active'?>">
-                                <label class="c-toggle__label" for="Active">
-                                    <input value="Active" class="c-toggle__input" id="Active" name="status" type="radio" <?php echo (!empty($user['status'])) ? ($user['status'] == 'Active') ? 'checked' : '' : 'checked'?>>Active
-                                </label>
+
+                    <div class="c-field u-mb-small">
+                        <label class="c-field__label">headline</label>
+                        <input required="" name="headline" class="c-input" type="text" value="<?php echo (!empty($user['headline'])) ? (!empty(set_value('headline')) ? set_value('headline') : $user['headline'] ) : set_value('headline') ?>"/>
+                        <?php echo form_error('headline', '<small class="c-field__message u-color-danger"><i class="fa fa-times-circle"></i>', '</small>'); ?> 
+                    </div>
+
+                    <?php if ($this->session->userdata('app_grade') != 'Instructor'): ?>
+                        <?php if (empty($user) OR !empty($user) AND $user['grade'] != 'App'): ?>
+
+                            <div class="c-field u-mb-small">
+                                <label class="c-field__label">grade : </label>
+                                <select required="" name="grade" class="c-select select2" data-placeholder='select'>
+                                    <option value=""></option>
+                                    <option <?php echo (!empty($user['grade']) AND $user['grade'] == 'User') ? 'selected' : ''; ?> value="User">User</option>
+                                    <option <?php echo (!empty($user['grade']) AND $user['grade'] == 'Instructor') ? 'selected' : ''; ?> value="Instructor">Instructor</option>
+                                </select>
                             </div>
 
-                            <div class="c-toggle__btn <?php echo (!empty($user['status'])) ? ($user['status'] == 'Blocked') ? 'is-active' : '' : ''?>">
-                                <label class="c-toggle__label" for="Blocked">
-                                    <input value="Blocked" class="c-toggle__input" id="Blocked" name="status" type="radio" <?php echo (!empty($user['status'])) ? ($user['status'] == 'Blocked') ? 'checked' : '' : '' ?>>Blocked
-                                </label>
+                            <div class="c-toggle u-mb-small">
+                                <div class="c-toggle__btn <?php echo (!empty($user['status'])) ? ($user['status'] == 'Active') ? 'is-active' : '' : 'is-active'?>">
+                                    <label class="c-toggle__label" for="Active">
+                                        <input value="Active" class="c-toggle__input" id="Active" name="status" type="radio" <?php echo (!empty($user['status'])) ? ($user['status'] == 'Active') ? 'checked' : '' : 'checked'?>>Active
+                                    </label>
+                                </div>
+
+                                <div class="c-toggle__btn <?php echo (!empty($user['status'])) ? ($user['status'] == 'Blocked') ? 'is-active' : '' : ''?>">
+                                    <label class="c-toggle__label" for="Blocked">
+                                        <input value="Blocked" class="c-toggle__input" id="Blocked" name="status" type="radio" <?php echo (!empty($user['status'])) ? ($user['status'] == 'Blocked') ? 'checked' : '' : '' ?>>Blocked
+                                    </label>
+                                </div>
                             </div>
-                        </div>
+                        <?php endif ?>
                     <?php endif ?>
 
                 </div>

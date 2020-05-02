@@ -1,12 +1,11 @@
 <?php $this->load->view('app/_layouts/header'); ?>
 <?php $this->load->view('app/_layouts/sidebar'); ?>
-<?php $this->load->view('app/_layouts/toolbar'); ?>
 <?php $this->load->view('app/_layouts/content'); ?>
 
 <div class="col-12 u-mv-small">
 
     <div class="c-card c-card--responsive h-100vh u-p-zero">
-    <div class="c-card__header c-card__header--transparent o-line"> 
+        <div class="c-card__header c-card__header--transparent o-line"> 
             <button class="c-btn--custom c-btn--small c-btn c-btn--success action-refresh">
                 <i class="fa fa-refresh"></i>
             </button>        
@@ -24,7 +23,7 @@
 
                         <thead class="c-table__head c-table__head--slim">
                             <tr class="c-table__row">
-                                <th class="c-table__cell c-table__cell--head text-center no-sort all">
+                                <th class="c-table__cell c-table__cell--head text-center no-sort none">
                                     <div class="c-choice c-choice--checkbox">
                                         <input class="c-choice__input" id="checkbox-all" name="select_all" type="checkbox">
                                         <label class="c-choice__label" for="checkbox-all"></label>

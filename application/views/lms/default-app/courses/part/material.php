@@ -6,9 +6,9 @@
                 <h3 class="u-mb-small">                   
                     <?php echo $this->lang->line('material_list') ?>
                 </h3>        
-                <div class="ok">
 
-                    <?php if (!empty($courses['all_data'])): ?>
+                <?php if (!empty($courses['all_data'])): ?>
+                    <div class="ok">
                         <article class="c-stage u-mb-zero">
                             <?php 
                             $number_section = 1;
@@ -67,13 +67,13 @@
 
                         <?php endforeach ?>   
                     </article> 
-                <?php endif ?>
-                <?php if (empty($courses['all_data'])): ?>
-                    <div class="c-alert u-bg-secondary u-text-dark u-mb-zero">
-                        <?php echo $this->lang->line('no_material') ?>
-                    </div>
-                <?php endif ?>
-            </div>
+                </div>
+            <?php endif ?>
+            <?php if (empty($courses['all_data'])): ?>
+                <div class="c-alert u-bg-secondary u-text-dark u-mb-zero">
+                    <?php echo $this->lang->line('no_material') ?>
+                </div>
+            <?php endif ?>
         </div>
 
     </div>

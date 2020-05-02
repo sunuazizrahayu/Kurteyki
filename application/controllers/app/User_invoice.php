@@ -10,9 +10,11 @@ class User_invoice extends My_App
     public function __construct(){
         parent::__construct();
 
-        $this->load->library('form_validation');
-
         $this->load->model('app/M_User_Invoice');         
+
+        if ($this->site['payment_method'] != 'Manual') {
+            redirect(base_url('app'));
+        }        
     }    
 
     public function index()

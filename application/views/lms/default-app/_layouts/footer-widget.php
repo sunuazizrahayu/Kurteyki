@@ -42,7 +42,7 @@
 
 			<div class="col-12 col-lg-4 u-pb-small">	
 				<div class="c-panel__widget">
-					<img style="width: 150px" src="<?php echo base_url('storage/uploads/lms/undraw_through_the_park_lxnl.svg') ?>" alt="footer-intro"> 
+					<img style="width: 150px" src="<?php echo base_url('storage/assets/lms/default-app/img/undraw_through_the_park_lxnl.svg') ?>" alt="footer-intro"> 
 					<ul class="c-profile-card__social u-justify-start u-border-zero u-p-zero u-mv-small">
 						<li class="u-mr-xsmall"><a target="_blank" title="facebook" class="c-profile-card__social-icon u-bg-facebook" href="https://facebook.com/kurteyki">
 							<i class="fa fa-facebook"></i>

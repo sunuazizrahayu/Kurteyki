@@ -33,7 +33,6 @@ class M_Auth extends CI_Model
             $data = array(
                 'email' => $post_data['email'],
                 'password' => sha1($post_data['password']),
-                'grade' => 'User',
                 'status' => 'Active'
                 );
 
@@ -50,17 +49,38 @@ class M_Auth extends CI_Model
 
                 if ($this->_Process_MYSQL->update_data($this->table_user, $data_update, array('id' => $id)) == TRUE) {
 
-                    $this->session->set_userdata(array(
-                        'id_user' => $read_data['id'],                        
-                        'username' => $read_data['username'],
-                        'photo' => $read_data['photo'],
-                        'grade' => $read_data['grade'],                        
-                        'user' => "login"
-                        ));
-
                     $this->session->unset_userdata('csrf_code');
 
-                    return 'success';
+                    if ($read_data['grade'] == 'User') {
+                        $this->session->set_userdata(array(
+                            'id_user' => $read_data['id'],                        
+                            'username' => $read_data['username'],
+                            'photo' => $read_data['photo'],
+                            'grade' => $read_data['grade'],                        
+                            'user' => "login"
+                            ));
+
+                        return 'success_user';
+                    }elseif ($read_data['grade'] == 'App' OR $read_data['grade'] == 'Instructor') {
+
+                        $this->session->set_userdata(array(
+                            'id' => $read_data['id'],                        
+                            'app_username' => $read_data['username'],
+                            'app_photo' => $read_data['photo'],
+                            'app_grade' => $read_data['grade'],                        
+                            'status' => "login",
+                            'key' => sha1($read_data['id'].$read_data['username'].date('YmdHis'))
+                            ));
+
+                        if ($read_data['grade'] == 'App') {
+                            return 'success_app';
+                        }else{                            
+                            return 'success_instructor';
+                        }
+                    }else{
+                        return 'not_exist';
+                    }
+
                 }
 
             }else {
@@ -76,7 +96,7 @@ class M_Auth extends CI_Model
 
     public function register(){
 
-        $post_data = $this->data_post();
+        $post_data = $this->data_post();        
 
         if ($post_data['csrf_code'] != '' AND $this->session->userdata('csrf_code') == $post_data['csrf_code']) {
 
@@ -101,10 +121,79 @@ class M_Auth extends CI_Model
         }        
     }
 
+    public function LoginSocialMedia($data){
+
+        $read = $this->_Process_MYSQL->get_data($this->table_user,$data);       
+
+        if ($read->num_rows() > 0) {
+
+            $read_data = $read->row_array();
+
+            $this->session->set_userdata(array(
+                'id_user' => $read_data['id'],                        
+                'username' => $read_data['username'],
+                'photo' => $read_data['photo'],
+                'grade' => $read_data['grade'],                        
+                'user' => "login"
+                ));
+
+            return true;
+        }else{
+            return false;
+        }
+    }    
+
+    public function RegisterSocialMedia($data){
+        $process = $this->_Process_MYSQL->insert_data($this->table_user,$data,true);
+
+        if ($process) {
+            $this->session->set_userdata(array(
+                'id_user' => $process,                        
+                'username' => $data['username'],
+                'photo' => $data['photo'],
+                'grade' => $data['grade'],                        
+                'user' => "login"
+                ));
+
+            return true;
+        }
+    }
+
+    public function googlecaptcha(){
+
+        if (empty($this->input->post())) return false;
+
+        if ($site['google_recaptcha']['status'] == 'Yes') {
+            $secret= $site['google_recaptcha']['secret_key'];
+
+            $credential = array(
+                'secret' => $secret,
+                'response' => $this->input->post('g-recaptcha-response')
+                );
+
+            $verify = curl_init();
+            curl_setopt($verify, CURLOPT_URL, "https://www.google.com/recaptcha/api/siteverify");
+            curl_setopt($verify, CURLOPT_POST, true);
+            curl_setopt($verify, CURLOPT_POSTFIELDS, http_build_query($credential));
+            curl_setopt($verify, CURLOPT_SSL_VERIFYPEER, false);
+            curl_setopt($verify, CURLOPT_RETURNTRANSFER, true);
+            $response = curl_exec($verify);
+
+            $status= json_decode($response, true);
+
+            return $status['success'];
+        }else {
+
+            return true;
+        }
+    }
+
 
     function logout(){
 
+        $this->session->unset_userdata(['id','app_username','app_photo','app_grade','status','key']);
         $this->session->unset_userdata(['id_user','username','photo','grade','user']);
+
         return 'success';
     }
 

@@ -55,16 +55,11 @@ password: kurteyki
 
 ## Work List
 
-* Multiple user > instructor for lms
-* Review lms by user
 * user register vertivication...
-* cookie setting
 
 ## Bug
 
-* currency format on settings page
 * language english
-* when order using coupon and transaction using midtrans, coupon code will reuse again...
 
 ## License
 

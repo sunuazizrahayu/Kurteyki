@@ -6,16 +6,16 @@
                 <h3 class="u-mb-small">
                     <?php echo $this->lang->line('description') ?>
                 </h3>        
-                <div class="post-body">
-                    <?php if (!empty($courses['description'])): ?>
+                <?php if (!empty($courses['description'])): ?>
+                    <div class="post-body">
                         <?php echo $courses['description']; ?> 
-                    <?php endif ?>
-                    <?php if (empty($courses['description'])): ?>
-                        <div class="c-alert u-bg-secondary u-text-dark">
-                            <?php echo $this->lang->line('no_description') ?>
-                        </div>                   
-                    <?php endif ?>                 
-                </div>
+                    </div>
+                <?php endif ?>
+                <?php if (empty($courses['description'])): ?>
+                    <div class="c-alert u-bg-secondary u-text-dark">
+                        <?php echo $this->lang->line('no_description') ?>
+                    </div>                   
+                <?php endif ?>                 
             </div>
 
         </div>

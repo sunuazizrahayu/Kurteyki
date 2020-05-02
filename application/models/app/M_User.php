@@ -90,6 +90,8 @@ class M_User extends CI_Model
             'username' => strip_tags($this->input->post('username')),
             'email' => strip_tags($this->input->post('email')),
             'no_handphone' => strip_tags($this->input->post('no_handphone')),
+            'headline' => strip_tags($this->input->post('headline')),     
+            'grade' => strip_tags($this->input->post('grade')),                 
             'status' => strip_tags($this->input->post('status')),     
             );
 
@@ -99,13 +101,13 @@ class M_User extends CI_Model
 
         if (empty($this->input->post('id'))) {
             $post_data['created'] = date('Y-m-d H:i:s');
-            $post_data['grade'] = 'User';
         }
 
         if (!empty($this->input->post('id'))) {
             $read = $this->data_update($this->input->post('id'));
 
             if ($read['grade'] == 'App') {
+                unset($post_data['grade']);                 
                 unset($post_data['status']); 
             }
         }
@@ -119,7 +121,7 @@ class M_User extends CI_Model
 
             $upload_photo = $this->_Process_Upload->Upload_File(
                 'image', // config upload
-                'storage/uploads/user/', // dir upload
+                'storage/uploads/user/photo/', // dir upload
                 'photo', // file post data
                 $image_old, // delete file
                 'user_photo', // file name
@@ -132,7 +134,16 @@ class M_User extends CI_Model
                     $this->session->set_userdata(array('app_photo' => $post_data['photo']));
                 }
             }
-        }           
+        }    
+
+        /**
+         * Unset if user_setting
+         */
+        if ($this->session->userdata('app_grade') == 'Instructor') {
+            unset($post_data['email']);
+            unset($post_data['grade']);             
+            unset($post_data['status']);            
+        }
 
         return $post_data;
     }  
@@ -146,6 +157,9 @@ class M_User extends CI_Model
     }
 
     public function process_update(){
+
+        // echo json_encode($this->data_post());
+        // exit;
         return $this->_Process_MYSQL->update_data($this->table_user,$this->data_post(),['id' => $this->input->post('id')]);
     }   
 
@@ -163,7 +177,7 @@ class M_User extends CI_Model
             $this->_Process_MYSQL->delete_data($this->table_lms_user_review, array('id_user' => $id));
             $this->_Process_MYSQL->delete_data($this->table_lms_user_wishlist, array('id_user' => $id));
 
-            unlink('storage/uploads/user/'.$read['photo']);
+            unlink('storage/uploads/user/photo/'.$read['photo']);
 
             return true;
         }
@@ -209,7 +223,7 @@ class M_User extends CI_Model
             $this->_Process_MYSQL->delete_data_multiple($this->table_lms_user_wishlist, $id, 'id_user');
 
             foreach ($photos as $photo) {
-                unlink('storage/uploads/user/'.$photo);
+                unlink('storage/uploads/user/photo/'.$photo);
             }
 
             return true;

@@ -46,9 +46,9 @@
 								<?php endif ?>
 
 								<?php if ($post['status'] == 'Checking'): ?>
-									<span class="c-btn c-btn--fancy c-btn--custom c-btn--small">
+									<a href='<?php echo base_url('payment/waiting-confirmation/'.$post['id']) ?>' class="c-btn c-btn--fancy c-btn--custom c-btn--small">
 										<?php echo $this->lang->line('wait_confirmation') ?>
-									</span>
+									</a>
 								<?php endif ?>
 
 								<?php if ($post['status'] == 'Purchased'): ?>

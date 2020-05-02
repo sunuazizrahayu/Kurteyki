@@ -135,33 +135,45 @@ $('#tab-material').click(function() {
     }
 });
 
+ $('.select-cookie').on('change', function() {
+    var optional = $(this).find('option:selected').text();
+    if (optional == 'Yes') {
+        $('.cookie-message').show();
+    } else {
+        $('.cookie-message').hide();
+    }
+});
+
+
 /**
  * Module Setting Payment
  */
 
  $(".button-payment-transaction-create").click(function() {
-    $(".input-transaction-type,.input-transaction-account_number,.input-transaction-receiver,.input-transaction-identity").val('');
+    $(".input-transaction-type").val(null).trigger('change');
+    $(".input-transaction-account_number,.input-transaction-receiver,.input-transaction-identity").val('');
     $('#form-transaction').on('shown.bs.modal', function() {
         $(".input-transaction-type").focus();
     })
 });
 
  $(".button-payment-transaction").on("click", function() {
-    $(".input-transaction-type").val($(this).data("type"));
+    $(".input-transaction-type").val($(this).data("type")).trigger('change');
     $(".input-transaction-account_number").val($(this).data("account_number"));
     $(".input-transaction-receiver").val($(this).data("receiver"));    
     $(".input-transaction-identity").val($(this).data("identity"));    
 });
 
  $(".button-payment-confirmation-create").click(function() {
-    $(".input-confirmation-type,.input-confirmation-data,.input-confirmation-identity").val('');
+    $(".input-confirmation-type").val(null).trigger('change');
+    $(".input-confirmation-data,.input-confirmation-identity").val('');
     $('#form-confirmation').on('shown.bs.modal', function() {
         $(".input-confirmation-type").focus();
     })
 });
 
  $(".button-payment-confirmation").on("click", function() {
-    $(".input-confirmation-type").val($(this).data("type"));
+    $(".input-confirmation-type").val($(this).data("type")).trigger('change');
     $(".input-confirmation-data").val($(this).data("data"));
     $(".input-confirmation-identity").val($(this).data("identity"));    
 });

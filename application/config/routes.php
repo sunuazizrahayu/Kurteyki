@@ -63,15 +63,19 @@ $route['default_controller'] = 'lms/Homepage';
 # auth index
 $route['auth'] = 'user/auth/index';
 $route['auth/process'] = 'user/auth/process_login';
+
 $route['auth/register'] = 'user/auth/register';
+$route['auth/facebook'] = 'user/auth/auth_facebook';
+$route['auth/google'] = 'user/auth/auth_google';
 $route['auth/register/process'] = 'user/auth/process_register';
+
 $route['auth/process_logout'] = 'user/auth/process_logout';
 
 # payment
 $route['payment/order/(:any)'] = 'user/payment/order/$1';
 $route['payment/success'] = 'user/payment/success';
 $route['payment/waiting'] = 'user/payment/waiting';
-$route['payment/waiting-confirmation'] = 'user/payment/waiting_confirmation';
+$route['payment/waiting-confirmation/(:any)'] = 'user/payment/waiting_confirmation/$1';
 
 $route['payment/use_coupon'] = 'user/payment/use_coupon';
 $route['payment/process_free'] = 'user/payment/process_free';

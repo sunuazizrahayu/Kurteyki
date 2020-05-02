@@ -6,8 +6,10 @@ class _Courses extends CI_Model
 	public $table_user = 'tb_user';  
 
 	public $table_lms_category = 'tb_lms_category';   
+
 	public $table_lms_user_courses = 'tb_lms_user_courses';
 	public $table_lms_user_wishlist = 'tb_lms_user_wishlist';
+	public $table_lms_user_review = 'tb_lms_user_review';
 
 	public function __construct()
 	{
@@ -23,20 +25,20 @@ class _Courses extends CI_Model
 			$read = $this->_Process_MYSQL->get_data($this->table_lms_user_courses,[
 				'id_user' => $this->session->userdata('id_user'),
 				'id_courses' => $courses['id']
-			]);
+				]);
 
 			if ($read->num_rows() > 0) {
 				return [
-					'user_courses' => true
+				'user_courses' => true
 				];
 			}else {
 				return [
-					'user_courses' => false
+				'user_courses' => false
 				];
 			}
 		}else {
 			return [
-				'user_courses' => false
+			'user_courses' => false
 			];
 		}
 	}
@@ -47,22 +49,35 @@ class _Courses extends CI_Model
 			$read = $this->_Process_MYSQL->get_data($this->table_lms_user_wishlist,[
 				'id_user' => $this->session->userdata('id_user'),
 				'id_courses' => $courses['id']
-			]);
+				]);
 
 			if ($read->num_rows() > 0) {
 				return [
-					'user_wishlist' => true
+				'user_wishlist' => true
 				];
 			}else {
 				return [
-					'user_wishlist' => false
+				'user_wishlist' => false
 				];
 			}
 		}else {
 			return [
-				'user_wishlist' => false
+			'user_wishlist' => false
 			];
 		}
+	}	
+
+	public function read_rating($id_courses)
+	{
+		$this->db
+		->select("CEIL(AVG(rating)) as rate_rating")
+		->from($this->table_lms_user_review)
+		->where("id_courses",$id_courses);
+		$query = $this->db->get();
+
+		$read = $query->row_array();
+
+		return $read['rate_rating'];
 	}	
 
 	/**
@@ -136,7 +151,12 @@ class _Courses extends CI_Model
 			/**
 			 * User
 			 */
-			$courses['author'] = $this->read_user($courses['id_user']);			
+			$courses['author'] = $this->read_user($courses['id_user']);	
+
+			/**
+			 * Rating
+			 */
+			$courses['rating'] = $this->read_rating($courses['id']);
 			
 			$extract[] = array(
 				'id' =>$courses['id'],
@@ -160,8 +180,9 @@ class _Courses extends CI_Model
 				'price_total' =>  $courses['price_total'],
 				'price_total_original' =>  $courses['price_total_original'],	
 				'author' =>$courses['author'],
+				'rating' =>$courses['rating'],				
 				'status' =>$courses['status']					
-			);         
+				);         
 
 		}
 
@@ -237,6 +258,16 @@ class _Courses extends CI_Model
 		$courses['price_total_original'] = $courses['price_original']-$courses['discount_original'];
 		$courses['price_total'] = $this->_Currency->set_currency($courses['price_total_original']);
 		
+		/**
+		 * User
+		 */
+		$courses['author'] = $this->read_user($courses['id_user']);	
+
+		/**
+		 * Rating
+		 */
+		$courses['rating'] = $this->read_rating($courses['id']);		
+		
 		$extract = array(
 			'id' =>$courses['id'],
 			'id_user' =>$courses['id_user'],			
@@ -260,9 +291,11 @@ class _Courses extends CI_Model
 			'discount' =>  $courses['discount'],
 			'discount_original' =>  $courses['discount_original'],							
 			'price_total' =>  $courses['price_total'],
-			'price_total_original' =>  $courses['price_total_original'],										
+			'price_total_original' =>  $courses['price_total_original'],
+			'author' =>$courses['author'],
+			'rating' =>$courses['rating'],																	
 			'status' =>$courses['status']					
-		);
+			);
 
 		return $extract;
 	}	
@@ -282,9 +315,9 @@ class _Courses extends CI_Model
 		$read = $query->row_array();
 
 		$data = [
-			'name' => $read['username'],
-			'photo' => (!empty($read['photo']) ?  base_url('storage/uploads/user/'.$read['photo']) : base_url('storage/uploads/user/person.png')),
-			'headline' => $read['headline']
+		'name' => $read['username'],
+		'photo' => (!empty($read['photo']) ?  base_url('storage/uploads/user/photo/'.$read['photo']) : base_url('storage/uploads/user/photo/default.png')),
+		'headline' => $read['headline']
 		];
 
 		return $data;
@@ -309,9 +342,9 @@ class _Courses extends CI_Model
 		$read = $query->row_array();
 
 		$category = [
-			'name' => $read['name'],
-			'icon' => $read['icon'],			
-			'url' => base_url('courses-category/'.$read['slug']),
+		'name' => $read['name'],
+		'icon' => $read['icon'],			
+		'url' => base_url('courses-category/'.$read['slug']),
 		];
 
 		return $category;

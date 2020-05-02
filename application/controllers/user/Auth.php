@@ -4,7 +4,10 @@ class Auth extends My_Site{
 
 	public $redirect_login = 'auth';
 	public $redirect_register = 'auth/register';	
-	public $redirect_dashboard = 'user/courses';		
+	public $redirect_dashboard_user = 'user/courses';		
+
+	public $redirect_dashboard_instructor = 'app/lms_courses';
+	public $redirect_dashboard_app = 'app/dashboard';	
 
 	public function __construct(){
 		parent::__construct();
@@ -19,7 +22,11 @@ class Auth extends My_Site{
 	public function index()
 	{
 
-		$this->M_Auth->check('exist','user','user/profile');
+		if ($this->session->userdata('user')) {
+			$this->M_Auth->check('exist','user','user/profile');
+		}elseif ($this->session->userdata('status')) {
+			$this->M_Auth->check('not_exist', 'status', 'auth');
+		}
 
 		$this->session->set_userdata('csrf_code', substr(base_convert(sha1(uniqid(mt_rand())), 16, 36), 0, 32));
 
@@ -75,9 +82,17 @@ class Auth extends My_Site{
 
 			redirect(base_url($this->redirect_login));
 
-		}elseif ($login == 'success') {
+		}elseif ($login == 'success_user') {
 
-			redirect($this->redirect_dashboard);
+			redirect($this->redirect_dashboard_user);
+
+		}elseif ($login == 'success_instructor') {
+
+			redirect($this->redirect_dashboard_instructor);
+
+		}elseif ($login == 'success_app') {
+
+			redirect($this->redirect_dashboard_app);
 
 		}elseif ($login == 'not_exist') {
 
@@ -98,7 +113,9 @@ class Auth extends My_Site{
 
 		$this->M_Auth->set_validation_register();
 
-		if($this->form_validation->run() != false){
+		$googlecaptcha = $this->M_Auth->googlecaptcha();
+
+		if($this->form_validation->run() != false AND $googlecaptcha != false){
 
 			$register = $this->M_Auth->register();
 
@@ -146,6 +163,146 @@ class Auth extends My_Site{
 
 			$this->load->view('user/auth/register',$data);
 		}		
+	}
+
+	public function auth_facebook(){
+
+		$settings['facebook_app_id']                = '2035153033287427';
+		$settings['facebook_app_secret']            = 'ea196826decb02b3a566c113b9ceef26';
+		$settings['facebook_login_redirect_url']    = 'auth/facebook';
+		$settings['facebook_logout_redirect_url']   = 'auth/logout';
+		$settings['facebook_login_type']            = 'web';
+		$settings['facebook_permissions']           = array('email');
+		$settings['facebook_graph_version']         = 'v3.2';
+		$settings['facebook_auth_on_load']          = TRUE;
+
+		$this->load->library('facebook', $settings);
+
+		if ($this->facebook->is_authenticated()) {
+
+			$userProfile = $this->facebook->request('get', '/me?fields=id,first_name,last_name,picture.width(100).height(100),email');
+
+			/**
+			 * Remove access_token
+			 */
+			$this->facebook->destroy_session();
+
+			/**
+			 * Checking Email if exist update and set session
+			 */
+			$data_login = [
+			'email' => $userProfile['email'],
+			'status' => 'Active'
+			];
+			if ($this->M_Auth->LoginSocialMedia($data_login)) {
+				redirect($this->redirect_dashboard_user);
+			}else{	
+
+				/**
+				 * Save Image
+				 */
+				$url = $userProfile['picture']['data']['url'];
+				$photoname = $userProfile['id'].date('-YmdHis').'.jpg';  
+				file_put_contents('storage/uploads/user/photo/'.$photoname, file_get_contents($url)); 
+
+				$data_register = [
+				'username' => $userProfile['first_name'].' '.$userProfile['last_name'],
+				'password' => '',  
+				'email' => $userProfile['email'],                      
+				'no_handphone' => '',
+				'photo' => $photoname,				
+				'grade' => 'User',
+				'created' => date('Y:m:d H:i:s'),
+				'last_login' => date('Y:m:d H:i:s'),			
+				'status' => 'Active',
+				];
+
+				/**
+				 * Insert to database
+				 */
+				if ($this->M_Auth->RegisterSocialMedia($data_register)) {
+					redirect($this->redirect_dashboard_user);
+				}
+			}
+
+
+		}else{			
+			redirect($this->facebook->login_url());
+		}
+	}
+
+	public function auth_google(){
+
+		$settings['client_id']        = '149457348626-hl17uddbuhjup4mfhtdltbkln7vej215.apps.googleusercontent.com';
+		$settings['client_secret']    = 'JJbM0ETn_tdtPpKRGDpr6Hbi';
+		$settings['redirect_uri']     = base_url('auth/google');
+		$settings['application_name'] = 'Kurteyki';
+		$settings['api_key']          = '';
+		$settings['scopes']           = array();
+
+		$this->load->library('google', $settings);
+
+		if(isset($_GET['code'])){ 
+
+            // Authenticate user with google 
+			if($this->google->getAuthenticate()){ 
+
+                /**
+                 * Get user info from google
+                 */
+                $userProfile = $this->google->getUserInfo(); 
+
+				/**
+				 * Reset OAuth access token 
+				 */
+				$this->google->revokeToken(); 
+
+				/**
+				 * Checking Email if exist update and set session
+				 */				
+				$data_login = [
+				'email' => $userProfile['email'],
+				'status' => 'Active'
+				];
+
+				if ($this->M_Auth->LoginSocialMedia($data_login)) {
+					redirect($this->redirect_dashboard_user);
+				}else{	
+
+					/**
+					 * Save Image
+					 */
+					$url = $userProfile['picture'];
+					$photoname = $userProfile['id'].date('-YmdHis').'.jpg';  
+					file_put_contents('storage/uploads/user/photo/'.$photoname, file_get_contents($url)); 
+
+					$data_register = [
+					'username' => $userProfile['name'],
+					'password' => '',  
+					'email' => $userProfile['email'],                      
+					'no_handphone' => '',
+					'photo' => $photoname,				
+					'grade' => 'User',
+					'created' => date('Y:m:d H:i:s'),
+					'last_login' => date('Y:m:d H:i:s'),			
+					'status' => 'Active',
+					];
+
+					/**
+					 * Insert to database
+					 */
+					if ($this->M_Auth->RegisterSocialMedia($data_register)) {
+						redirect($this->redirect_dashboard_user);
+					}
+				}
+
+
+			}
+
+		}else{			
+			redirect($this->google->loginURL()); 
+		}
+
 	}
 
 	public function process_logout(){

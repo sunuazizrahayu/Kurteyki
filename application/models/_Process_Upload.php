@@ -12,7 +12,7 @@ class _Process_Upload extends CI_Model {
         if ($config == 'image') {
             $config_upload = array(
                 'upload_path' => $path_dir,
-                'allowed_types' =>'jpg|png|ico',
+                'allowed_types' =>'jpeg|jpg|png|ico',
                 );
         }    
 
@@ -27,6 +27,7 @@ class _Process_Upload extends CI_Model {
         if($this->upload->do_upload($file_data)){
 
             $data = array($file_data => $this->upload->data());
+
 
             # check if create thumbnail
             if ($is_image) {

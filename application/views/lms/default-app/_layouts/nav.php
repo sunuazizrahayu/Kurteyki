@@ -6,7 +6,7 @@
                 <div class="c-navbar u-border-bottom-zero u-p-zero">
 
                     <a class="u-text-center u-mr-medium" href="<?php echo base_url() ?>" title='<?php echo $site['title'] ?>'>
-                        <img src="<?php echo base_url('storage/uploads/lms/logo.png') ?>" alt="<?php echo $site['title'] ?>" style="width: 120px;">
+                        <img src="<?php echo base_url('storage/assets/lms/default-app/img/logo.png') ?>" alt="<?php echo $site['title'] ?>" style="width: 120px;">
                     </a>
 
                     <h1 class="u-h3 navbar__title u-text-bold u-hidden-visually"><?php echo $site['title'] ?></h1>

@@ -102,11 +102,18 @@
 	</a>
 </li>
 
+<?php if ($this->site['payment_method'] == 'Manual'): ?>
 <li class="c-sidebar__item">
 	<a class="c-sidebar__link <?php if($this->uri->segment(2)=='user_invoice' or $this->uri->segment(2)=='user_invoice' and $this->uri->segment(3) == 'create' ){echo "is-active";}?>" href="<?php echo base_url('app/user_invoice') ?>">
 		<i class="fa fa-shopping-cart u-mr-xsmall"></i>Invoice
 	</a>
 </li>
+<li class="c-sidebar__item">
+	<a class="c-sidebar__link <?php if($this->uri->segment(2)=='user_invoice_history' or $this->uri->segment(2)=='user_invoice_history' and $this->uri->segment(3) == 'create' ){echo "is-active";}?>" href="<?php echo base_url('app/user_invoice_history') ?>">
+		<i class="fa fa-clock-o u-mr-xsmall"></i>Invoice History
+	</a>
+</li>
+<?php endif ?>
 
 <h4 class="c-sidebar__title">Settings</h4>
 
