@@ -2,9 +2,9 @@
 
 Aplikasi ini adalah hasil dari pembelajaran codeigniter 3. 
 
-<br/>
-
 ## Fitur Umum yang tersedia
+
+Fitur Umum yang tersedia
 * 3 Hak Akses terdiri dari App (admin), Instructor (LMS), dan User (LMS)
 * Sitemap Otomatis
 * Feeds
@@ -14,7 +14,7 @@ Aplikasi ini adalah hasil dari pembelajaran codeigniter 3.
 * Pengaturan Tampilan situs dilakukan dihalaman app
 * Halaman Statis
 
-## Fitur LMS yang tersedia
+Fitur LMS yang tersedia
 * Masuk / Daftar User menggunakan akun sosial
 * Pengaturan dilakukan di halaman app (admin)
 * Filter pencarian
@@ -24,7 +24,7 @@ Aplikasi ini adalah hasil dari pembelajaran codeigniter 3.
 * Pembayaran dilakukan secara manual / menggunakan payment gateway (midtrans)
 * Mengubah kode template langsung melalui halaman app
 
-## Fitur Blog yang tersedia
+Fitur Blog yang tersedia
 * Pemberian kategori dan tags langsung dihalaman post
 * Terdapat 2 Template yang dapat digunakan
 * Pengaturan Widget melalui halaman app 
@@ -32,9 +32,10 @@ Aplikasi ini adalah hasil dari pembelajaran codeigniter 3.
 * Komentar disqus / sistem (bawaan)
 * Mengubah kode template langsung melalui halaman app
 
-<br/>
-
 ## Langkah Awal Memulai
+
+### Persyaratan
+[CodeIgniter Server Requirements](https://codeigniter.com/userguide3/general/requirements.html)
 
 Intruksi dibawah ini akan mengarahkan anda untuk menjalankan project pada komputer anda (local) dan ditujukan hanya untuk melakukan development dan testing saja.
 
@@ -69,8 +70,6 @@ username : kurteyki
 password: kurteyki
 ```
 
-<br/>
-
 ## Sumber Inspirasi
 
 * CiFireCMS (module blog dan pengaturan situs)
@@ -78,20 +77,14 @@ password: kurteyki
 * buildwithangga.com (module pembayaran manual)
 * skillacademy.com (template lms)
 
-<br/>
-
 ## List Pekerjaan
 
 * user register vertivication...
-
-<br/>
 
 ## Bug Aplikasi
 
 * language english
 * pembayaran menggunakan payment gateway masih belum sempurna
-
-<br/>
 
 ## Change Log
 
@@ -105,8 +98,6 @@ password: kurteyki
 * Login using social account
 * Review user
 * Cookies notification
-
-<br/>
 
 ## Lisensi
 
