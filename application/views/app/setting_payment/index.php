@@ -14,13 +14,17 @@
 					<h5 class="c-card__title">  
 						<?php  echo $title; ?>
 					</h5>   
-					<button class="c-btn c-btn--info u-ml-auto u-mr-small c-btn--custom" type="submit">
-						<i class="fa fa-save" aria-hidden="true"></i>
-					</button>  
+					<?php if ($this->session->userdata('app_grade') == 'App'): ?>		
+						<button class="c-btn c-btn--info u-ml-auto u-mr-small c-btn--custom" type="submit">
+							<i class="fa fa-save" aria-hidden="true"></i>
+						</button>  
+					<?php endif ?>
 				</div>
 				<div class="c-card__body u-p-zero u-pt-small">   
 
-					<?php $this->load->view('app/setting_payment/form-setting'); ?>		   
+					<?php if ($this->session->userdata('app_grade') == 'App'): ?>		
+						<?php $this->load->view('app/setting_payment/form-setting'); ?>		   
+					<?php endif ?>
 
 					<div class="row">
 

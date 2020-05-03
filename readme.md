@@ -112,6 +112,7 @@ password: kurteyki
 * Change Logic
 
 **V1.6**
+* add instructor
 * Login using social account
 * Review user
 * Cookies notification
