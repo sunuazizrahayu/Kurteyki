@@ -61,6 +61,20 @@ Langkah kedua ***akses url dibawah ini*** :
 http://localhost/kurteyki
 ```
 
+Cron untuk kirim email
+
+```
+*/2 * * * * /usr/local/bin/php /home/cpanelusername/public_html/index.php my_jobs listen
+```
+
+Pengaturan .htaccess
+```
+.htaccess.dev = untuk development
+.htaccess.run = untuk production
+
+***htaccess ini penting untuk noindex dan caching.***
+```
+
 Informasi App
 
 ```
@@ -70,12 +84,6 @@ Default App login
 username : kurteyki
 password: kurteyki
 
-```
-
-Cron untuk kirim email
-
-```
-*/2 * * * * /usr/local/bin/php /home/cpanelusername/public_html/index.php my_jobs listen
 ```
 
 ## Sumber Inspirasi

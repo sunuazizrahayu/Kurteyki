@@ -5,7 +5,7 @@ class Google {
 	
 	public function __construct($config) {
 		
-		require APPPATH .'third_party/google-login-api/apiClient.php';
+		require APPPATH .'third_party/google-login-api/ApiClient.php';
 		require APPPATH .'third_party/google-login-api/contrib/apiOauth2Service.php';
 		
 		$this->client = new apiClient();

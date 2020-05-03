@@ -479,7 +479,7 @@ CREATE TABLE `tb_site` (
 --
 
 INSERT INTO `tb_site` (`type`, `data`) VALUES
-('ads_txt', 'google.com, pub-2846006866814506, DIRECT, f08c47fec0942fa0'),
+('ads_txt', ''),
 ('blog_comment', '{\"type\":\"disqus\",\"disqus_shortname\":\"kurteyki\",\"disqus_developer\":\"1\",\"moderate\":\"false\",\"message\":\"Komentar diblokir\"}'),
 ('blog_limit_post', '1'),
 ('cache', 'No'),
@@ -499,7 +499,7 @@ INSERT INTO `tb_site` (`type`, `data`) VALUES
 ('meta_twitter_card', '{\"publisher\":\"@kurteyki\",\"default_image\":\"twitter_card_default_image_20200415181017.png\"}'),
 ('no_image', 'no_image_20200408075727.jpg'),
 ('payment_method', 'Manual'),
-('payment_midtrans', '{\"status_production\":\"No\",\"client_key\":\"SB-Mid-client-kda5uXSFYxy0K5EJ\",\"server_key\":\"SB-Mid-server-pE6FhBweNWjzV3ZJkDueTaYp\"}'),
+('payment_midtrans', '{\"status_production\":\"No\",\"client_key\":\"\",\"server_key\":\"\"}'),
 ('robots_txt', 'User-agent: *\r\nAllow: /\r\n\r\nSitemap: [sitemap_url]'),
 ('slogan', 'Belajar pengembangan diri.'),
 ('smtp', '{\"protocol\":\"smtp\",\"smtp_host\":\"smtp.googlemail.com\",\"smtp_port\":\"465\",\"smtp_user\":\"\",\"smtp_pass\":\"\"}'),

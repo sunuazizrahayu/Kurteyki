@@ -30,7 +30,11 @@
 							</div>
 						</div>
 
-						<div class="c-stage__panel u-p-medium row">
+						<div class="c-stage__panel u-p-medium row">							
+
+							<div class="col-12">
+								<div class="c-alert u-bg-primary">Get Key : <a class="u-text-white" href="https://developers.facebook.com/">https://developers.facebook.com/</a></div>
+							</div>
 
 							<div class="col-lg-6">
 								<div class="c-field u-mb-medium">
@@ -60,7 +64,11 @@
 							</div>
 						</div>
 
-						<div class="c-stage__panel u-p-medium row">
+						<div class="c-stage__panel u-p-medium row">							
+
+							<div class="col-12">
+								<div class="c-alert u-bg-primary">Get Key : <a class="u-text-white" href="https://console.developers.google.com/apis/dashboard">https://console.developers.google.com/apis/dashboard</a></div>
+							</div>
 
 							<div class="col-lg-6">
 								<div class="c-field u-mb-medium">
@@ -91,6 +99,10 @@
 						</div>
 
 						<div class="c-stage__panel u-p-medium row">
+
+							<div class="col-12">
+								<div class="c-alert u-bg-primary">Get Key : <a class="u-text-white" href="https://www.google.com/recaptcha/">https://www.google.com/recaptcha/</a></div>
+							</div>
 
 							<div class="c-field u-mb-medium col-md-12">
 								<label class="c-field__label">Using reCaptcha ?</label>
