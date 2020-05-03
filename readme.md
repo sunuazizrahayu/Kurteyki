@@ -96,7 +96,7 @@ password: kurteyki
 
 ## List Pekerjaan
 
-* -
+* No Works This end.
 
 ## Bug Aplikasi
 

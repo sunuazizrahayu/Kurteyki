@@ -36,7 +36,7 @@ class M_Site_Visitor extends CI_Model
                     ->where('permalink',$this->uri->segment(2))
                     ->update($this->table_blog_post);
                 }
-                elseif ($site['modules'] == 'lms' AND $site['page_type'] == 'detail') {
+                elseif ($site['modules'] == 'lms' AND $site['page_type'] == 'courses') {
                     $this->db->set('views','views+1',FALSE)
                     ->where('permalink',$this->uri->segment(2))
                     ->update($this->table_lms_courses);
