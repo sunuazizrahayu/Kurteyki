@@ -38,7 +38,7 @@
 
                     <div class="c-field u-mb-small">
                         <label class="c-field__label"><?php echo $this->lang->line('review') ?> : </label>
-                        <textarea rows="5" autofocus="" autocomplete="off" required class="c-input" name="review" type="text" placeholder="<?php echo $this->lang->line('write_review') ?>"></textarea>
+                        <textarea id='textarea-review' rows="5" autofocus="" autocomplete="off" required class="c-input" name="review" type="text" placeholder="<?php echo $this->lang->line('write_review') ?>"></textarea>
                     </div>
 
                 </div>

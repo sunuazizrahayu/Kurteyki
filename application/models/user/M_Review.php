@@ -35,9 +35,20 @@ class M_Review extends CI_Model
 		];
 
 		$post_data = [
-		'rating' => $post['rating'],
-		'review' => $post['review']
+		'rating' => strip_tags($post['rating']),
+		'review' => strip_tags($post['review'])
 		];
+
+		if (strlen($post_data['review']) > 300) {
+			echo json_encode([
+				'status' => false,
+				'message' => 'Jumlah karakter melebihi 300 huruf'
+				]);
+
+			exit;
+		}
+
+		$post_data['review'] = preg_replace('/\s+/', ' ',$post_data['review']);
 
 		$post_data = array_merge($check_data,$post_data);
 
@@ -47,12 +58,14 @@ class M_Review extends CI_Model
 		if ($user_review->num_rows() < 1) {
 			if ($this->create_review($post_data)) {
 				echo json_encode([
+					'status' => true,
 					'message' => 'Sukses mengirim review'
 					]);
 			}
 		}else{
 			if ($this->update_review($post_data)) {
 				echo json_encode([
+					'status' => true,
 					'message' => 'Sukses update review'
 					]);
 			}

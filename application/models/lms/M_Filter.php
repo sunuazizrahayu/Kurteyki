@@ -39,7 +39,7 @@ class M_Filter extends CI_Model
 	public function query($filter,$count = false,$limit = false,$index = false){
 
 		if (!empty($filter['category'])) {
-			$id_category = $this->_Process_MYSQL->get_data($this->table_lms_category,['slug'=>$filter['category']]);
+			$id_category = $this->_Process_MYSQL->get_data($this->table_lms_category,['slug'=>strip_tags($filter['category'])]);
 			if ($id_category->num_rows() < 1) {
 				$id_category = false;
 			}else {
@@ -56,7 +56,7 @@ class M_Filter extends CI_Model
 		$this->db->where("status = 'Published'"); 
 
 		if (!empty($filter['q'])) {
-			$this->db->like("title",$filter['q']);			
+			$this->db->like("title",strip_tags($filter['q']));			
 		}
 
 		if (!empty($id_category)) {
@@ -64,23 +64,23 @@ class M_Filter extends CI_Model
 		}
 
 		if (!empty($filter['price'])) {
-			if ($filter['price'] == 'free') {
+			if (strip_tags($filter['price']) == 'free') {
 				$this->db->where("price = 0");
-			}elseif ($filter['price'] == 'paid') {
+			}elseif (strip_tags($filter['price']) == 'paid') {
 				$this->db->where("price > 0");
 			}
 		}	
 
 		if (!empty($filter['sort'])) {
-			if ($filter['sort'] == 'price_high') {
+			if (strip_tags($filter['sort']) == 'price_high') {
 				$this->db->order_by('price','DESC');
 			}
-			elseif ($filter['sort'] == 'price_low') {
+			elseif (strip_tags($filter['sort']) == 'price_low') {
 				$this->db->order_by('price','ASC');
 			}
-			elseif ($filter['sort'] == 'new') {
+			elseif (strip_tags($filter['sort']) == 'new') {
 				$this->db->order_by('time','DESC');
-			}elseif ($filter['sort'] == 'old') {
+			}elseif (strip_tags($filter['sort']) == 'old') {
 				$this->db->order_by('time','ASC');
 			}
 		}else {
@@ -108,7 +108,7 @@ class M_Filter extends CI_Model
 		$this->db->from($this->table_lms_courses);		
 		$this->db->where_in('id',$id);
 		if (!empty($filter['sort'])) {
-			if ($filter['sort'] == 'price_high') {
+			if (strip_tags($filter['sort']) == 'price_high') {
 				$this->db->order_by('price','DESC');
 			}
 			elseif ($filter['sort'] == 'price_low') {

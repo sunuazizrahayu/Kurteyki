@@ -103,3 +103,22 @@ hr{border-top:1px solid rgba(0,0,0,0.12);display:block;margin-bottom:16px;width:
  .rating-stars ul > li.star.selected > i.fa {
  	color:#FF912C;
  }
+
+
+ /**
+  * Wword Count
+  */
+  .originalTextareaInfo {
+  	font-size: 12px;
+  	color: #000000;
+  	font-family: Tahoma, sans-serif;
+  	text-align: right;
+  	width: 100% !important
+  }
+
+  .warningTextareaInfo {
+  	font-size: 12px;
+  	color: #FF0000;
+  	font-family: Tahoma, sans-serif;
+  	text-align: right
+  }
