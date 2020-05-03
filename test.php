@@ -14,3 +14,5 @@ TRUNCATE `tb_lms_user_review`;
 TRUNCATE `tb_lms_user_wishlist`;
 TRUNCATE `tb_site_pages`;
 TRUNCATE `tb_site_visitor`;
+
+gitoba9328@coalamails.com

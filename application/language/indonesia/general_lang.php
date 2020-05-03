@@ -81,6 +81,7 @@ $lang['min_length_end'] = 'karakter atau lebih';
 $lang['max_length_start'] = 'tidak boleh melebihi';
 $lang['max_length_end'] = 'karakter';
 
+$lang['email_not_accept'] = 'Email tidak di izinkan';
 $lang['not_valid'] = 'Tidak valid';
 $lang['not_same'] = 'Tidak sama';
 $lang['must_filled'] = 'tidak boleh kosong';

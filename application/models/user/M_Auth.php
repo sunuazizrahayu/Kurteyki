@@ -281,6 +281,23 @@ class M_Auth extends CI_Model
             'email_checker',
             function($email){
 
+                /**
+                 * https://www.daniweb.com/programming/web-development/threads/471144/allow-only-specific-domain-for-email
+                 * allow only specific domain for email
+                 */
+                $blocked = array(
+                    '@coalamails.com'
+                    );
+
+                if(preg_match('/@(?!.*@).*+/', $email, $matches) == 1)
+                {
+                    if (in_array($matches[0], $blocked)) {
+                        $this->form_validation->set_message('email_checker', $this->lang->line('email_not_accept'));
+
+                        return false;
+                    }
+                }
+
                 $read = $this->_Process_MYSQL->get_data($this->table_user,['email' => $email]);
 
                 if ($read->num_rows() > 0) {
