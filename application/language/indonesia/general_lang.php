@@ -60,10 +60,6 @@ $lang['username'] = 'Username';
 $lang['password'] = 'Password';
 $lang['failed_login'] = 'Gagal Masuk.';
 
-$lang['error_old_password'] = 'Gagal ! Password Lama tidak valid';
-$lang['error_confirm_password'] = 'Gagal ! Password Konfirmasi Tidak Sama';
-$lang['sucess_change'] = 'Berhasil Mengganti Password';
-
 /* vertification */
 $lang['email_vertification_message_subject'] = 'Vertifikasi Email';
 $lang['email_vertification_message_head'] = 'Terima kasih telah mendaftar,';
@@ -85,9 +81,11 @@ $lang['min_length_end'] = 'karakter atau lebih';
 $lang['max_length_start'] = 'tidak boleh melebihi';
 $lang['max_length_end'] = 'karakter';
 
+$lang['not_valid'] = 'Tidak valid';
 $lang['not_same'] = 'Tidak sama';
 $lang['must_filled'] = 'tidak boleh kosong';
 $lang['must_number'] = 'Harus berupa angka';
+$lang['must_alphabet'] = 'Harus berupa alphabet tidak boleh angka atau karakter';
 
 
 /* profile */

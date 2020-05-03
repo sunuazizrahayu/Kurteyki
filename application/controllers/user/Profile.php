@@ -9,58 +9,44 @@ class Profile extends My_User
     public function __construct(){
         parent::__construct();
 
+        $this->load->library('form_validation');
+
         $this->load->model('user/M_Profile');       
     }   
     
     public function index()
     {
 
-        $site = $this->site;
-        $widget= $this->widget; 
-        $profile = $this->M_Profile->read();
 
-        $data = array(
-            'site' => $site,
-            'widget' => $widget,    
-            'profile' =>  $profile
-        );
+        $this->M_Profile->set_validation_register();
 
-        $this->load->view($this->index, $data);
-    }
+        if($this->form_validation->run() != false){
 
-    public function process(){
+            $process = $this->M_Profile->process();
 
-        $process = $this->M_Profile->process_update();
+            if ($process == 'success') {
+                $this->session->set_flashdata([
+                    'message' => true,
+                    'message_type' => 'info',
+                    'message_text' => $this->lang->line('success_update'),
+                    ]);
+            }
 
-        if ($process == 'error_old_password') {
+            redirect(base_url($this->redirect));
 
-            $this->session->set_flashdata([
-                'message' => true,
-                'message_type' => 'danger',
-                'message_text' => $this->lang->line('error_old_password'),
-            ]);
+        }else{
 
+            $site = $this->site;
+            $widget= $this->widget; 
+            $profile = $this->M_Profile->read();
+
+            $data = array(
+                'site' => $site,
+                'widget' => $widget,    
+                'profile' =>  $profile
+                );
+
+            $this->load->view($this->index, $data);
         }
-        
-        if ($process == 'error_confirm_password') {
-
-            $this->session->set_flashdata([
-                'message' => true,
-                'message_type' => 'danger',
-                'message_text' => $this->lang->line('error_confirm_password'),
-            ]);
-
-        }
-
-        if ($process == 'success') {
-            $this->session->set_flashdata([
-                'message' => true,
-                'message_type' => 'info',
-                'message_text' => $this->lang->line('success_update'),
-            ]);
-        }
-
-        redirect(base_url($this->redirect));
-
     }
 }

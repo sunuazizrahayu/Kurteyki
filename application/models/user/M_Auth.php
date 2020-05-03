@@ -265,7 +265,7 @@ class M_Auth extends CI_Model
             [
             'field' => 'full_name',
             'label' => 'lang:full_name',
-            'rules' => 'trim|required|min_length[5]|max_length[100]',
+            'rules' => 'trim|required|min_length[5]|max_length[100]|alpha',
             'errors' => [
             'required' => '{field} '.$this->lang->line('must_filled'),
             ]
@@ -330,6 +330,7 @@ class M_Auth extends CI_Model
         $this->form_validation->set_message('min_length', '{field} '.$this->lang->line('min_length_start').' {param} '.$this->lang->line('min_length_end'));
         $this->form_validation->set_message('max_length', '{field} '.$this->lang->line('max_length_start').' {param} '.$this->lang->line('max_length_end'));
         $this->form_validation->set_message('numeric', '{field} '.$this->lang->line('must_number'));
+        $this->form_validation->set_message('alpha', '{field} '.$this->lang->line('must_alphabet'));            
     }    
 
 }
