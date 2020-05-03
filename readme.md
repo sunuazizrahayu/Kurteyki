@@ -1,14 +1,38 @@
-# Kurteyki App
+# Kurteyki App :trophy:
 
-LMS (Learning Management System) & Blog.
+Aplikasi ini adalah hasil dari pembelajaran codeigniter 3. 
 
-![alt Site](https://i.ibb.co/mtbfvhh/screencapture-localhost-kurteyki-2020-04-15-19-59-34.png)
-![alt App](https://i.ibb.co/GVsBVMY/screencapture-localhost-kurteyki-app-2020-04-15-19-52-52.png)
+<br/>
 
-## Fitur Aplikasi
+## Fitur Umum yang tersedia
+* 3 Hak Akses terdiri dari App (admin), Instructor (LMS), dan User (LMS)
+* Sitemap Otomatis
+* Feeds
+* Meta Tags dan Schema Otomatis
+* Pengaturan robots.txt
+* Pengaturan ads.txt
+* Pengaturan Tampilan situs dilakukan dihalaman app
+* Halaman Statis
 
-* LMS (Learning Management System)
-* Blog
+## Fitur LMS yang tersedia
+* Masuk / Daftar User menggunakan akun sosial
+* Pengaturan dilakukan di halaman app (admin)
+* Filter pencarian
+* Memberi ulasan pada materi
+* Dapat menandai materi pembelajaran yang sudah selesai
+* Wishlist (daftar keinginan) untuk User
+* Pembayaran dilakukan secara manual / menggunakan payment gateway (midtrans)
+* Mengubah kode template langsung melalui halaman app
+
+## Fitur Blog yang tersedia
+* Pemberian kategori dan tags langsung dihalaman post
+* Terdapat 2 Template yang dapat digunakan
+* Pengaturan Widget melalui halaman app 
+* Memasukan kode iklan melalui halaman app 
+* Komentar disqus / sistem (bawaan)
+* Mengubah kode template langsung melalui halaman app
+
+<br/>
 
 ## Langkah Awal Memulai
 
@@ -38,31 +62,53 @@ http://localhost/kurteyki
 Informasi App
 
 ```
-Halaman App : http://localhost/kurteyki/app
+Halaman Login : http://localhost/kurteyki/auth
 
-Default login
+Default App login
 username : kurteyki
 password: kurteyki
 ```
 
-## Dibuat dengan
+<br/>
 
-* [CodeIgniter 3.11](https://codeigniter.com/)
+## Sumber Inspirasi
 
-## Pembuat
+* CiFireCMS (module blog dan pengaturan situs)
+* Academy by Creativeitem (module lms)
+* buildwithangga.com (module pembayaran manual)
+* skillacademy.com (template lms)
 
-* **Riedayme** - [Riedayme](https://facebook.com/riedayme)
+<br/>
 
-## Work List
+## List Pekerjaan
 
 * user register vertivication...
 
-## Bug
+<br/>
+
+## Bug Aplikasi
 
 * language english
+* pembayaran menggunakan payment gateway masih belum sempurna
 
-## License
+<br/>
 
+## Change Log
+
+**v1.0**
+* Release
+
+**v1.5**
+* Change Logic
+
+**V1.6**
+* Login using social account
+* Review user
+* Cookies notification
+
+<br/>
+
+## Lisensi
 
 [![License: CC BY 4.0](https://i.creativecommons.org/l/by/4.0/88x31.png)](https://creativecommons.org/licenses/by/4.0/)<br/>
 This work is licensed under a [Creative Commons Attribution 4.0 International License](http://creativecommons.org/licenses/by/4.0/).
