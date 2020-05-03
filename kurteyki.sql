@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 03, 2020 at 05:39 AM
+-- Generation Time: May 03, 2020 at 07:03 AM
 -- Server version: 10.1.38-MariaDB
 -- PHP Version: 7.3.3
 
@@ -49,8 +49,7 @@ CREATE TABLE `tb_blog_post` (
 --
 
 INSERT INTO `tb_blog_post` (`id`, `id_user`, `title`, `permalink`, `image`, `time`, `updated`, `id_category`, `id_tags`, `content`, `description`, `views`, `status`) VALUES
-(1, 1, 'Konten Baru dan Rencana Kedepannya Situs ini', 'konten-baru-dan-rencana-kedepannya-situs-ini', 'images/banner.png', '2020-03-21 18:44:00', '2020-05-02 23:21:08', '3', '1', '&lt;p&gt;Sudah 6 bulan berlalu dan kini saya akan mengaktifkan situs ini menjadi sebuah blog. situs ini nantinya akan dipenuhi dengan tulisan tentang pengembangan diri.&lt;/p&gt;\r\n\r\n&lt;p&gt;alasan saya menuliskan tentang pengembangan diri di situs ini adalah untuk mencatat apa saja yang telah saya pelajari tentang pengembangan diri dan mungkin bisa berguna untuk para pembaca sekalian.&lt;/p&gt;\r\n\r\n&lt;p&gt;sedikit gambaran tentang pengembangan diri, jadi pengembangan diri menurut saya itu seperti mengasah kemampuan diri untuk menjalani hidup ini. dengan adanya pemahaman tentang skill hidup maka untuk menjalani kehidupan ini juga kita akan selalu merasa mudah.&lt;/p&gt;\r\n', '', 9, 'Published'),
-(2, 0, '牛欣欣說愛你', '牛欣欣說愛你', '', '2020-05-02 23:26:00', NULL, '0', '0', '&lt;p&gt;Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.&lt;/p&gt;\r\n', '', 0, 'Published');
+(1, 0, 'Konten Baru dan Rencana Kedepannya Situs ini', 'konten-baru-dan-rencana-kedepannya-situs-ini', 'images/banner.png', '2020-03-21 18:44:00', '2020-05-03 11:57:11', '1', '1', '&lt;p&gt;kini saya akan mengaktifkan situs ini menjadi sebuah blog. situs ini nantinya akan dipenuhi dengan tulisan tentang pengembangan diri.&lt;/p&gt;\r\n\r\n&lt;p&gt;alasan saya menuliskan tentang pengembangan diri di situs ini adalah untuk mencatat apa saja yang telah saya pelajari tentang pengembangan diri dan mungkin bisa berguna untuk para pembaca sekalian.&lt;/p&gt;\r\n\r\n&lt;p&gt;sedikit gambaran tentang pengembangan diri, jadi pengembangan diri menurut saya itu seperti mengasah kemampuan diri untuk menjalani hidup ini. dengan adanya pemahaman tentang skill hidup maka untuk menjalani kehidupan ini juga kita akan selalu merasa mudah.&lt;/p&gt;\r\n', '', 71, 'Published');
 
 -- --------------------------------------------------------
 
@@ -69,7 +68,7 @@ CREATE TABLE `tb_blog_post_category` (
 --
 
 INSERT INTO `tb_blog_post_category` (`id`, `name`, `slug`) VALUES
-(3, 'news', 'news');
+(1, 'news', 'news');
 
 -- --------------------------------------------------------
 
@@ -107,7 +106,7 @@ CREATE TABLE `tb_blog_post_tags` (
 --
 
 INSERT INTO `tb_blog_post_tags` (`id`, `name`, `slug`) VALUES
-(1, 'free', 'free');
+(1, 'berita', 'berita');
 
 -- --------------------------------------------------------
 
@@ -240,16 +239,6 @@ CREATE TABLE `tb_lms_coupon` (
   `for` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
---
--- Dumping data for table `tb_lms_coupon`
---
-
-INSERT INTO `tb_lms_coupon` (`id`, `code`, `expired`, `type`, `data`, `for`) VALUES
-(1, 'KELASONYE', '2020-05-02 07:52:00', 'Percent', '50', 'all-product'),
-(2, '1234', '2020-04-29 00:00:00', 'Price', '50000', 'all-product'),
-(3, 'KELASBABI', '2020-05-02 09:14:00', 'Percent', '100', 'all-product'),
-(4, 'kelasotan', '2020-05-03 07:56:00', 'Percent', '100', 'all-product');
-
 -- --------------------------------------------------------
 
 --
@@ -279,14 +268,8 @@ CREATE TABLE `tb_lms_courses` (
 --
 
 INSERT INTO `tb_lms_courses` (`id`, `id_user`, `title`, `permalink`, `image`, `description`, `faq`, `id_category`, `id_sub_category`, `time`, `updated`, `price`, `discount`, `views`, `status`) VALUES
-(1, 1, 'Pengetahuan untuk menjadi manusia berbakat ilmu', 'ilmu-dari-adam-khoo', 'images/banner.png', '&lt;p&gt;materi ini saya ambil dari buku karya adam khoo yang berjudul i am gifted so are you, buku ini mengajarkan banyak hal bagaimana cara menjadi pribadi yang berbakat. didalam buku ini banyak sekali ilmu yang bisa diterapkan untuk pelajar, membangun keyakinan diri, cita-cita, mengatur waktu dan lain sebagainya.&lt;/p&gt;\r\n\r\n&lt;p&gt;didalam kursus ini hanya berisi ringkasan singkat dari buku yang ada.&amp;nbsp;materi yang saya sampaikan menggunakan gaya bahasa dari apa yang saya pahami, untuk mendapatkan informasi lebih lengkap tentang buku ini anda bisa membeli bukunya di toko buku.&lt;/p&gt;\r\n', '', '1', '3', '2020-04-11 16:53:44', '2020-05-03 07:20:11', 1000000, 250000, 19, 'Published'),
-(2, 1, 'Ilmu Finansial dari Building The Dream', 'ilmu-dari-building-the-dream', 'images/1911368.jpg', '&lt;p&gt;Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.&lt;/p&gt;\r\n', '', '1', '2', '2020-04-11 22:19:25', '2020-05-01 08:01:06', 100000, 0, 11, 'Published'),
-(4, 1, 'asdsadsa', 'asdsadsa', 'asdasdsa', '                                &lt;p&gt;asdsad&lt;/p&gt;\r\n                            ', '                                                            ', '1', '2', '2020-04-24 13:10:24', '2020-04-26 17:41:12', 0, 0, 0, 'Draft'),
-(5, 1, 'Terbang melayang keatas', 'terbang-melayang-keatas', 'images/tooopen_sy_21330733728965.jpg', '&lt;p&gt;Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.&lt;/p&gt;\r\n', '&lt;p&gt;Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.&lt;/p&gt;\r\n', '1', '2', '2020-05-01 14:10:08', '2020-05-01 14:36:00', 0, 0, 2, 'Draft'),
-(9, 2, 'Hello Wow', '12312312', 'images/banner.png', '&lt;p&gt;Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.&lt;/p&gt;\r\n', '&lt;p&gt;Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.&lt;/p&gt;\r\n', '1', '2', '2020-05-01 19:18:06', '2020-05-01 19:23:04', 1000000, 0, 2, 'Published'),
-(10, 4, 'Pemain BaseBall', 'pemain-baseball', 'images/banner.png', '&lt;p&gt;Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.&lt;/p&gt;\r\n', '&lt;p&gt;Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.&lt;/p&gt;\r\n', '1', '2', '2020-05-01 20:21:49', NULL, 0, 0, 2, 'Published'),
-(11, 2, 'Brigadidd', 'brigadidd', 'images/banner.png', '&lt;p&gt;Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.&lt;/p&gt;\r\n', '&lt;p&gt;Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.&lt;/p&gt;\r\n', '1', '2', '2020-05-01 23:45:28', NULL, 950000, 100000, 2, 'Published'),
-(12, 2, '多巴胺分泌音樂[2小時] 心情與記憶改善 鋼琴BGM', '2-bgm', 'images/banner.png', '&lt;p&gt;Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.&lt;/p&gt;\r\n', '&lt;p&gt;Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.&lt;/p&gt;\r\n', '1', '3', '2020-05-01 23:47:17', NULL, 250000, 150000, 2, 'Published');
+(1, 0, 'Pengetahuan untuk menjadi manusia berbakat', 'ilmu-dari-adam-khoo', 'images/banner.png', '&lt;p&gt;materi ini saya ambil dari buku karya adam khoo yang berjudul i am gifted so are you, buku ini mengajarkan banyak hal bagaimana cara menjadi pribadi yang berbakat. didalam buku ini banyak sekali ilmu yang bisa diterapkan untuk pelajar, membangun keyakinan diri, cita-cita, mengatur waktu dan lain sebagainya.&lt;/p&gt;\r\n\r\n&lt;p&gt;didalam kursus ini hanya berisi ringkasan singkat dari buku yang ada.&amp;nbsp;materi yang saya sampaikan menggunakan gaya bahasa dari apa yang saya pahami, untuk mendapatkan informasi lebih lengkap tentang buku ini anda bisa membeli bukunya di toko buku.&lt;/p&gt;\r\n', '', '1', '3', '2020-04-11 16:53:44', '2020-04-15 17:16:38', 0, 0, 217, 'Published'),
+(2, 0, 'Ilmu Finansial dari Building The Dream', 'ilmu-dari-building-the-dream', 'images/banner.png', '&lt;p&gt;Materi ini saya dapat dari sebuah grup pengembangan diri yang terkenal dengan nama btd atau building the dream, awal saya masuk grup ini adalah diundang seseorang melalui kontak whatsapp tahun 2017 lalu.&amp;nbsp;&lt;/p&gt;\r\n\r\n&lt;p&gt;materi yang saya sampaikan hanya ringkasan saja dari materi yang ada. jika anda tertarik ingin bergabung ke grup btd anda harus mengontak pengurusnya, sayangnya saya sudah tidak masuk grup tersebut karena nomor saya yang masuk grup tersebut sudah tidak aktif lagi.&lt;/p&gt;\r\n', '', '1', '2', '2020-04-11 22:19:25', '2020-04-16 08:07:19', 0, 0, 243, 'Published');
 
 -- --------------------------------------------------------
 
@@ -309,19 +292,15 @@ CREATE TABLE `tb_lms_courses_lesson` (
 --
 
 INSERT INTO `tb_lms_courses_lesson` (`id`, `id_courses`, `id_section`, `title`, `type`, `content`, `order`) VALUES
-(1, 1, 1, 'Kenapa harus memiliki tujuan', 'Text', '<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>\r\n\r\n<p><img alt=\"\" height=\"480\" src=\"http://localhost/kurteyki/storage/uploads/images/banner.png?1586951724634\" width=\"640\" /></p>\r\n\r\n<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>\r\n\r\n<p>&nbsp;</p>\r\n\r\n<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>\r\n\r\n<p class=\"align-center\"><img alt=\"\" height=\"426\" src=\"http://localhost/kurteyki/storage/uploads/images/1911368.jpg?1586951732121\" width=\"640\" /></p>\r\n\r\n<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>\r\n', 1),
-(2, 1, 2, 'Meyakinkan diri', 'Text', '', 2),
-(3, 1, 2, 'Kenapa harus yakin ?', 'Text', '', 1),
-(4, 1, 1, 'Memiliki tujuan besar', 'Text', '', 2),
+(1, 1, 1, 'Kenapa harus memiliki tujuan', 'Text', '', 1),
+(2, 1, 2, 'Meyakinkan diri', 'Video', '', 2),
+(3, 1, 2, 'Kenapa harus yakin ?', 'Video', '', 1),
+(4, 1, 1, 'Memiliki tujuan besar', 'Video', '', 2),
 (5, 1, 5, 'emosi dapat mempengaruhi tindakan', 'Text', '', 0),
 (6, 1, 6, 'Penundaan adalah rintangan utama kesuksesan', 'Text', '', 0),
 (7, 1, 3, 'Waktu yang diberikan sama apa yang membedakannya ?', 'Text', '', 0),
 (8, 1, 4, 'Tujuan Hidupmu ? ', 'Text', '', 0),
-(9, 2, 7, 'Kaya yang sebenarnya', 'Text', '', 0),
-(10, 5, 8, 'azziap', 'Image', '<p><img alt=\"\" height=\"426\" src=\"http://localhost/kurteyki/storage/uploads/images/1911368.jpg?1588317027817\" width=\"640\" /></p>\r\n', 0),
-(14, 9, 12, 'Learning by doing', 'Text', '<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>\r\n', 0),
-(15, 11, 13, 'Lesson', 'Image', '<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>\r\n', 0),
-(16, 12, 14, '多巴胺分泌音樂[2小時] 心情與記憶改善 鋼琴BGM', 'Video', '<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>\r\n\r\n<p><iframe allowfullscreen=\"\" frameborder=\"0\" height=\"360\" src=\"https://www.youtube.com/embed/GR8K_ch-DN8\" width=\"640\"></iframe></p>\r\n', 0);
+(9, 2, 7, 'Kaya yang sebenarnya', 'Text', '', 0);
 
 -- --------------------------------------------------------
 
@@ -347,11 +326,7 @@ INSERT INTO `tb_lms_courses_section` (`id`, `id_courses`, `title`, `order`) VALU
 (4, 1, 'Merancang Tujuan Hidup', 3),
 (5, 1, 'Emosi adalah sumber Motivasi', 6),
 (6, 1, 'Meninggalkan Penundaan', 5),
-(7, 2, 'Kecerdasan Finansial', 0),
-(8, 5, 'wow', 0),
-(12, 9, 'Chapter 1', 0),
-(13, 11, 'Section', 0),
-(14, 12, 'Section 1', 0);
+(7, 2, 'Kecerdasan Finansial', 0);
 
 -- --------------------------------------------------------
 
@@ -401,15 +376,6 @@ CREATE TABLE `tb_lms_user_courses` (
   `time` datetime NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
---
--- Dumping data for table `tb_lms_user_courses`
---
-
-INSERT INTO `tb_lms_user_courses` (`id`, `id_user`, `id_courses`, `time`) VALUES
-(1, 6, 12, '2020-05-02 08:38:47'),
-(2, 3, 12, '2020-05-02 18:48:29'),
-(3, 3, 11, '2020-05-02 23:09:00');
-
 -- --------------------------------------------------------
 
 --
@@ -444,25 +410,6 @@ CREATE TABLE `tb_lms_user_payment` (
   `status` enum('Purchased','Pending','Checking','Failed') NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
---
--- Dumping data for table `tb_lms_user_payment`
---
-
-INSERT INTO `tb_lms_user_payment` (`id`, `id_user`, `id_courses`, `id_courses_user`, `type`, `amount`, `token`, `proof`, `coupon`, `time`, `updated`, `status`) VALUES
-('3C11T200502002856', 3, 11, 2, 'Manual', '850000', 'bca', '{\"file\":\"3C11T200502002856_confirmation_20200502002902.png\",\"sender\":\"asdsadsa\"}', '', '2020-05-02 00:28:56', '2020-05-02 06:44:30', 'Failed'),
-('3C11T200502190401', 3, 11, 2, 'Manual', '850000', 'bca', '', '', '2020-05-02 19:04:01', '0000-00-00 00:00:00', 'Failed'),
-('3C11T200502190407', 3, 11, 2, 'Manual', '850000', 'bca', '', '', '2020-05-02 19:04:07', '0000-00-00 00:00:00', 'Failed'),
-('3C11T200502190420', 3, 11, 2, 'Manual', '850000', 'bca', '{\"file\":\"3C11T200502190420_confirmation_20200502190719.jpg\",\"sender\":\"aaaenjaye\"}', '', '2020-05-02 19:04:20', '0000-00-00 00:00:00', 'Failed'),
-('3C11T200502190926', 3, 11, 2, 'Manual', '850000', 'bca', '{\"file\":\"3C11T200502190926_confirmation_20200502190937.jpg\",\"sender\":\"awaw\"}', '', '2020-05-02 19:09:26', '0000-00-00 00:00:00', 'Failed'),
-('3C11T200502230900', 3, 11, 2, 'Manual', '', 'free', '', 'kelasotan', '2020-05-02 23:09:00', '2020-05-02 23:09:00', 'Purchased'),
-('3C12T200502002838', 3, 12, 2, 'Manual', '100000', 'bca', '{\"file\":\"3C12T200502002838_confirmation_20200502002845.png\",\"sender\":\"asdsada\"}', '', '2020-05-02 00:28:38', '2020-05-02 06:44:26', 'Failed'),
-('3C12T200502063324', 3, 12, 2, 'Manual', '100000', 'bca', '{\"file\":\"3C12T200502063324_confirmation_20200502063335.png\",\"sender\":\"sss\"}', '', '2020-05-02 06:33:24', '2020-05-02 06:44:44', 'Failed'),
-('3C12T200502184812', 3, 12, 2, 'Manual', '100000', 'bca', '{\"file\":\"3C12T200502184812_confirmation_20200502184822.jpg\",\"sender\":\"qwqwq\"}', '', '2020-05-02 18:48:12', '2020-05-02 18:48:29', 'Purchased'),
-('3C2T200502002950', 3, 2, 1, 'Manual', '100000', 'bri', '{\"file\":\"3C2T200502002950_confirmation_20200502002955.png\",\"sender\":\"ss\"}', '', '2020-05-02 00:29:50', '2020-05-02 06:44:39', 'Failed'),
-('3C9T200502002931', 3, 9, 2, 'Manual', '1000000', 'bca', '{\"file\":\"3C9T200502002931_confirmation_20200502002936.png\",\"sender\":\"asdsa\"}', '', '2020-05-02 00:29:31', '2020-05-02 06:44:35', 'Failed'),
-('6C12T200502083106', 6, 12, 2, 'Manual', '100000', 'bca', '{\"file\":\"6C12T200502083106_confirmation_20200502083112.png\",\"sender\":\"asdasd\"}', '', '2020-05-02 08:31:06', '0000-00-00 00:00:00', 'Failed'),
-('6C12T200502083847', 6, 12, 2, 'Manual', '', 'free', '', 'kelasbabi', '2020-05-02 08:38:47', '2020-05-02 08:38:47', 'Purchased');
-
 -- --------------------------------------------------------
 
 --
@@ -478,14 +425,6 @@ CREATE TABLE `tb_lms_user_review` (
   `time` datetime NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
---
--- Dumping data for table `tb_lms_user_review`
---
-
-INSERT INTO `tb_lms_user_review` (`id`, `id_courses`, `id_user`, `rating`, `review`, `time`) VALUES
-(1, 12, 6, '5', 'aaaa', '2020-05-02 08:38:59'),
-(2, 12, 3, '5', 'azziap', '2020-05-02 19:02:24');
-
 -- --------------------------------------------------------
 
 --
@@ -498,16 +437,6 @@ CREATE TABLE `tb_lms_user_wishlist` (
   `id_courses` int(255) NOT NULL,
   `time` datetime NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
---
--- Dumping data for table `tb_lms_user_wishlist`
---
-
-INSERT INTO `tb_lms_user_wishlist` (`id`, `id_user`, `id_courses`, `time`) VALUES
-(1, 3, 12, '2020-05-02 06:35:11'),
-(2, 3, 11, '2020-05-02 06:35:13'),
-(4, 3, 2, '2020-05-02 06:35:24'),
-(5, 3, 1, '2020-05-02 06:35:27');
 
 -- --------------------------------------------------------
 
@@ -536,7 +465,7 @@ INSERT INTO `tb_site` (`type`, `data`) VALUES
 ('icon', 'icon_20200408075727.png'),
 ('image', 'logo_20200415181034.png'),
 ('language', 'indonesia'),
-('lms_free_courses_readable', 'No'),
+('lms_free_courses_readable', 'Yes'),
 ('lms_limit_post', '9'),
 ('no_image', 'no_image_20200408075727.jpg'),
 ('payment_method', 'Manual'),
@@ -544,8 +473,8 @@ INSERT INTO `tb_site` (`type`, `data`) VALUES
 ('robots_txt', 'User-agent: *\r\nAllow: /\r\n\r\nSitemap: [sitemap_url]'),
 ('slogan', 'Belajar pengembangan diri.'),
 ('time_zone', 'Asia/Jakarta'),
-('title', 'Baba Studio'),
-('updated', '2020-05-03 09:55:35'),
+('title', 'Kurteyki'),
+('updated', '2020-05-03 12:01:38'),
 ('user_limit_data', '5');
 
 -- --------------------------------------------------------
@@ -591,8 +520,9 @@ CREATE TABLE `tb_site_pages` (
 
 INSERT INTO `tb_site_pages` (`id`, `title`, `permalink`, `time`, `updated`, `content`, `status`) VALUES
 (1, 'Kebijakan Privasi', 'privacy-policy', '2020-03-21 18:36:40', '2020-04-14 08:31:36', '&lt;p&gt;Di Kurteyki, dapat diakses dari kurteyki.com, salah satu prioritas utama kami adalah privasi pengunjung kami. Dokumen Kebijakan Privasi ini berisi jenis informasi yang dikumpulkan dan dicatat oleh Kurteyki dan bagaimana kami menggunakannya.&lt;/p&gt;\r\n\r\n&lt;p&gt;Jika Anda memiliki pertanyaan tambahan atau memerlukan informasi lebih lanjut tentang Kebijakan Privasi kami, jangan ragu untuk menghubungi kami.&lt;/p&gt;\r\n\r\n&lt;h2&gt;File Log&lt;/h2&gt;\r\n\r\n&lt;p&gt;Kurteyki mengikuti prosedur standar menggunakan file log. File-file ini mencatat pengunjung ketika mereka mengunjungi situs web. Semua perusahaan hosting melakukan ini dan bagian dari analisis layanan hosting. Informasi yang dikumpulkan oleh file log termasuk alamat protokol internet (IP), tipe browser, Penyedia Layanan Internet (ISP), cap tanggal dan waktu, halaman rujukan / keluar, dan mungkin jumlah klik. Ini tidak terkait dengan informasi apa pun yang dapat diidentifikasi secara pribadi. Tujuan dari informasi ini adalah untuk menganalisis tren, mengelola situs, melacak pergerakan pengguna di situs web, dan mengumpulkan informasi demografis.&lt;/p&gt;\r\n\r\n&lt;h2&gt;Cookie dan Beacon Web&lt;/h2&gt;\r\n\r\n&lt;p&gt;Seperti situs web lainnya, Kurteyki menggunakan &amp;#39;cookies&amp;#39;. Cookie ini digunakan untuk menyimpan informasi termasuk preferensi pengunjung, dan halaman-halaman di situs web yang diakses atau dikunjungi pengunjung. Informasi ini digunakan untuk mengoptimalkan pengalaman pengguna dengan menyesuaikan konten halaman web kami berdasarkan jenis browser pengunjung dan / atau informasi lainnya.&lt;/p&gt;\r\n\r\n&lt;h2&gt;Google DoubleClick Cookie DART&lt;/h2&gt;\r\n\r\n&lt;p&gt;Google adalah salah satu vendor pihak ketiga di situs kami. Itu juga menggunakan cookie, yang dikenal sebagai cookie DART, untuk menayangkan iklan kepada pengunjung situs kami berdasarkan kunjungan mereka ke www.website.com dan situs lain di internet. Namun, pengunjung dapat memilih untuk menolak penggunaan cookie DART dengan mengunjungi iklan Google dan jaringan konten Kebijakan Privasi di URL berikut - https://policies.google.com/technologies/ads&lt;/p&gt;\r\n\r\n&lt;h2&gt;Mitra Iklan Kami&lt;/h2&gt;\r\n\r\n&lt;p&gt;Beberapa pengiklan di situs kami mungkin menggunakan cookie dan suar web. Mitra iklan kami tercantum di bawah ini. Setiap mitra periklanan kami memiliki Kebijakan Privasi sendiri untuk kebijakan mereka tentang data pengguna. Untuk akses yang lebih mudah, kami hyperlink ke Kebijakan Privasi mereka di bawah ini.&lt;/p&gt;\r\n\r\n&lt;ul&gt;\r\n  &lt;li&gt;Google\r\n  &lt;ul&gt;\r\n    &lt;li&gt;https://policies.google.com/technologies/ads&lt;/li&gt;\r\n &lt;/ul&gt;\r\n &lt;/li&gt;\r\n&lt;/ul&gt;\r\n\r\n&lt;h2&gt;Kebijakan Privasi&lt;/h2&gt;\r\n\r\n&lt;p&gt;Anda dapat berkonsultasi daftar ini untuk menemukan Kebijakan Privasi untuk masing-masing mitra periklanan Kurteyki. Kebijakan Privasi kami dibuat dengan bantuan Generator Kebijakan Privasi Gratis dan Generator Kebijakan Privasi Online.&lt;/p&gt;\r\n\r\n&lt;p&gt;Server iklan pihak ketiga atau jaringan iklan menggunakan teknologi seperti cookie, JavaScript, atau Web Beacon yang digunakan dalam iklan masing-masing dan tautan yang muncul di Kurteyki, yang dikirim langsung ke browser pengguna. Mereka secara otomatis menerima alamat IP Anda ketika ini terjadi. Teknologi ini digunakan untuk mengukur efektivitas kampanye iklan mereka dan / atau untuk mempersonalisasi konten iklan yang Anda lihat di situs web yang Anda kunjungi.&lt;/p&gt;\r\n\r\n&lt;p&gt;Perhatikan bahwa Kurteyki tidak memiliki akses ke atau kontrol terhadap cookie ini yang digunakan oleh pengiklan pihak ketiga.&lt;/p&gt;\r\n\r\n&lt;h2&gt;Kebijakan Privasi Pihak Ketiga&lt;/h2&gt;\r\n\r\n&lt;p&gt;Kebijakan Privasi Kurteyki tidak berlaku untuk pengiklan atau situs web lain. Karenanya, kami menyarankan Anda untuk berkonsultasi dengan masing-masing Kebijakan Privasi dari server iklan pihak ketiga ini untuk informasi yang lebih terperinci. Ini mungkin termasuk praktik dan instruksi mereka tentang cara menyisih dari opsi tertentu. Anda dapat menemukan daftar lengkap Kebijakan Privasi ini dan tautannya di sini: Tautan Kebijakan Privasi.&lt;/p&gt;\r\n\r\n&lt;p&gt;Anda dapat memilih untuk menonaktifkan cookie melalui opsi peramban individual. Untuk mengetahui informasi lebih rinci tentang manajemen cookie dengan browser web tertentu, dapat ditemukan di situs web masing-masing browser. Apa Itu Cookie?&lt;/p&gt;\r\n\r\n&lt;h2&gt;Informasi Anak&lt;/h2&gt;\r\n\r\n&lt;p&gt;Bagian lain dari prioritas kami adalah menambahkan perlindungan untuk anak-anak saat menggunakan internet. Kami mendorong orang tua dan wali untuk mengamati, berpartisipasi, dan / atau memantau dan membimbing aktivitas online mereka.&lt;/p&gt;\r\n\r\n&lt;p&gt;Kurteyki tidak secara sadar mengumpulkan Informasi Identifikasi Pribadi apa pun dari anak-anak di bawah usia 13. Jika Anda berpikir bahwa anak Anda memberikan informasi semacam ini di situs web kami, kami sangat menganjurkan Anda untuk menghubungi kami segera dan kami akan melakukan upaya terbaik kami untuk segera menghapus informasi tersebut dari catatan kami.&lt;/p&gt;\r\n\r\n&lt;h2&gt;Hanya Kebijakan Privasi Online&lt;/h2&gt;\r\n\r\n&lt;p&gt;Kebijakan Privasi ini hanya berlaku untuk aktivitas online kami dan berlaku untuk pengunjung situs web kami sehubungan dengan informasi yang mereka bagikan dan / atau kumpulkan di Kurteyki. Kebijakan ini tidak berlaku untuk informasi apa pun yang dikumpulkan secara offline atau melalui saluran selain dari situs web ini.&lt;/p&gt;\r\n\r\n&lt;h2&gt;Persetujuan&lt;/h2&gt;\r\n\r\n&lt;p&gt;Dengan menggunakan situs web kami, Anda dengan ini menyetujui Kebijakan Privasi kami dan menyetujui Syarat dan Ketentuannya.&lt;/p&gt;\r\n', 'Published'),
-(2, 'Bantuan', 'help', '2020-04-14 07:52:45', '2020-04-14 08:03:28', '&lt;p&gt;Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.&lt;/p&gt;\r\n', 'Published'),
-(4, 'Tentang Kurteyki', 'about', '2020-04-14 07:53:19', '2020-04-14 08:01:24', '&lt;p&gt;Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.&lt;/p&gt;\r\n', 'Published'),
+(2, 'Bantuan', 'help', '2020-04-14 07:52:45', '2020-04-16 08:22:28', '&lt;meta name=&quot;robots&quot; content=&quot;noindex&quot;&gt;\r\n&lt;p&gt;Belum ada konten untuk dibuat.&lt;/p&gt;\r\n', 'Published'),
+(3, 'Kontak', 'contact', '2020-04-14 07:53:12', '2020-04-16 08:24:26', '&lt;p&gt;Anda dapat menghubungi tim melalui kontak dibawah ini&lt;/p&gt;\r\n\r\n&lt;p&gt;&amp;nbsp;&lt;/p&gt;\r\n\r\n&lt;p&gt;Email : kurteyki@gmail.com&lt;/p&gt;\r\n\r\n&lt;p&gt;Facebook : &lt;a href=&quot;https://facebook.com/kurteyki&quot;&gt;facebook.com/kurteyki&lt;/a&gt;&lt;/p&gt;\r\n', 'Published'),
+(4, 'Tentang Kurteyki', 'about', '2020-04-14 07:53:19', '2020-04-16 08:20:59', '&lt;p&gt;kurteyki.com situs belajar pengembangan diri, situs dibuat pada tahun 2019.&lt;/p&gt;\r\n', 'Published'),
 (5, 'Syarat dan Ketentuan', 'term-and-condition', '2020-04-14 07:54:26', '2020-04-14 08:39:27', '&lt;p&gt;Selamat datang di Kurteyki!&lt;/p&gt;\r\n\r\n&lt;p&gt;Syarat dan ketentuan ini menguraikan aturan dan peraturan untuk penggunaan Situs Web Kurteyki, yang terletak di kurteyki.com.&lt;/p&gt;\r\n\r\n&lt;p&gt;Dengan mengakses situs web ini, kami menganggap Anda menerima syarat dan ketentuan ini. Jangan terus menggunakan Kurteyki jika Anda tidak setuju untuk mengambil semua syarat dan ketentuan yang tercantum di halaman ini.&lt;/p&gt;\r\n\r\n&lt;p&gt;Terminologi berikut ini berlaku untuk Syarat dan Ketentuan ini, Pernyataan Privasi dan Pemberitahuan Sangkalan dan semua Perjanjian: &amp;quot;Klien&amp;quot;, &amp;quot;Anda&amp;quot; dan &amp;quot;Anda&amp;quot; mengacu pada Anda, orang yang masuk ke situs web ini dan mematuhi persyaratan dan ketentuan Perusahaan. &amp;quot;Perusahaan&amp;quot;, &amp;quot;Diri Kami&amp;quot;, &amp;quot;Kami&amp;quot;, &amp;quot;Kami&amp;quot; dan &amp;quot;Kami&amp;quot;, mengacu pada Perusahaan kami. &amp;quot;Pihak&amp;quot;, &amp;quot;Pihak&amp;quot;, atau &amp;quot;Kami&amp;quot;, mengacu pada Klien dan diri kami sendiri. Semua istilah mengacu pada penawaran, penerimaan, dan pertimbangan pembayaran yang diperlukan untuk melakukan proses bantuan kami kepada Klien dengan cara yang paling tepat untuk tujuan yang jelas dalam memenuhi kebutuhan Klien sehubungan dengan penyediaan layanan yang dinyatakan Perusahaan, sesuai dengan dan tunduk pada, hukum Belanda yang berlaku. Setiap penggunaan terminologi di atas atau kata-kata lain dalam bentuk tunggal, jamak, huruf besar dan / atau dia, dianggap sebagai dapat dipertukarkan dan karena itu merujuk pada yang sama.&lt;/p&gt;\r\n\r\n&lt;h2&gt;Cookies&lt;/h2&gt;\r\n\r\n&lt;p&gt;Kami menggunakan penggunaan cookie. Dengan mengakses Kurteyki, Anda setuju untuk menggunakan cookie sesuai dengan Kebijakan Privasi Kurteyki.&lt;/p&gt;\r\n\r\n&lt;p&gt;Sebagian besar situs web interaktif menggunakan cookie untuk memungkinkan kami mengambil detail pengguna untuk setiap kunjungan. Cookie digunakan oleh situs web kami untuk mengaktifkan fungsionalitas area tertentu agar lebih mudah bagi orang yang mengunjungi situs web kami. Beberapa mitra afiliasi / iklan kami juga dapat menggunakan cookie.&lt;/p&gt;\r\n\r\n&lt;h2&gt;Lisensi&lt;/h2&gt;\r\n\r\n&lt;p&gt;Kecuali dinyatakan sebaliknya, Kurteyki dan / atau pemberi lisensinya memiliki hak kekayaan intelektual untuk semua materi tentang Kurteyki. Semua hak kekayaan intelektual dilindungi. Anda dapat mengakses ini dari Kurteyki untuk penggunaan pribadi Anda dengan batasan yang diatur dalam syarat dan ketentuan ini.&lt;/p&gt;\r\n\r\n&lt;p&gt;Anda tidak harus:&lt;/p&gt;\r\n\r\n&lt;ul&gt;\r\n &lt;li&gt;Publikasikan ulang materi dari Kurteyki&lt;/li&gt;\r\n  &lt;li&gt;Menjual, menyewakan atau mensublisensikan materi dari Kurteyki&lt;/li&gt;\r\n &lt;li&gt;Mereproduksi, menggandakan atau menyalin materi dari Kurteyki&lt;/li&gt;\r\n  &lt;li&gt;Mendistribusikan kembali konten dari Kurteyki&lt;/li&gt;\r\n  &lt;li&gt;Perjanjian ini akan dimulai pada tanggal perjanjian ini.&lt;/li&gt;\r\n&lt;/ul&gt;\r\n\r\n&lt;p&gt;Bagian dari situs web ini menawarkan kesempatan bagi pengguna untuk memposting dan bertukar pendapat dan informasi di area situs web tertentu. Kurteyki tidak memfilter, mengedit, menerbitkan atau meninjau Komentar sebelum kehadiran mereka di situs web. Komentar tidak mencerminkan pandangan dan pendapat Kurteyki, agen dan / atau afiliasinya. Komentar mencerminkan pandangan dan pendapat orang yang memposting pandangan dan pendapat mereka. Sejauh diizinkan oleh undang-undang yang berlaku, Kurteyki tidak akan bertanggung jawab atas Komentar atau untuk setiap kewajiban, kerusakan atau biaya yang disebabkan dan / atau diderita sebagai akibat dari penggunaan dan / atau pengeposan dan / atau penampilan Komentar mengenai hal ini. situs web.&lt;/p&gt;\r\n\r\n&lt;p&gt;Kurteyki berhak untuk memantau semua Komentar dan menghapus Komentar yang dapat dianggap tidak pantas, menyinggung, atau menyebabkan pelanggaran terhadap Syarat dan Ketentuan ini.&lt;/p&gt;\r\n\r\n&lt;p&gt;Anda menjamin dan menyatakan bahwa:&lt;/p&gt;\r\n\r\n&lt;ul&gt;\r\n  &lt;li&gt;Anda berhak memposting Komentar di situs web kami dan memiliki semua lisensi dan persetujuan yang diperlukan untuk melakukannya;&lt;/li&gt;\r\n &lt;li&gt;Komentar tidak melanggar hak kekayaan intelektual apa pun, termasuk tanpa batasan hak cipta, paten, atau merek dagang pihak ketiga mana pun;&lt;/li&gt;\r\n &lt;li&gt;Komentar tidak mengandung materi yang memfitnah, memfitnah, menyinggung, tidak senonoh, atau melanggar hukum yang merupakan pelanggaran privasi&lt;/li&gt;\r\n  &lt;li&gt;Komentar tidak akan digunakan untuk meminta atau mempromosikan bisnis atau kebiasaan atau menyajikan kegiatan komersial atau kegiatan yang melanggar hukum.&lt;/li&gt;\r\n&lt;/ul&gt;\r\n\r\n&lt;p&gt;Anda dengan ini memberi Kurteyki lisensi non-eksklusif untuk menggunakan, mereproduksi, mengedit, dan memberi otorisasi kepada orang lain untuk menggunakan, mereproduksi, dan mengedit komentar Anda dalam segala bentuk, format, atau media.&lt;/p&gt;\r\n\r\n&lt;h2&gt;Hyperlink ke Konten kami&lt;/h2&gt;\r\n\r\n&lt;p&gt;Organisasi berikut dapat menautkan ke situs web kami tanpa persetujuan tertulis sebelumnya:&lt;/p&gt;\r\n\r\n&lt;ul&gt;\r\n &lt;li&gt;Agensi pemerintahan;&lt;/li&gt;\r\n &lt;li&gt;Mesin pencari;&lt;/li&gt;\r\n &lt;li&gt;Organisasi berita;&lt;/li&gt;\r\n &lt;li&gt;Distributor direktori online dapat menautkan ke situs web kami dengan cara yang sama seperti mereka hyperlink ke situs web bisnis terdaftar lainnya; dan&lt;/li&gt;\r\n &lt;li&gt;Bisnis Terakreditasi di seluruh sistem kecuali meminta organisasi nirlaba, pusat perbelanjaan amal, dan kelompok penggalangan dana amal yang mungkin tidak hyperlink ke situs Web kami.&lt;/li&gt;\r\n&lt;/ul&gt;\r\n\r\n&lt;p&gt;Organisasi-organisasi ini dapat menautkan ke beranda kami, ke publikasi atau ke informasi situs web lainnya selama tautan: (a) tidak menipu dengan cara apa pun; (B) tidak secara tidak langsung menyiratkan sponsor, dukungan atau persetujuan dari pihak yang menghubungkan dan produk dan / atau layanannya; dan (c) sesuai dengan konteks situs pihak yang menghubungkan.&lt;/p&gt;\r\n\r\n&lt;p&gt;Kami dapat mempertimbangkan dan menyetujui permintaan tautan lain dari jenis organisasi berikut:&lt;/p&gt;\r\n\r\n&lt;ul&gt;\r\n  &lt;li&gt;sumber informasi konsumen dan / atau bisnis yang umum dikenal;&lt;/li&gt;\r\n &lt;li&gt;situs komunitas dot.com;&lt;/li&gt;\r\n &lt;li&gt;asosiasi atau kelompok lain yang mewakili badan amal;&lt;/li&gt;\r\n  &lt;li&gt;distributor direktori online;&lt;/li&gt;\r\n  &lt;li&gt;portal internet;&lt;/li&gt;\r\n &lt;li&gt;perusahaan akuntansi, hukum dan konsultasi; dan&lt;/li&gt;\r\n  &lt;li&gt;lembaga pendidikan dan asosiasi perdagangan.&lt;/li&gt;\r\n&lt;/ul&gt;\r\n\r\n&lt;p&gt;Kami akan menyetujui permintaan tautan dari organisasi-organisasi ini jika kami memutuskan bahwa: (a) tautan tersebut tidak akan membuat kami terlihat tidak menguntungkan bagi diri kami sendiri atau untuk bisnis terakreditasi kami; (B) organisasi tidak memiliki catatan negatif dengan kami; (c) manfaat bagi kami dari visibilitas hyperlink mengkompensasi ketiadaan Kurteyki; dan (d) tautannya ada dalam konteks informasi sumber daya umum.&lt;/p&gt;\r\n\r\n&lt;p&gt;Organisasi-organisasi ini dapat menautkan ke beranda kami selama tautan tersebut: (a) sama sekali tidak menipu; (B) tidak secara tidak langsung menyiratkan sponsor, dukungan atau persetujuan dari pihak yang menghubungkan dan produk atau layanannya; dan (c) sesuai dengan konteks situs pihak yang menghubungkan.&lt;/p&gt;\r\n\r\n&lt;p&gt;Jika Anda salah satu organisasi yang tercantum dalam paragraf 2 di atas dan tertarik untuk menautkan ke situs web kami, Anda harus memberi tahu kami dengan mengirim email ke Kurteyki. Harap sertakan nama Anda, nama organisasi Anda, informasi kontak serta URL situs Anda, daftar URL apa pun yang ingin Anda tautkan ke Situs web kami, dan daftar URL di situs kami yang ingin Anda kunjungi tautan. Tunggu 2-3 minggu untuk tanggapan.&lt;/p&gt;\r\n\r\n&lt;p&gt;Organisasi yang disetujui dapat hyperlink ke Situs web kami sebagai berikut:&lt;/p&gt;\r\n\r\n&lt;ul&gt;\r\n &lt;li&gt;Dengan menggunakan nama perusahaan kami; atau&lt;/li&gt;\r\n  &lt;li&gt;Dengan menggunakan pencari sumber daya seragam yang ditautkan ke; atau&lt;/li&gt;\r\n &lt;li&gt;Dengan menggunakan uraian lain apa pun dari Situs Web kami yang ditautkan dengan yang masuk akal dalam konteks dan format konten di situs pihak yang menautkan.&lt;/li&gt;\r\n&lt;/ul&gt;\r\n\r\n&lt;p&gt;Penggunaan logo Kurteyki atau karya seni lainnya tidak akan diizinkan untuk menghubungkan tidak adanya perjanjian lisensi merek dagang.&lt;/p&gt;\r\n\r\n&lt;h2&gt;iFrames&lt;/h2&gt;\r\n\r\n&lt;p&gt;Tanpa persetujuan sebelumnya dan izin tertulis, Anda tidak boleh membuat bingkai di sekitar Halaman Web kami yang mengubah cara tampilan visual atau tampilan Situs Web kami.&lt;/p&gt;\r\n\r\n&lt;h2&gt;Pertanggungjawaban Konten&lt;/h2&gt;\r\n\r\n&lt;p&gt;Kami tidak akan bertanggung jawab atas konten yang muncul di Situs Web Anda. Anda setuju untuk melindungi dan membela kami terhadap semua klaim yang muncul di Situs Web Anda. Tidak ada tautan yang muncul di Situs web mana pun yang dapat ditafsirkan sebagai fitnah, cabul atau kriminal, atau yang melanggar, jika tidak melanggar, atau menganjurkan pelanggaran atau pelanggaran lain terhadap, hak pihak ketiga.&lt;/p&gt;\r\n\r\n&lt;h2&gt;Reservasi Hak&lt;/h2&gt;\r\n\r\n&lt;p&gt;Kami berhak meminta Anda menghapus semua tautan atau tautan tertentu apa pun ke Situs Web kami. Anda menyetujui untuk segera menghapus semua tautan ke Situs web kami berdasarkan permintaan. Kami juga berhak mengubah syarat dan ketentuan ini dan ini menautkan kebijakan kapan saja. Dengan terus menautkan ke Situs web kami, Anda setuju untuk terikat dan mengikuti syarat dan ketentuan tautan ini.&lt;/p&gt;\r\n\r\n&lt;h2&gt;Penghapusan tautan dari situs web kami&lt;/h2&gt;\r\n\r\n&lt;p&gt;Jika Anda menemukan tautan apa pun di Situs Web kami yang menyinggung karena alasan apa pun, Anda bebas untuk menghubungi dan memberi tahu kami kapan saja. Kami akan mempertimbangkan permintaan untuk menghapus tautan tetapi kami tidak berkewajiban untuk menanggapi Anda secara langsung.&lt;/p&gt;\r\n\r\n&lt;p&gt;Kami tidak memastikan bahwa informasi di situs web ini benar, kami tidak menjamin kelengkapan atau keakuratannya; kami juga tidak berjanji untuk memastikan bahwa situs web tetap tersedia atau bahwa materi di situs web tetap terbaru.&lt;/p&gt;\r\n\r\n&lt;h2&gt;Penolakan&lt;/h2&gt;\r\n\r\n&lt;p&gt;Sejauh diizinkan oleh hukum yang berlaku, kami mengecualikan semua representasi, jaminan, dan ketentuan yang berkaitan dengan situs web kami dan penggunaan situs web ini. Tidak ada dalam penafian ini yang akan:&lt;/p&gt;\r\n\r\n&lt;p&gt;membatasi atau mengecualikan tanggung jawab kami atau Anda atas kematian atau cedera pribadi;&lt;br /&gt;\r\nmembatasi atau mengecualikan tanggung jawab kami atau Anda untuk penipuan atau penggambaran yang salah;&lt;br /&gt;\r\nbatasi salah satu dari kewajiban kami atau Anda dengan cara apa pun yang tidak diizinkan berdasarkan hukum yang berlaku; atau&lt;br /&gt;\r\nmengecualikan salah satu dari kewajiban kami atau Anda yang mungkin tidak dikecualikan berdasarkan hukum yang berlaku.&lt;br /&gt;\r\nBatasan dan larangan tanggung jawab yang diatur dalam Bagian ini dan di tempat lain dalam penafian ini: (a) tunduk pada paragraf sebelumnya; dan (b) mengatur semua kewajiban yang timbul berdasarkan penafian, termasuk kewajiban yang timbul dalam kontrak, dalam gugatan hukum dan untuk pelanggaran kewajiban hukum.&lt;/p&gt;\r\n\r\n&lt;p&gt;Selama situs web dan informasi serta layanan di situs web disediakan secara gratis, kami tidak akan bertanggung jawab atas kehilangan atau kerusakan apa pun.&lt;/p&gt;\r\n', 'Published');
 
 -- --------------------------------------------------------
@@ -619,58 +549,15 @@ CREATE TABLE `tb_site_visitor` (
 --
 
 INSERT INTO `tb_site_visitor` (`id`, `ip`, `date`, `browser`, `os`, `country_name`, `country_code`, `hits`, `url`, `referrer`) VALUES
-(1, '::1', '2020-05-01 14:57:57', 'Chrome', 'Windows 7', 'Other', 'Other', 153, 'http://localhost/kurteyki/', ''),
-(2, '::1', '2020-05-01 14:57:58', 'Chrome', 'Windows 7', 'Other', 'Other', 1, 'http://localhost/kurteyki/courses-detail/terbang-melayang-keatas', ''),
-(3, '::1', '2020-05-01 14:58:02', 'Chrome', 'Windows 7', 'Other', 'Other', 38, 'http://localhost/kurteyki/courses-detail/ilmu-dari-building-the-dream', ''),
-(4, '::1', '2020-05-01 14:58:06', 'Chrome', 'Windows 7', 'Other', 'Other', 22, 'http://localhost/kurteyki/courses-detail/ilmu-dari-adam-khoo', ''),
-(5, '::1', '2020-05-01 15:15:40', 'Chrome', 'Windows 7', 'Other', 'Other', 6, 'http://localhost/kurteyki/instructor', ''),
-(6, '::1', '2020-05-01 15:21:38', 'Chrome', 'Windows 7', 'Other', 'Other', 4, 'http://localhost/kurteyki/courses-category/skill-hidup', ''),
-(7, '::1', '2020-05-01 15:21:40', 'Chrome', 'Windows 7', 'Other', 'Other', 2, 'http://localhost/kurteyki/courses-category/karakter', ''),
-(8, '::1', '2020-05-01 15:21:47', 'Chrome', 'Windows 7', 'Other', 'Other', 4, 'http://localhost/kurteyki/blog', ''),
-(9, '::1', '2020-05-01 15:21:50', 'Chrome', 'Windows 7', 'Other', 'Other', 5, 'http://localhost/kurteyki/blog-post/konten-baru-dan-rencana-kedepannya-situs-ini', ''),
-(10, '::1', '2020-05-01 15:21:56', 'Chrome', 'Windows 7', 'Other', 'Other', 1, 'http://localhost/kurteyki/p/help', ''),
-(11, '::1', '2020-05-01 15:22:09', 'Chrome', 'Windows 7', 'Other', 'Other', 2, 'http://localhost/kurteyki/p/about', ''),
-(12, '::1', '2020-05-01 15:22:12', 'Chrome', 'Windows 7', 'Other', 'Other', 1, 'http://localhost/kurteyki/p/term-and-condition', ''),
-(13, '::1', '2020-05-01 15:22:14', 'Chrome', 'Windows 7', 'Other', 'Other', 2, 'http://localhost/kurteyki/p/privacy-policy', ''),
-(14, '::1', '2020-05-01 18:41:26', 'Chrome', 'Windows 7', 'Other', 'Other', 2, 'http://localhost/kurteyki/courses-detail/123c213', ''),
-(15, '::1', '2020-05-01 19:23:28', 'Chrome', 'Windows 7', 'Other', 'Other', 74, 'http://localhost/kurteyki/courses-detail/12312312', ''),
-(16, '::1', '2020-05-01 20:22:26', 'Chrome', 'Windows 7', 'Other', 'Other', 16, 'http://localhost/kurteyki/courses-detail/pemain-baseball', ''),
-(17, '::1', '2020-05-01 20:50:17', 'Chrome', 'Windows 7', 'Other', 'Other', 1, 'http://localhost/kurteyki/courses-search', ''),
-(18, '::1', '2020-05-01 20:53:15', 'Chrome', 'Windows 7', 'Other', 'Other', 4, 'http://localhost/kurteyki/blog-category/news', ''),
-(19, '::1', '2020-05-01 20:53:38', 'Chrome', 'Windows 7', 'Other', 'Other', 2, 'http://localhost/kurteyki/blog-search', ''),
-(20, '::1', '2020-05-01 23:45:45', 'Chrome', 'Windows 7', 'Other', 'Other', 3, 'http://localhost/kurteyki/courses-detail/brigadidd', ''),
-(21, '::1', '2020-05-01 23:47:49', 'Chrome', 'Windows 7', 'Other', 'Other', 8, 'http://localhost/kurteyki/courses-detail/2-bgm', ''),
-(22, '::1', '2020-05-02 00:00:09', 'Chrome', 'Windows 7', 'Other', 'Other', 422, 'http://localhost/kurteyki/', ''),
-(23, '::1', '2020-05-02 00:00:35', 'Chrome', 'Windows 7', 'Other', 'Other', 5, 'http://localhost/kurteyki/courses-detail/ilmu-dari-building-the-dream', ''),
-(24, '::1', '2020-05-02 00:05:57', 'Chrome', 'Windows 7', 'Other', 'Other', 20, 'http://localhost/kurteyki/courses-detail/12312312', ''),
-(25, '::1', '2020-05-02 00:21:38', 'Chrome', 'Windows 7', 'Other', 'Other', 14, 'http://localhost/kurteyki/courses-detail/ilmu-dari-adam-khoo', ''),
-(26, '::1', '2020-05-02 00:27:38', 'Chrome', 'Windows 7', 'Other', 'Other', 75, 'http://localhost/kurteyki/courses-detail/2-bgm', ''),
-(27, '::1', '2020-05-02 00:28:52', 'Chrome', 'Windows 7', 'Other', 'Other', 26, 'http://localhost/kurteyki/courses-detail/brigadidd', ''),
-(28, '::1', '2020-05-02 00:29:21', 'Chrome', 'Windows 7', 'Other', 'Other', 13, 'http://localhost/kurteyki/courses-detail/pemain-baseball', ''),
-(29, '::1', '2020-05-02 04:21:46', 'Chrome', 'Windows 7', 'Other', 'Other', 17, 'http://localhost/kurteyki/courses-category/skill-hidup', ''),
-(30, '::1', '2020-05-02 04:21:49', 'Chrome', 'Windows 7', 'Other', 'Other', 12, 'http://localhost/kurteyki/courses-category/karakter', ''),
-(31, '::1', '2020-05-02 05:28:58', 'Chrome', 'Windows 7', 'Other', 'Other', 1, 'http://localhost/kurteyki/p/privacy-policy', ''),
-(32, '::1', '2020-05-02 05:58:06', 'Chrome', 'Windows 7', 'Other', 'Other', 22, 'http://localhost/kurteyki/blog', ''),
-(33, '::1', '2020-05-02 18:00:22', 'Chrome', 'Windows 7', 'Other', 'Other', 11, 'http://localhost/kurteyki/courses-search', ''),
-(34, '::1', '2020-05-02 23:19:49', 'Chrome', 'Windows 7', 'Other', 'Other', 7, 'http://localhost/kurteyki/blog-post/konten-baru-dan-rencana-kedepannya-situs-ini', ''),
-(35, '::1', '2020-05-02 23:19:55', 'Chrome', 'Windows 7', 'Other', 'Other', 1, 'http://localhost/kurteyki/blog-category/news', ''),
-(36, '::1', '2020-05-02 23:20:15', 'Chrome', 'Windows 7', 'Other', 'Other', 3, 'http://localhost/kurteyki/blog-search', ''),
-(37, '::1', '2020-05-02 23:20:41', 'Chrome', 'Windows 7', 'Other', 'Other', 2, 'http://localhost/kurteyki/p/help', ''),
-(38, '::1', '2020-05-02 23:21:15', 'Chrome', 'Windows 7', 'Other', 'Other', 3, 'http://localhost/kurteyki/blog-tags/free', ''),
-(39, '::1', '2020-05-03 00:00:12', 'Chrome', 'Windows 7', 'Other', 'Other', 304, 'http://localhost/kurteyki/', ''),
-(40, '::1', '2020-05-03 00:00:17', 'Chrome', 'Windows 7', 'Other', 'Other', 46, 'http://localhost/kurteyki/courses-detail/ilmu-dari-adam-khoo', ''),
-(41, '::1', '2020-05-03 00:00:20', 'Chrome', 'Windows 7', 'Other', 'Other', 59, 'http://localhost/kurteyki/courses-detail/2-bgm', ''),
-(42, '::1', '2020-05-03 00:02:46', 'Chrome', 'Windows 7', 'Other', 'Other', 28, 'http://localhost/kurteyki/courses-detail/pemain-baseball', ''),
-(43, '::1', '2020-05-03 00:03:07', 'Chrome', 'Windows 7', 'Other', 'Other', 9, 'http://localhost/kurteyki/courses-detail/brigadidd', ''),
-(44, '::1', '2020-05-03 00:03:29', 'Chrome', 'Windows 7', 'Other', 'Other', 6, 'http://localhost/kurteyki/courses-detail/12312312', ''),
-(45, '::1', '2020-05-03 00:03:32', 'Chrome', 'Windows 7', 'Other', 'Other', 7, 'http://localhost/kurteyki/blog', ''),
-(46, '::1', '2020-05-03 00:04:03', 'Chrome', 'Windows 7', 'Other', 'Other', 4, 'http://localhost/kurteyki/blog-post/%E7%89%9B%E6%AC%A3%E6%AC%A3%E8%AA%AA%E6%84%9B%E4%BD%A0', ''),
-(47, '::1', '2020-05-03 00:07:59', 'Chrome', 'Windows 7', 'Other', 'Other', 17, 'http://localhost/kurteyki/courses-category/skill-hidup', ''),
-(48, '::1', '2020-05-03 00:17:03', 'Chrome', 'Windows 7', 'Other', 'Other', 3, 'http://localhost/kurteyki/courses-category/karakter', ''),
-(49, '::1', '2020-05-03 07:08:32', 'Chrome', 'Windows 7', 'Other', 'Other', 548, 'http://localhost/kurteyki/courses-filter', ''),
-(50, '::1', '2020-05-03 07:09:55', 'Chrome', 'Windows 7', 'Other', 'Other', 6, 'http://localhost/kurteyki/courses-detail/ilmu-dari-building-the-dream', ''),
-(51, '::1', '2020-05-03 09:25:55', 'Chrome', 'Windows 7', 'Other', 'Other', 3, 'http://localhost/kurteyki/blog-search', ''),
-(52, '::1', '2020-05-03 09:57:34', 'Chrome', 'Windows 7', 'Other', 'Other', 1, 'http://localhost/kurteyki/p/help', '');
+(1, '::1', '2020-05-03 11:49:04', 'Chrome', 'Windows 7', 'Other', 'Other', 20, 'http://localhost/kurteyki/', ''),
+(2, '::1', '2020-05-03 11:49:12', 'Chrome', 'Windows 7', 'Other', 'Other', 9, 'http://localhost/kurteyki/blog', ''),
+(3, '::1', '2020-05-03 11:49:22', 'Chrome', 'Windows 7', 'Other', 'Other', 1, 'http://localhost/kurteyki/courses-filter', ''),
+(4, '::1', '2020-05-03 11:49:32', 'Chrome', 'Windows 7', 'Other', 'Other', 1, 'http://localhost/kurteyki/blog-search', ''),
+(5, '::1', '2020-05-03 11:56:13', 'Chrome', 'Windows 7', 'Other', 'Other', 5, 'http://localhost/kurteyki/blog-post/konten-baru-dan-rencana-kedepannya-situs-ini', ''),
+(6, '::1', '2020-05-03 11:56:45', 'Chrome', 'Windows 7', 'Other', 'Other', 2, 'http://localhost/kurteyki/blog-category/news', ''),
+(7, '::1', '2020-05-03 11:57:14', 'Chrome', 'Windows 7', 'Other', 'Other', 1, 'http://localhost/kurteyki/blog-tags/berita', ''),
+(8, '::1', '2020-05-03 12:01:06', 'Chrome', 'Windows 7', 'Other', 'Other', 7, 'http://localhost/kurteyki/courses-detail/ilmu-dari-building-the-dream', ''),
+(9, '::1', '2020-05-03 12:02:03', 'Chrome', 'Windows 7', 'Other', 'Other', 3, 'http://localhost/kurteyki/courses-detail/ilmu-dari-adam-khoo', '');
 
 -- --------------------------------------------------------
 
@@ -698,13 +585,7 @@ CREATE TABLE `tb_user` (
 --
 
 INSERT INTO `tb_user` (`id`, `username`, `password`, `headline`, `email`, `no_handphone`, `photo`, `grade`, `payment`, `created`, `last_login`, `status`) VALUES
-(1, 'kurteyki', '1a5651f74beaa02c5e5fc380875d23a66e4549bd', 'King', 'kurteyki@gmail.com', '081389215100', 'user_photo_20200428081150.png', 'App', '{\"transaction\":[{\"identity\":\"bri20200425130634\",\"type\":\"bri\",\"account_number\":\"1923892138192\",\"receiver\":\"irfan\"},{\"identity\":\"bca20200426162016\",\"type\":\"bca\",\"account_number\":\"12321321\",\"receiver\":\"troffle\"}],\"confirmation\":[{\"identity\":\"whatsapp20200425130641\",\"type\":\"whatsapp\",\"data\":\"6285280815735\"},{\"identity\":\"facebook20200501131607\",\"type\":\"facebook\",\"data\":\"https:\\/\\/www.facebook.com\\/riedayme\"}]}', '0000-00-00 00:00:00', '2020-05-03 09:35:20', 'Active'),
-(2, 'Wwow Amazing', '445cbb597e207a98f8457c791b2431e9d4c3375b', 'Grolious Broo', 'instructor@gg.cc', '01283218321831', 'user_photo_20200501200204.jpg', 'Instructor', '{\"transaction\":[{\"identity\":\"bca20200501192440\",\"type\":\"bca\",\"account_number\":\"923892138921\",\"receiver\":\"instructor jancuk\"}],\"confirmation\":[{\"identity\":\"whatsapp20200501192507\",\"type\":\"whatsapp\",\"data\":\"+6285280815735\"}]}', '2020-05-01 15:04:06', '2020-05-03 09:35:09', 'Active'),
-(3, 'Brigadir Senjata', '8fb5cfe922674e0f9faa46a92716f66bd67ad344', '', 'user@gg.cc', '12839213812', 'user_photo_20200502063458.png', 'User', '', '2020-05-01 19:24:08', '2020-05-03 09:49:47', 'Active'),
-(4, 'PemainBaseball', '32987965e3bd65c627a96d8976cc6e626c5df549', 'Workhome', 'pemainbaseball@gg.cc', '9128392183989', 'user_photo_20200501202125.jpg', 'Instructor', '', '2020-05-01 20:17:54', '2020-05-03 04:14:37', 'Active'),
-(6, 'qweowqkewoq', '7c4a8d09ca3762af61e59520943dc26494f8941b', '', '12392183921@qqk.cc', '193892138219', '', 'User', '', '2020-05-02 08:09:41', '2020-05-02 08:30:13', 'Active'),
-(11, 'Muhamad Irfan', '', '', 'he.irfaan@gmail.com', '', '107735531697330302639-20200502112732.jpg', 'User', '', '2020-05-02 11:27:33', '2020-05-02 11:27:33', 'Active'),
-(12, 'Riedayme Riedayme', '', '', 'programmer.irfaan@gmail.com', '', '676343822937802-20200502180434.jpg', 'User', '', '2020-05-02 18:04:35', '2020-05-02 18:04:35', 'Active');
+(1, 'kurteyki', '1a5651f74beaa02c5e5fc380875d23a66e4549bd', 'King', 'kurteyki@gmail.com', '081389215100', 'user_photo_20200428081150.png', 'App', '{\"transaction\":[{\"identity\":\"bri20200425130634\",\"type\":\"bri\",\"account_number\":\"1923892138192\",\"receiver\":\"irfan\"},{\"identity\":\"bca20200426162016\",\"type\":\"bca\",\"account_number\":\"12321321\",\"receiver\":\"troffle\"}],\"confirmation\":[{\"identity\":\"whatsapp20200425130641\",\"type\":\"whatsapp\",\"data\":\"6285280815735\"},{\"identity\":\"facebook20200501131607\",\"type\":\"facebook\",\"data\":\"https:\\/\\/www.facebook.com\\/riedayme\"}]}', '0000-00-00 00:00:00', '2020-05-03 11:49:42', 'Active');
 
 --
 -- Indexes for dumped tables
@@ -901,13 +782,13 @@ ALTER TABLE `tb_user`
 -- AUTO_INCREMENT for table `tb_blog_post`
 --
 ALTER TABLE `tb_blog_post`
-  MODIFY `id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `tb_blog_post_category`
 --
 ALTER TABLE `tb_blog_post_category`
-  MODIFY `id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `tb_blog_post_comment`
@@ -949,25 +830,25 @@ ALTER TABLE `tb_lms_category`
 -- AUTO_INCREMENT for table `tb_lms_coupon`
 --
 ALTER TABLE `tb_lms_coupon`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `tb_lms_courses`
 --
 ALTER TABLE `tb_lms_courses`
-  MODIFY `id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `tb_lms_courses_lesson`
 --
 ALTER TABLE `tb_lms_courses_lesson`
-  MODIFY `id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
+  MODIFY `id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT for table `tb_lms_courses_section`
 --
 ALTER TABLE `tb_lms_courses_section`
-  MODIFY `id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+  MODIFY `id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT for table `tb_lms_template`
@@ -985,7 +866,7 @@ ALTER TABLE `tb_lms_template_widget`
 -- AUTO_INCREMENT for table `tb_lms_user_courses`
 --
 ALTER TABLE `tb_lms_user_courses`
-  MODIFY `id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(255) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `tb_lms_user_lesson`
@@ -997,13 +878,13 @@ ALTER TABLE `tb_lms_user_lesson`
 -- AUTO_INCREMENT for table `tb_lms_user_review`
 --
 ALTER TABLE `tb_lms_user_review`
-  MODIFY `id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(255) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `tb_lms_user_wishlist`
 --
 ALTER TABLE `tb_lms_user_wishlist`
-  MODIFY `id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` int(255) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `tb_site_meta`
@@ -1021,13 +902,13 @@ ALTER TABLE `tb_site_pages`
 -- AUTO_INCREMENT for table `tb_site_visitor`
 --
 ALTER TABLE `tb_site_visitor`
-  MODIFY `id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=53;
+  MODIFY `id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT for table `tb_user`
 --
 ALTER TABLE `tb_user`
-  MODIFY `id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
