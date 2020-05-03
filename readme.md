@@ -37,24 +37,24 @@ Fitur Blog yang tersedia
 ### Persyaratan
 [CodeIgniter Server Requirements](https://codeigniter.com/userguide3/general/requirements.html)
 
-Intruksi dibawah ini akan mengarahkan anda untuk menjalankan project pada komputer anda (local) dan ditujukan hanya untuk melakukan development dan testing saja.
+Intruksi dibawah ini akan ***mengarahkan anda untuk menjalankan project pada komputer anda (local)*** dan ditujukan hanya untuk melakukan development dan testing saja.
 
 ### Menjalankan Aplikasi Menggunakan XAMPP
 
 ```
 Pastikan anda sudah menjalankan module xampp yaitu apache server dan mysql.
-Download Project ini dan extract di folder htdocs yang ada pada xampp.
+***Download Project ini dan extract*** di folder htdocs yang ada pada xampp.
 ```
 
-Buat Database dengan nama kurteyki di phpmyadmin, silahkan akses url dibawah ini untuk membuka phpmyadmin :
+***Buat Database dengan nama kurteyki*** di phpmyadmin, silahkan akses url dibawah ini untuk membuka phpmyadmin :
 
 ```
 http://localhost/phpmyadmin
 ```
 
-Kemudian import kurteyki.sql yang ada ddidalam folder ini
+Kemudian ***import kurteyki.sql*** yang ada ddidalam folder ini
 
-Langkah kedua akses url dibawah ini, disamakan dengan nama folder pada saat extract project ini pada htdocs xampp :
+Langkah kedua ***akses url dibawah ini***, disamakan dengan nama folder pada saat extract project ini pada htdocs xampp :
 
 ```
 http://localhost/kurteyki
@@ -98,6 +98,7 @@ password: kurteyki
 * Login using social account
 * Review user
 * Cookies notification
+* Manual Payment
 
 ## Lisensi
 
