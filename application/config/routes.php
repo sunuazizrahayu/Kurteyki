@@ -67,7 +67,7 @@ $route['auth/process'] = 'user/auth/process_login';
 $route['auth/register'] = 'user/auth/register';
 $route['auth/facebook'] = 'user/auth/auth_facebook';
 $route['auth/google'] = 'user/auth/auth_google';
-$route['auth/register/process'] = 'user/auth/process_register';
+$route['auth/confirm/(:any)'] = 'user/auth/confirm_email/$1';
 
 $route['auth/process_logout'] = 'user/auth/process_logout';
 

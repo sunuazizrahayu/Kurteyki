@@ -64,11 +64,18 @@ $lang['error_old_password'] = 'Gagal ! Password Lama tidak valid';
 $lang['error_confirm_password'] = 'Gagal ! Password Konfirmasi Tidak Sama';
 $lang['sucess_change'] = 'Berhasil Mengganti Password';
 
+/* vertification */
+$lang['email_vertification_message_subject'] = 'Vertifikasi Email';
+$lang['email_vertification_message_head'] = 'Terima kasih telah mendaftar,';
+$lang['email_vertification_message_body'] = 'Silahkan klik link dibawah ini untuk mengaktifkan akun anda :';
+$lang['success_confirm'] = 'Berhasil Vertifikasi Email, silahkan login.';
+$lang['error_confirm'] = 'Gagal Vertifikasi Email, kesalahan pada user.';
 
 /* validation */
 $lang['user_exist'] = 'User sudah terdaftar.';
 $lang['email_exist'] = 'Email Sudah Pernah Digunakan';
 $lang['success_register'] = 'Berhasil Mendaftar, silahkan login.';
+$lang['success_register_with_vertification'] = 'Berhasil Mendaftar, silahkan cek email untuk vertifikasi.';
 $lang['invalid_csrf'] = 'kode Csrf tidak valid, silahkan refresh halaman dan coba lagi.';
 $lang['error_captcha'] = 'Captcha Error Silahkan Coba Lagi.';
 

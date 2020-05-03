@@ -36,7 +36,7 @@ class Auth extends My_Site{
 			'title' => $this->lang->line('login').' '.$site['title'],
 			'classbody' => 'o-page--center',
 			'site' => $site
-			);
+		);
 
 		$this->load->view('user/auth/login',$data);
 	}
@@ -78,7 +78,7 @@ class Auth extends My_Site{
 				'message' => true,
 				'message_type' => 'warning',
 				'message_text' => $this->lang->line('invalid_csrf'),
-				]);
+			]);
 
 			redirect(base_url($this->redirect_login));
 
@@ -100,7 +100,7 @@ class Auth extends My_Site{
 				'message' => true,
 				'message_type' => 'danger',
 				'message_text' => $this->lang->line('failed_login'),
-				]);
+			]);
 
 			redirect(base_url($this->redirect_login));
 		}
@@ -125,16 +125,18 @@ class Auth extends My_Site{
 					'message' => true,
 					'message_type' => 'warning',
 					'message_text' => $this->lang->line('invalid_csrf'),
-					]);
+				]);
 
 				redirect(base_url($this->redirect_register));
 			}elseif ($register == 'success') {
 
+				$email_vertification = true;
+
 				$this->session->set_flashdata([
 					'message' => true,
 					'message_type' => 'success',
-					'message_text' => $this->lang->line('success_register'),
-					]);
+					'message_text' => ($email_vertification) ? $this->lang->line('success_register_with_vertification') : $this->lang->line('success_register'),
+				]);
 
 				redirect(base_url($this->redirect_login));
 
@@ -144,7 +146,7 @@ class Auth extends My_Site{
 					'message' => true,
 					'message_type' => 'warning',
 					'message_text' => $this->lang->line('failed_create'),
-					]);
+				]);
 
 				redirect(base_url($this->redirect_register));
 			}
@@ -159,7 +161,7 @@ class Auth extends My_Site{
 				'title' => $this->lang->line('register').' '.$site['title'],
 				'classbody' => 'o-page--center',
 				'site' => $site
-				);
+			);
 
 			$this->load->view('user/auth/register',$data);
 		}		
@@ -167,8 +169,8 @@ class Auth extends My_Site{
 
 	public function auth_facebook(){
 
-		$settings['facebook_app_id']                = '2035153033287427';
-		$settings['facebook_app_secret']            = 'ea196826decb02b3a566c113b9ceef26';
+		$settings['facebook_app_id']                = $this->site['fb_app']['facebook_app_id'];
+		$settings['facebook_app_secret']            = $this->site['fb_app']['facebook_app_secret'];
 		$settings['facebook_login_redirect_url']    = 'auth/facebook';
 		$settings['facebook_logout_redirect_url']   = 'auth/logout';
 		$settings['facebook_login_type']            = 'web';
@@ -191,8 +193,8 @@ class Auth extends My_Site{
 			 * Checking Email if exist update and set session
 			 */
 			$data_login = [
-			'email' => $userProfile['email'],
-			'status' => 'Active'
+				'email' => $userProfile['email'],
+				'status' => 'Active'
 			];
 			if ($this->M_Auth->LoginSocialMedia($data_login)) {
 				redirect($this->redirect_dashboard_user);
@@ -206,15 +208,15 @@ class Auth extends My_Site{
 				file_put_contents('storage/uploads/user/photo/'.$photoname, file_get_contents($url)); 
 
 				$data_register = [
-				'username' => $userProfile['first_name'].' '.$userProfile['last_name'],
-				'password' => '',  
-				'email' => $userProfile['email'],                      
-				'no_handphone' => '',
-				'photo' => $photoname,				
-				'grade' => 'User',
-				'created' => date('Y:m:d H:i:s'),
-				'last_login' => date('Y:m:d H:i:s'),			
-				'status' => 'Active',
+					'username' => $userProfile['first_name'].' '.$userProfile['last_name'],
+					'password' => '',  
+					'email' => $userProfile['email'],                      
+					'no_handphone' => '',
+					'photo' => $photoname,				
+					'grade' => 'User',
+					'created' => date('Y:m:d H:i:s'),
+					'last_login' => date('Y:m:d H:i:s'),			
+					'status' => 'Active',
 				];
 
 				/**
@@ -233,8 +235,8 @@ class Auth extends My_Site{
 
 	public function auth_google(){
 
-		$settings['client_id']        = '149457348626-hl17uddbuhjup4mfhtdltbkln7vej215.apps.googleusercontent.com';
-		$settings['client_secret']    = 'JJbM0ETn_tdtPpKRGDpr6Hbi';
+		$settings['client_id']        = $this->site['google_api']['client_id'];
+		$settings['client_secret']    = $this->site['google_api']['client_secret'];
 		$settings['redirect_uri']     = base_url('auth/google');
 		$settings['application_name'] = 'Kurteyki';
 		$settings['api_key']          = '';
@@ -261,8 +263,8 @@ class Auth extends My_Site{
 				 * Checking Email if exist update and set session
 				 */				
 				$data_login = [
-				'email' => $userProfile['email'],
-				'status' => 'Active'
+					'email' => $userProfile['email'],
+					'status' => 'Active'
 				];
 
 				if ($this->M_Auth->LoginSocialMedia($data_login)) {
@@ -277,15 +279,15 @@ class Auth extends My_Site{
 					file_put_contents('storage/uploads/user/photo/'.$photoname, file_get_contents($url)); 
 
 					$data_register = [
-					'username' => $userProfile['name'],
-					'password' => '',  
-					'email' => $userProfile['email'],                      
-					'no_handphone' => '',
-					'photo' => $photoname,				
-					'grade' => 'User',
-					'created' => date('Y:m:d H:i:s'),
-					'last_login' => date('Y:m:d H:i:s'),			
-					'status' => 'Active',
+						'username' => $userProfile['name'],
+						'password' => '',  
+						'email' => $userProfile['email'],                      
+						'no_handphone' => '',
+						'photo' => $photoname,				
+						'grade' => 'User',
+						'created' => date('Y:m:d H:i:s'),
+						'last_login' => date('Y:m:d H:i:s'),			
+						'status' => 'Active',
 					];
 
 					/**
@@ -303,6 +305,18 @@ class Auth extends My_Site{
 			redirect($this->google->loginURL()); 
 		}
 
+	}
+
+	public function confirm_email($code){
+		if($this->M_Auth->verifyEmail($code)){
+			$this->session->set_flashdata([
+				'message' => true,
+				'message_type' => 'success',
+				'message_text' => $this->lang->line('success_confirm'),
+			]);
+		}
+
+		redirect(base_url($this->redirect_login));
 	}
 
 	public function process_logout(){

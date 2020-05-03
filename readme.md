@@ -80,7 +80,6 @@ password: kurteyki
 ## List Pekerjaan
 
 * user register vertivication...
-* fb client key and google api key setting on admin page
 
 ## Bug Aplikasi
 

@@ -24,25 +24,6 @@
 
 </div>
 
-<div class="c-stage u-m-zero u-border-bottom-zero type-manual" style='<?php echo ($site['payment_method'] == 'Manual') ? '' : 'display:none'; ?>'>
-	<div class="c-stage__header o-media u-justify-start">
-		<div class="c-stage__icon o-media__img">
-			<i class="fa fa-info"></i>
-		</div>
-		<div class="c-stage__header-title o-media__body">
-			<h6 class="u-mb-zero">Manual Payment</h6>
-		</div>
-	</div>
-
-	<div class="c-stage__panel u-p-medium row">
-
-		<div class="col-lg-12">
-			<a class="u-text-dark" href="<?php echo base_url('app/setting_payment') ?>">Go to Setting Manual Payment link.</a>
-		</div>
-
-	</div>
-</div>
-
 <div class="c-stage u-m-zero u-border-bottom-zero type-midtrans" style='<?php echo ($site['payment_method'] == 'Midtrans') ? '' : 'display:none'; ?>'>
 	<div class="c-stage__header o-media u-justify-start">
 		<div class="c-stage__icon o-media__img">
@@ -54,7 +35,7 @@
 	</div>
 
 	<div class="c-stage__panel u-p-medium row">
-		
+
 		<div class="c-field u-mb-medium col-md-12">
 			<label class="c-field__label">isProduction</label>
 			<select required="" name="status_production" class="c-select select2">
@@ -79,4 +60,4 @@
 		</div>
 
 	</div>
-</div>
+</div>		

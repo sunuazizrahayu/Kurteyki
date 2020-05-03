@@ -3,28 +3,31 @@
 <?php $this->load->view('app/_layouts/content'); ?>
 
 <div class="col-12 u-mv-small">
-	<form action="<?php echo base_url('app/setting_payment/process') ?>" class="row" method="post" enctype="multipart/form-data">
+	<form action="<?php echo base_url('app/setting_payment/process_setting') ?>" class="row" method="post" enctype="multipart/form-data">
 
 		<div class="col-12 col-xl-8 col-lg-10 col-md-12 offset-xl-2 offset-lg-1">
+
+			<?php $this->load->view('app/_layouts/alert'); ?>
 
 			<div class="c-card c-card--responsive u-p-zero">
 				<div class="c-card__header o-line">   
 					<h5 class="c-card__title">  
 						<?php  echo $title; ?>
-					</h5>     
+					</h5>   
+					<button class="c-btn c-btn--info u-ml-auto u-mr-small c-btn--custom" type="submit">
+						<i class="fa fa-save" aria-hidden="true"></i>
+					</button>  
 				</div>
-				<div class="c-card__body u-p-zero u-pt-small">      
+				<div class="c-card__body u-p-zero u-pt-small">   
+
+					<?php $this->load->view('app/setting_payment/form-setting'); ?>		   
 
 					<div class="row">
 
 						<div class="col-12">
 
-							<div class="u-ph-medium">
-								<?php $this->load->view('app/_layouts/alert'); ?>
-							</div>
-
-							<!-- start -->
-							<div class="c-stage u-m-zero u-border-bottom-zero">
+							<!-- start -->	
+							<div class="c-stage u-m-zero u-border-bottom-zero type-manual" style='<?php echo ($site['payment_method'] == 'Manual') ? '' : 'display:none'; ?>'>
 
 								<div class="c-stage__header o-media u-justify-start cursor-default">
 									<div class="c-stage__icon o-media__img">
@@ -91,7 +94,7 @@
 							<!-- end -->
 
 							<!-- start -->
-							<div class="c-stage u-m-zero u-border-top-zero">
+							<div class="c-stage u-m-zero u-border-top-zero type-manual" style='<?php echo ($site['payment_method'] == 'Manual') ? '' : 'display:none'; ?>'>
 
 								<div class="c-stage__header o-media u-justify-start cursor-default">
 									<div class="c-stage__icon o-media__img">

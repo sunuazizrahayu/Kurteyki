@@ -127,10 +127,13 @@
 		<i class="fa fa-bug u-mr-xsmall"></i>Meta
 	</a>
 </li>
-<?php if ($this->site['payment_method'] == 'Manual'): ?>
+<li class="c-sidebar__item">
+	<a class="c-sidebar__link <?php if($this->uri->segment(2)=='setting_api_key' or $this->uri->segment(2)=='setting_api_key' and $this->uri->segment(3) == 'create' ){echo "is-active";}?>" href="<?php echo base_url('app/setting_api_key') ?>">
+		<i class="fa fa-key u-mr-xsmall"></i>Api Key
+	</a>
+</li>
 <li class="c-sidebar__item">
 	<a class="c-sidebar__link <?php if($this->uri->segment(2)=='setting_payment' or $this->uri->segment(2)=='setting_payment' and $this->uri->segment(3) == 'create' ){echo "is-active";}?>" href="<?php echo base_url('app/setting_payment') ?>">
 		<i class="fa fa-dollar u-mr-xsmall"></i>Payment
 	</a>
 </li>
-<?php endif ?>

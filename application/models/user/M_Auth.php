@@ -15,12 +15,12 @@ class M_Auth extends CI_Model
         $csrf_code = $this->input->post('csrf_code');
 
         return [
-        'full_name' => $full_name,
-        'password' => $password,
-        'password_confirm' => $password_confirm,
-        'email' => $email,
-        'no_handphone' => $no_handphone,
-        'csrf_code' => $csrf_code,
+            'full_name' => $full_name,
+            'password' => $password,
+            'password_confirm' => $password_confirm,
+            'email' => $email,
+            'no_handphone' => $no_handphone,
+            'csrf_code' => $csrf_code,
         ];
     }
 
@@ -34,7 +34,7 @@ class M_Auth extends CI_Model
                 'email' => $post_data['email'],
                 'password' => sha1($post_data['password']),
                 'status' => 'Active'
-                );
+            );
 
             $read = $this->_Process_MYSQL->get_data($this->table_user,$data);
 
@@ -45,7 +45,7 @@ class M_Auth extends CI_Model
 
                 $data_update = array(
                     'last_login' => date('Y:m:d H:i:s'),
-                    );
+                );
 
                 if ($this->_Process_MYSQL->update_data($this->table_user, $data_update, array('id' => $id)) == TRUE) {
 
@@ -58,7 +58,7 @@ class M_Auth extends CI_Model
                             'photo' => $read_data['photo'],
                             'grade' => $read_data['grade'],                        
                             'user' => "login"
-                            ));
+                        ));
 
                         return 'success_user';
                     }elseif ($read_data['grade'] == 'App' OR $read_data['grade'] == 'Instructor') {
@@ -70,7 +70,7 @@ class M_Auth extends CI_Model
                             'app_grade' => $read_data['grade'],                        
                             'status' => "login",
                             'key' => sha1($read_data['id'].$read_data['username'].date('YmdHis'))
-                            ));
+                        ));
 
                         if ($read_data['grade'] == 'App') {
                             return 'success_app';
@@ -100,6 +100,8 @@ class M_Auth extends CI_Model
 
         if ($post_data['csrf_code'] != '' AND $this->session->userdata('csrf_code') == $post_data['csrf_code']) {
 
+            $email_vertification = true;
+
             $data = array(
                 'username' => $post_data['full_name'],
                 'password' => sha1($post_data['password']),  
@@ -107,14 +109,19 @@ class M_Auth extends CI_Model
                 'no_handphone' => $post_data['no_handphone'],
                 'grade' => 'User',
                 'created' => date('Y:m:d H:i:s'),
-                'status' => 'Active',                
-                );
+                'status' => ($email_vertification) ? 'UnActive' : 'Active',
+            );
 
-            if ($this->_Process_MYSQL->insert_data($this->table_user,$data)) {
 
-                return 'success';
+            if ($email_vertification) {
+                if ($this->sendEmail($post_data['email'])) {
+                    if ($this->_Process_MYSQL->insert_data($this->table_user,$data)) {
+                        return 'success';
+                    }
+                }
             }
 
+            return 'invalid';            
         }else {
 
             return 'invalid';
@@ -135,7 +142,7 @@ class M_Auth extends CI_Model
                 'photo' => $read_data['photo'],
                 'grade' => $read_data['grade'],                        
                 'user' => "login"
-                ));
+            ));
 
             return true;
         }else{
@@ -153,7 +160,7 @@ class M_Auth extends CI_Model
                 'photo' => $data['photo'],
                 'grade' => $data['grade'],                        
                 'user' => "login"
-                ));
+            ));
 
             return true;
         }
@@ -169,7 +176,7 @@ class M_Auth extends CI_Model
             $credential = array(
                 'secret' => $secret,
                 'response' => $this->input->post('g-recaptcha-response')
-                );
+            );
 
             $verify = curl_init();
             curl_setopt($verify, CURLOPT_URL, "https://www.google.com/recaptcha/api/siteverify");
@@ -188,6 +195,63 @@ class M_Auth extends CI_Model
         }
     }
 
+    public function sendEmail($receiver){
+
+        $from_email = "xxxxxx"; 
+        $to_email = $receiver; 
+        $subject =  $this->lang->line('email_vertification_message_subject'); 
+        $message = $this->lang->line('email_vertification_message_head').'
+        <br/><br/>
+        '.$this->lang->line('email_vertification_message_body').'
+        <br/><br/>
+        <a href=\''.base_url('auth/confirm/'.md5($receiver)).'\'>'. base_url('auth/confirm/'.md5($receiver)) .'</a>
+        <br/><br/>
+        ';
+
+        $config = Array(
+            'protocol' => 'smtp', /*  'mail', 'sendmail', or 'smtp' */
+            'smtp_host' => 'smtp.googlemail.com',
+            'smtp_port' => 465,
+            'smtp_user' => $from_email,
+            'smtp_pass' => 'xxxxxx',
+            'smtp_crypto' => 'ssl', /* can be 'ssl' or 'tls' for example */
+            'mailtype'  => 'html', /* plaintext 'text' mails or 'html' */
+            //'smtp_timeout' => '4', /*in seconds*/
+            'charset'   => 'iso-8859-1'
+            //'wordwrap' => TRUE
+        );
+
+        $this->load->library('email', $config);
+        $this->email->set_newline("\r\n");   
+
+        $this->email->from($from_email,$this->site['title']);  
+        $this->email->to($to_email);
+        $this->email->subject($subject); 
+        $this->email->message($message); 
+
+        if($this->email->send()){
+            return true;
+        }else {
+            return false;
+        } 
+
+    }    
+
+    public function verifyEmail($code){
+
+        $data = array(
+            'md5(email)' => $code,
+            'status' => 'UnActive'
+        );
+
+        $read = $this->_Process_MYSQL->get_data($this->table_user,$data);
+
+        if ($read->num_rows() > 0) {
+            $data = array('status' => 'Active');
+            return $this->_Process_MYSQL->update_data($this->table_user, $data, array('md5(email)' => $code));
+        }
+        
+    }
 
     function logout(){
 
@@ -217,69 +281,69 @@ class M_Auth extends CI_Model
 
         $this->form_validation->set_rules([
             [
-            'field' => 'full_name',
-            'label' => 'lang:full_name',
-            'rules' => 'trim|required|min_length[5]|max_length[100]',
-            'errors' => [
-            'required' => '{field} '.$this->lang->line('must_filled'),
-            ]
+                'field' => 'full_name',
+                'label' => 'lang:full_name',
+                'rules' => 'trim|required|min_length[5]|max_length[100]',
+                'errors' => [
+                    'required' => '{field} '.$this->lang->line('must_filled'),
+                ]
             ],
             [
-            'field' => 'email',
-            'label' => 'lang:email',
-            'rules' => [
-            'trim',
-            'required',
-            'valid_email',
-            [
-            'email_checker',
-            function($email){
+                'field' => 'email',
+                'label' => 'lang:email',
+                'rules' => [
+                    'trim',
+                    'required',
+                    'valid_email',
+                    [
+                        'email_checker',
+                        function($email){
 
-                $read = $this->_Process_MYSQL->get_data($this->table_user,['email' => $email]);
+                            $read = $this->_Process_MYSQL->get_data($this->table_user,['email' => $email]);
 
-                if ($read->num_rows() > 0) {
+                            if ($read->num_rows() > 0) {
 
-                    $this->form_validation->set_message('email_checker', $this->lang->line('email_exist'));
+                                $this->form_validation->set_message('email_checker', $this->lang->line('email_exist'));
 
-                    return false;
+                                return false;
 
-                }else {
+                            }else {
 
-                    return true;
-                }
-            }
-            ]
-            ],
-            'errors' => [
-            'required' => '{field} '.$this->lang->line('must_filled')
-            ]
-            ],
-            [
-            'field' => 'no_handphone',
-            'label' => 'lang:no_handphone',
-            'rules' => 'trim|required|numeric|min_length[10]|max_length[20]',
-            'errors' => [
-            'required' => '{field} '.$this->lang->line('must_filled')
-            ]
+                                return true;
+                            }
+                        }
+                    ]
+                ],
+                'errors' => [
+                    'required' => '{field} '.$this->lang->line('must_filled')
+                ]
             ],
             [
-            'field' => 'password',
-            'label' => 'lang:password',
-            'rules' => 'trim|required|min_length[5]',
-            'errors' => [
-            'required' => '{field} '.$this->lang->line('must_filled')
-            ]
+                'field' => 'no_handphone',
+                'label' => 'lang:no_handphone',
+                'rules' => 'trim|required|numeric|min_length[10]|max_length[20]',
+                'errors' => [
+                    'required' => '{field} '.$this->lang->line('must_filled')
+                ]
             ],
             [
-            'field' => 'password_confirm',
-            'label' => 'lang:password_confirm',
-            'rules' => 'trim|required|min_length[5]|matches[password]',
-            'errors' => [
-            'required' => '{field} '.$this->lang->line('must_filled'),
-            'matches' => '{field} '.$this->lang->line('not_same')
-            ]
+                'field' => 'password',
+                'label' => 'lang:password',
+                'rules' => 'trim|required|min_length[5]',
+                'errors' => [
+                    'required' => '{field} '.$this->lang->line('must_filled')
+                ]
             ],
-            ]);
+            [
+                'field' => 'password_confirm',
+                'label' => 'lang:password_confirm',
+                'rules' => 'trim|required|min_length[5]|matches[password]',
+                'errors' => [
+                    'required' => '{field} '.$this->lang->line('must_filled'),
+                    'matches' => '{field} '.$this->lang->line('not_same')
+                ]
+            ],
+        ]);
 
         $this->form_validation->set_message('min_length', '{field} '.$this->lang->line('min_length_start').' {param} '.$this->lang->line('min_length_end'));
         $this->form_validation->set_message('max_length', '{field} '.$this->lang->line('max_length_start').' {param} '.$this->lang->line('max_length_end'));

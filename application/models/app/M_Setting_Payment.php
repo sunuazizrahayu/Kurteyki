@@ -4,6 +4,7 @@ class M_Setting_Payment extends CI_Model
 {
 
 	public $table_user = 'tb_user';
+	public $table_site = 'tb_site';
 
 	public function read_data(){
 
@@ -11,6 +12,39 @@ class M_Setting_Payment extends CI_Model
 		$read = json_decode($read['payment'],true);	
 
 		return $read;
+	}
+
+	public function process_payment_setting(){
+		
+		$post = $this->input->post();
+
+		foreach ($post as $key => $value) {
+
+			if ($key == 'status_production') continue;
+			if ($key == 'client_key') continue;	
+			if ($key == 'server_key') continue;
+
+			$data [] = [
+				'type' => $key,
+				'data' => $value,
+			];
+		}
+
+		/**
+		 * build midtrans data
+		 */
+		$midtrans_data = [
+			"status_production" =>  $post['status_production'],			
+			"client_key" =>  $post['client_key'],
+			"server_key" =>   $post['server_key']
+		];
+
+		$data[] = [
+			'type' => 'payment_midtrans',
+			'data' => json_encode($midtrans_data,true),
+		];
+
+		return $this->_Process_MYSQL->update_data_multiple($this->table_site,$data,'type');
 	}
 
 	public function build_data_create($type) {
@@ -21,10 +55,10 @@ class M_Setting_Payment extends CI_Model
 		if ($read_data['transaction']) {
 			foreach ($read_data['transaction'] as $transaction) {
 				$data_transaction[] = [
-				"identity" => $transaction['identity'],				
-				"type" => $transaction['type'],
-				"account_number" => $transaction['account_number'],
-				"receiver" => $transaction['receiver']
+					"identity" => $transaction['identity'],				
+					"type" => $transaction['type'],
+					"account_number" => $transaction['account_number'],
+					"receiver" => $transaction['receiver']
 				];
 			}
 		}
@@ -32,33 +66,33 @@ class M_Setting_Payment extends CI_Model
 		if ($read_data['confirmation']) {
 			foreach ($read_data['confirmation'] as $confirmation) {
 				$data_confirmation[] = [
-				"identity" => $confirmation['identity'],				
-				"type" => $confirmation['type'],
-				"data" => $confirmation['data']
+					"identity" => $confirmation['identity'],				
+					"type" => $confirmation['type'],
+					"data" => $confirmation['data']
 				];
 			}
 		}
 
 		if ($type == 'form-transaction') {
 			$data_transaction[] = [
-			"identity" => $post['type'].date('YmdHis'),						
-			"type" => $post['type'],
-			"account_number" => $post['account_number'],
-			"receiver" => $post['receiver']
+				"identity" => $post['type'].date('YmdHis'),						
+				"type" => $post['type'],
+				"account_number" => $post['account_number'],
+				"receiver" => $post['receiver']
 			];
 		}
 
 		if ($type == 'form-confirmation') {
 			$data_confirmation[] = [
-			"identity" => $post['type'].date('YmdHis'),			
-			"type" => $post['type'],
-			"data" => $post['data']
+				"identity" => $post['type'].date('YmdHis'),			
+				"type" => $post['type'],
+				"data" => $post['data']
 			];
 		}
 
 		$post_data = [
-		'transaction' => $data_transaction,
-		'confirmation' => $data_confirmation
+			'transaction' => $data_transaction,
+			'confirmation' => $data_confirmation
 		];
 
 		return json_encode($post_data);
@@ -70,7 +104,7 @@ class M_Setting_Payment extends CI_Model
 
 		return $this->_Process_MYSQL->update_data($this->table_user,['payment' => $post_data],[
 			'id' => $this->session->userdata('id'),
-			]);
+		]);
 	}
 
 	public function build_data_update($type) {
@@ -84,10 +118,10 @@ class M_Setting_Payment extends CI_Model
 				if ($type == 'form-transaction') {
 					if ($post['identity'] == $transaction['identity']) {
 						$data_transaction[] = [
-						"identity" => $post['identity'],
-						"type" => $post['type'],
-						"account_number" => $post['account_number'],
-						"receiver" => $post['receiver']
+							"identity" => $post['identity'],
+							"type" => $post['type'],
+							"account_number" => $post['account_number'],
+							"receiver" => $post['receiver']
 						];
 
 						continue;
@@ -95,10 +129,10 @@ class M_Setting_Payment extends CI_Model
 				}
 
 				$data_transaction[] = [
-				"identity" => $transaction['identity'],
-				"type" => $transaction['type'],
-				"account_number" => $transaction['account_number'],
-				"receiver" => $transaction['receiver']
+					"identity" => $transaction['identity'],
+					"type" => $transaction['type'],
+					"account_number" => $transaction['account_number'],
+					"receiver" => $transaction['receiver']
 				];
 
 			}
@@ -110,9 +144,9 @@ class M_Setting_Payment extends CI_Model
 				if ($type == 'form-confirmation') {
 					if ($post['identity'] == $confirmation['identity']) {
 						$data_confirmation[] = [
-						"identity" => $post['identity'],
-						"type" => $post['type'],
-						"data" => $post['data']
+							"identity" => $post['identity'],
+							"type" => $post['type'],
+							"data" => $post['data']
 						];
 
 						continue;
@@ -120,16 +154,16 @@ class M_Setting_Payment extends CI_Model
 				}
 
 				$data_confirmation[] = [
-				"identity" => $confirmation['identity'],
-				"type" => $confirmation['type'],
-				"data" => $confirmation['data']
+					"identity" => $confirmation['identity'],
+					"type" => $confirmation['type'],
+					"data" => $confirmation['data']
 				];
 			}
 		}
 
 		$post_data = [
-		'transaction' => $data_transaction,
-		'confirmation' => $data_confirmation
+			'transaction' => $data_transaction,
+			'confirmation' => $data_confirmation
 		];
 
 		return json_encode($post_data);
@@ -141,7 +175,7 @@ class M_Setting_Payment extends CI_Model
 
 		return $this->_Process_MYSQL->update_data($this->table_user,['payment' => $post_data],[
 			'id' => $this->session->userdata('id'),
-			]);
+		]);
 	}	
 
 	public function build_data_delete($type,$identity){
@@ -155,10 +189,10 @@ class M_Setting_Payment extends CI_Model
 			}
 
 			$data_transaction[] = [
-			"identity" => $transaction['identity'],
-			"type" => $transaction['type'],
-			"account_number" => $transaction['account_number'],
-			"receiver" => $transaction['receiver']
+				"identity" => $transaction['identity'],
+				"type" => $transaction['type'],
+				"account_number" => $transaction['account_number'],
+				"receiver" => $transaction['receiver']
 			];
 		}
 
@@ -169,15 +203,15 @@ class M_Setting_Payment extends CI_Model
 			}
 
 			$data_confirmation[] = [
-			"identity" => $confirmation['identity'],
-			"type" => $confirmation['type'],
-			"data" => $confirmation['data']
+				"identity" => $confirmation['identity'],
+				"type" => $confirmation['type'],
+				"data" => $confirmation['data']
 			];
 		}
 
 		$post_data = [
-		'transaction' => $data_transaction,
-		'confirmation' => $data_confirmation
+			'transaction' => $data_transaction,
+			'confirmation' => $data_confirmation
 		];
 
 		return json_encode($post_data);
@@ -189,6 +223,6 @@ class M_Setting_Payment extends CI_Model
 
 		return $this->_Process_MYSQL->update_data($this->table_user,['payment' => $post_data],[
 			'id' => $this->session->userdata('id'),
-			]);
+		]);
 	}
 }

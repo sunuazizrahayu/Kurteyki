@@ -33,7 +33,6 @@
 									<li class="c-tabs__item"><a class="c-tabs__link u-pv-xsmall u-ph-small u-text-small" id="nav-lms-tab" data-toggle="tab" href="#nav-lms" role="tab" aria-controls="nav-lms" aria-selected="false">Lms</a></li>
 									<li class="c-tabs__item"><a class="c-tabs__link u-pv-xsmall u-ph-small u-text-small" id="nav-blog-tab" data-toggle="tab" href="#nav-blog" role="tab" aria-controls="nav-blog" aria-selected="false">Blog</a></li>
 									<li class="c-tabs__item"><a class="c-tabs__link u-pv-xsmall u-ph-small u-text-small" id="nav-user-tab" data-toggle="tab" href="#nav-user" role="tab" aria-controls="nav-user" aria-selected="false">User</a></li>
-									<li class="c-tabs__item"><a class="c-tabs__link u-pv-xsmall u-ph-small u-text-small" id="nav-payment-tab" data-toggle="tab" href="#nav-payment" role="tab" aria-controls="nav-payment" aria-selected="false">Payment</a></li>
 								</ul>
 
 								<div class="c-tabs__content tab-content" id="nav-tabContent">
@@ -52,11 +51,7 @@
 
 									<div class="c-tabs__pane u-p-medium u-pt-large" id="nav-user" role="tabpanel" aria-labelledby="nav-user-tab">
 										<?php $this->load->view('app/setting_general/form-user'); ?>
-									</div>		
-
-									<div class="c-tabs__pane u-p-zero u-pt-large" id="nav-payment" role="tabpanel" aria-labelledby="nav-payment-tab">
-										<?php $this->load->view('app/setting_general/form-payment'); ?>
-									</div>		
+									</div>			
 
 								</div>
 

@@ -25,7 +25,7 @@
 			<div class="row">
 
 				<div class="col-12">
-					<form action='<?php echo base_url('courses-filter') ?>' class="c-search-form c-search-form--dark" method="GET">
+					<form action='<?php echo base_url('courses-filter') ?>' class="c-search-form c-search-form--dark u-border-left u-border-top u-border-right u-border-bottom" method="GET">
 
 						<?php if (!empty($this->input->get('q'))): ?>
 							<input type="hidden" name='q' value="<?php echo $this->input->get('q') ?>">

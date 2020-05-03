@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 03, 2020 at 07:03 AM
+-- Generation Time: May 03, 2020 at 01:19 PM
 -- Server version: 10.1.38-MariaDB
 -- PHP Version: 7.3.3
 
@@ -21,6 +21,29 @@ SET time_zone = "+00:00";
 --
 -- Database: `kurteyki`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `jobs`
+--
+
+CREATE TABLE `jobs` (
+  `id` int(10) UNSIGNED NOT NULL,
+  `name` varchar(45) NOT NULL,
+  `payload` text COMMENT 'JSON payload',
+  `response` text,
+  `status` enum('running','queued','done') NOT NULL DEFAULT 'queued',
+  `run_time` double DEFAULT NULL,
+  `created_dt` datetime NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `jobs`
+--
+
+INSERT INTO `jobs` (`id`, `name`, `payload`, `response`, `status`, `run_time`, `created_dt`) VALUES
+(1, 'sendEmail', 'asd', '', 'running', 0.046408891677856, '0000-00-00 00:00:00');
 
 -- --------------------------------------------------------
 
@@ -268,8 +291,8 @@ CREATE TABLE `tb_lms_courses` (
 --
 
 INSERT INTO `tb_lms_courses` (`id`, `id_user`, `title`, `permalink`, `image`, `description`, `faq`, `id_category`, `id_sub_category`, `time`, `updated`, `price`, `discount`, `views`, `status`) VALUES
-(1, 0, 'Pengetahuan untuk menjadi manusia berbakat', 'ilmu-dari-adam-khoo', 'images/banner.png', '&lt;p&gt;materi ini saya ambil dari buku karya adam khoo yang berjudul i am gifted so are you, buku ini mengajarkan banyak hal bagaimana cara menjadi pribadi yang berbakat. didalam buku ini banyak sekali ilmu yang bisa diterapkan untuk pelajar, membangun keyakinan diri, cita-cita, mengatur waktu dan lain sebagainya.&lt;/p&gt;\r\n\r\n&lt;p&gt;didalam kursus ini hanya berisi ringkasan singkat dari buku yang ada.&amp;nbsp;materi yang saya sampaikan menggunakan gaya bahasa dari apa yang saya pahami, untuk mendapatkan informasi lebih lengkap tentang buku ini anda bisa membeli bukunya di toko buku.&lt;/p&gt;\r\n', '', '1', '3', '2020-04-11 16:53:44', '2020-04-15 17:16:38', 0, 0, 217, 'Published'),
-(2, 0, 'Ilmu Finansial dari Building The Dream', 'ilmu-dari-building-the-dream', 'images/banner.png', '&lt;p&gt;Materi ini saya dapat dari sebuah grup pengembangan diri yang terkenal dengan nama btd atau building the dream, awal saya masuk grup ini adalah diundang seseorang melalui kontak whatsapp tahun 2017 lalu.&amp;nbsp;&lt;/p&gt;\r\n\r\n&lt;p&gt;materi yang saya sampaikan hanya ringkasan saja dari materi yang ada. jika anda tertarik ingin bergabung ke grup btd anda harus mengontak pengurusnya, sayangnya saya sudah tidak masuk grup tersebut karena nomor saya yang masuk grup tersebut sudah tidak aktif lagi.&lt;/p&gt;\r\n', '', '1', '2', '2020-04-11 22:19:25', '2020-04-16 08:07:19', 0, 0, 243, 'Published');
+(1, 2, 'Pengetahuan untuk menjadi manusia berbakat', 'ilmu-dari-adam-khoo', 'images/banner.png', '&lt;p&gt;materi ini saya ambil dari buku karya adam khoo yang berjudul i am gifted so are you, buku ini mengajarkan banyak hal bagaimana cara menjadi pribadi yang berbakat. didalam buku ini banyak sekali ilmu yang bisa diterapkan untuk pelajar, membangun keyakinan diri, cita-cita, mengatur waktu dan lain sebagainya.&lt;/p&gt;\r\n\r\n&lt;p&gt;didalam kursus ini hanya berisi ringkasan singkat dari buku yang ada.&amp;nbsp;materi yang saya sampaikan menggunakan gaya bahasa dari apa yang saya pahami, untuk mendapatkan informasi lebih lengkap tentang buku ini anda bisa membeli bukunya di toko buku.&lt;/p&gt;\r\n', '', '1', '3', '2020-04-11 16:53:44', '2020-05-03 15:44:54', 0, 0, 217, 'Published'),
+(2, 2, 'Ilmu Finansial dari Building The Dream', 'ilmu-dari-building-the-dream', 'images/banner.png', '&lt;p&gt;Materi ini saya dapat dari sebuah grup pengembangan diri yang terkenal dengan nama btd atau building the dream, awal saya masuk grup ini adalah diundang seseorang melalui kontak whatsapp tahun 2017 lalu.&amp;nbsp;&lt;/p&gt;\r\n\r\n&lt;p&gt;materi yang saya sampaikan hanya ringkasan saja dari materi yang ada. jika anda tertarik ingin bergabung ke grup btd anda harus mengontak pengurusnya, sayangnya saya sudah tidak masuk grup tersebut karena nomor saya yang masuk grup tersebut sudah tidak aktif lagi.&lt;/p&gt;\r\n', '', '1', '2', '2020-04-11 22:19:25', '2020-04-16 08:07:19', 0, 0, 243, 'Published');
 
 -- --------------------------------------------------------
 
@@ -300,7 +323,8 @@ INSERT INTO `tb_lms_courses_lesson` (`id`, `id_courses`, `id_section`, `title`, 
 (6, 1, 6, 'Penundaan adalah rintangan utama kesuksesan', 'Text', '', 0),
 (7, 1, 3, 'Waktu yang diberikan sama apa yang membedakannya ?', 'Text', '', 0),
 (8, 1, 4, 'Tujuan Hidupmu ? ', 'Text', '', 0),
-(9, 2, 7, 'Kaya yang sebenarnya', 'Text', '', 0);
+(9, 2, 7, 'Kaya yang sebenarnya', 'Text', '', 0),
+(10, 2, 8, 'Yaaaa', 'Text', '<p>aaa</p>\r\n', 0);
 
 -- --------------------------------------------------------
 
@@ -326,7 +350,8 @@ INSERT INTO `tb_lms_courses_section` (`id`, `id_courses`, `title`, `order`) VALU
 (4, 1, 'Merancang Tujuan Hidup', 3),
 (5, 1, 'Emosi adalah sumber Motivasi', 6),
 (6, 1, 'Meninggalkan Penundaan', 5),
-(7, 2, 'Kecerdasan Finansial', 0);
+(7, 2, 'Kecerdasan Finansial', 0),
+(8, 2, 'Memulai', 0);
 
 -- --------------------------------------------------------
 
@@ -461,12 +486,17 @@ INSERT INTO `tb_site` (`type`, `data`) VALUES
 ('cookie_notification', '{\"status\":\"Yes\",\"message\":\"Situs web ini menggunakan cookie untuk mempersonalisasi konten dan menganalisis lalu lintas untuk menawarkan pengalaman yang lebih baik kepada Anda.\"}'),
 ('currency_format', 'IDR'),
 ('description', 'Ilmu Pengembangan Diri untuk Hidup yang lebih baik.'),
-('google_recaptcha', '{\r\n  \"status\":\"Yes\",\r\n  \"site_key\":\"6LcNNfEUAAAAAJCUGL5neYNAMHp-I0XGFpFuQO0i\",\r\n  \"secret_key\":\"6LcNNfEUAAAAAM-Sfc1OrWVMekM5c2vjsxsf1_Fi\"\r\n}'),
+('fb_app', '{\"facebook_app_id\":\"2035153033287427\",\"facebook_app_secret\":\"ea196826decb02b3a566c113b9ceef26\"}'),
+('google_api', '{\"client_id\":\"149457348626-hl17uddbuhjup4mfhtdltbkln7vej215.apps.googleusercontent.com\",\"client_secret\":\"JJbM0ETn_tdtPpKRGDpr6Hbi\"}'),
+('google_recaptcha', '{\"status\":\"Yes\",\"site_key\":\"6LcNNfEUAAAAAJCUGL5neYNAMHp-I0XGFpFuQO0i\",\"secret_key\":\"6LcNNfEUAAAAAM-Sfc1OrWVMekM5c2vjsxsf1_Fi\"}'),
 ('icon', 'icon_20200408075727.png'),
 ('image', 'logo_20200415181034.png'),
 ('language', 'indonesia'),
 ('lms_free_courses_readable', 'Yes'),
 ('lms_limit_post', '9'),
+('meta_open_graph', '{\"app_id\":\"\",\"publisher\":\"https:\\/\\/www.facebook.com\\/kurteyki\",\"author\":\"https:\\/\\/www.facebook.com\\/kurteyki\",\"default_image\":\"open_graph_default_image_20200415181017.png\"}'),
+('meta_schema', '{\"type\":\"Organization\",\"content\":{\"person_name\":\"Faanteyki\",\"person_alternateName\":\"Faan\",\"person_gender\":\"male\",\"person_height\":\"163 centimetre\",\"person_birthDate\":\"1999-08-30\",\"person_birthPlace\":\"Bogor, Jawabarat\",\"person_nationality\":\"Indonesia\",\"person_alumniOf\":\"SMK Generasi Madani\",\"person_memberOf\":\"Kurteyki\",\"person_streetAddress\":\"RT.05 RW.04 NO.C23\",\"person_addressLocality\":\"Cibinong\",\"person_addressRegion\":\"Indonesia\",\"person_postalCode\":\"16916\",\"person_email\":\"life.irfaan@gmail.com\",\"person_telephone\":\"+62 813 8921 5100\",\"person_url\":\"https:\\/\\/kurteyki.com\",\"person_sameAs\":\"https:\\/\\/facebook.com\\/faanteyki\",\"person_jobTitle\":\"Bobobib\",\"person_worksFor_name\":\"Bobobib\",\"person_worksFor_sameAs\":\"https:\\/\\/facebook.com\\/kurteyki\",\"organization_name\":\"Kurteyki\",\"organization_url\":\"https:\\/\\/www.kurteyki.com\\/\",\"organization_contactPoint_telephone\":\"+62 813 8921 5100\",\"organization_contactPoint_contactType\":\"customer service\",\"organization_sameAs\":\"https:\\/\\/facebook.com\\/kurteyki\",\"organization_logo_url\":\"organization_logo_url_20200424151642.png\",\"person_image\":\"person_image_20200415181017.png\"}}'),
+('meta_twitter_card', '{\"publisher\":\"@kurteyki\",\"default_image\":\"twitter_card_default_image_20200415181017.png\"}'),
 ('no_image', 'no_image_20200408075727.jpg'),
 ('payment_method', 'Manual'),
 ('payment_midtrans', '{\"status_production\":\"No\",\"client_key\":\"SB-Mid-client-kda5uXSFYxy0K5EJ\",\"server_key\":\"SB-Mid-server-pE6FhBweNWjzV3ZJkDueTaYp\"}'),
@@ -474,29 +504,8 @@ INSERT INTO `tb_site` (`type`, `data`) VALUES
 ('slogan', 'Belajar pengembangan diri.'),
 ('time_zone', 'Asia/Jakarta'),
 ('title', 'Kurteyki'),
-('updated', '2020-05-03 12:01:38'),
+('updated', '2020-05-03 14:50:57'),
 ('user_limit_data', '5');
-
--- --------------------------------------------------------
-
---
--- Table structure for table `tb_site_meta`
---
-
-CREATE TABLE `tb_site_meta` (
-  `id` int(255) NOT NULL,
-  `type` varchar(255) NOT NULL,
-  `data_json` text NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
---
--- Dumping data for table `tb_site_meta`
---
-
-INSERT INTO `tb_site_meta` (`id`, `type`, `data_json`) VALUES
-(1, 'schema', '{\"type\":\"Organization\",\"content\":{\"person_name\":\"Faanteyki\",\"person_alternateName\":\"Faan\",\"person_gender\":\"male\",\"person_height\":\"163 centimetre\",\"person_birthDate\":\"1999-08-30\",\"person_birthPlace\":\"Bogor, Jawabarat\",\"person_nationality\":\"Indonesia\",\"person_alumniOf\":\"SMK Generasi Madani\",\"person_memberOf\":\"Kurteyki\",\"person_streetAddress\":\"RT.05 RW.04 NO.C23\",\"person_addressLocality\":\"Cibinong\",\"person_addressRegion\":\"Indonesia\",\"person_postalCode\":\"16916\",\"person_email\":\"life.irfaan@gmail.com\",\"person_telephone\":\"+62 813 8921 5100\",\"person_url\":\"https:\\/\\/kurteyki.com\",\"person_sameAs\":\"https:\\/\\/facebook.com\\/faanteyki\",\"person_jobTitle\":\"Bobobib\",\"person_worksFor_name\":\"Bobobib\",\"person_worksFor_sameAs\":\"https:\\/\\/facebook.com\\/kurteyki\",\"organization_name\":\"Kurteyki\",\"organization_url\":\"https:\\/\\/www.kurteyki.com\\/\",\"organization_contactPoint_telephone\":\"+62 813 8921 5100\",\"organization_contactPoint_contactType\":\"customer service\",\"organization_sameAs\":\"https:\\/\\/facebook.com\\/kurteyki\",\"organization_logo_url\":\"organization_logo_url_20200424151642.png\",\"person_image\":\"person_image_20200415181017.png\"}}'),
-(2, 'open_graph', '{\"app_id\":\"\",\"publisher\":\"https:\\/\\/www.facebook.com\\/kurteyki\",\"author\":\"https:\\/\\/www.facebook.com\\/kurteyki\",\"default_image\":\"open_graph_default_image_20200415181017.png\"}'),
-(3, 'twitter_card', '{\"publisher\":\"@kurteyki\",\"default_image\":\"twitter_card_default_image_20200415181017.png\"}');
 
 -- --------------------------------------------------------
 
@@ -549,15 +558,20 @@ CREATE TABLE `tb_site_visitor` (
 --
 
 INSERT INTO `tb_site_visitor` (`id`, `ip`, `date`, `browser`, `os`, `country_name`, `country_code`, `hits`, `url`, `referrer`) VALUES
-(1, '::1', '2020-05-03 11:49:04', 'Chrome', 'Windows 7', 'Other', 'Other', 20, 'http://localhost/kurteyki/', ''),
-(2, '::1', '2020-05-03 11:49:12', 'Chrome', 'Windows 7', 'Other', 'Other', 9, 'http://localhost/kurteyki/blog', ''),
-(3, '::1', '2020-05-03 11:49:22', 'Chrome', 'Windows 7', 'Other', 'Other', 1, 'http://localhost/kurteyki/courses-filter', ''),
+(1, '::1', '2020-05-03 11:49:04', 'Chrome', 'Windows 7', 'Other', 'Other', 62, 'http://localhost/kurteyki/', ''),
+(2, '::1', '2020-05-03 11:49:12', 'Chrome', 'Windows 7', 'Other', 'Other', 13, 'http://localhost/kurteyki/blog', ''),
+(3, '::1', '2020-05-03 11:49:22', 'Chrome', 'Windows 7', 'Other', 'Other', 21, 'http://localhost/kurteyki/courses-filter', ''),
 (4, '::1', '2020-05-03 11:49:32', 'Chrome', 'Windows 7', 'Other', 'Other', 1, 'http://localhost/kurteyki/blog-search', ''),
-(5, '::1', '2020-05-03 11:56:13', 'Chrome', 'Windows 7', 'Other', 'Other', 5, 'http://localhost/kurteyki/blog-post/konten-baru-dan-rencana-kedepannya-situs-ini', ''),
+(5, '::1', '2020-05-03 11:56:13', 'Chrome', 'Windows 7', 'Other', 'Other', 9, 'http://localhost/kurteyki/blog-post/konten-baru-dan-rencana-kedepannya-situs-ini', ''),
 (6, '::1', '2020-05-03 11:56:45', 'Chrome', 'Windows 7', 'Other', 'Other', 2, 'http://localhost/kurteyki/blog-category/news', ''),
-(7, '::1', '2020-05-03 11:57:14', 'Chrome', 'Windows 7', 'Other', 'Other', 1, 'http://localhost/kurteyki/blog-tags/berita', ''),
-(8, '::1', '2020-05-03 12:01:06', 'Chrome', 'Windows 7', 'Other', 'Other', 7, 'http://localhost/kurteyki/courses-detail/ilmu-dari-building-the-dream', ''),
-(9, '::1', '2020-05-03 12:02:03', 'Chrome', 'Windows 7', 'Other', 'Other', 3, 'http://localhost/kurteyki/courses-detail/ilmu-dari-adam-khoo', '');
+(7, '::1', '2020-05-03 11:57:14', 'Chrome', 'Windows 7', 'Other', 'Other', 2, 'http://localhost/kurteyki/blog-tags/berita', ''),
+(8, '::1', '2020-05-03 12:01:06', 'Chrome', 'Windows 7', 'Other', 'Other', 15, 'http://localhost/kurteyki/courses-detail/ilmu-dari-building-the-dream', ''),
+(9, '::1', '2020-05-03 12:02:03', 'Chrome', 'Windows 7', 'Other', 'Other', 14, 'http://localhost/kurteyki/courses-detail/ilmu-dari-adam-khoo', ''),
+(10, '::1', '2020-05-03 15:47:23', 'Chrome', 'Windows 10', 'Other', 'Other', 3, 'http://localhost/kurteyki/p/term-and-condition', ''),
+(11, '::1', '2020-05-03 15:47:26', 'Chrome', 'Windows 10', 'Other', 'Other', 3, 'http://localhost/kurteyki/p/about', ''),
+(12, '::1', '2020-05-03 15:47:32', 'Chrome', 'Windows 10', 'Other', 'Other', 2, 'http://localhost/kurteyki/p/privacy-policy', ''),
+(13, '::1', '2020-05-03 15:47:33', 'Chrome', 'Windows 10', 'Other', 'Other', 3, 'http://localhost/kurteyki/p/contact', ''),
+(14, '::1', '2020-05-03 15:47:34', 'Chrome', 'Windows 10', 'Other', 'Other', 2, 'http://localhost/kurteyki/p/help', '');
 
 -- --------------------------------------------------------
 
@@ -585,11 +599,19 @@ CREATE TABLE `tb_user` (
 --
 
 INSERT INTO `tb_user` (`id`, `username`, `password`, `headline`, `email`, `no_handphone`, `photo`, `grade`, `payment`, `created`, `last_login`, `status`) VALUES
-(1, 'kurteyki', '1a5651f74beaa02c5e5fc380875d23a66e4549bd', 'King', 'kurteyki@gmail.com', '081389215100', 'user_photo_20200428081150.png', 'App', '{\"transaction\":[{\"identity\":\"bri20200425130634\",\"type\":\"bri\",\"account_number\":\"1923892138192\",\"receiver\":\"irfan\"},{\"identity\":\"bca20200426162016\",\"type\":\"bca\",\"account_number\":\"12321321\",\"receiver\":\"troffle\"}],\"confirmation\":[{\"identity\":\"whatsapp20200425130641\",\"type\":\"whatsapp\",\"data\":\"6285280815735\"},{\"identity\":\"facebook20200501131607\",\"type\":\"facebook\",\"data\":\"https:\\/\\/www.facebook.com\\/riedayme\"}]}', '0000-00-00 00:00:00', '2020-05-03 11:49:42', 'Active');
+(1, 'kurteyki', '1a5651f74beaa02c5e5fc380875d23a66e4549bd', 'Owner', 'kurteyki@gmail.com', '081389215100', 'user_photo_20200503125412.png', 'App', '{\"transaction\":[{\"identity\":\"bri20200425130634\",\"type\":\"bri\",\"account_number\":\"1923892138192\",\"receiver\":\"irfan\"},{\"identity\":\"bca20200426162016\",\"type\":\"bca\",\"account_number\":\"12321321\",\"receiver\":\"troffle\"}],\"confirmation\":[{\"identity\":\"whatsapp20200425130641\",\"type\":\"whatsapp\",\"data\":\"6285280815735\"},{\"identity\":\"facebook20200501131607\",\"type\":\"facebook\",\"data\":\"https:\\/\\/www.facebook.com\\/riedayme\"}]}', '0000-00-00 00:00:00', '2020-05-03 17:02:08', 'Active'),
+(2, 'Faaan', 'a32a2a8de66906d5e1ae59e0411f1490ac7ee495', 'Pengembangan Diri', 'he.irfaan@gmail.com', '081389215100', 'user_photo_20200503125826.jpg', 'Instructor', '', '2020-05-03 12:58:26', '0000-00-00 00:00:00', 'Active'),
+(4, 'Riedayme', 'ea2ca37a791a400f412ddcb4a0df906026aff939', '', 'programmer.irfaan@gmail.com', '085250581234', '', 'User', '', '2020-05-03 17:33:47', '2020-05-03 17:34:22', 'Active');
 
 --
 -- Indexes for dumped tables
 --
+
+--
+-- Indexes for table `jobs`
+--
+ALTER TABLE `jobs`
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indexes for table `tb_blog_post`
@@ -743,13 +765,6 @@ ALTER TABLE `tb_site`
   ADD PRIMARY KEY (`type`);
 
 --
--- Indexes for table `tb_site_meta`
---
-ALTER TABLE `tb_site_meta`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `type` (`type`);
-
---
 -- Indexes for table `tb_site_pages`
 --
 ALTER TABLE `tb_site_pages`
@@ -777,6 +792,12 @@ ALTER TABLE `tb_user`
 --
 -- AUTO_INCREMENT for dumped tables
 --
+
+--
+-- AUTO_INCREMENT for table `jobs`
+--
+ALTER TABLE `jobs`
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `tb_blog_post`
@@ -842,13 +863,13 @@ ALTER TABLE `tb_lms_courses`
 -- AUTO_INCREMENT for table `tb_lms_courses_lesson`
 --
 ALTER TABLE `tb_lms_courses_lesson`
-  MODIFY `id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT for table `tb_lms_courses_section`
 --
 ALTER TABLE `tb_lms_courses_section`
-  MODIFY `id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT for table `tb_lms_template`
@@ -887,12 +908,6 @@ ALTER TABLE `tb_lms_user_wishlist`
   MODIFY `id` int(255) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT for table `tb_site_meta`
---
-ALTER TABLE `tb_site_meta`
-  MODIFY `id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
-
---
 -- AUTO_INCREMENT for table `tb_site_pages`
 --
 ALTER TABLE `tb_site_pages`
@@ -902,13 +917,13 @@ ALTER TABLE `tb_site_pages`
 -- AUTO_INCREMENT for table `tb_site_visitor`
 --
 ALTER TABLE `tb_site_visitor`
-  MODIFY `id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 
 --
 -- AUTO_INCREMENT for table `tb_user`
 --
 ALTER TABLE `tb_user`
-  MODIFY `id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

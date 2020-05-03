@@ -12,19 +12,19 @@ class M_LMS_Courses extends CI_Model
 
     public function datatables(){
         return [
-        'datatable' => true,
-        'datatables_data' => "
-        [{'data': 'checkbox',className:'c-table__cell u-pl-small'},
-        {'data': 'id',className:'c-table__cell'},
-        {'data': 'title',className:'c-table__cell u-pl-small',width:'80%'},
-        {'data': 'category',className:'c-table__cell u-text-center'},
-        {'data': 'user',className:'c-table__cell',width:'20%'},                    
-        {'data': 'time',className:'c-table__cell'},            
-        {'data': 'updated',className:'c-table__cell'},                                                          
-        {'data': 'view',className:'c-table__cell'},            
-        {'data': 'alat',className:'c-table__cell'}
-        ]
-        ",
+            'datatable' => true,
+            'datatables_data' => "
+            [{'data': 'checkbox',className:'c-table__cell u-pl-small'},
+            {'data': 'id',className:'c-table__cell'},
+            {'data': 'title',className:'c-table__cell u-pl-small',width:'80%'},
+            {'data': 'category',className:'c-table__cell u-text-center'},
+            {'data': 'user',className:'c-table__cell',width:'20%'},                    
+            {'data': 'time',className:'c-table__cell'},            
+            {'data': 'updated',className:'c-table__cell'},                                                          
+            {'data': 'view',className:'c-table__cell'},            
+            {'data': 'alat',className:'c-table__cell'}
+            ]
+            ",
         ];
     }
 
@@ -54,18 +54,18 @@ class M_LMS_Courses extends CI_Model
         $this->datatables->group_by('tb_lms_courses.id');
         $this->datatables->add_column('checkbox', '
             <td>
-                <div class="c-choice c-choice--checkbox">
-                    <input type="checkbox" id="checkbox-$1" class="c-choice__input" name="id[]" value="$1">
-                    <label for="checkbox-$1" class="c-choice__label">&nbsp;</label>
-                </div>
+            <div class="c-choice c-choice--checkbox">
+            <input type="checkbox" id="checkbox-$1" class="c-choice__input" name="id[]" value="$1">
+            <label for="checkbox-$1" class="c-choice__label">&nbsp;</label>
+            </div>
             </td>
             ', 'id');
 
         $this->datatables->edit_column('title', '
             <a title="$1" href="' . base_url('courses-detail/') ."$2" . '" target="_blank">$1</a>
             <span class="u-block u-text-mute">
-                $3
-                <small class="u-mr-xsmall"><i class="fa fa-eye u-color-warning"></i>&nbsp; $4</small>
+            $3
+            <small class="u-mr-xsmall"><i class="fa fa-eye u-color-warning"></i>&nbsp; $4</small>
             </span>
             ', 'ctsubstr(title,60),permalink,formatstatus(timeorigin,status),views');
 
@@ -73,14 +73,14 @@ class M_LMS_Courses extends CI_Model
 
         $this->datatables->edit_column('user', '
             <div class="o-media">
-                <div class="o-media__img u-mr-xsmall">
-                    <div class="c-avatar c-avatar--xsmall">
-                        $1
-                    </div>
-                </div>
-                <div class="o-media__body">
-                    $2
-                </div>
+            <div class="o-media__img u-mr-xsmall">
+            <div class="c-avatar c-avatar--xsmall">
+            $1
+            </div>
+            </div>
+            <div class="o-media__body">
+            $2
+            </div>
             </div>
             ', 'photo_user(photo),user');
 
@@ -89,7 +89,7 @@ class M_LMS_Courses extends CI_Model
             <a class="c-btn--custom c-btn--small c-btn c-btn--info" href="'.base_url('app/lms_courses/').'update/$1"><i class="fa fa-edit"></i></a>
 
             <button type="button" data-title="are you sure ?" data-text="want to delete $2" class="c-btn c-btn--danger c-btn--custom action-delete" data-href="'. base_url('app/lms_courses/delete/$1') .'">
-                <i class="fa fa-trash"></i>
+            <i class="fa fa-trash"></i>
             </button>
             ', 'id,title');
 
@@ -112,16 +112,16 @@ class M_LMS_Courses extends CI_Model
             foreach ($child_category as $category_child) {
 
                 $data[$category['name']][] = [
-                'id_category' => $category['id'],
-                'id_sub_category' => $category_child['id'],                    
-                'name' => $category_child['name'],
+                    'id_category' => $category['id'],
+                    'id_sub_category' => $category_child['id'],                    
+                    'name' => $category_child['name'],
                 ]; 
 
             }
         }
 
         $all_data = [
-        'categorys' => $data
+            'categorys' => $data
         ];                
 
         return $all_data;
@@ -131,14 +131,14 @@ class M_LMS_Courses extends CI_Model
     {
 
         $post_data = [          
-        'title' => strip_tags($this->input->post('title')),
-        'permalink' => $this->input->post('permalink'),
-        'image' => strip_tags($this->input->post('image')),
-        'price' => str_replace('.', '', strip_tags($this->input->post('price'))),
-        'discount' => str_replace('.', '', strip_tags($this->input->post('discount'))),
-        'description' => htmlentities($this->input->post('description')),
-        'faq' => htmlentities($this->input->post('faq')),
-        'status' => $this->input->post('status'),
+            'title' => strip_tags($this->input->post('title')),
+            'permalink' => $this->input->post('permalink'),
+            'image' => strip_tags($this->input->post('image')),
+            'price' => str_replace('.', '', strip_tags($this->input->post('price'))),
+            'discount' => str_replace('.', '', strip_tags($this->input->post('discount'))),
+            'description' => htmlentities($this->input->post('description')),
+            'faq' => htmlentities($this->input->post('faq')),
+            'status' => $this->input->post('status'),
         ];
 
         /**
@@ -151,7 +151,7 @@ class M_LMS_Courses extends CI_Model
             $post_merge = array(
                 'id_category' => $category[0],
                 'id_sub_category' => $category[1],                
-                );
+            );
 
             $post_data = array_merge($post_data, $post_merge);   
         }
@@ -164,7 +164,7 @@ class M_LMS_Courses extends CI_Model
             $post_merge = array(
                 'id_user' => $this->session->userdata('id'),
                 'time' => date('Y-m-d H:i:s'),
-                );
+            );
 
             $post_data = array_merge($post_data, $post_merge);   
         }         
@@ -176,7 +176,7 @@ class M_LMS_Courses extends CI_Model
 
             $post_merge = array(
                 'updated' => date('Y-m-d H:i:s'),
-                );
+            );
 
             $post_data = array_merge($post_data, $post_merge);   
         }   
@@ -219,10 +219,14 @@ class M_LMS_Courses extends CI_Model
     public function data_update($id){
         $read = $this->_Process_MYSQL->get_data($this->table_lms_courses,['id' => $id])->row_array();
 
-        if ($read['id_user'] == $this->session->userdata('id')) {
-            return $read;
+        if ($this->session->userdata('app_grade') == 'Instructor') {
+            if ($read['id_user'] == $this->session->userdata('id')) {
+                return $read;
+            }else{
+                redirect(base_url('app/lms_courses'));
+            }
         }else{
-            redirect(base_url('app/lms_courses'));
+            return $read;
         }
     }
 
@@ -273,8 +277,8 @@ class M_LMS_Courses extends CI_Model
 
     public function data_section_post(){
         return [
-        'id_courses' => $this->input->post('id_courses'),
-        'title' => $this->input->post('title'),
+            'id_courses' => $this->input->post('id_courses'),
+            'title' => $this->input->post('title'),
         ];
     }
 
@@ -305,7 +309,7 @@ class M_LMS_Courses extends CI_Model
             $data[] = array(
                 'order' => $key + 1,
                 'id' => $value,
-                );
+            );
         }   
 
         return $this->_Process_MYSQL->update_data_multiple($this->table_lms_courses_section, $data, 'id');
@@ -317,7 +321,7 @@ class M_LMS_Courses extends CI_Model
 
     public function required_lesson($id_section){
 
-        $data = $this->db
+        $this->db
         ->select("
             tb_lms_courses_section.id as section_id,
             tb_lms_courses.id as courses_id,
@@ -326,9 +330,11 @@ class M_LMS_Courses extends CI_Model
             ")
         ->from($this->table_lms_courses_section)
         ->join($this->table_lms_courses,'tb_lms_courses_section.id_courses = tb_lms_courses.id','LEFT OUTER')
-        ->where('tb_lms_courses_section.id',$id_section)
-        ->where('tb_lms_courses.id_user',$this->session->userdata('id'))        
-        ->get()->row_array();
+        ->where('tb_lms_courses_section.id',$id_section);
+        if ($this->session->userdata('app_grade') == 'Instructor') {
+            $this->db->where('tb_lms_courses.id_user',$this->session->userdata('id'));     
+        }
+        $data = $this->db->get()->row_array();
 
         if (empty($data)) redirect(base_url('app/lms_courses'));
 
@@ -341,11 +347,11 @@ class M_LMS_Courses extends CI_Model
 
     public function data_lesson_post(){
         return [
-        'id_courses' => $this->input->post('id_courses'),
-        'id_section' => $this->input->post('id_section'),
-        'title' => $this->input->post('title'),
-        'type' => $this->input->post('type'),
-        'content' => $this->input->post('content'),
+            'id_courses' => $this->input->post('id_courses'),
+            'id_section' => $this->input->post('id_section'),
+            'title' => $this->input->post('title'),
+            'type' => $this->input->post('type'),
+            'content' => $this->input->post('content'),
         ];
     }
 
@@ -383,7 +389,7 @@ class M_LMS_Courses extends CI_Model
             $data[] = array(
                 'order' => $key + 1,
                 'id' => $value,
-                );
+            );
         }   
 
         return $this->_Process_MYSQL->update_data_multiple($this->table_lms_courses_lesson, $data, 'id');

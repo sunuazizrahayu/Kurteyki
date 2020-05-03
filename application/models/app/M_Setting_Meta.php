@@ -3,13 +3,17 @@
 class M_Setting_Meta extends CI_Model
 {
 
-	public $table_site_meta = 'tb_site_meta';
+	public $table_site = 'tb_site';
 
 	public function read_data(){
-		$read = $this->_Process_MYSQL->read_data($this->table_site_meta, 'type', 'ASC')->result_array();      
+		$read = $this->_Process_MYSQL->get_data_multiple($this->table_site, ['meta_open_graph','meta_schema','meta_twitter_card'], 'type')->result_array();      
 
-		foreach ($read as $data_meta) {
-			$meta[$data_meta['type']] = json_decode($data_meta['data_json'],TRUE);
+		foreach ($read as $data) {
+			$data['type'] = ($data['type'] == 'meta_schema') ? 'schema' : $data['type'];
+			$data['type'] = ($data['type'] == 'meta_open_graph') ? 'open_graph' : $data['type'];
+			$data['type'] = ($data['type'] == 'meta_twitter_card') ? 'twitter_card' : $data['type'];						
+
+			$meta[$data['type']] = json_decode($data['data'],TRUE);
 		}
 
 		return $meta;
@@ -97,8 +101,8 @@ class M_Setting_Meta extends CI_Model
 		];
 
 		$data[] = [
-			'type' => 'schema',
-			'data_json' => json_encode($all_data),
+			'type' => 'meta_schema',
+			'data' => json_encode($all_data),
 		];
 
 		return $data;		
@@ -135,8 +139,8 @@ class M_Setting_Meta extends CI_Model
 		}		
 
 		$data[] = [
-			'type' => 'open_graph',
-			'data_json' => json_encode($open_graph_post,TRUE),
+			'type' => 'meta_open_graph',
+			'data' => json_encode($open_graph_post,TRUE),
 		];
 
 		return $data;
@@ -171,8 +175,8 @@ class M_Setting_Meta extends CI_Model
 		}		
 
 		$data[] = [
-			'type' => 'twitter_card',
-			'data_json' => json_encode($twitter_card_post,TRUE),
+			'type' => 'meta_twitter_card',
+			'data' => json_encode($twitter_card_post,TRUE),
 		];
 
 		return $data;
@@ -202,6 +206,6 @@ class M_Setting_Meta extends CI_Model
 
 		$data = array_merge($schema,$open_graph,$twitter_card);
 
-		return $this->_Process_MYSQL->update_data_multiple($this->table_site_meta,$data,'type');
+		return $this->_Process_MYSQL->update_data_multiple($this->table_site,$data,'type');
 	}
 }
