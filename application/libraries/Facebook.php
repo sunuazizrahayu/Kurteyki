@@ -68,8 +68,8 @@ Class Facebook
         if (!isset($this->fb))
         {
             $this->fb = new FB([
-                'app_id'                => $this->config['facebook_app_id'],
-                'app_secret'            => $this->config['facebook_app_secret'],
+                'app_id'                => ($this->config['facebook_app_id']) ? $this->config['facebook_app_id'] : 'invalid',
+                'app_secret'            => ($this->config['facebook_app_secret']) ? $this->config['facebook_app_secret'] : 'invalid',
                 'default_graph_version' => $this->config['facebook_graph_version']
                 ]);
         }

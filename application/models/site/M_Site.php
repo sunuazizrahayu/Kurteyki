@@ -30,6 +30,7 @@ class M_Site extends CI_Model
 		$site['google_recaptcha'] = json_decode($site['google_recaptcha'],true);
 		$site['fb_app'] = json_decode($site['fb_app'],true);
 		$site['google_api'] = json_decode($site['google_api'],true);	
+		$site['smtp'] = json_decode($site['smtp'],true);			
 				
 		return $site;
 	}

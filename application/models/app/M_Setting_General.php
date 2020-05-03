@@ -18,7 +18,8 @@ class M_Setting_General extends CI_Model
 
 		$site['google_recaptcha'] = json_decode($site['google_recaptcha'],true);
 		$site['fb_app'] = json_decode($site['fb_app'],true);
-		$site['google_api'] = json_decode($site['google_api'],true);	
+		$site['google_api'] = json_decode($site['google_api'],true);
+		$site['smtp'] = json_decode($site['smtp'],true);				
 
 		return $site;
 	}
@@ -46,8 +47,8 @@ class M_Setting_General extends CI_Model
 			if ($key == 'cookie_message') continue;						
 
 			$data [] = [
-				'type' => $key,
-				'data' => $value,
+			'type' => $key,
+			'data' => $value,
 			];
 		}
 		
@@ -56,16 +57,16 @@ class M_Setting_General extends CI_Model
 		 */
 		
 		$comment_data = [
-			'type' => $post['blog_comment_type'],
-			'disqus_shortname' => $post['blog_disqus_shortname'],
-			'disqus_developer' => $post['blog_disqus_developer'],
-			'moderate' => $post['blog_moderate'],
-			'message' => $post['blog_message']
+		'type' => $post['blog_comment_type'],
+		'disqus_shortname' => $post['blog_disqus_shortname'],
+		'disqus_developer' => $post['blog_disqus_developer'],
+		'moderate' => $post['blog_moderate'],
+		'message' => $post['blog_message']
 		];
 
 		$data[] = [
-			'type' => 'blog_comment',
-			'data' => json_encode($comment_data,true),
+		'type' => 'blog_comment',
+		'data' => json_encode($comment_data,true),
 		];
 
 		// echo json_encode($data);		
@@ -85,11 +86,11 @@ class M_Setting_General extends CI_Model
 				$image_old, // delete file
 				'logo', // file name
 				'thumbnail' //is image
-			);
+				);
 
 			$data[] = [
-				'type' => 'image',
-				'data' => $upload_image['image'],
+			'type' => 'image',
+			'data' => $upload_image['image'],
 			];
 		}
 		
@@ -107,11 +108,11 @@ class M_Setting_General extends CI_Model
 				$icon_old, // delete file
 				'icon', // file name
 				'thumbnail' //is image
-			);
+				);
 
 			$data[] = [
-				'type' => 'icon',
-				'data' => $upload_icon['icon'],
+			'type' => 'icon',
+			'data' => $upload_icon['icon'],
 			];
 		}		
 
@@ -129,11 +130,11 @@ class M_Setting_General extends CI_Model
 				$no_image_old, // delete file
 				'no_image', // file name
 				'thumbnail' //is image
-			);
+				);
 
 			$data[] = [
-				'type' => 'no_image',
-				'data' => $upload_no_image['no_image'],
+			'type' => 'no_image',
+			'data' => $upload_no_image['no_image'],
 			];
 		}
 
@@ -143,21 +144,21 @@ class M_Setting_General extends CI_Model
 		 */
 		
 		$cookie_data = [
-			"status" =>  $post['cookie_status'],			
-			"message" =>  $post['cookie_message'],
+		"status" =>  $post['cookie_status'],			
+		"message" =>  $post['cookie_message'],
 		];
 
 		$data[] = [
-			'type' => 'cookie_notification',
-			'data' => json_encode($cookie_data,true),
+		'type' => 'cookie_notification',
+		'data' => json_encode($cookie_data,true),
 		];
 
 		/**
 		 * updated site
 		 */
 		$data[] = [
-			'type' => 'updated',
-			'data' => date('Y-m-d H:i:s')
+		'type' => 'updated',
+		'data' => date('Y-m-d H:i:s')
 		];
 
 		/**

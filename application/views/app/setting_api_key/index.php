@@ -92,7 +92,14 @@
 
 						<div class="c-stage__panel u-p-medium row">
 
-							<input name="status" type="hidden" value="<?php echo (!empty($site) ? $site['google_recaptcha']['status'] : '') ?>"> 
+							<div class="c-field u-mb-medium col-md-12">
+								<label class="c-field__label">Using reCaptcha ?</label>
+								<select required="" name="status" class="c-select select2">
+									<option></option>
+									<option value="Yes" <?php echo ($site['google_recaptcha']['status'] == 'Yes') ? 'selected' : ''; ?>>Yes</option>
+									<option value="No" <?php echo ($site['google_recaptcha']['status'] == 'No') ? 'selected' : ''; ?>>No</option>
+								</select>
+							</div>	
 
 							<div class="col-lg-6">
 								<div class="c-field u-mb-medium">

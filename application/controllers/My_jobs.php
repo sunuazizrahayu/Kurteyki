@@ -3,8 +3,9 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 /**
  * Class to handle job execution
+ * https://medium.com/@gustavo.uach/how-to-build-a-simple-job-server-in-codeigniter-712d979940d8
  */
-class My_jobs extends CI_Controller
+class My_jobs extends My_Site
 {
 	const STATUS_DONE = 'done';
 	const STATUS_QUEUED = 'queued';
@@ -34,9 +35,9 @@ class My_jobs extends CI_Controller
 
 		$job = $this->db->query("
 			SELECT id, name, payload
-			FROM jobs
+			FROM tb_jobs
 			WHERE status=?
-			ORDER BY created_dt ASC
+			ORDER BY created ASC
 			LIMIT 1 FOR UPDATE", [self::STATUS_QUEUED])->result();
 
 		if ($job !== [])
@@ -56,12 +57,9 @@ class My_jobs extends CI_Controller
 				$start = microtime(true);
 				$runtime = null;
 
-				$this->db->query("UPDATE jobs SET status=? WHERE id=?", [self::STATUS_RUNNING, $job->id]);
+				$this->db->query("UPDATE tb_jobs SET status=? WHERE id=?", [self::STATUS_RUNNING, $job->id]);
 
 				$jobHandler = [$this, $job->name];
-
-				echo $jobHandler;
-				exit;
 
 				$payload = json_decode($job->payload, true);
 
@@ -72,8 +70,8 @@ class My_jobs extends CI_Controller
 
 				$payload = is_array($payload) ? $payload : [];
 
-				$response = $jobHandler($payload);
 				$runtime = microtime(true) - $start;
+				$response = $jobHandler($payload);
 			}
 			catch (\Exception $e)
 			{
@@ -81,12 +79,12 @@ class My_jobs extends CI_Controller
 				$response = $e->getMessage();
 			}
 
-			$this->db->query("UPDATE jobs SET status=?, run_time=?, response=? WHERE id=?", [
+			$this->db->query("UPDATE tb_jobs SET status=?, run_time=?, response=? WHERE id=?", [
 				self::STATUS_DONE,
 				$runtime,
-				json_encode($response),
+				$response,
 				$job->id,
-			]);
+				]);
 
 			echo "Job $job->id finished. \n";
 		}
@@ -97,34 +95,55 @@ class My_jobs extends CI_Controller
 	 * @param  array  $payload  Payload of the job
 	 * @return array ['sent' => 1|0]
 	 */
-	public function sendEmail(array $payload) : array
+	public function sendEmail(array $payload) : string
 	{
-		$this->load->library("utils");
-
-		if (!isset($payload['subject']))
-		{
-			throw new \InvalidArgumentException('Invalid subject');
-		}
-
-		if (!isset($payload['message']))
-		{
-			throw new \InvalidArgumentException('Invalid message');
-		}
 
 		if (!isset($payload['to']))
 		{
 			throw new \InvalidArgumentException('Invalid to');
 		}
 
-		$sent = (int)$this->utils->sendEmail([
-			'subject' => $payload['subject'],
-			'type' => !isset($payload['type']) ? 'text' : $payload['type'],
-			'message' => $payload['message'],
-			'to' => $payload['to'],
-		]);
+		if (!isset($payload['subject']))
+		{
+			throw new \InvalidArgumentException('Invalid subject');
+		}				
 
-		return [
-			'sent' => "$sent",
-		];
-	}
+		if (!isset($payload['message']))
+		{
+			throw new \InvalidArgumentException('Invalid message');
+		}		
+
+		$from_email = $this->site['smtp']['smtp_user']; 
+		$to_email = $payload['to']; 
+		$subject =  $payload['subject']; 
+		$message = $payload['message'];
+
+		$config = Array(
+			'protocol' => $this->site['smtp']['protocol'], /*  'mail', 'sendmail', or 'smtp' */
+			'smtp_host' => $this->site['smtp']['smtp_host'],
+			'smtp_port' => $this->site['smtp']['smtp_port'],
+			'smtp_user' => $this->site['smtp']['smtp_user'],
+			'smtp_pass' => $this->site['smtp']['smtp_pass'],
+			'smtp_crypto' => 'ssl', /* can be 'ssl' or 'tls' for example */
+			'mailtype'  => 'html', /* plaintext 'text' mails or 'html' */
+            //'smtp_timeout' => '4', /*in seconds*/
+			'charset'   => 'iso-8859-1'
+            //'wordwrap' => TRUE
+			);
+
+		$this->load->library('email', $config);
+		$this->email->set_newline("\r\n");   
+
+		$this->email->from($from_email,$this->site['title']);  
+		$this->email->to($to_email);
+		$this->email->subject($subject); 
+		$this->email->message($message); 
+
+		if($this->email->send()){
+			return 'success';
+		}else {
+			return 'failed';
+		} 
+
+	}  	
 }

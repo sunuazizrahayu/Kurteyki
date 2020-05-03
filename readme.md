@@ -13,6 +13,7 @@ Fitur Umum yang tersedia
 * Pengaturan ads.txt
 * Pengaturan Tampilan situs dilakukan dihalaman app
 * Halaman Statis
+* Registrasi User dengan validasi email
 
 Fitur LMS yang tersedia
 * Masuk / Daftar User menggunakan akun sosial
@@ -68,6 +69,13 @@ Halaman Login : http://localhost/kurteyki/auth
 Default App login
 username : kurteyki
 password: kurteyki
+
+```
+
+Cron untuk kirim email
+
+```
+*/2 * * * * /usr/local/bin/php /home/cpanelusername/public_html/index.php my_jobs listen
 ```
 
 ## Sumber Inspirasi
@@ -76,15 +84,16 @@ password: kurteyki
 * Academy by Creativeitem (module lms)
 * buildwithangga.com (module pembayaran manual)
 * skillacademy.com (template lms)
+* cms.botble.com (module pengaturan smtp dan statistik visitor)
 
 ## List Pekerjaan
 
-* user register vertivication...
+* -
 
 ## Bug Aplikasi
 
 * language english
-* pembayaran menggunakan payment gateway masih belum sempurna
+* not perfect payment gateway
 
 ## Change Log
 
@@ -99,6 +108,9 @@ password: kurteyki
 * Review user
 * Cookies notification
 * Manual Payment
+* Register with Vertification Email (queue system)
+* add Captcha on register page
+* Delete table tb_site_meta (merge data to tb_site)
 
 ## Lisensi
 

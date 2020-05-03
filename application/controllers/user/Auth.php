@@ -130,12 +130,12 @@ class Auth extends My_Site{
 				redirect(base_url($this->redirect_register));
 			}elseif ($register == 'success') {
 
-				$email_vertification = true;
+				$email_vertification = $this->site['vertification_email'];
 
 				$this->session->set_flashdata([
 					'message' => true,
 					'message_type' => 'success',
-					'message_text' => ($email_vertification) ? $this->lang->line('success_register_with_vertification') : $this->lang->line('success_register'),
+					'message_text' => ($email_vertification == 'Yes') ? $this->lang->line('success_register_with_vertification') : $this->lang->line('success_register'),
 				]);
 
 				redirect(base_url($this->redirect_login));
