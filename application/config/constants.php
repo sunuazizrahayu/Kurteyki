@@ -15,7 +15,7 @@ APALAGI SAMPE DIJUAL BISA SENGSARA HIDUP LU BRO...
 SAMPE DIAPUS TULISAN YANG GUA TULIS INI ? GUA SIH OW AJA...
 */
 define('APP_DESC', 'CMS Teyki');
-define('APP_VERSION', 'v1.5');
+define('APP_VERSION', 'v1.6');
 define('APP_CREATOR', 'Faanteyki');
 define('APP_CREATOR_URL', 'https://instagram.com/faanteyki');
 define('APP_CREATOR_WEBSITE', 'https://www.kurteyki.com');

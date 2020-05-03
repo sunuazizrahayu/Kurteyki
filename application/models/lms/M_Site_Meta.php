@@ -9,8 +9,7 @@ class M_Site_Meta extends CI_Model
 
 		$this->load->model('lms/_Courses');
 		$this->load->model('lms/M_Site_Meta_Courses');
-		$this->load->model('lms/M_Site_Meta_Courses_Lesson');		
-		$this->load->model('lms/M_Site_Meta_Courses_Category');		
+		$this->load->model('lms/M_Site_Meta_Courses_Lesson');			
 
 		$this->load->model('lms/M_Site_Meta_Data_OG');		
 		$this->load->model('lms/M_Site_Meta_Data_Twitter_Card');
@@ -21,7 +20,7 @@ class M_Site_Meta extends CI_Model
 
 	public function init(){	
 		$site = $this->site;
-		$page_type = $this->page_type();
+		$page_type = strtolower($this->router->class);
 		$site['page_type'] = $page_type;
 		$site['modules'] = 'lms'; /* for visitor record */	
 
@@ -30,7 +29,7 @@ class M_Site_Meta extends CI_Model
 		/**
 		 * Set Cache if active.
 		 */
-		if ($site['cache'] == 'Yes') {
+		if ($site['cache'] == 'Yes' AND $page_type != 'filter') {
 			if (empty($this->session->userdata('user'))) {
 				$this->output->cache(1);
 			}
@@ -39,45 +38,19 @@ class M_Site_Meta extends CI_Model
 		return array_merge($site,$build);
 	}
 
-	public function page_type(){
-
-		if (empty($this->uri->segment(1))) {
-			if (!empty($this->input->get('page'))) {
-				$type = 'index_page';
-			}else {
-				$type = 'index';
-			}
-		}
-		elseif ($this->uri->segment(1) == 'courses-category') {
-			$type = 'category';
-		}
-		elseif ($this->uri->segment(1) == 'courses-search') {
-			$type = 'search';
-		}
-		elseif ($this->uri->segment(1) == 'courses-detail') {
-			$type = 'detail';
-		}		
-		elseif ($this->uri->segment(1) == 'courses-lesson') {
-			$type = 'lesson';
-		}
-
-		return $type;        
-	}	
-
 	public function build($site,$page_type){
 
-
-		$breadcrumbs = false;
+		$sub_title = false;
 		$meta = false;
 
-		if ($page_type == 'index' OR $page_type == 'index_page') {
+		if ($page_type == 'homepage') {
 
 			if (!empty($this->input->get('page'))) {
 				$title = $site['title'].' - '.$this->lang->line('courses').' - '.$this->lang->line('page').' '.$this->input->get('page');
-				$breadcrumbs = $this->lang->line('material_list').' - '.$this->lang->line('page').' '.$this->input->get('page');
+				$sub_title = $this->lang->line('material_list').' - '.$this->lang->line('page').' '.$this->input->get('page');
 			}else{
 				$title = $site['title'];
-				$breadcrumbs = $this->lang->line('material_list');
+				$sub_title = $this->lang->line('material_list');
 			}
 
 			$meta = $this->meta_index([
@@ -91,41 +64,14 @@ class M_Site_Meta extends CI_Model
 				]);			
 
 		}		
-		elseif ($page_type == 'category') {
-
-			$category = $this->M_Site_Meta_Courses_Category->read(urldecode($this->uri->segment(2)));
-
-			if (!empty($this->input->get('page'))) {
-				$title =  $this->lang->line('category').' - '.$category['name'].' | '.$this->lang->line('page').' '.$this->input->get('page');
-				$breadcrumbs =  $this->lang->line('category').' : '.$category['name'].' | '.$this->lang->line('page').' '.$this->input->get('page');
-			}else{
-				$title =  $this->lang->line('category').' - '.$category['name'];
-				$breadcrumbs =  $this->lang->line('category').' : '.$category['name'];
-			}
-
-			$meta = $this->meta_index([
-				'title' => $title,
-				'description' => $site['description'],
-				'image' => $site['image'],
-				'icon' => $site['icon'],
-				'schema' => $site['meta']['schema'],
-				'open_graph' => $site['meta']['open_graph'],
-				'twitter_card' => $site['meta']['twitter_card']				
-				]);			
-
-		}	
-		elseif ($page_type == 'search') {
-			
-			$q = strip_tags($this->input->get('q'));
-
-			if (!$q) redirect(base_url());
+		elseif ($page_type == 'filter') {		
 
 			if (!empty($this->input->get('index'))) {
-				$title = $this->lang->line('search').' : '.$q.' | '.$this->lang->line('page').' '.$this->input->get('index');
-				$breadcrumbs = $this->lang->line('search').' : '.$q.' | '.$this->lang->line('page').' '.$this->input->get('index');
+				$title = $this->lang->line('filter_material').' | '.$this->lang->line('page').' '.$this->input->get('index');
+				$sub_title = $this->lang->line('filter_material').' | '.$this->lang->line('page').' '.$this->input->get('index');
 			}else{
-				$title = $this->lang->line('search').' : '.$q;
-				$breadcrumbs = $this->lang->line('search').' : '.$q;
+				$title = $this->lang->line('filter_material');
+				$sub_title = $this->lang->line('filter_material');
 			}
 
 			$meta = $this->meta_index([
@@ -137,8 +83,8 @@ class M_Site_Meta extends CI_Model
 				'open_graph' => $site['meta']['open_graph'],
 				'twitter_card' => $site['meta']['twitter_card']				
 				]);										
-		}		
-		elseif ($page_type == 'detail') {
+		}
+		elseif ($page_type == 'courses') {
 
 			$read = $this->M_Site_Meta_Courses->read(urldecode($this->uri->segment(2)));
 			$courses = $this->_Courses->read_long_single($site,$read);
@@ -213,7 +159,7 @@ class M_Site_Meta extends CI_Model
 		}
 		
 		return [
-		'breadcrumbs' => $breadcrumbs,
+		'sub_title' => $sub_title,
 		'meta' => $meta,
 		];
 	}	

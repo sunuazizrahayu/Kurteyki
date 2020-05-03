@@ -27,7 +27,6 @@ class M_Template_Widget extends CI_Model
                 $data[$category['name']][] = [
                 'icon' => $category_child['icon'],                
                 'slug' => $category_child['slug'],
-                'url' => base_url('courses-category/'.$category_child['slug']),
                 'name' => $category_child['name'],
                 ]; 
 

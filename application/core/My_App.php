@@ -10,11 +10,6 @@ class My_App extends MY_Controller
         parent::__construct();
 
         /**
-         * Set Language
-         */
-        $this->_Language->load(['app']);   
-
-        /**
          * Check Auth
          */
         $this->load->model('user/M_Auth');
@@ -29,7 +24,6 @@ class My_App extends MY_Controller
                 redirect(base_url('app/lms_courses'));
             }
         }
-
 
         /**
          * Read Site Setting > Comment Type

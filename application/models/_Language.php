@@ -5,17 +5,15 @@ class _Language extends CI_Model
 
 	public $table_site = 'tb_site';
 
-	public function load($type = false){
+	public function load(){
 
 		$language = $this->get_lang();
 
-		$lang[] = "general";
 		$lang[] = "date";
-		if ($type) {
-			foreach ($type as $thelang) {
-				$lang[] = $thelang;
-			}
-		}
+		$lang[] = "general";
+		$lang[] = "blog";
+		$lang[] = "app";
+		$lang[] = "lms";		
 
 		$set_language = (!empty($this->session->userdata('language')) ? $this->session->userdata('language') : $language);
 		$this->lang->load($lang,$set_language);

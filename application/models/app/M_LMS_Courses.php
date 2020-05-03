@@ -3,6 +3,8 @@
 class M_LMS_Courses extends CI_Model
 {
 
+    public $table_user = 'tb_user';  
+
     public $table_lms_courses = 'tb_lms_courses';
     public $table_lms_courses_section = 'tb_lms_courses_section';
     public $table_lms_courses_lesson = 'tb_lms_courses_lesson';
@@ -14,8 +16,9 @@ class M_LMS_Courses extends CI_Model
         'datatables_data' => "
         [{'data': 'checkbox',className:'c-table__cell u-pl-small'},
         {'data': 'id',className:'c-table__cell'},
-        {'data': 'title',className:'c-table__cell u-pl-small',width:'100%'},
+        {'data': 'title',className:'c-table__cell u-pl-small',width:'80%'},
         {'data': 'category',className:'c-table__cell u-text-center'},
+        {'data': 'user',className:'c-table__cell',width:'20%'},                    
         {'data': 'time',className:'c-table__cell'},            
         {'data': 'updated',className:'c-table__cell'},                                                          
         {'data': 'view',className:'c-table__cell'},            
@@ -39,9 +42,11 @@ class M_LMS_Courses extends CI_Model
             tb_lms_courses.views,
             tb_lms_courses.status,
             tb_lms_category.name as category,
+            tb_user.photo,
+            tb_user.username as user
             ');
         $this->datatables->from($this->table_lms_courses);
-        // $this->datatables->join($this->table_lms_category, 'tb_lms_courses.id_category = tb_lms_category.id', 'LEFT');
+        $this->datatables->join($this->table_user, 'tb_lms_courses.id_user = tb_user.id', 'LEFT');
         $this->datatables->join($this->table_lms_category, 'tb_lms_courses.id_sub_category = tb_lms_category.id', 'LEFT');  
         if ($this->session->userdata('app_grade') == 'Instructor') {
             $this->datatables->where('tb_lms_courses.id_user', $this->session->userdata('id'));
@@ -65,6 +70,19 @@ class M_LMS_Courses extends CI_Model
             ', 'ctsubstr(title,60),permalink,formatstatus(timeorigin,status),views');
 
         $this->datatables->edit_column('category', '$1', 'ucwords(category)');
+
+        $this->datatables->edit_column('user', '
+            <div class="o-media">
+                <div class="o-media__img u-mr-xsmall">
+                    <div class="c-avatar c-avatar--xsmall">
+                        $1
+                    </div>
+                </div>
+                <div class="o-media__body">
+                    $2
+                </div>
+            </div>
+            ', 'photo_user(photo),user');
 
         $this->datatables->add_column('alat', '
 

@@ -14,7 +14,13 @@ class MY_Controller extends CI_Controller
 		$this->load->model('_Process_Upload');   
 		$this->load->model('_Pagination');        		
 		$this->load->model('_Language');
-		$this->load->model('_Date');   	        
+		$this->load->model('_Date');
+
+
+		/**
+        * Set Language
+        */
+		$this->_Language->load();
 	}
 
 }

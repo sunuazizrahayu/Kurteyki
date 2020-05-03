@@ -1,4 +1,4 @@
-<?php if ($site['page_type'] == 'index'): ?>
+<?php if ($site['page_type'] =='homepage' AND empty($this->input->get('page'))): ?>
 <?php if ($widget['featured_homepage']['status'] == 'active'): ?>
 <!-- Begin Featured
 	================================================== -->

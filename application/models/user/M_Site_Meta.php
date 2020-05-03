@@ -11,46 +11,28 @@ class M_Site_Meta extends CI_Model
 	}
 
 	public function init(){	
+
 		$site = $this->site;
-		$page_type = $this->page_type();
+		$page_type = strtolower($this->router->class);
 		$site['page_type'] = $page_type;
 		$site['modules'] = 'user'; /* for visitor record */	
+
+		if ($page_type == 'payment') {
+			if ($this->router->method != 'order') {
+				$page_type = strtolower($this->router->method);
+				$site['page_type'] = $page_type;
+			}
+		}
 
 		$build = $this->build($site,$page_type);
 
 		return array_merge($site,$build);
-	}
-
-	public function page_type(){
-
-		if ($this->uri->segment(2) == 'profile') {
-			$type = 'profile';
-		}
-		elseif ($this->uri->segment(2) == 'courses') {
-			$type = 'courses';
-		}
-		elseif ($this->uri->segment(2) == 'wishlist') {
-			$type = 'wishlist';
-		}
-		elseif ($this->uri->segment(1) == 'user' AND $this->uri->segment(2) == 'order') {
-			$type = 'order';
-		}
-
-		elseif ($this->uri->segment(1) == 'payment') {
-			if ($this->uri->segment(2) == 'confirmation') {
-				$type = 'confirmation';
-			}else {				
-				$type = 'payment';
-			}
-		}
-
-
-		return $type;        
 	}	
 
 	public function build($site,$page_type){
 
 		$meta = false;
+
 
 		if ($page_type == 'profile') {
 			
@@ -61,7 +43,7 @@ class M_Site_Meta extends CI_Model
 				'description' => $site['description'],
 				'image' => $site['image'],
 				'icon' => $site['icon'],
-			]);		
+				]);		
 
 		}
 		elseif ($page_type == 'courses') {
@@ -73,9 +55,9 @@ class M_Site_Meta extends CI_Model
 				'description' => $site['description'],
 				'image' => $site['image'],
 				'icon' => $site['icon'],
-			]);	
+				]);	
 		}
-		if ($page_type == 'wishlist') {
+		elseif ($page_type == 'wishlist') {
 			
 			$title = $this->lang->line('my_wishlist');
 
@@ -84,9 +66,9 @@ class M_Site_Meta extends CI_Model
 				'description' => $site['description'],
 				'image' => $site['image'],
 				'icon' => $site['icon'],
-			]);	
+				]);	
 		}
-		if ($page_type == 'order') {
+		elseif ($page_type == 'order') {
 			
 			$title = $this->lang->line('my_order');
 
@@ -95,10 +77,10 @@ class M_Site_Meta extends CI_Model
 				'description' => $site['description'],
 				'image' => $site['image'],
 				'icon' => $site['icon'],
-			]);	
+				]);	
 		}	
 
-		if ($page_type == 'payment') {
+		elseif ($page_type == 'payment') {
 			
 			$title = $this->lang->line('payment');
 
@@ -107,10 +89,10 @@ class M_Site_Meta extends CI_Model
 				'description' => $site['description'],
 				'image' => $site['image'],
 				'icon' => $site['icon'],
-			]);	
+				]);	
 		}
 
-		if ($page_type == 'confirmation') {
+		elseif ($page_type == 'confirmation') {
 			
 			$title = $this->lang->line('payment_confirmation');
 
@@ -119,8 +101,44 @@ class M_Site_Meta extends CI_Model
 				'description' => $site['description'],
 				'image' => $site['image'],
 				'icon' => $site['icon'],
-			]);	
-		}		
+				]);	
+		}
+
+		elseif ($page_type == 'waiting') {
+			
+			$title = $this->lang->line('wait_payment');
+
+			$meta = $this->meta_general([
+				'title' => $title,
+				'description' => $site['description'],
+				'image' => $site['image'],
+				'icon' => $site['icon'],
+				]);	
+		}
+
+		elseif ($page_type == 'waiting_confirmation') {
+			
+			$title = $this->lang->line('wait_confirmation');
+
+			$meta = $this->meta_general([
+				'title' => $title,
+				'description' => $site['description'],
+				'image' => $site['image'],
+				'icon' => $site['icon'],
+				]);	
+		}	
+		
+		elseif ($page_type == 'success') {
+			
+			$title = $this->lang->line('success_payment');
+
+			$meta = $this->meta_general([
+				'title' => $title,
+				'description' => $site['description'],
+				'image' => $site['image'],
+				'icon' => $site['icon'],
+				]);	
+		}
 		
 		return ['meta' => $meta];
 	}	

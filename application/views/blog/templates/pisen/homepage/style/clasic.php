@@ -2,7 +2,7 @@
     <div class="container">
         <div class="row justify-content-center">
 
-            <h3 class="blog-detail-title col-12 text-center mb-5"><?php echo $site['breadcrumbs'] ?></h3>
+            <h3 class="blog-detail-title col-12 text-center mb-5"><?php echo $site['sub_title'] ?></h3>
 
             <?php foreach ($blog_post['data'] as $post): ?>
 

@@ -1,7 +1,7 @@
 <?php if ($this->session->userdata('user')): ?>
     <div class="c-dropdown dropdown">
         <a  class="c-avatar c-avatar--xsmall has-dropdown dropdown-toggle" href="javascript:;" id="dropdwonMenuAvatar" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            <img class="c-avatar__img" src="<?php echo (!empty($this->session->userdata('photo')) ?  base_url('storage/uploads/user/photo/'.$this->session->userdata('photo')) : base_url('storage/uploads/user/photo/default.png')) ?>" alt="<?php echo $this->session->userdata('username') ?>">
+            <img class="c-avatar__img" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 3 2'%3E%3C/svg%3E" data-src="<?php echo (!empty($this->session->userdata('photo')) ?  base_url('storage/uploads/user/photo/'.$this->session->userdata('photo')) : base_url('storage/uploads/user/photo/default.png')) ?>" alt="<?php echo $this->session->userdata('username') ?>">
         </a>
 
         <div class="c-dropdown__menu dropdown-menu dropdown-menu-right" aria-labelledby="dropdwonMenuAvatar">

@@ -4,7 +4,7 @@
             <div class="col-12 col-lg-8">
 
                 <div class="blog-news_bundle lastest-news-bundle">
-                    <h3 class="bundle-title"><?php echo $site['breadcrumbs'] ?></h3>
+                    <h3 class="bundle-title"><?php echo $site['sub_title'] ?></h3>
                     <div class="row">
 
                         <?php foreach ($blog_post['data'] as $post): ?>

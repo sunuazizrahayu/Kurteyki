@@ -7,11 +7,6 @@ Class My_Blog extends MY_Site {
       parent::__construct();
 
         /**
-         * Set Language
-         */
-        $this->_Language->load(['blog']);
-
-        /**
          * Load Meta Data
          */
         $this->load->model('blog/M_Site_Meta');

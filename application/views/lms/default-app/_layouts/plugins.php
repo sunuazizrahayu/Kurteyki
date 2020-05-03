@@ -29,7 +29,7 @@
 	</script>
 <?php endif ?>
 
-<?php if ($site['google_recaptcha']['status'] == 'Yes'): ?>
+<?php if ($site['google_recaptcha']['status'] == 'Yes' AND $this->router->method == 'register'): ?>
 	<script src='https://www.google.com/recaptcha/api.js'></script>
 	<script>
 		window.onload = function() {

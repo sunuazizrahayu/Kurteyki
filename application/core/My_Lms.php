@@ -7,11 +7,6 @@ Class My_Lms extends MY_Site {
       parent::__construct();
 
         /**
-         * Set Language
-         */
-        $this->_Language->load(['lms']);
-
-        /**
          * Load Meta Data
          */
         $this->load->model('lms/M_Site_Meta');

@@ -283,7 +283,7 @@ class _Post extends CI_Model
 
 		$data = [
 		'name' => $read['username'],
-		'photo' => (!empty($read['photo']) ?  base_url('storage/uploads/user/'.$read['photo']) : base_url('storage/uploads/user/person.png')),
+		'photo' => (!empty($read['photo']) ?  base_url('storage/uploads/user/photo/'.$read['photo']) : base_url('storage/uploads/user/photo/default.png')),
 		];
 
 		return $data;

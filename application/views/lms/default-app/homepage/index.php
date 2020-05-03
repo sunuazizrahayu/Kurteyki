@@ -13,15 +13,16 @@
 				<div class="u-mb-small u-pv-small u-border-bottom">		
 					<div class="row">
 
-						<div class="col-12 col-xl-10 col-lg-9">
+						<div class="col-12 col-xl-10 col-lg-10">
 							<h3 class="u-h3">
-								<?php echo $site['breadcrumbs'] ?>
+								<?php echo $site['sub_title'] ?>
 							</h3>
 						</div>
-						<div class="col-12 col-xl-2 col-lg-3">
-							<?php $this->load->view('lms/default-app/_layouts/select-filter'); ?>
+						<div class="col-12 col-xl-2 col-lg-2 u-text-right">
+							<a class="c-btn c-btn--info c-btn--fullwidth" href="<?php echo base_url('courses-filter') ?>">
+								<?php echo $this->lang->line('filter_material') ?>
+							</a>
 						</div>
-
 					</div>
 				</div>
 
@@ -33,7 +34,7 @@
 							<article class="c-event u-p-zero">
 								<div class="c-event__img u-m-zero" data-mh="imaged">
 									<a title="<?php echo $post['title'] ?>" class="u-color-primary" href="<?php echo $post['url'] ?>">
-										<img width="100%" src="<?php echo $post['image']['thumbnail'] ?>" alt="<?php echo $post['title'] ?>">
+										<img width="100%" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 3 2'%3E%3C/svg%3E" data-src="<?php echo $post['image']['thumbnail'] ?>" alt="<?php echo $post['title'] ?>">
 									</a>
 									
 									<span class="c-event__status u-bg-secondary u-color-primary">
@@ -48,7 +49,7 @@
 										</a>
 									</span>
 								</div>
-								<div class="c-event__meta u-ph-small" data-mh="heading">
+								<div class="c-event__meta u-ph-small u-pt-xsmall" data-mh="heading">
 									<a title="<?php echo $post['title'] ?>" class="u-color-primary u-h4 u-text-bold" href="<?php echo $post['url'] ?>">
 										<?php echo $post['title'] ?>
 									</a>
@@ -57,7 +58,7 @@
 									<div class="o-media">
 										<div class="o-media__img u-mr-xsmall">
 											<div class="c-avatar c-avatar--xsmall">
-												<img class="c-avatar__img" src="<?php echo $post['author']['photo'] ?>" alt="<?php echo $post['author']['name'] ?>">
+												<img class="c-avatar__img" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 3 2'%3E%3C/svg%3E" data-src="<?php echo $post['author']['photo'] ?>" alt="<?php echo $post['author']['name'] ?>">
 											</div>
 										</div>
 										<div class="o-media__body">
@@ -131,7 +132,7 @@
 
 				<div class="u-text-center u-justify-between">
 					<div class="c-avatar c-avatar--large u-mb-small u-inline-flex">
-						<img class="c-avatar__img" src="<?php echo base_url('storage/assets/app/img/logo.png') ?>" alt="<?php echo $this->lang->line('courses_not_found') ?>">
+						<img class="c-avatar__img" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 3 2'%3E%3C/svg%3E" data-src="<?php echo base_url('storage/assets/lms/default-app/img/logo-square.png') ?>" alt="<?php echo $this->lang->line('courses_not_found') ?>">
 					</div>
 
 					<p class="u-h5"><?php echo $this->lang->line('courses_not_found') ?></p>

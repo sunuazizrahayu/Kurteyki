@@ -14,13 +14,17 @@
  });
 
 /**
-* Module Categories on Select
+* Footer collapse
 */
-$('#select-category,#selectmenu').on('change', function() {
-	var value = $(this).find('option:selected').val();
-	window.location.href = value
-});	
-
+$(window).on("load resize", function() {
+	$(window).outerWidth() <= 575 ? $(".mobile-collapse").next().slideUp(0) : $(".mobile-collapse").next().slideDown(0)
+});
+$(".mobile-collapse").on("click", function() {
+	if (!($(window).outerWidth() >= 575)) {
+		var t = $(this).next();
+		t.hasClass("show") ? $(".c-panel__widget .show").removeClass("show").slideUp(300) : ($(".c-panel__widget .show").removeClass("show").slideUp(300), t.addClass("show").slideDown(300)), $(this).hasClass("active") ? $(".c-panel__widget .active").removeClass("active") : ($(".c-panel__widget .active").removeClass("active"), $(this).addClass("active"))
+	}
+}); 
 
 /**
 * Module Add Courses 

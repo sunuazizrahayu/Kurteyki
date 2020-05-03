@@ -22,11 +22,11 @@ class Auth extends My_Site{
 	public function index()
 	{
 
-		if ($this->session->userdata('user')) {
-			$this->M_Auth->check('exist','user','user/profile');
-		}elseif ($this->session->userdata('status')) {
-			$this->M_Auth->check('not_exist', 'status', 'auth');
-		}
+		// if ($this->session->userdata('user')) {
+		// 	$this->M_Auth->check('exist','user','user/profile');
+		// }elseif ($this->session->userdata('status')) {
+		// 	$this->M_Auth->check('not_exist', 'status', 'auth');
+		// }
 
 		$this->session->set_userdata('csrf_code', substr(base_convert(sha1(uniqid(mt_rand())), 16, 36), 0, 32));
 
@@ -113,7 +113,7 @@ class Auth extends My_Site{
 
 		$this->M_Auth->set_validation_register();
 
-		$googlecaptcha = $this->M_Auth->googlecaptcha();
+		$googlecaptcha = $this->M_Auth->googlecaptcha($this->site);
 
 		if($this->form_validation->run() != false AND $googlecaptcha != false){
 

@@ -344,7 +344,7 @@ class _Courses extends CI_Model
 		$category = [
 		'name' => $read['name'],
 		'icon' => $read['icon'],			
-		'url' => base_url('courses-category/'.$read['slug']),
+		'url' => base_url('courses-filter?category='.$read['slug']),
 		];
 
 		return $category;

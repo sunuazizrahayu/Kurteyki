@@ -12,9 +12,9 @@
                 <div class="col-sm-12 col-lg-4">
 
                     <article class="c-event u-p-zero">
-                        <div class="c-event__img u-m-zero" data-mh="imaged">
+                        <div class="c-event__img u-m-zero" data-mh="imaged" style="min-height: 270px">
                             <a title="<?php echo $post['title'] ?>" class="u-color-primary" href="<?php echo $post['url'] ?>">
-                                <img width="100%" src="<?php echo $post['image']['thumbnail'] ?>" alt="<?php echo $post['title'] ?>">
+                                <img width="100%" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 3 2'%3E%3C/svg%3E" data-src="<?php echo $post['image']['thumbnail'] ?>" alt="<?php echo $post['title'] ?>">
                             </a>
                             
                             <span class="c-event__status u-bg-secondary u-color-primary">
@@ -38,7 +38,7 @@
                             <div class="o-media">
                                 <div class="o-media__img u-mr-xsmall">
                                     <div class="c-avatar c-avatar--xsmall">
-                                        <img class="c-avatar__img" src="<?php echo $post['author']['photo'] ?>" alt="<?php echo $post['author']['name'] ?>">
+                                        <img class="c-avatar__img" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 3 2'%3E%3C/svg%3E" data-src="<?php echo $post['author']['photo'] ?>" alt="<?php echo $post['author']['name'] ?>">
                                     </div>
                                 </div>
                                 <div class="o-media__body">

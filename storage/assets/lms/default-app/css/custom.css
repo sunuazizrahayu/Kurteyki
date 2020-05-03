@@ -25,11 +25,34 @@ hr{border-top:1px solid rgba(0,0,0,0.12);display:block;margin-bottom:16px;width:
 	color: #fff;
 	background: #6c63ff;
 	position: fixed;
-	bottom: 10px;
+	bottom: 15px;
 	right: 20px;
 	border-radius: 50%;
 	display: none;
 }
+
+/**
+ * Footer Collapse
+ */
+ @media screen and (max-width: 575px) {
+
+ 	.c-panel__widget {
+ 		padding: 0 20px;
+ 	}
+
+ 	.footer .mobile-collapse.active h4:before {
+ 		-webkit-transform: rotateX(180deg);
+ 		transform: rotateX(180deg);
+ 	}
+ 	.footer .mobile-collapse h4:before {
+ 		position: absolute;
+ 		content: "\F107";
+ 		font-family: Fontawesome;
+ 		right: 30px;
+ 		-webkit-transition: .2s ease-in-out;
+ 		transition: .2s ease-in-out;
+ 	}	
+ }
 
 /**
  * Module Confirmation
@@ -67,9 +90,9 @@ hr{border-top:1px solid rgba(0,0,0,0.12);display:block;margin-bottom:16px;width:
  	color:#ccc; /* Color on idle state */
  }
 
-  .rating-stars.stars-input ul > li.star > i.fa {
-	font-size: 30px;
-  }
+ .rating-stars.stars-input ul > li.star > i.fa {
+ 	font-size: 30px;
+ }
 
  /* Hover state of the stars */
  .rating-stars ul > li.star.hover > i.fa {

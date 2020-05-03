@@ -16,7 +16,7 @@
 		<div class="section-title">
 			<h2>
 				<span>
-					<?php echo $site['breadcrumbs'] ?>
+					<?php echo $site['sub_title'] ?>
 				</span>
 			</h2>
 		</div>

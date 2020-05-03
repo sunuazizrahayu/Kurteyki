@@ -1,4 +1,4 @@
-<?php if ($site['page_type'] =='index'): ?>
+<?php if ($site['page_type'] =='homepage' AND empty($this->input->get('page'))): ?>
 	<div class="mainheading">
 		<h1 class="sitetitle"><?php echo $site['title'] ?></h1>
 		<p class="lead">

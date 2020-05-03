@@ -159,7 +159,7 @@ class M_Auth extends CI_Model
         }
     }
 
-    public function googlecaptcha(){
+    public function googlecaptcha($site){
 
         if (empty($this->input->post())) return false;
 

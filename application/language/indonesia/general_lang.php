@@ -136,6 +136,22 @@ $lang['search_not_found'] = 'Opps! Pencarian tidak ditemukan !';
 $lang['search_instruction'] = 'cari dengan mengetikan judul dan kamu akan mendapatkan hasilnya.';
 $lang['go_homepage'] = 'Kembali ke Beranda';
 
+/*
+|--------------------------------------------------------------------------
+| Filter
+|--------------------------------------------------------------------------
+|
+*/
+
+$lang['filter'] = 'Filter';
+$lang['filter_material'] = 'Filter Materi';
+$lang['filter_sort'] = 'Urut Berdasarkan';
+$lang['filter_category'] = 'Filter Kategori';
+$lang['filter_price'] = 'Filter Harga';
+$lang['filter_sort_new'] = 'Terbaru';
+$lang['filter_sort_old'] = 'Terlama';
+$lang['filter_sort_price_low'] = 'Harga Terendah';
+$lang['filter_sort_price_high'] = 'Harga Tertinggi';
 
 /*
 |--------------------------------------------------------------------------
