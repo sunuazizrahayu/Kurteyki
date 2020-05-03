@@ -52,9 +52,9 @@ Pastikan anda sudah menjalankan module xampp yaitu apache server dan mysql.
 http://localhost/phpmyadmin
 ```
 
-Kemudian ***import kurteyki.sql*** yang ada ddidalam folder ini
+Kemudian ***import kurteyki.sql*** yang ada ddidalam project ini
 
-Langkah kedua ***akses url dibawah ini***, disamakan dengan nama folder pada saat extract project ini pada htdocs xampp :
+Langkah kedua ***akses url dibawah ini*** :
 
 ```
 http://localhost/kurteyki
