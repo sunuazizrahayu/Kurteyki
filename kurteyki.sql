@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 03, 2020 at 03:10 PM
+-- Generation Time: May 04, 2020 at 10:17 AM
 -- Server version: 10.1.38-MariaDB
 -- PHP Version: 7.3.3
 
@@ -573,7 +573,8 @@ INSERT INTO `tb_site_visitor` (`id`, `ip`, `date`, `browser`, `os`, `country_nam
 (11, '::1', '2020-05-03 15:47:26', 'Chrome', 'Windows 10', 'Other', 'Other', 3, 'http://localhost/kurteyki/p/about', ''),
 (12, '::1', '2020-05-03 15:47:32', 'Chrome', 'Windows 10', 'Other', 'Other', 2, 'http://localhost/kurteyki/p/privacy-policy', ''),
 (13, '::1', '2020-05-03 15:47:33', 'Chrome', 'Windows 10', 'Other', 'Other', 3, 'http://localhost/kurteyki/p/contact', ''),
-(14, '::1', '2020-05-03 15:47:34', 'Chrome', 'Windows 10', 'Other', 'Other', 2, 'http://localhost/kurteyki/p/help', '');
+(14, '::1', '2020-05-03 15:47:34', 'Chrome', 'Windows 10', 'Other', 'Other', 2, 'http://localhost/kurteyki/p/help', ''),
+(15, '::1', '2020-05-04 15:15:17', 'Chrome', 'Windows 7', 'Other', 'Other', 2, 'http://localhost/kurteyki/', '');
 
 -- --------------------------------------------------------
 
@@ -602,7 +603,7 @@ CREATE TABLE `tb_user` (
 
 INSERT INTO `tb_user` (`id`, `username`, `password`, `headline`, `email`, `no_handphone`, `photo`, `grade`, `payment`, `created`, `last_login`, `status`) VALUES
 (1, 'kurteyki', '1a5651f74beaa02c5e5fc380875d23a66e4549bd', 'Owner', 'kurteyki@gmail.com', '081389215100', 'user_photo_20200503125412.png', 'App', '{\"transaction\":[{\"identity\":\"bri20200425130634\",\"type\":\"bri\",\"account_number\":\"1923892138192\",\"receiver\":\"irfan\"},{\"identity\":\"bca20200426162016\",\"type\":\"bca\",\"account_number\":\"12321321\",\"receiver\":\"troffle\"}],\"confirmation\":[{\"identity\":\"whatsapp20200425130641\",\"type\":\"whatsapp\",\"data\":\"6285280815735\"},{\"identity\":\"facebook20200501131607\",\"type\":\"facebook\",\"data\":\"https:\\/\\/www.facebook.com\\/riedayme\"}]}', '0000-00-00 00:00:00', '2020-05-03 19:50:23', 'Active'),
-(2, 'Faaan', 'a32a2a8de66906d5e1ae59e0411f1490ac7ee495', 'Pengembangan Diri', 'he.irfaan@gmail.com', '081389215100', 'user_photo_20200503125826.jpg', 'Instructor', '', '2020-05-03 12:58:26', '0000-00-00 00:00:00', 'Active'),
+(2, 'Faaan', 'a32a2a8de66906d5e1ae59e0411f1490ac7ee495', 'Pengembangan Diri', 'he.irfaan@gmail.com', '081389215100', 'user_photo_20200504151502.png', 'Instructor', '', '2020-05-03 12:58:26', '0000-00-00 00:00:00', 'Active'),
 (3, 'Riedayme', '7c4a8d09ca3762af61e59520943dc26494f8941b', '', 'programmer.irfaan@gmail.com', '21321321321', '', 'User', '', '2020-05-03 20:01:58', '0000-00-00 00:00:00', 'UnActive');
 
 --
@@ -919,7 +920,7 @@ ALTER TABLE `tb_site_pages`
 -- AUTO_INCREMENT for table `tb_site_visitor`
 --
 ALTER TABLE `tb_site_visitor`
-  MODIFY `id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+  MODIFY `id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 
 --
 -- AUTO_INCREMENT for table `tb_user`
