@@ -36,7 +36,7 @@ class Auth extends My_Site{
 			'title' => $this->lang->line('login').' '.$site['title'],
 			'classbody' => 'o-page--center',
 			'site' => $site
-		);
+			);
 
 		$this->load->view('user/auth/login',$data);
 	}
@@ -78,7 +78,7 @@ class Auth extends My_Site{
 				'message' => true,
 				'message_type' => 'warning',
 				'message_text' => $this->lang->line('invalid_csrf'),
-			]);
+				]);
 
 			redirect(base_url($this->redirect_login));
 
@@ -100,7 +100,7 @@ class Auth extends My_Site{
 				'message' => true,
 				'message_type' => 'danger',
 				'message_text' => $this->lang->line('failed_login'),
-			]);
+				]);
 
 			redirect(base_url($this->redirect_login));
 		}
@@ -125,7 +125,7 @@ class Auth extends My_Site{
 					'message' => true,
 					'message_type' => 'warning',
 					'message_text' => $this->lang->line('invalid_csrf'),
-				]);
+					]);
 
 				redirect(base_url($this->redirect_register));
 			}elseif ($register == 'success') {
@@ -136,7 +136,7 @@ class Auth extends My_Site{
 					'message' => true,
 					'message_type' => 'success',
 					'message_text' => ($email_vertification == 'Yes') ? $this->lang->line('success_register_with_vertification') : $this->lang->line('success_register'),
-				]);
+					]);
 
 				redirect(base_url($this->redirect_login));
 
@@ -146,7 +146,7 @@ class Auth extends My_Site{
 					'message' => true,
 					'message_type' => 'warning',
 					'message_text' => $this->lang->line('failed_create'),
-				]);
+					]);
 
 				redirect(base_url($this->redirect_register));
 			}
@@ -161,7 +161,7 @@ class Auth extends My_Site{
 				'title' => $this->lang->line('register').' '.$site['title'],
 				'classbody' => 'o-page--center',
 				'site' => $site
-			);
+				);
 
 			$this->load->view('user/auth/register',$data);
 		}		
@@ -182,6 +182,12 @@ class Auth extends My_Site{
 
 		if ($this->facebook->is_authenticated()) {
 
+			$response = $this->facebook->is_authenticated();
+
+			if (!empty($response['error'])) {
+				redirect($this->redirect_login);
+			}
+
 			$userProfile = $this->facebook->request('get', '/me?fields=id,first_name,last_name,picture.width(100).height(100),email');
 
 			/**
@@ -193,8 +199,8 @@ class Auth extends My_Site{
 			 * Checking Email if exist update and set session
 			 */
 			$data_login = [
-				'email' => $userProfile['email'],
-				'status' => 'Active'
+			'email' => $userProfile['email'],
+			'status' => 'Active'
 			];
 			if ($this->M_Auth->LoginSocialMedia($data_login)) {
 				redirect($this->redirect_dashboard_user);
@@ -208,15 +214,15 @@ class Auth extends My_Site{
 				file_put_contents('storage/uploads/user/photo/'.$photoname, file_get_contents($url)); 
 
 				$data_register = [
-					'username' => $userProfile['first_name'].' '.$userProfile['last_name'],
-					'password' => '',  
-					'email' => $userProfile['email'],                      
-					'no_handphone' => '',
-					'photo' => $photoname,				
-					'grade' => 'User',
-					'created' => date('Y:m:d H:i:s'),
-					'last_login' => date('Y:m:d H:i:s'),			
-					'status' => 'Active',
+				'username' => $userProfile['first_name'].' '.$userProfile['last_name'],
+				'password' => '',  
+				'email' => $userProfile['email'],                      
+				'no_handphone' => '',
+				'photo' => $photoname,				
+				'grade' => 'User',
+				'created' => date('Y:m:d H:i:s'),
+				'last_login' => date('Y:m:d H:i:s'),			
+				'status' => 'Active',
 				];
 
 				/**
@@ -263,8 +269,8 @@ class Auth extends My_Site{
 				 * Checking Email if exist update and set session
 				 */				
 				$data_login = [
-					'email' => $userProfile['email'],
-					'status' => 'Active'
+				'email' => $userProfile['email'],
+				'status' => 'Active'
 				];
 
 				if ($this->M_Auth->LoginSocialMedia($data_login)) {
@@ -279,15 +285,15 @@ class Auth extends My_Site{
 					file_put_contents('storage/uploads/user/photo/'.$photoname, file_get_contents($url)); 
 
 					$data_register = [
-						'username' => $userProfile['name'],
-						'password' => '',  
-						'email' => $userProfile['email'],                      
-						'no_handphone' => '',
-						'photo' => $photoname,				
-						'grade' => 'User',
-						'created' => date('Y:m:d H:i:s'),
-						'last_login' => date('Y:m:d H:i:s'),			
-						'status' => 'Active',
+					'username' => $userProfile['name'],
+					'password' => '',  
+					'email' => $userProfile['email'],                      
+					'no_handphone' => '',
+					'photo' => $photoname,				
+					'grade' => 'User',
+					'created' => date('Y:m:d H:i:s'),
+					'last_login' => date('Y:m:d H:i:s'),			
+					'status' => 'Active',
 					];
 
 					/**
@@ -313,7 +319,7 @@ class Auth extends My_Site{
 				'message' => true,
 				'message_type' => 'success',
 				'message_text' => $this->lang->line('success_confirm'),
-			]);
+				]);
 		}
 
 		redirect(base_url($this->redirect_login));
