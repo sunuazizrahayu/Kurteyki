@@ -35,24 +35,24 @@ class M_Payment_Manual extends CI_Model
     public function process_manual(){
 
         $post = $this->input->post();
-        $courses_id = $post['id_courses'];
+        $courses_id = strip_tags($post['id_courses']);
         $id_user = $this->session->userdata('id_user');
         $order_id = $id_user.'C'.$courses_id.'T'.date('ymdHis');
 
         /**
          * process using coupon
          */
-        if ($post['code'] AND $courses_price_total = $this->check_coupon($post['code'],$courses_id)) {
+        if (strip_tags($post['code']) AND $courses_price_total = $this->check_coupon(strip_tags($post['code']),$courses_id)) {
             
             if ($this->process([
                 'id' => $order_id,
                 'id_user' => $id_user,
                 'id_courses' => $courses_id,
-                'id_courses_user' => $post['id_courses_user'],                
-                'type' => $post['payment_method'],
+                'id_courses_user' => strip_tags($post['id_courses_user']),                
+                'type' => strip_tags($post['payment_method']),
                 'amount' => $courses_price_total,
-                'token' => $post['transaction'],
-                'coupon' => $post['code'],
+                'token' => strip_tags($post['transaction']),
+                'coupon' => strip_tags($post['code']),
                 'time' => date('Y-m-d H:i:s'),
                 'status' => 'Pending',
             ])) {
@@ -69,10 +69,10 @@ class M_Payment_Manual extends CI_Model
                 'id' => $order_id,
                 'id_user' => $id_user,
                 'id_courses' => $courses_id,
-                'id_courses_user' => $post['id_courses_user'],                              
-                'type' => $post['payment_method'],
+                'id_courses_user' => strip_tags($post['id_courses_user']),                              
+                'type' => strip_tags($post['payment_method']),
                 'amount' => $courses_price_total,
-                'token' => $post['transaction'],
+                'token' => strip_tags($post['transaction']),
                 'time' => date('Y-m-d H:i:s'),
                 'status' => 'Pending',
             ])) {

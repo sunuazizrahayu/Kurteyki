@@ -38,7 +38,7 @@ class M_Payment_Free extends CI_Model
     public function process_free(){
 
         $post = $this->input->post();
-        $code = base64_decode($post['free_code']);
+        $code = base64_decode(strip_tags($post['free_code']));
         $extract = explode('__', $code);
         $coupon_id = $extract[0];
         $courses_id = $extract[1];
@@ -56,11 +56,11 @@ class M_Payment_Free extends CI_Model
             'id' => $order_id,
             'id_user' => $id_user,
             'id_courses' => $courses_id,	
-            'id_courses_user' => $post['id_courses_user'],
-            'type' => $post['payment_method'],
+            'id_courses_user' => strip_tags($post['id_courses_user']),
+            'type' => strip_tags($post['payment_method']),
             'amount' => '',
             'token' => 'free',
-            'coupon' => $post['code'],            
+            'coupon' => strip_tags($post['code']),            
             'time' => date('Y-m-d H:i:s'),
             'updated' => date('Y-m-d H:i:s'),
             'status' => 'Purchased',

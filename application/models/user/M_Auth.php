@@ -255,6 +255,18 @@ class M_Auth extends CI_Model
         }
     }    
 
+    public function check_user(){
+        $data = array(
+            'id' => $this->session->userdata('id_user')
+            );
+
+        $read = $this->_Process_MYSQL->get_data($this->table_user,$data);
+
+        if ($read->num_rows() < 1 OR $read->row()->status == 'Blocked') {
+            redirect(base_url('auth/process_logout'));
+        }
+    }
+
     /**
      * Validation register
      */
@@ -286,7 +298,9 @@ class M_Auth extends CI_Model
                  * allow only specific domain for email
                  */
                 $blocked = array(
-                    '@coalamails.com'
+                    '@coalamails.com',
+                    '@iopmail.com',
+                    '@oriwijn.com'
                     );
 
                 if(preg_match('/@(?!.*@).*+/', $email, $matches) == 1)

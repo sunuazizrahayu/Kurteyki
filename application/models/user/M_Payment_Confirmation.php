@@ -82,7 +82,7 @@ class M_Payment_Confirmation extends CI_Model
 
     public function process(){
 
-        $order_id = $this->input->post('id');
+        $order_id = strip_tags($this->input->post('id'));
 
         /**
          * upload proof
@@ -130,7 +130,7 @@ class M_Payment_Confirmation extends CI_Model
                 ]);
         }
 
-        $this->form_validation->set_rules('sender', 'lang:proof_sender', 'required', [
+        $this->form_validation->set_rules('sender', 'lang:proof_sender', 'required|min_length[3]|max_length[100]trim|alpha', [
             'required' => '{field} '.$this->lang->line('must_filled'),
             ]);
     }        

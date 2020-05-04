@@ -12,7 +12,8 @@ Class My_User extends MY_Site {
 
 		}else{
 			$this->load->model('user/M_Auth'); 
-			$this->M_Auth->check('not_exist', 'user', 'auth');         
+			$this->M_Auth->check('not_exist', 'user', 'auth');
+			$this->M_Auth->check_user();
 		}
 
 		/**
@@ -27,11 +28,11 @@ Class My_User extends MY_Site {
         $this->load->model('lms/M_Template_Widget');
         $template_widget = $this->M_Template_Widget->init($this->site,$this->template);
         if ($template_widget) $this->widget = $template_widget;  
-	        
+
 		// if ($this->uri->segment(2) != 'review'){ 
 			 // skip for process review user on page lms > lesson 
 	    // }
 
-	}    
+    }    
 
 }
