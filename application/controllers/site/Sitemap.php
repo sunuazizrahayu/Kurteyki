@@ -10,7 +10,7 @@ class Sitemap extends My_Site {
     {
         parent::__construct();
 
-        header("Content-Type: text/xml;charset=iso-8859-1");
+        header("Content-Type: text/xml; charset=UTF-8");
 
         $this->load->model('site/M_Sitemap');
 
