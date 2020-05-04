@@ -160,6 +160,10 @@ class M_Auth extends CI_Model
 
             $read_data = $read->row_array();
 
+            if ($read_data['status'] == 'Blocked') {    
+                return 'user_blocked';
+            }
+
             $this->session->set_userdata(array(
                 'id_user' => $read_data['id'],                        
                 'username' => $read_data['username'],
@@ -168,7 +172,7 @@ class M_Auth extends CI_Model
                 'user' => "login"
                 ));
 
-            return true;
+            return 'success';
         }else{
             return false;
         }

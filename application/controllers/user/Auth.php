@@ -199,12 +199,23 @@ class Auth extends My_Site{
 			 * Checking Email if exist update and set session
 			 */
 			$data_login = [
-			'email' => $userProfile['email'],
-			'status' => 'Active'
+			'email' => $userProfile['email']
 			];
-			if ($this->M_Auth->LoginSocialMedia($data_login)) {
+
+			$check = $this->M_Auth->LoginSocialMedia($data_login);
+			if ($check == 'success') {
 				redirect($this->redirect_dashboard_user);
-			}else{	
+			}elseif ($check == 'user_blocked') {
+
+				$this->session->set_flashdata([
+					'message' => true,
+					'message_type' => 'warning',
+					'message_text' => $this->lang->line('user_blocked'),
+					]);
+
+				redirect(base_url($this->redirect_login));
+			}
+			else{	
 
 				/**
 				 * Save Image
@@ -269,13 +280,23 @@ class Auth extends My_Site{
 				 * Checking Email if exist update and set session
 				 */				
 				$data_login = [
-				'email' => $userProfile['email'],
-				'status' => 'Active'
+				'email' => $userProfile['email']
 				];
 
-				if ($this->M_Auth->LoginSocialMedia($data_login)) {
+				$check = $this->M_Auth->LoginSocialMedia($data_login);
+				if ($check == 'success') {
 					redirect($this->redirect_dashboard_user);
-				}else{	
+				}elseif ($check == 'user_blocked') {
+
+					$this->session->set_flashdata([
+						'message' => true,
+						'message_type' => 'warning',
+						'message_text' => $this->lang->line('user_blocked'),
+						]);
+
+					redirect(base_url($this->redirect_login));
+				}
+				else{	
 
 					/**
 					 * Save Image

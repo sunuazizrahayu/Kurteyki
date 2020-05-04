@@ -74,6 +74,7 @@ $lang['success_register'] = 'Berhasil Mendaftar, silahkan login.';
 $lang['success_register_with_vertification'] = 'Berhasil Mendaftar, silahkan cek email untuk vertifikasi.';
 $lang['invalid_csrf'] = 'kode Csrf tidak valid, silahkan refresh halaman dan coba lagi.';
 $lang['error_captcha'] = 'Captcha Error Silahkan Coba Lagi.';
+$lang['user_blocked'] = 'Akun telah dinonaktifkan.';
 
 $lang['min_length_start'] = 'Harus memiliki';
 $lang['min_length_end'] = 'karakter atau lebih';
