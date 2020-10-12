@@ -1,0 +1,14 @@
+version: '3'
+
+services:
+  app:
+    container_name: kurteyki-lms
+    image: kurteyki-lms
+    build:
+      context: .
+      dockerfile: docker/Dockerfile
+    ports:
+      - 8080:8080
+    volumes:
+      - .:/var/www/html
+      - /var/www/html/vendor
