@@ -71,6 +71,11 @@ Akses aplikasi melalui:
 http://localhost:8080/
 ```
 
+Akses Databasee melalui PHPMYADMIN
+```
+http://localhost:8000/
+```
+
 
 ### Lain-lain
 #### Cron untuk kirim email
@@ -90,9 +95,13 @@ http://localhost:8080/
 ### Informasi App
 
 ```
-Default App login
-username : kurteyki
+# Default App login
+username: kurteyki
 password: kurteyki
+
+# Akses DB melalui phpmyadmin
+username: app
+password: app
 
 ```
 
