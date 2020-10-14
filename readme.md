@@ -61,13 +61,30 @@ Langkah kedua ***akses url dibawah ini*** :
 http://localhost/kurteyki
 ```
 
-Cron untuk kirim email
+### Menjalankan Aplikasi Menggunakan DOCKER
+```
+docker-compose up -d --build
+```
+
+Akses aplikasi melalui:
+```
+http://localhost:8080/
+```
+
+Akses Databasee melalui PHPMYADMIN
+```
+http://localhost:8000/
+```
+
+
+### Lain-lain
+#### Cron untuk kirim email
 
 ```
 */2 * * * * /usr/local/bin/php /home/cpanelusername/public_html/index.php my_jobs listen
 ```
 
-Pengaturan .htaccess
+#### Pengaturan .htaccess
 ```
 .htaccess.dev = untuk development
 .htaccess.run = untuk production
@@ -75,14 +92,16 @@ Pengaturan .htaccess
 ***htaccess ini penting untuk noindex dan caching.***
 ```
 
-Informasi App
+### Informasi App
 
 ```
-Halaman Login : http://localhost/kurteyki/auth
-
-Default App login
-username : kurteyki
+# Default App login
+username: kurteyki
 password: kurteyki
+
+# Akses DB melalui phpmyadmin
+username: app
+password: app
 
 ```
 
