@@ -94,6 +94,7 @@ password: app
 
 ```
 
+
 ## Sumber Inspirasi
 
 * CiFireCMS (module blog dan pengaturan situs)
@@ -102,14 +103,13 @@ password: app
 * skillacademy.com (template lms)
 * cms.botble.com (module pengaturan smtp dan statistik visitor)
 
-## List Pekerjaan
-
-* No Works This end.
 
 ## Bug Aplikasi
 
-* language english
+* beberapa bagian bahasa masih menggunakan Inggris
 * not perfect payment gateway
+* login phpmyadmin dengan docker tidak redirect langsung ke phpmyadmin
+
 
 ## Change Log
 
